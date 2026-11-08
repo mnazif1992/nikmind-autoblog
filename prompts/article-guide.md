@@ -65,6 +65,14 @@
 - نام شهر را فقط در جایی بیاور که طبیعی است. صفحه‌ی دروازه‌ای (doorway) ممنوع است.
 - درباره‌ی بیمه و قانون آن کشور جزئیات قطعی ننویس. از عباراتی مثل «معمولاً» و «بسته به بیمه‌ات» استفاده کن.
 
+## عکس کاور
+
+سرور برای هر مقاله یک عکس واقعی با مجوز CC0 یا public domain از Openverse پیدا می‌کند و روی سایت می‌گذارد. کار تو فقط نوشتن `image_queries` است:
+
+- ۲ تا ۳ عبارت جست‌وجوی **انگلیسی**، هر کدام ۲ تا ۴ کلمه‌ی ساده و دیدنی. از اولی به آخری، از دقیق به عام بچین.
+- صحنه‌ی واقعی و آرام بخواه، مثل `woman looking out window`، `man video call laptop`، `couple walking autumn` یا `airport departure hall`.
+- این‌ها را ننویس: کلمه‌ی انتزاعی (`anxiety`، `depression`، `therapy`)، نام برند، عبارت «Iranian» یا «Persian»، و هر صحنه‌ای که فرد را در حال گریه، آسیب یا بحران نشان بدهد.
+
 ## فرمت فایل
 
 نام فایل: `drafts/YYYY-MM-DD-<slug>.json`
@@ -73,6 +81,7 @@
 {
   "topic_id": "T001",
   "slug": "iranian-psychologist-germany",
+  "image_queries": ["woman laptop video call", "woman looking out window", "city street autumn"],
   "date": "YYYY-MM-DD",
   "fa": {
     "title": "", "seo_title": "", "meta_description": "", "excerpt": "",

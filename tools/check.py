@@ -67,6 +67,11 @@ def main(path):
     re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", slug) and len(slug) <= 60 or errs.append("bad slug")
     if any(x.get("slug") == slug for x in arts): errs.append("slug already drafted before")
     pathlib.Path(path).name.endswith(f"-{slug}.json") or errs.append("file name must be YYYY-MM-DD-<slug>.json")
+    iq = d.get("image_queries")
+    if not (isinstance(iq, list) and 2 <= len(iq) <= 3 and all(isinstance(q, str) and 2 <= len(q.split()) <= 5 and q.isascii() for q in iq)):
+        errs.append("image_queries must be 2–3 short English phrases")
+    elif any(w in " ".join(iq).lower() for w in ["iranian", "persian", "anxiety", "depression", "therapy", "suicide", "crying"]):
+        errs.append("image_queries: use concrete visual scenes, not abstract/sensitive words")
     for lang in ["fa", "en"]:
         if not isinstance(d.get(lang), dict): errs.append(f"{lang} version missing"); continue
         check_lang(lang, d[lang], slug, links, arts, errs, warns)
