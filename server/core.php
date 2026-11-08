@@ -36,7 +36,7 @@ function settings_text(array $s): string {
 function settings_buttons(array $s): array {
     return [[auto_mode($s) ? ['text' => '👀 برگرد به بازبینی دستی', 'callback_data' => 'm:manual'] : ['text' => '🤖 انتشار خودکار (بدون تأیید)', 'callback_data' => 'm:auto']],
             [!empty($s['paused']) ? ['text' => '▶️ ادامه', 'callback_data' => 's:resume'] : ['text' => '⏸ توقف موقت', 'callback_data' => 's:pause']],
-            [['text' => '🗂 باز کردن پنل', 'web_app' => ['url' => panel_url()]]]];
+            [['text' => '🗂 باز کردن پنل نیک‌نگار', 'web_app' => ['url' => panel_url()]]]];
 }
 
 /* ---------------- drafts from GitHub / inbox ---------------- */
@@ -187,7 +187,7 @@ function handle_update(array &$s, array $u): void {
             tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => settings_text($s), 'reply_markup' => ['inline_keyboard' => settings_buttons($s)]]);
             return;
         }
-        if ($text === '/start') { tg('sendMessage', ['chat_id' => $cid, 'text' => 'دکمه‌ها پایین صفحه‌اند؛ پنل کامل هم از دکمه‌ی «پنل» کنار کادر پیام باز می‌شود.', 'reply_markup' => main_kb2()]); return; }
+        if ($text === '/start') { tg('sendMessage', ['chat_id' => $cid, 'text' => 'نیک‌نگار آماده است. دکمه‌ها پایین صفحه‌اند؛ پنل کامل هم از دکمه‌ی «نیک‌نگار» کنار کادر پیام باز می‌شود.', 'reply_markup' => main_kb2()]); return; }
         if ($text === '/status') {
             $pend = count(array_filter($s['drafts'], fn($d) => ($d['status'] ?? '') === 'pending'));
             $last = end($s['published']) ?: null;
@@ -248,5 +248,8 @@ function panel_state(array $s): array {
         if (count($items) >= 40) break;
     }
     return ['auto' => auto_mode($s), 'paused' => !empty($s['paused']), 'write_pending' => (int)($s['write_pending'] ?? 0),
-            'slots' => array_map(fn($t) => date('H:i', $t), todays_slots($s)), 'next' => next_slot_text($s), 'items' => $items];
+            'slots' => array_map(fn($t) => date('H:i', $t), todays_slots($s)), 'next' => next_slot_text($s), 'items' => $items,
+            'published_total' => count($s['published']),
+            'published_week' => count(array_filter($s['published'], fn($p) => strtotime($p['at'] ?? '') > time() - 7 * 86400)),
+            'topics_left' => null];
 }
