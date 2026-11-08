@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 const TOPIC_CLUSTERS = ['country' => 'کشورها', 'migration' => 'مهاجرت و روان', 'online' => 'مشاوره‌ی آنلاین', 'family' => 'خانواده'];
 
-function gh_can_write(): bool { return defined('GH_TOKEN') && GH_TOKEN !== '' && !str_contains(GH_TOKEN, 'PASTE'); }
+function gh_can_write(): bool { return defined('GH_TOKEN') && (bool)preg_match('/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/', GH_TOKEN); }
 function gh_api(string $method, string $path, ?array $body = null): array {
     $c = curl_init('https://api.github.com/repos/' . GITHUB_REPO . $path);
     $h = ['Accept: application/vnd.github+json', 'X-GitHub-Api-Version: 2022-11-28', 'User-Agent: nik-negar'];
