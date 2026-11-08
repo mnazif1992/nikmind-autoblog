@@ -17,7 +17,8 @@
   "en_keyword": "anxiety after immigration",
   "cluster": "migration",
   "angle": "چرا اضطراب در ماه‌های اول مهاجرت بالا می‌رود، نشانه‌ها، کارهای روزمره‌ای که کمک می‌کند و زمان کمک گرفتن",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-08"
  },
  {
   "id": "T003",
@@ -26,7 +27,8 @@
   "en_keyword": "farsi speaking therapist toronto",
   "cluster": "country",
   "angle": "ایرانیان کانادا (تورنتو و ونکوور) چطور روان‌درمانگر فارسی‌زبان پیدا کنند؛ حضوری یا آنلاین",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-08"
  },
  {
   "id": "T004",
