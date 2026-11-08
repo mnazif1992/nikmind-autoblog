@@ -35,3 +35,16 @@ Run every day. The person is not watching; do not ask questions. Decide, do it, 
 9. The website server picks up new files in `drafts/` within 15 minutes and sends them to Telegram for approval. Do not touch anything else.
 
 Final message: one line per article (slug and Persian title), or the reason nothing was written.
+
+## On-demand mode (the "✍️ new article" button in Telegram)
+
+A second scheduled task runs every hour. Its prompt gives you a flag URL on the website.
+
+1. Fetch the flag URL, adding `?t=<current unix time>` so you get a fresh copy. It returns JSON like `{"pending": 1}`.
+   - If `pending` is 0, missing, or the URL cannot be read, stop immediately and write nothing.
+2. If `pending` is greater than 0, write `min(pending, 2)` articles following steps 1–9 above, with these differences:
+   - Ignore the "drafts for today already exist" rule.
+   - Take the next queued topics, skipping any that already have a draft file.
+   - Add `"on_demand": true` to the top level of each draft JSON.
+   - Commit message: `drafts (on demand): <date> <slugs>`.
+3. The server lowers `pending` by itself when it receives a draft marked `on_demand`. Never try to change the flag yourself.
