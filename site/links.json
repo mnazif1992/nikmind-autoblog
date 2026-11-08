@@ -1,0 +1,107 @@
+{
+ "note": "Only these internal URLs (plus articles listed in site/articles.json under the same language) may be linked. Use relative paths exactly as written.",
+ "fa": [
+  {
+   "url": "/",
+   "title": "صفحه‌ی اصلی — مشاوره آنلاین برای ایرانیان خارج از کشور"
+  },
+  {
+   "url": "/#precounsel",
+   "title": "رزرو پیش‌مشاوره (لینک دعوت به اقدام)"
+  },
+  {
+   "url": "/#services",
+   "title": "خدمات"
+  },
+  {
+   "url": "/#faq",
+   "title": "سؤال‌های رایج"
+  },
+  {
+   "url": "/therapists/",
+   "title": "روان‌درمانگرهای فارسی‌زبان"
+  },
+  {
+   "url": "/therapists/meysam-nikdanesh/",
+   "title": "دکتر میثم نیک‌دانش"
+  },
+  {
+   "url": "/about/",
+   "title": "درباره‌ی نیک‌مایند"
+  },
+  {
+   "url": "/blog/",
+   "title": "مقالات"
+  },
+  {
+   "url": "/blog/immigrant-mental-health/",
+   "title": "سلامت روان در مهاجرین"
+  },
+  {
+   "url": "/blog/farsi-speaking-psychologist-for-immigrants/",
+   "title": "روانشناس فارسی‌زبان برای مهاجران"
+  },
+  {
+   "url": "/blog/life-after-immigration/",
+   "title": "زندگی بعد از مهاجرت"
+  },
+  {
+   "url": "/blog/online-therapy-canada/",
+   "title": "مشاوره آنلاین روانشناسی در کانادا"
+  },
+  {
+   "url": "/blog/online-therapy-europe/",
+   "title": "مشاوره آنلاین روانشناسی در اروپا"
+  },
+  {
+   "url": "/blog/online-therapy-turkey/",
+   "title": "مشاوره آنلاین روانشناسی در ترکیه"
+  },
+  {
+   "url": "/blog/online-therapy-netherlands/",
+   "title": "مشاوره آنلاین در هلند"
+  },
+  {
+   "url": "/blog/mental-health-after-immigration/",
+   "title": "مراقبت از سلامت روان پس از مهاجرت"
+  },
+  {
+   "url": "/blog/depression-after-immigration/",
+   "title": "افسردگی بعد از مهاجرت"
+  }
+ ],
+ "en": [
+  {
+   "url": "/en/",
+   "title": "Home — online therapy in Farsi for Iranians abroad"
+  },
+  {
+   "url": "/en/#precounsel",
+   "title": "Book a pre-consultation (call to action)"
+  },
+  {
+   "url": "/en/#services",
+   "title": "Services"
+  },
+  {
+   "url": "/en/#faq",
+   "title": "FAQ"
+  },
+  {
+   "url": "/en/therapists/",
+   "title": "Farsi speaking therapists"
+  },
+  {
+   "url": "/en/therapists/meysam-nikdanesh/",
+   "title": "Dr. Meysam Nikdanesh"
+  },
+  {
+   "url": "/en/about/",
+   "title": "About NikMind"
+  },
+  {
+   "url": "/en/blog/",
+   "title": "Articles"
+  }
+ ]
+}

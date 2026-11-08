@@ -1,0 +1,542 @@
+[
+ {
+  "id": "T001",
+  "slug": "iranian-psychologist-germany",
+  "fa_keyword": "روانشناس ایرانی در آلمان",
+  "en_keyword": "iranian therapist germany",
+  "cluster": "country",
+  "angle": "راهنمای واقعی پیدا کردن روانشناس فارسی‌زبان در آلمان: صف انتظار، زبان، و جلسه‌ی آنلاین فارسی به‌عنوان گزینه",
+  "status": "queued"
+ },
+ {
+  "id": "T002",
+  "slug": "anxiety-after-immigration",
+  "fa_keyword": "اضطراب بعد از مهاجرت",
+  "en_keyword": "anxiety after immigration",
+  "cluster": "migration",
+  "angle": "چرا اضطراب در ماه‌های اول مهاجرت بالا می‌رود، نشانه‌ها، کارهای روزمره‌ای که کمک می‌کند و زمان کمک گرفتن",
+  "status": "queued"
+ },
+ {
+  "id": "T003",
+  "slug": "farsi-therapist-toronto-vancouver",
+  "fa_keyword": "روانشناس ایرانی در تورنتو",
+  "en_keyword": "farsi speaking therapist toronto",
+  "cluster": "country",
+  "angle": "ایرانیان کانادا (تورنتو و ونکوور) چطور روان‌درمانگر فارسی‌زبان پیدا کنند؛ حضوری یا آنلاین",
+  "status": "queued"
+ },
+ {
+  "id": "T004",
+  "slug": "regret-after-immigration",
+  "fa_keyword": "پشیمانی از مهاجرت",
+  "en_keyword": "regret after moving abroad",
+  "cluster": "migration",
+  "angle": "حس پشیمانی بعد از مهاجرت: چه چیزی طبیعی است، چه چیزی هشدار است، و چطور با آن کنار بیاییم بدون تصمیم عجولانه",
+  "status": "queued"
+ },
+ {
+  "id": "T005",
+  "slug": "culture-shock-after-immigration",
+  "fa_keyword": "شوک فرهنگی بعد از مهاجرت",
+  "en_keyword": "culture shock after moving abroad",
+  "cluster": "migration",
+  "angle": "مراحل شوک فرهنگی، چیزهایی که ایرانی‌ها معمولاً غافلگیرشان می‌کند و راه‌های سازگاری",
+  "status": "queued"
+ },
+ {
+  "id": "T006",
+  "slug": "farsi-therapist-london",
+  "fa_keyword": "روانشناس ایرانی در لندن",
+  "en_keyword": "farsi speaking therapist london",
+  "cluster": "country",
+  "angle": "پیدا کردن روانشناس فارسی‌زبان در لندن و بریتانیا؛ NHS، صف انتظار و جلسه‌ی آنلاین",
+  "status": "queued"
+ },
+ {
+  "id": "T007",
+  "slug": "loneliness-after-immigration",
+  "fa_keyword": "تنهایی بعد از مهاجرت",
+  "en_keyword": "loneliness after moving abroad",
+  "cluster": "migration",
+  "angle": "تنهایی در کشور جدید: فرقش با افسردگی، چرا ایرانی‌ها کمتر از آن حرف می‌زنند، قدم‌های عملی",
+  "status": "queued"
+ },
+ {
+  "id": "T008",
+  "slug": "marriage-counseling-iranians-abroad",
+  "fa_keyword": "مشاوره ازدواج برای ایرانیان خارج از کشور",
+  "en_keyword": "farsi speaking marriage counselor",
+  "cluster": "online",
+  "angle": "چالش‌های زوج‌های ایرانی مهاجر و اینکه زوج‌درمانی آنلاین به فارسی چطور کار می‌کند",
+  "status": "queued"
+ },
+ {
+  "id": "T009",
+  "slug": "homesickness-family-after-immigration",
+  "fa_keyword": "دلتنگی خانواده بعد از مهاجرت",
+  "en_keyword": "how to deal with homesickness abroad",
+  "cluster": "migration",
+  "angle": "دلتنگی برای پدر و مادر و خانه؛ چرا گاهی شدیدتر می‌شود و چه کمکی می‌کند",
+  "status": "queued"
+ },
+ {
+  "id": "T010",
+  "slug": "farsi-therapist-los-angeles-usa",
+  "fa_keyword": "روانشناس ایرانی در آمریکا",
+  "en_keyword": "farsi speaking therapist los angeles",
+  "cluster": "country",
+  "angle": "ایرانیان آمریکا (کالیفرنیا و بقیه‌ی ایالت‌ها) و پیدا کردن روان‌درمانگر فارسی‌زبان",
+  "status": "queued"
+ },
+ {
+  "id": "T011",
+  "slug": "bilingual-children",
+  "fa_keyword": "کودک دوزبانه",
+  "en_keyword": "raising bilingual children",
+  "cluster": "family",
+  "angle": "بچه‌های دوزبانه‌ی خانواده‌های ایرانی: زبان، هویت، و نگرانی‌های رایج پدر و مادرها",
+  "status": "queued"
+ },
+ {
+  "id": "T012",
+  "slug": "anxiety-before-immigration",
+  "fa_keyword": "اضطراب قبل از مهاجرت",
+  "en_keyword": "anxiety before moving abroad",
+  "cluster": "migration",
+  "angle": "استرس ماه‌های قبل از رفتن: تصمیم، خداحافظی، و آماده شدن روانی",
+  "status": "queued"
+ },
+ {
+  "id": "T013",
+  "slug": "iranian-psychiatrist-germany",
+  "fa_keyword": "روانپزشک ایرانی در آلمان",
+  "en_keyword": "iranian psychiatrist germany",
+  "cluster": "country",
+  "angle": "کی روانپزشک لازم است نه روانشناس، و ایرانیان آلمان چه گزینه‌هایی دارند",
+  "status": "queued"
+ },
+ {
+  "id": "T014",
+  "slug": "long-distance-relationship-immigration",
+  "fa_keyword": "رابطه از راه دور بعد از مهاجرت",
+  "en_keyword": "long distance relationship after moving abroad",
+  "cluster": "family",
+  "angle": "وقتی یکی رفته و دیگری مانده: نگه داشتن رابطه از راه دور و نشانه‌های خطر",
+  "status": "queued"
+ },
+ {
+  "id": "T015",
+  "slug": "online-therapy-session-how-it-works",
+  "fa_keyword": "مشاوره آنلاین برای ایرانیان خارج از کشور",
+  "en_keyword": "therapy in farsi online",
+  "cluster": "online",
+  "angle": "جلسه‌ی آنلاین روان‌درمانی به فارسی دقیقاً چطور برگزار می‌شود؛ از پیش‌مشاوره تا جلسه‌ی اول",
+  "status": "queued"
+ },
+ {
+  "id": "T016",
+  "slug": "regret-immigration-canada",
+  "fa_keyword": "پشیمانی از مهاجرت به کانادا",
+  "en_keyword": "regret moving to canada",
+  "cluster": "migration",
+  "angle": "تجربه‌های رایج ایرانیان کانادا که به پشیمانی می‌رسند و چطور فکر کنیم قبل از تصمیم به برگشت",
+  "status": "queued"
+ },
+ {
+  "id": "T017",
+  "slug": "persian-psychologist-australia",
+  "fa_keyword": "روانشناس ایرانی در استرالیا",
+  "en_keyword": "persian psychologist sydney",
+  "cluster": "country",
+  "angle": "ایرانیان سیدنی و ملبورن و پیدا کردن روانشناس فارسی‌زبان",
+  "status": "queued"
+ },
+ {
+  "id": "T018",
+  "slug": "culture-shock-germany",
+  "fa_keyword": "شوک فرهنگی در آلمان",
+  "en_keyword": "culture shock in germany",
+  "cluster": "migration",
+  "angle": "چیزهایی از زندگی در آلمان که برای ایرانی‌ها شوک‌آور است و اثرش روی روان",
+  "status": "queued"
+ },
+ {
+  "id": "T019",
+  "slug": "immigration-stress",
+  "fa_keyword": "استرس مهاجرت",
+  "en_keyword": "immigration stress",
+  "cluster": "migration",
+  "angle": "منابع استرس مهاجرت (اقامت، کار، زبان، پول) و ابزارهای ساده برای مدیریتش",
+  "status": "queued"
+ },
+ {
+  "id": "T020",
+  "slug": "iranian-therapist-dubai",
+  "fa_keyword": "روانشناس ایرانی در دبی",
+  "en_keyword": "iranian therapist dubai",
+  "cluster": "country",
+  "angle": "ایرانیان امارات و دسترسی به روانشناس فارسی‌زبان؛ محرمانگی و جلسه‌ی آنلاین",
+  "status": "queued"
+ },
+ {
+  "id": "T021",
+  "slug": "family-counseling-iranians-abroad",
+  "fa_keyword": "مشاوره خانواده برای ایرانیان خارج از کشور",
+  "en_keyword": "family therapy in farsi",
+  "cluster": "online",
+  "angle": "تعارض نسل‌ها و نقش‌ها در خانواده‌ی ایرانی مهاجر و کمک مشاوره‌ی خانواده",
+  "status": "queued"
+ },
+ {
+  "id": "T022",
+  "slug": "returning-to-iran-after-immigration",
+  "fa_keyword": "بازگشت به ایران بعد از مهاجرت",
+  "en_keyword": "reverse culture shock returning home",
+  "cluster": "migration",
+  "angle": "شوک فرهنگی معکوس: وقتی برگشتن هم سخت است",
+  "status": "queued"
+ },
+ {
+  "id": "T023",
+  "slug": "iranian-psychologist-istanbul",
+  "fa_keyword": "روانشناس ایرانی در استانبول",
+  "en_keyword": "iranian therapist istanbul",
+  "cluster": "country",
+  "angle": "ایرانیان ترکیه و پیدا کردن روانشناس فارسی‌زبان در استانبول",
+  "status": "queued"
+ },
+ {
+  "id": "T024",
+  "slug": "regret-immigration-germany",
+  "fa_keyword": "پشیمانی از مهاجرت به آلمان",
+  "en_keyword": "regret moving to germany",
+  "cluster": "migration",
+  "angle": "چرا بعضی ایرانی‌ها در آلمان پشیمان می‌شوند و چه کار می‌شود کرد",
+  "status": "queued"
+ },
+ {
+  "id": "T025",
+  "slug": "farsi-speaking-psychiatrist-online",
+  "fa_keyword": "روانپزشک آنلاین فارسی‌زبان",
+  "en_keyword": "farsi speaking psychiatrist",
+  "cluster": "online",
+  "angle": "ویزیت آنلاین روانپزشک به فارسی؛ کی لازم است و دارو از راه دور چطور مدیریت می‌شود (بدون توصیه‌ی دارویی)",
+  "status": "queued"
+ },
+ {
+  "id": "T026",
+  "slug": "moving-abroad-alone",
+  "fa_keyword": "مهاجرت به تنهایی",
+  "en_keyword": "moving abroad alone",
+  "cluster": "migration",
+  "angle": "مهاجرت مجردی و تنها: آزادی، تنهایی، و ساختن شبکه‌ی حمایتی",
+  "status": "queued"
+ },
+ {
+  "id": "T027",
+  "slug": "iranian-therapist-vienna",
+  "fa_keyword": "روانشناس ایرانی در وین",
+  "en_keyword": "iranian therapist vienna",
+  "cluster": "country",
+  "angle": "ایرانیان اتریش و دسترسی به روان‌درمانی فارسی",
+  "status": "queued"
+ },
+ {
+  "id": "T028",
+  "slug": "teenagers-after-immigration",
+  "fa_keyword": "نوجوان مهاجر",
+  "en_keyword": "helping teenagers adjust after moving abroad",
+  "cluster": "family",
+  "angle": "نوجوانی که پدر و مادرش مهاجرت کرده‌اند: مدرسه، دوست، هویت، نشانه‌های هشدار",
+  "status": "queued"
+ },
+ {
+  "id": "T029",
+  "slug": "cbt-in-farsi",
+  "fa_keyword": "درمان شناختی رفتاری به فارسی",
+  "en_keyword": "cbt therapy in farsi",
+  "cluster": "online",
+  "angle": "CBT چیست، برای چه مشکلاتی کار می‌کند و چرا انجامش به زبان مادری فرق دارد",
+  "status": "queued"
+ },
+ {
+  "id": "T030",
+  "slug": "culture-shock-canada",
+  "fa_keyword": "شوک فرهنگی در کانادا",
+  "en_keyword": "culture shock in canada",
+  "cluster": "migration",
+  "angle": "تفاوت‌های فرهنگی کانادا که ایرانی‌ها تجربه می‌کنند",
+  "status": "queued"
+ },
+ {
+  "id": "T031",
+  "slug": "regret-immigration-australia",
+  "fa_keyword": "پشیمانی از مهاجرت به استرالیا",
+  "en_keyword": "regret moving to australia",
+  "cluster": "migration",
+  "angle": "دوری، تنهایی و پشیمانی در استرالیا",
+  "status": "queued"
+ },
+ {
+  "id": "T032",
+  "slug": "iranian-psychologist-hamburg",
+  "fa_keyword": "روانشناس ایرانی در هامبورگ",
+  "en_keyword": "farsi therapist hamburg",
+  "cluster": "country",
+  "angle": "ایرانیان هامبورگ و شمال آلمان و روان‌درمانی فارسی",
+  "status": "queued"
+ },
+ {
+  "id": "T033",
+  "slug": "couples-conflict-after-immigration",
+  "fa_keyword": "اختلاف زوجین بعد از مهاجرت",
+  "en_keyword": "couples conflict after immigration",
+  "cluster": "family",
+  "angle": "چرا دعواهای زوج‌ها بعد از مهاجرت بیشتر می‌شود (نقش‌ها، پول، تنهایی) و چه کمک می‌کند",
+  "status": "queued"
+ },
+ {
+  "id": "T034",
+  "slug": "career-identity-after-immigration",
+  "fa_keyword": "افت شغلی بعد از مهاجرت",
+  "en_keyword": "career loss after immigration",
+  "cluster": "migration",
+  "angle": "وقتی شغل و جایگاه قبلی از دست می‌رود؛ هویت شغلی و عزت نفس",
+  "status": "queued"
+ },
+ {
+  "id": "T035",
+  "slug": "iranian-psychiatrist-toronto",
+  "fa_keyword": "روانپزشک ایرانی در تورنتو",
+  "en_keyword": "iranian psychiatrist toronto",
+  "cluster": "country",
+  "angle": "ایرانیان کانادا و دسترسی به روانپزشک فارسی‌زبان",
+  "status": "queued"
+ },
+ {
+  "id": "T036",
+  "slug": "grieving-from-abroad",
+  "fa_keyword": "سوگ از راه دور",
+  "en_keyword": "grieving a loved one from abroad",
+  "cluster": "migration",
+  "angle": "وقتی عزیزی در ایران فوت می‌کند و نمی‌شود برگشت؛ سوگ ناتمام",
+  "status": "queued"
+ },
+ {
+  "id": "T037",
+  "slug": "culture-shock-usa",
+  "fa_keyword": "شوک فرهنگی در آمریکا",
+  "en_keyword": "culture shock in america",
+  "cluster": "migration",
+  "angle": "تجربه‌ی ایرانی‌ها از فرهنگ آمریکا و اثرش روی روان",
+  "status": "queued"
+ },
+ {
+  "id": "T038",
+  "slug": "regret-immigration-usa",
+  "fa_keyword": "پشیمانی از مهاجرت به آمریکا",
+  "en_keyword": "regret moving to usa",
+  "cluster": "migration",
+  "angle": "پشیمانی در آمریکا: انتظار در برابر واقعیت",
+  "status": "queued"
+ },
+ {
+  "id": "T039",
+  "slug": "iranian-students-abroad-mental-health",
+  "fa_keyword": "سلامت روان دانشجویان ایرانی خارج از کشور",
+  "en_keyword": "international student mental health",
+  "cluster": "migration",
+  "angle": "فشار درس، پول، تنهایی و اقامت برای دانشجوی ایرانی",
+  "status": "queued"
+ },
+ {
+  "id": "T040",
+  "slug": "farsi-therapist-near-me",
+  "fa_keyword": "روانشناس فارسی زبان نزدیک من",
+  "en_keyword": "farsi therapist near me",
+  "cluster": "online",
+  "angle": "وقتی روانشناس فارسی‌زبان نزدیک خانه نیست؛ مقایسه‌ی صادقانه‌ی حضوری و آنلاین",
+  "status": "queued"
+ },
+ {
+  "id": "T041",
+  "slug": "parenting-abroad-iranian-parents",
+  "fa_keyword": "تربیت فرزند در خارج از کشور",
+  "en_keyword": "parenting abroad",
+  "cluster": "family",
+  "angle": "پدر و مادر ایرانی بین دو سبک تربیتی",
+  "status": "queued"
+ },
+ {
+  "id": "T042",
+  "slug": "guilt-leaving-family-in-iran",
+  "fa_keyword": "احساس گناه نسبت به خانواده در ایران",
+  "en_keyword": "guilt about leaving family behind",
+  "cluster": "migration",
+  "angle": "عذاب وجدان رفتن و ماندن خانواده در ایران",
+  "status": "queued"
+ },
+ {
+  "id": "T043",
+  "slug": "iranian-psychologist-sweden",
+  "fa_keyword": "روانشناس ایرانی در سوئد",
+  "en_keyword": "iranian therapist sweden",
+  "cluster": "country",
+  "angle": "ایرانیان سوئد و اسکاندیناوی و روان‌درمانی فارسی",
+  "status": "queued"
+ },
+ {
+  "id": "T044",
+  "slug": "residency-uncertainty-stress",
+  "fa_keyword": "استرس اقامت",
+  "en_keyword": "residency uncertainty stress",
+  "cluster": "migration",
+  "angle": "زندگی در بلاتکلیفی ویزا و اقامت و اثرش روی خواب و تمرکز",
+  "status": "queued"
+ },
+ {
+  "id": "T045",
+  "slug": "panic-attacks-living-abroad",
+  "fa_keyword": "حمله پانیک در غربت",
+  "en_keyword": "panic attacks living abroad",
+  "cluster": "migration",
+  "angle": "حمله‌ی پانیک دور از خانه: چه کنیم در لحظه و بعد از آن",
+  "status": "queued"
+ },
+ {
+  "id": "T046",
+  "slug": "bicultural-identity",
+  "fa_keyword": "هویت دوفرهنگی",
+  "en_keyword": "bicultural identity",
+  "cluster": "family",
+  "angle": "زندگی بین دو فرهنگ؛ نه کاملاً اینجایی نه کاملاً آنجایی",
+  "status": "queued"
+ },
+ {
+  "id": "T047",
+  "slug": "marriage-counseling-germany",
+  "fa_keyword": "مشاوره ازدواج در آلمان",
+  "en_keyword": "marriage counseling germany farsi",
+  "cluster": "online",
+  "angle": "زوج‌های ایرانی آلمان و مشاوره‌ی ازدواج به فارسی",
+  "status": "queued"
+ },
+ {
+  "id": "T048",
+  "slug": "language-barrier-therapy",
+  "fa_keyword": "روان‌درمانی به زبان مادری",
+  "en_keyword": "therapy in your native language",
+  "cluster": "online",
+  "angle": "چرا حرف زدن از احساسات به زبان دوم سخت‌تر است",
+  "status": "queued"
+ },
+ {
+  "id": "T049",
+  "slug": "aging-parents-in-iran",
+  "fa_keyword": "نگرانی برای پدر و مادر در ایران",
+  "en_keyword": "caring for aging parents from abroad",
+  "cluster": "family",
+  "angle": "پیر شدن پدر و مادر از راه دور؛ نگرانی، احساس گناه، تصمیم‌ها",
+  "status": "queued"
+ },
+ {
+  "id": "T050",
+  "slug": "iranian-psychologist-italy",
+  "fa_keyword": "روانشناس ایرانی در ایتالیا",
+  "en_keyword": "iranian therapist italy",
+  "cluster": "country",
+  "angle": "ایرانیان ایتالیا (اغلب دانشجو) و روان‌درمانی فارسی",
+  "status": "queued"
+ },
+ {
+  "id": "T051",
+  "slug": "first-year-after-immigration",
+  "fa_keyword": "سال اول مهاجرت",
+  "en_keyword": "first year after moving abroad",
+  "cluster": "migration",
+  "angle": "فراز و نشیب‌های روانی سال اول؛ چه چیزی طبیعی است",
+  "status": "queued"
+ },
+ {
+  "id": "T052",
+  "slug": "news-anxiety-iran",
+  "fa_keyword": "اضطراب اخبار ایران",
+  "en_keyword": "anxiety from news back home",
+  "cluster": "migration",
+  "angle": "دنبال کردن اخبار ایران از دور و فرسودگی ذهنی؛ مرزگذاری با اخبار (بدون موضع سیاسی)",
+  "status": "queued"
+ },
+ {
+  "id": "T053",
+  "slug": "how-to-choose-persian-therapist",
+  "fa_keyword": "چطور روانشناس فارسی زبان انتخاب کنیم",
+  "en_keyword": "how to choose a persian therapist",
+  "cluster": "online",
+  "angle": "چک‌لیست عملی انتخاب روان‌درمانگر فارسی‌زبان",
+  "status": "queued"
+ },
+ {
+  "id": "T054",
+  "slug": "insomnia-after-immigration",
+  "fa_keyword": "بی‌خوابی بعد از مهاجرت",
+  "en_keyword": "insomnia after moving abroad",
+  "cluster": "migration",
+  "angle": "اختلال خواب در کشور جدید؛ اختلاف ساعت، استرس، نشخوار فکری",
+  "status": "queued"
+ },
+ {
+  "id": "T055",
+  "slug": "making-friends-abroad",
+  "fa_keyword": "دوست پیدا کردن در غربت",
+  "en_keyword": "making friends abroad",
+  "cluster": "migration",
+  "angle": "ساختن روابط جدید در کشور غریب برای بزرگسالان",
+  "status": "queued"
+ },
+ {
+  "id": "T056",
+  "slug": "trailing-spouse",
+  "fa_keyword": "همسر همراه در مهاجرت",
+  "en_keyword": "trailing spouse depression",
+  "cluster": "family",
+  "angle": "کسی که به خاطر کار یا تحصیل همسرش مهاجرت کرده",
+  "status": "queued"
+ },
+ {
+  "id": "T057",
+  "slug": "burnout-immigrant-workers",
+  "fa_keyword": "فرسودگی شغلی مهاجران",
+  "en_keyword": "immigrant burnout",
+  "cluster": "migration",
+  "angle": "کار زیاد برای اثبات خود در کشور جدید و فرسودگی",
+  "status": "queued"
+ },
+ {
+  "id": "T058",
+  "slug": "online-therapy-confidentiality",
+  "fa_keyword": "محرمانگی مشاوره آنلاین",
+  "en_keyword": "is online therapy confidential",
+  "cluster": "online",
+  "angle": "جلسه‌ی آنلاین چقدر محرمانه است و چه چیزهایی را باید بدانیم",
+  "status": "queued"
+ },
+ {
+  "id": "T059",
+  "slug": "children-new-school-abroad",
+  "fa_keyword": "سازگاری کودک با مدرسه در خارج",
+  "en_keyword": "helping kids adjust to new school abroad",
+  "cluster": "family",
+  "angle": "کودک و مدرسه‌ی جدید در کشور جدید؛ زبان، دوست، نشانه‌های هشدار",
+  "status": "queued"
+ },
+ {
+  "id": "T060",
+  "slug": "stay-or-return-decision",
+  "fa_keyword": "ماندن یا برگشتن",
+  "en_keyword": "should i move back home",
+  "cluster": "migration",
+  "angle": "تصمیم سخت ماندن یا برگشتن؛ چطور فکر کنیم نه اینکه چه کنیم",
+  "status": "queued"
+ }
+]
