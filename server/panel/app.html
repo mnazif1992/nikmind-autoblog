@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>پنل بلاگ نیک‌مایند</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+@font-face{font-family:Vazirmatn;src:url(/blog/assets/fonts/ab35d003-11eb-422a-a217-49310806b33b.woff2) format("woff2");font-display:swap}
+:root{
+  --bg:var(--tg-theme-secondary-bg-color,#f3f6f6);
+  --card:var(--tg-theme-section-bg-color,var(--tg-theme-bg-color,#fff));
+  --text:var(--tg-theme-text-color,#17242b);
+  --hint:var(--tg-theme-hint-color,#7b8a91);
+  --accent:var(--tg-theme-button-color,#3d8fc4);
+  --accent-text:var(--tg-theme-button-text-color,#fff);
+  --link:var(--tg-theme-link-color,#3d8fc4);
+  --danger:var(--tg-theme-destructive-text-color,#d9534f);
+  --line:color-mix(in srgb,var(--hint) 22%,transparent);
+  --soft:color-mix(in srgb,var(--accent) 10%,var(--card));
+  --mint:#5fb9a2;--peach:#e9a27c;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.6 Vazirmatn,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+main{padding:14px 14px 40px;max-width:640px;margin:0 auto}
+h1{font-size:19px;margin:2px 0 2px;font-weight:800}
+.sub{color:var(--hint);font-size:13px;margin:0 0 14px}
+.card{background:var(--card);border-radius:16px;padding:14px;margin-bottom:12px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.label{font-weight:700;font-size:14px}
+.hint{color:var(--hint);font-size:12.5px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--bg);border-radius:12px;padding:3px;margin-top:10px}
+.seg button{border:0;background:transparent;color:var(--hint);font:inherit;font-size:13.5px;font-weight:700;padding:9px 6px;border-radius:10px;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.switch{position:relative;width:46px;height:28px;flex:none}
+.switch input{opacity:0;width:0;height:0}
+.switch span{position:absolute;inset:0;background:var(--line);border-radius:99px;transition:.2s}
+.switch span:before{content:"";position:absolute;width:22px;height:22px;top:3px;right:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.switch input:checked+span{background:var(--accent)}
+.switch input:checked+span:before{transform:translateX(-18px)}
+.slots{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.chip{font-size:12.5px;padding:3px 10px;border-radius:99px;background:var(--bg);color:var(--hint)}
+.chip b{color:var(--text);font-weight:700}
+.write{width:100%;border:0;border-radius:14px;padding:14px;font:inherit;font-weight:800;font-size:15.5px;background:var(--accent);color:var(--accent-text);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.write small{font-weight:600;opacity:.85;font-size:12.5px}
+.tabs{display:flex;gap:6px;margin:16px 0 10px;overflow-x:auto}
+.tab{border:0;font:inherit;font-size:13.5px;font-weight:700;padding:7px 14px;border-radius:99px;background:var(--card);color:var(--hint);cursor:pointer;white-space:nowrap}
+.tab.on{background:var(--text);color:var(--card)}
+.tab i{font-style:normal;opacity:.7;margin-inline-start:4px}
+.post{background:var(--card);border-radius:16px;overflow:hidden;margin-bottom:12px}
+.post .img{aspect-ratio:16/9;background:var(--soft) center/cover no-repeat}
+.post .body{padding:12px 14px 14px}
+.post h3{margin:0 0 2px;font-size:15.5px;line-height:1.55}
+.post .en{direction:ltr;text-align:left;color:var(--hint);font-size:12.5px;margin:0 0 8px}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.links{display:flex;gap:14px;font-size:13px;margin-bottom:12px}
+.links a{color:var(--link);text-decoration:none;font-weight:600}
+.acts{display:flex;gap:8px;flex-wrap:wrap}
+.btn{flex:1;min-width:0;border:0;border-radius:11px;padding:10px 8px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer}
+.btn.pri{background:var(--accent);color:var(--accent-text)}
+.btn.sec{background:var(--soft);color:var(--accent)}
+.btn.ghost{background:transparent;color:var(--danger);flex:0 0 auto;padding-inline:12px}
+.btn.icon{flex:0 0 auto;background:var(--bg);color:var(--text);padding-inline:12px}
+.btn[disabled]{opacity:.5}
+.empty{text-align:center;color:var(--hint);padding:34px 10px;font-size:14px}
+.badge{font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:99px}
+.b-pending{background:color-mix(in srgb,var(--peach) 22%,transparent);color:#b4683f}
+.b-queued{background:color-mix(in srgb,var(--accent) 16%,transparent);color:var(--accent)}
+.b-published{background:color-mix(in srgb,var(--mint) 20%,transparent);color:#2f8a72}
+.toast{position:fixed;inset-inline:14px;bottom:18px;background:var(--text);color:var(--card);padding:11px 14px;border-radius:12px;font-size:13.5px;opacity:0;transform:translateY(10px);transition:.25s;pointer-events:none;text-align:center}
+.toast.show{opacity:1;transform:none}
+.skel{height:120px;border-radius:16px;background:linear-gradient(90deg,var(--card),var(--soft),var(--card));background-size:200% 100%;animation:sh 1.2s infinite;margin-bottom:12px}
+@keyframes sh{to{background-position:-200% 0}}
+</style>
+</head>
+<body>
+<main>
+  <h1>بلاگ نیک‌مایند</h1>
+  <p class="sub" id="sub">iranian.nikmindclinic.com</p>
+
+  <section class="card">
+    <div class="row"><span class="label">حالت انتشار</span><span class="hint" id="modeHint"></span></div>
+    <div class="seg" role="tablist">
+      <button id="mManual" data-mode="manual">👀 با بازبینی</button>
+      <button id="mAuto" data-mode="auto">🤖 خودکار</button>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <div><div class="label">سیستم فعال باشد</div><div class="hint">اگر خاموش باشد نه پیش‌نویس می‌آید نه چیزی منتشر می‌شود</div></div>
+      <label class="switch"><input type="checkbox" id="active"><span></span></label>
+    </div>
+    <div class="slots" id="slots"></div>
+  </section>
+
+  <button class="write" id="write">✍️ نوشتن مقاله‌ی جدید <small id="writeHint"></small></button>
+
+  <nav class="tabs" id="tabs">
+    <button class="tab on" data-tab="pending">منتظر تأیید<i id="cPending"></i></button>
+    <button class="tab" data-tab="queued">در صف انتشار<i id="cQueued"></i></button>
+    <button class="tab" data-tab="published">منتشرشده<i id="cPublished"></i></button>
+  </nav>
+  <div id="list"><div class="skel"></div><div class="skel"></div></div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const tg = window.Telegram && Telegram.WebApp;
+if (tg) { tg.ready(); tg.expand(); try { tg.setHeaderColor('secondary_bg_color'); } catch (e) {} }
+const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const $ = id => document.getElementById(id);
+let S = null, tab = 'pending', busy = false;
+
+function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2600); }
+function haptic(k) { try { tg.HapticFeedback.notificationOccurred(k); } catch (e) {} }
+function confirmBox(text) { return new Promise(r => tg ? tg.showConfirm(text, r) : r(confirm(text))); }
+
+async function api(action, body = {}) {
+  const res = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Init-Data': tg ? tg.initData : '' },
+    body: JSON.stringify({ action, ...body }) });
+  const j = await res.json().catch(() => ({ ok: false, error: 'bad response' }));
+  if (!j.ok) throw new Error(j.error || 'error');
+  return j;
+}
+
+function render() {
+  if (!S) return;
+  $('mManual').classList.toggle('on', !S.auto); $('mAuto').classList.toggle('on', S.auto);
+  $('modeHint').textContent = S.auto ? 'پیش‌نویس‌ها بدون تأیید در نوبت منتشر می‌شوند' : 'هر پیش‌نویس منتظر تأیید توست';
+  $('active').checked = !S.paused;
+  $('slots').innerHTML = '<span class="chip">نوبت‌های امروز: <b>' + S.slots.map(fa).join('</b> و <b>') + '</b></span>'
+    + '<span class="chip">بعدی: <b>' + S.next + '</b></span>';
+  $('writeHint').textContent = S.write_pending ? '(' + fa(S.write_pending) + ' در صف نوشتن)' : '';
+  const by = st => S.items.filter(i => i.status === st);
+  $('cPending').textContent = fa(by('pending').length); $('cQueued').textContent = fa(by('queued').length); $('cPublished').textContent = fa(by('published').length);
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('on', b.dataset.tab === tab));
+  let items = by(tab);
+  if (tab === 'queued') items.sort((a, b) => (a.queue_pos || 99) - (b.queue_pos || 99));
+  const empty = { pending: 'پیش‌نویسی منتظر تأیید نیست.', queued: 'صف انتشار خالی است.', published: 'هنوز چیزی منتشر نشده.' }[tab];
+  $('list').innerHTML = items.length ? items.map(card).join('') : '<div class="empty">' + empty + '</div>';
+}
+
+function esc(s) { return String(s || '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c])); }
+function card(i) {
+  const badge = { pending: ['b-pending', 'منتظر تأیید'], queued: ['b-queued', 'نوبت ' + fa(i.queue_pos || '')], published: ['b-published', 'منتشر شد'] }[i.status];
+  const B = (cls, a, label, title) => '<button class="btn ' + cls + '" data-a="' + a + '" data-k="' + i.key + '"' + (title ? ' title="' + title + '"' : '') + '>' + label + '</button>';
+  let acts = '';
+  if (i.status === 'pending') acts = B('pri', 'publish', '🚀 انتشار همین حالا') + B('sec', 'approve', '⏱ در نوبت') + B('icon', 'cover', '🔄', 'عکس دیگر') + B('ghost', 'reject', 'رد');
+  if (i.status === 'queued') acts = B('pri', 'publish', '🚀 انتشار همین حالا') + B('icon', 'cover', '🔄', 'عکس دیگر') + B('ghost', 'reject', 'رد');
+  const when = i.at ? new Date(i.at).toLocaleString('fa-IR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : '';
+  return '<article class="post">'
+    + '<div class="img" style="background-image:url(\'' + esc(i.cover) + '\')"></div>'
+    + '<div class="body">'
+    + '<div class="row" style="margin-bottom:6px"><span class="badge ' + badge[0] + '">' + badge[1] + '</span><span class="hint">' + when + '</span></div>'
+    + '<h3>' + esc(i.title) + '</h3><p class="en">' + esc(i.title_en) + '</p>'
+    + '<div class="meta"><span class="chip">' + fa(i.words) + ' کلمه</span><span class="chip">' + esc(i.kw) + '</span></div>'
+    + '<div class="links"><a href="' + i.fa + '" data-link>' + (i.status === 'published' ? 'دیدن مقاله' : 'پیش‌نمایش') + ' فارسی ↗</a><a href="' + i.en + '" data-link>English ↗</a></div>'
+    + '<div class="acts">' + acts + '</div>'
+    + '</div></article>';
+}
+
+async function load() {
+  try { const j = await api('state'); S = j.state; render(); }
+  catch (e) { $('list').innerHTML = '<div class="empty">پنل باز نشد: ' + esc(e.message) + '<br>از داخل ربات تلگرام بازش کن.</div>'; }
+}
+async function act(action, body, msg) {
+  if (busy) return; busy = true;
+  document.querySelectorAll('.btn,.write,.seg button').forEach(b => b.disabled = true);
+  try { const j = await api(action, body); S = j.state; render(); haptic('success'); if (msg) toast(msg); }
+  catch (e) { haptic('error'); toast('خطا: ' + e.message); }
+  finally { busy = false; document.querySelectorAll('.btn,.write,.seg button').forEach(b => b.disabled = false); }
+}
+
+document.addEventListener('click', async e => {
+  const l = e.target.closest('[data-link]');
+  if (l) { e.preventDefault(); tg ? tg.openLink(l.href) : window.open(l.href); return; }
+  const t = e.target.closest('.tab'); if (t) { tab = t.dataset.tab; render(); return; }
+  const m = e.target.closest('.seg button');
+  if (m) {
+    const auto = m.dataset.mode === 'auto'; if (auto === S.auto) return;
+    if (auto && !(await confirmBox('در حالت خودکار، پیش‌نویس‌ها بدون تأیید تو در نوبت‌های روزانه منتشر می‌شوند. روشن شود؟'))) return;
+    return act('mode', { auto }, auto ? 'انتشار خودکار روشن شد' : 'بازبینی دستی روشن شد');
+  }
+  const b = e.target.closest('.btn'); if (!b) return;
+  const key = b.dataset.k, a = b.dataset.a;
+  if (a === 'publish' && !(await confirmBox('همین حالا روی سایت منتشر شود؟'))) return;
+  if (a === 'reject' && !(await confirmBox('این مقاله رد شود و پیش‌نمایشش از سایت برداشته شود؟'))) return;
+  act(a, { key }, { publish: 'منتشر شد ✅', approve: 'رفت در صف', reject: 'رد شد', cover: 'عکس عوض شد' }[a]);
+});
+$('active').addEventListener('change', e => act('pause', { paused: !e.target.checked }, e.target.checked ? 'فعال شد' : 'متوقف شد'));
+$('write').addEventListener('click', () => act('write', {}, 'درخواست ثبت شد؛ پیش‌نویس در تلگرام می‌آید'));
+load();
+setInterval(() => { if (!busy && document.visibilityState === 'visible') load(); }, 30000);
+</script>
+</body>
+</html>
