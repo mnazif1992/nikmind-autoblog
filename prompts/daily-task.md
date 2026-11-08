@@ -10,7 +10,7 @@ Run every day. The person is not watching; do not ask questions. Decide, do it, 
    - `site/articles.json`
 3. Today's date is the current date in Asia/Tehran.
    - If `drafts/` already has files for today's date, stop. Today is already done.
-4. Pick the first 2 topics with `"status": "queued"`, in file order. If the first two share a `cluster`, take the next queued topic from a different cluster as the second one.
+4. Pick the first 2 topics with `"status": "queued"`, in file order. The owner reorders, adds and removes topics from the Telegram panel: file order is the priority, and topics with `"status": "removed"` must never be written. If the first two share a `cluster`, take the next queued topic from a different cluster as the second one.
 5. For each topic, write `drafts/<date>-<slug>.json`:
    - It holds both the Persian and the English version, in the format in the guide.
    - Use the topic's `slug`, `fa_keyword`, `en_keyword` and `angle`.

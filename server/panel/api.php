@@ -27,6 +27,17 @@ $key = preg_replace('/[^a-f0-9]/', '', (string)($req['key'] ?? ''));
 @set_time_limit(120);
 ignore_user_abort(true);
 
+if (str_starts_with($action, 'topic')) {                       // keyword queue (topics.json in the GitHub repo)
+    require_once '/home/mrnazif/autoblog/topics.php';
+    try {
+        $t = null;
+        if ($action === 'topic_add') $t = topic_add($req);
+        elseif ($action === 'topic_del') $t = topic_remove((string)($req['id'] ?? ''));
+        elseif ($action === 'topic_top') $t = topic_top((string)($req['id'] ?? ''));
+        out(['ok' => true, 'topics' => topics_view($t)]);
+    } catch (Throwable $e) { out(['ok' => false, 'error' => $e->getMessage()], 400); }
+}
+
 $res = with_state(function (array &$s) use ($action, $key, $req, $uid) {
     switch ($action) {
         case 'state': break;

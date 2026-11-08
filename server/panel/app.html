@@ -112,6 +112,36 @@ button[disabled]{opacity:.45;pointer-events:none}
 .fab{position:fixed;inset-inline:14px;bottom:16px;max-width:592px;margin:0 auto;border:0;border-radius:15px;padding:14px;background:var(--blue);color:#fff;font-weight:800;font-size:15px;box-shadow:0 8px 24px rgba(61,143,196,.35);display:none;cursor:pointer}
 .toast{position:fixed;inset-inline:16px;top:14px;max-width:420px;margin:0 auto;background:var(--text);color:var(--card);padding:11px 14px;border-radius:13px;font-size:13.5px;opacity:0;transform:translateY(-8px);transition:.25s;pointer-events:none;text-align:center;z-index:9}
 .toast.show{opacity:1;transform:none}
+/* views */
+.views{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:4px 0 6px}
+.view{border:0;border-radius:14px;background:var(--card);padding:10px 4px;font-size:13px;font-weight:800;color:var(--hint);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.view span{font-size:18px;line-height:1.2}
+.view.on{color:var(--blue);box-shadow:inset 0 0 0 2px var(--blue)}
+.pane[hidden]{display:none}
+/* keywords */
+.form{background:var(--card);border-radius:var(--r);padding:14px}
+.form label{display:block;font-size:12.5px;font-weight:700;color:var(--hint);margin:0 2px 5px}
+.form input,.form select,.form textarea{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:12px;padding:10px 12px;font:inherit;font-size:14px;margin-bottom:10px;outline:none}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--blue)}
+.form .ltr{direction:ltr;text-align:left}
+.form textarea{min-height:58px;resize:vertical}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.notice{background:var(--peach-soft);color:var(--text);border-radius:14px;padding:12px 14px;font-size:13px;margin-bottom:12px}
+.kw{display:flex;align-items:center;gap:10px;padding:11px 12px}
+.kw+.kw{border-top:1px solid var(--line)}
+.kw .n{width:26px;height:26px;border-radius:9px;background:var(--bg);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--hint);flex:none}
+.kw .n.next{background:var(--blue);color:#fff}
+.kw .txt{flex:1;min-width:0}
+.kw .fa{font-weight:700;font-size:14px;line-height:1.5}
+.kw .en{direction:ltr;text-align:left;font-size:12px;color:var(--hint)}
+.kw .cl{font-size:11px;color:var(--hint);background:var(--bg);border-radius:99px;padding:1px 8px;white-space:nowrap}
+.mini{border:0;width:32px;height:32px;border-radius:10px;background:var(--bg);display:grid;place-items:center;cursor:pointer;flex:none;font-size:14px}
+.mini.red{color:var(--danger)}
+details.used{background:var(--card);border-radius:var(--r);margin-top:12px;overflow:hidden}
+details.used summary{padding:12px 14px;font-weight:700;font-size:13.5px;cursor:pointer;color:var(--hint);list-style:none}
+details.used summary::-webkit-details-marker{display:none}
+.kwhead{display:flex;justify-content:space-between;align-items:center;margin:18px 6px 8px}
+.kwhead .sec{margin:0}
 </style>
 </head>
 <body>
@@ -140,6 +170,13 @@ button[disabled]{opacity:.45;pointer-events:none}
     <div class="next"><svg><use href="#i-clock"/></svg><span id="next">&nbsp;</span></div>
   </section>
 
+  <nav class="views">
+    <button class="view on" data-view="drafts"><span>📝</span>پیش‌نویس‌ها</button>
+    <button class="view" data-view="topics"><span>🔑</span>کلمات کلیدی</button>
+    <button class="view" data-view="settings"><span>⚙️</span>تنظیمات</button>
+  </nav>
+
+  <section class="pane" id="vDrafts">
   <p class="sec">پیش‌نویس‌ها</p>
   <nav class="tabs">
     <button class="tab on" data-tab="pending">منتظر<i id="cPending">۰</i></button>
@@ -147,7 +184,30 @@ button[disabled]{opacity:.45;pointer-events:none}
     <button class="tab" data-tab="published">منتشرشده<i id="cPublished">۰</i></button>
   </nav>
   <div id="list"><div class="skel"></div><div class="skel"></div></div>
+  </section>
 
+  <section class="pane" id="vTopics" hidden>
+    <div id="kwNotice"></div>
+    <p class="sec">افزودن کلمه‌ی کلیدی</p>
+    <form class="form" id="kwForm" autocomplete="off">
+      <label for="kwFa">کلمه‌ی کلیدی فارسی</label>
+      <input id="kwFa" placeholder="مثلاً: روانشناس ایرانی در فرانسه" maxlength="80">
+      <label for="kwEn">جفت انگلیسی (برای نسخه‌ی انگلیسی)</label>
+      <input id="kwEn" class="ltr" placeholder="e.g. iranian therapist france" maxlength="80">
+      <div class="two">
+        <div><label for="kwCl">دسته</label><select id="kwCl"></select></div>
+        <div><label for="kwPos">جای در صف</label><select id="kwPos"><option value="end">آخر صف</option><option value="top">اول صف</option></select></div>
+      </div>
+      <label for="kwAngle">زاویه‌ی مقاله (اختیاری)</label>
+      <textarea id="kwAngle" placeholder="مثلاً: بیمه‌ی فرانسه و جایگاه جلسه‌ی آنلاین فارسی"></textarea>
+      <button class="primary" type="submit">➕ افزودن به صف</button>
+    </form>
+    <div class="kwhead"><p class="sec">صف نوشتن</p><span class="hint" id="kwCount" style="font-size:12.5px;color:var(--hint)"></span></div>
+    <div class="group" id="kwList"><div class="skel" style="height:140px;margin:0"></div></div>
+    <details class="used" id="kwUsedBox"><summary id="kwUsedSum">نوشته‌شده‌ها</summary><div id="kwUsed"></div></details>
+  </section>
+
+  <section class="pane" id="vSettings" hidden>
   <p class="sec">تنظیمات</p>
   <div class="group">
     <div class="item">
@@ -171,6 +231,7 @@ button[disabled]{opacity:.45;pointer-events:none}
       <span class="val" id="writeVal"></span>
     </div>
   </div>
+  </section>
 
   <p class="foot"><b>نیک‌نگار</b> · نسخه‌ی ۱<br>طراحی و ساخت: دکتر محمدرضا نظیف</p>
 </main>
@@ -183,7 +244,7 @@ const BLUE = '#3d8fc4';
 const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 const $ = id => document.getElementById(id);
 const esc = s => String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-let S = null, tab = 'pending', busy = false;
+let S = null, T = null, tab = 'pending', view = 'drafts', busy = false;
 
 function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2600); }
 function haptic(k) { try { tg.HapticFeedback.notificationOccurred(k); } catch (e) {} }
@@ -266,7 +327,57 @@ async function requestWrite() {
   act('write', {}, 'سفارش ثبت شد؛ پیش‌نویس در تلگرام می‌آید');
 }
 
+function renderTopics() {
+  if (!T) return;
+  $('kwNotice').innerHTML = T.can_edit ? '' : '<div class="notice">فهرست را می‌بینی، ولی برای اضافه و حذف کردن، توکن گیت‌هاب باید یک بار در تنظیمات سرور گذاشته شود.</div>';
+  $('kwForm').style.display = T.can_edit ? '' : 'none';
+  if (!$('kwCl').options.length) $('kwCl').innerHTML = Object.entries(T.clusters).map(([k, v]) => '<option value="' + k + '"' + (k === 'migration' ? ' selected' : '') + '>' + v + '</option>').join('');
+  $('kwCount').textContent = fa(T.queued.length) + ' کلمه · حدود ' + fa(Math.ceil(T.queued.length / 2)) + ' روز';
+  $('kwList').innerHTML = T.queued.length ? T.queued.map((k, i) => '<div class="kw"><span class="n' + (i < 2 ? ' next' : '') + '">' + fa(i + 1) + '</span>'
+    + '<div class="txt"><div class="fa">' + esc(k.fa) + '</div><div class="en">' + esc(k.en) + '</div></div>'
+    + '<span class="cl">' + esc(k.cluster_fa) + '</span>'
+    + (T.can_edit ? (i ? '<button class="mini" data-t="topic_top" data-id="' + k.id + '" title="اول صف">⬆</button>' : '')
+      + '<button class="mini red" data-t="topic_del" data-id="' + k.id + '" title="حذف">✕</button>' : '') + '</div>').join('')
+    : '<div class="empty" style="border-radius:0">صف خالی است؛ یک کلمه‌ی کلیدی اضافه کن.</div>';
+  $('kwUsedSum').textContent = 'نوشته‌شده‌ها (' + fa(T.done.length) + ')';
+  $('kwUsed').innerHTML = T.done.map(k => '<div class="kw"><div class="txt"><div class="fa">' + esc(k.fa) + '</div><div class="en">' + esc(k.en) + '</div></div><span class="cl">' + esc(k.drafted ? fa(k.drafted) : k.cluster_fa) + '</span></div>').join('');
+}
+async function loadTopics() {
+  try { const j = await api('topics'); T = j.topics; renderTopics(); }
+  catch (e) { $('kwList').innerHTML = '<div class="err">' + esc(e.message) + '</div>'; }
+}
+async function topicAct(action, body, msg) {
+  if (busy) return; busy = true;
+  document.querySelectorAll('#vTopics button, #vTopics input, #vTopics select, #vTopics textarea').forEach(b => b.disabled = true);
+  try { const j = await api(action, body); T = j.topics; renderTopics(); haptic('success'); if (msg) toast(msg); return true; }
+  catch (e) { haptic('error'); toast(e.message); return false; }
+  finally { busy = false; document.querySelectorAll('#vTopics button, #vTopics input, #vTopics select, #vTopics textarea').forEach(b => b.disabled = false); }
+}
+function showView(v) {
+  view = v;
+  document.querySelectorAll('.view').forEach(b => b.classList.toggle('on', b.dataset.view === v));
+  $('vDrafts').hidden = v !== 'drafts'; $('vTopics').hidden = v !== 'topics'; $('vSettings').hidden = v !== 'settings';
+  if (v === 'topics' && !T) loadTopics();
+}
+$('kwForm').addEventListener('submit', async e => {
+  e.preventDefault(); tap();
+  const body = { fa: $('kwFa').value.trim(), en: $('kwEn').value.trim(), cluster: $('kwCl').value, angle: $('kwAngle').value.trim() };
+  if (!body.fa || !body.en) { toast('هر دو کلمه‌ی فارسی و انگلیسی را بنویس'); return; }
+  const ok = await topicAct('topic_add', body, 'به صف اضافه شد');
+  if (!ok) return;
+  if ($('kwPos').value === 'top') { const last = T.queued[T.queued.length - 1]; if (last) await topicAct('topic_top', { id: last.id }, 'اول صف قرار گرفت'); }
+  $('kwFa').value = ''; $('kwEn').value = ''; $('kwAngle').value = '';
+});
+
 document.addEventListener('click', async e => {
+  const v = e.target.closest('.view'); if (v) { tap(); showView(v.dataset.view); return; }
+  const k = e.target.closest('[data-t]');
+  if (k) {
+    tap();
+    if (k.dataset.t === 'topic_del' && !(await ask('این کلمه‌ی کلیدی از صف نوشتن حذف شود؟'))) return;
+    topicAct(k.dataset.t, { id: k.dataset.id }, k.dataset.t === 'topic_del' ? 'حذف شد' : 'رفت اول صف');
+    return;
+  }
   const l = e.target.closest('[data-link]');
   if (l) { e.preventDefault(); tg ? tg.openLink(l.href) : window.open(l.href); return; }
   const t = e.target.closest('.tab'); if (t) { tap(); tab = t.dataset.tab; render(); return; }
