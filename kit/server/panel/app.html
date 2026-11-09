@@ -245,6 +245,7 @@ details.used summary::-webkit-details-marker{display:none}
 <div class="toast" id="toast"></div>
 
 <script>
+(() => {   // everything in its own scope: the Bale SDK declares short global names (S, T, …) that would clash
 const WA = (window.Bale && Bale.WebApp) || (window.Telegram && Telegram.WebApp) || null;   // Bale and Telegram mini apps share the same API shape
 // initData normally comes from the SDK; some clients only put it in the URL (#tgWebAppData=...), so read that too
 const HASH_INIT = (() => { const m = (location.hash + '&' + location.search).match(/tgWebAppData=([^&]+)/); try { return m ? decodeURIComponent(m[1]) : ''; } catch (e) { return ''; } })();
@@ -436,6 +437,7 @@ nnLog({boot: WA ? (window.Bale && Bale.WebApp === WA ? 'bale' : 'telegram') : 'b
   load();
 })();
 setInterval(() => { if (!busy && document.visibilityState === 'visible') load(); }, 30000);
+})();
 </script>
 </body>
 </html>
