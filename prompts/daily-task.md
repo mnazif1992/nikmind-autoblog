@@ -38,13 +38,13 @@ Final message: one line per article (slug and Persian title), or the reason noth
 
 ## On-demand mode (the "✍️ new article" button in Telegram)
 
-A second scheduled task runs every hour. Its prompt gives you a flag URL on the website.
+A second scheduled task runs every hour.
 
-1. Fetch the flag URL, adding `?t=<current unix time>` so you get a fresh copy. It returns JSON like `{"pending": 1}`.
-   - If `pending` is 0, missing, or the URL cannot be read, stop immediately and write nothing.
+1. Attach and clone the repo as in step 1 (`git clone --depth 1`), then read `requests.json` at the repo root. It looks like `{"pending": 1, "updated": "..."}`.
+   - If the file is missing, or `pending` is 0 or missing, stop immediately and write nothing.
 2. If `pending` is greater than 0, write `min(pending, 2)` articles following steps 1–9 above, with these differences:
    - Ignore the "drafts for today already exist" rule.
    - Take the next queued topics, skipping any that already have a draft file.
    - Add `"on_demand": true` to the top level of each draft JSON.
    - Commit message: `drafts (on demand): <date> <slugs>`.
-3. The server lowers `pending` by itself when it receives a draft marked `on_demand`. Never try to change the flag yourself.
+3. Never edit `requests.json`. The website server lowers `pending` by itself when it receives a draft marked `on_demand`. If your push is rejected because the server changed `requests.json` meanwhile, pull with rebase and push again.
