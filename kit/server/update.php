@@ -6,8 +6,16 @@ require_once __DIR__ . '/lib.php';
 
 const KIT_KEEP = ['config.php', 'site.json', 'secrets.auto.php'];
 
+/** Exact commit of the kit branch, so every file comes from the same version (raw.githubusercontent.com caches branch URLs for minutes). */
+function kit_ref(): string {
+    static $ref = null;
+    if ($ref !== null) return $ref;
+    $r = http('https://api.github.com/repos/' . site('kit_repo', 'mnazif1992/nikmind-autoblog') . '/commits/' . site('kit_branch', 'main'));
+    $j = json_decode($r['body'], true);
+    return $ref = ($r['code'] === 200 && preg_match('/^[a-f0-9]{40}$/', (string)($j['sha'] ?? ''))) ? $j['sha'] : (string)site('kit_branch', 'main');
+}
 function kit_raw(string $file): array {
-    $url = 'https://raw.githubusercontent.com/' . site('kit_repo', 'mnazif1992/nikmind-autoblog') . '/' . site('kit_branch', 'main') . '/'
+    $url = 'https://raw.githubusercontent.com/' . site('kit_repo', 'mnazif1992/nikmind-autoblog') . '/' . kit_ref() . '/'
          . trim((string)site('kit_path', 'kit/server'), '/') . '/' . $file . '?t=' . time();
     $c = curl_init($url);
     $h = ['User-Agent: nik-negar/' . KIT_VERSION];
