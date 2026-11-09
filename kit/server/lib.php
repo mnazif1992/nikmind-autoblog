@@ -63,7 +63,7 @@ function posts(string $lang): array { return json_load(AB . "/state/posts-$lang.
 function posts_add(string $lang, array $a): void {
     $list = array_values(array_filter(posts($lang), fn($p) => $p['slug'] !== $a['slug']));
     array_unshift($list, ['slug' => $a['slug'], 'title' => $a['title'], 'excerpt' => $a['excerpt'], 'date' => $a['date'],
-                          'read_min' => $a['read_min'], 'card' => $a['cover']['card'] ?? '']);
+                          'read_min' => $a['read_min'], 'card' => $a['cover']['card'] ?? '', 'cat' => $a['cluster'] ?? '']);
     json_save(AB . "/state/posts-$lang.json", $list);
 }
 
@@ -101,12 +101,46 @@ function http(string $url, ?array $json = null, int $timeout = 30): array {
     return ['code' => $code, 'body' => is_string($body) ? $body : '', 'err' => $err];
 }
 
-/* ---------------- telegram ---------------- */
+/* ---------------- messenger (Telegram or Bale) ---------------- */
+// Bale's bot API mirrors Telegram's, with these differences handled here: no HTML parse_mode (we convert to its markdown),
+// no web_app buttons (we send a signed panel link instead), and no command menu / menu button / descriptions.
+function messenger(): string { return site('messenger', 'telegram') === 'bale' ? 'bale' : 'telegram'; }
+function messenger_name(): string { return messenger() === 'bale' ? 'بله' : 'تلگرام'; }
+const BALE_SKIP = ['setMyCommands', 'setChatMenuButton', 'setMyDescription', 'setMyShortDescription', 'setMyName'];
+function html_to_bale(string $h): string {
+    $h = preg_replace('#<a href="([^"]+)">(.*?)</a>#su', '[$2]($1)', $h);
+    $h = preg_replace('#</?(b|strong)>#', '*', $h);
+    $h = preg_replace('#</?(i|em)>#', '_', $h);
+    return html_entity_decode(strip_tags($h), ENT_QUOTES | ENT_HTML5, 'UTF-8');
+}
+/** Signed link that opens the panel in any browser (used where the messenger has no mini apps). Valid 14 days. */
+function panel_link($uid): string {
+    $exp = time() + 14 * 86400;
+    $sig = substr(hash_hmac('sha256', "$uid.$exp", HOOK_SECRET . TG_BOT_TOKEN), 0, 32);
+    return panel_url() . '#t=' . rawurlencode("$uid.$exp.$sig");
+}
+function panel_token_uid(string $t): int {
+    if (!preg_match('/^(-?\d+)\.(\d+)\.([a-f0-9]{32})$/', $t, $m)) return 0;
+    if ((int)$m[2] < time()) return 0;
+    return hash_equals(substr(hash_hmac('sha256', "$m[1].$m[2]", HOOK_SECRET . TG_BOT_TOKEN), 0, 32), $m[3]) ? (int)$m[1] : 0;
+}
 function tg(string $method, array $params): ?array {
     if (TG_BOT_TOKEN === '' || str_contains(TG_BOT_TOKEN, 'PASTE')) return null;
-    $r = http('https://api.telegram.org/bot' . TG_BOT_TOKEN . '/' . $method, $params, 40);
+    $base = 'https://api.telegram.org/bot';
+    if (messenger() === 'bale') {
+        if (in_array($method, BALE_SKIP, true)) return null;
+        $base = 'https://tapi.bale.ai/bot';
+        foreach (['text', 'caption'] as $k) if (isset($params[$k]) && ($params['parse_mode'] ?? '') === 'HTML') $params[$k] = html_to_bale((string)$params[$k]);
+        unset($params['parse_mode'], $params['disable_web_page_preview'], $params['disable_notification'], $params['is_persistent']);
+        if (isset($params['reply_markup']['inline_keyboard'])) {
+            foreach ($params['reply_markup']['inline_keyboard'] as &$row) foreach ($row as &$btn)
+                if (isset($btn['web_app'])) { $btn = ['text' => $btn['text'], 'url' => panel_link($params['chat_id'] ?? 0)]; }
+            unset($row, $btn);
+        }
+    }
+    $r = http($base . TG_BOT_TOKEN . '/' . $method, $params, 40);
     $j = json_decode($r['body'], true);
-    if (!is_array($j) || empty($j['ok'])) { logline("tg $method failed: " . substr($r['body'] ?: $r['err'], 0, 300)); return null; }
+    if (!is_array($j) || empty($j['ok'])) { logline("msg $method failed: " . substr($r['body'] ?: $r['err'], 0, 300)); return null; }
     return $j;
 }
 function tg_all(array $s, string $html, ?array $buttons = null): array {
@@ -283,10 +317,13 @@ function validate_draft(array $d, array &$errors, array &$warnings): array {
     if (!preg_match('/^[a-z0-9]+(-[a-z0-9]+)*$/', $slug) || strlen($slug) > 60) $errors[] = 'bad slug';
     else foreach (langs() as $l) if (is_dir(L($l)['dir'] . '/' . $slug)) { $errors[] = 'slug already exists'; break; }
     if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) $date = date('Y-m-d');
-    $out = ['slug' => $slug, 'date' => $date, 'topic_id' => $d['topic_id'] ?? '', 'image_queries' => $d['image_queries'] ?? []];
+    $cl = (string)($d['cluster'] ?? '');
+    if ($cl !== '' && !array_key_exists($cl, (array)site('clusters', []))) { $warnings[] = "unknown cluster $cl"; $cl = ''; }
+    $out = ['slug' => $slug, 'date' => $date, 'topic_id' => $d['topic_id'] ?? '', 'image_queries' => $d['image_queries'] ?? [], 'cluster' => $cl];
     foreach (langs() as $lang) {
         if (!isset($d[$lang]) || !is_array($d[$lang])) { $errors[] = strtoupper($lang) . ': version missing'; continue; }
         $out[$lang] = prepare_lang($lang, $d[$lang], $slug, $date, $errors, $warnings);
+        $out[$lang]['cluster'] = $cl;
     }
     return $out;
 }
@@ -341,7 +378,7 @@ function render_article(string $lang, array $a, bool $live): string {
 
     $toc = '';
     if (count($a['toc']) >= 3) {
-        $toc = '<details class="nn-toc"><summary>' . h($Lc['toc']) . '</summary><ol>';
+        $toc = '<details class="toc nn-toc"><summary>' . h($Lc['toc']) . '</summary><ol>';
         foreach ($a['toc'] as [$id, $t]) $toc .= '<li><a href="#' . h($id) . '">' . h($t) . '</a></li>';
         if ($a['faq']) $toc .= '<li><a href="#faq-section">' . h($Lc['faq']) . '</a></li>';
         $toc .= '</ol></details>';
@@ -369,16 +406,23 @@ function render_article(string $lang, array $a, bool $live): string {
         '{{TOC}}' => $toc,
         '{{PROSE}}' => $prose,
         '{{RELATED_TITLE}}' => h($Lc['related']),
+        '{{CAT_NAME}}' => h(cat_name((string)($a['cluster'] ?? ''))),
+        '{{CAT_URL}}' => h(cat_url((string)($a['cluster'] ?? '')) ?: SITE . $Lc['base']),
+        '{{MODIFIED}}' => '<time datetime="' . $a['date'] . '">' . show_date($lang, $a['date']) . '</time>',
         '{{RELATED}}' => '<!--nn:related-->' . related_cards($lang, $a['slug']) . '<!--/nn:related-->',
     ]);
     return fill_alts($html, fn($l) => post_url($l, $a['slug']));
 }
 
+/** Category (cluster) label and page; the page exists only when site.json has "category_base", e.g. "/blog/category/". */
+function cat_name(string $key): string { return (string)(((array)site('clusters', []))[$key] ?? ''); }
+function cat_url(string $key): string { $b = (string)site('category_base', ''); return ($b !== '' && $key !== '') ? '/' . trim($b, '/') . "/$key/" : ''; }
 function card_html(string $lang, array $p): string {
     $Lc = L($lang);
     $img = $p['card'] ? '<img src="' . h($p['card']) . '" alt="' . h($p['title']) . '" loading="lazy" width="768" height="480">' : '';
     return strtr(tpl('card.html'), ['{{HREF}}' => h($Lc['base'] . $p['slug'] . '/'), '{{IMG}}' => $img, '{{TITLE}}' => h($p['title']),
-        '{{EXCERPT}}' => h($p['excerpt']), '{{DATE}}' => show_date($lang, $p['date']), '{{READ}}' => num($lang, $p['read_min']) . $Lc['read']]);
+        '{{EXCERPT}}' => h($p['excerpt']), '{{DATE}}' => show_date($lang, $p['date']), '{{READ}}' => num($lang, $p['read_min']) . $Lc['read'],
+        '{{CAT}}' => h(cat_name((string)($p['cat'] ?? ''))), '{{CAT_URL}}' => h(cat_url((string)($p['cat'] ?? '')))]);
 }
 function related_cards(string $lang, string $slug): string {
     $out = '';
@@ -444,6 +488,18 @@ function publish_side_effects(string $lang, array $a): array {
     $done = [update_index($lang)];
     write_sitemap($lang); $done[] = 'sitemap';
     write_file(L($lang)['dir'] . '/feed.xml', build_feed($lang)); $done[] = 'rss';
+    // category page: same marker region, only this category's posts
+    $cu = cat_url((string)($a['cluster'] ?? ''));
+    if ($cu !== '' && is_file(PUB . $cu . 'index.html')) {
+        $f = PUB . $cu . 'index.html';
+        $html = (string)file_get_contents($f);
+        if (str_contains($html, '<!--nn:cards-->')) {
+            $cards = '';
+            foreach (posts($lang) as $p) if (($p['cat'] ?? '') === $a['cluster']) $cards .= card_html($lang, $p) . "\n";
+            write_file($f, replace_region($html, 'cards', $cards));
+            $done[] = 'category ' . $a['cluster'];
+        }
+    }
     // refresh the "more articles" block on the two newest older posts so the new one gets links right away
     foreach (array_slice(array_values(array_filter(posts($lang), fn($p) => $p['slug'] !== $a['slug'])), 0, 2) as $p) {
         $f = L($lang)['dir'] . '/' . $p['slug'] . '/index.html';

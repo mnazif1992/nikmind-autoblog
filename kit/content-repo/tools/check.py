@@ -69,6 +69,10 @@ def main(path):
     (re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", slug) and len(slug) <= 60) or errs.append("bad slug (lowercase English words with dashes, max 60)")
     if any(x.get("slug") == slug for x in arts): errs.append("slug already used by an earlier article")
     pathlib.Path(path).name.endswith(f"-{slug}.json") or errs.append("file name must be YYYY-MM-DD-<slug>.json")
+    if not d.get("cluster"): errs.append("cluster missing (copy it from the topic in topics.json)")
+    else:
+        topics = json.load(open(ROOT / "topics.json", encoding="utf-8"))
+        if d["cluster"] not in {t.get("cluster") for t in topics}: warns.append(f"cluster {d['cluster']} is not used by any topic")
     iq = d.get("image_queries")
     if not (isinstance(iq, list) and 2 <= len(iq) <= 3 and all(isinstance(q, str) and 2 <= len(q.split()) <= 5 and q.isascii() for q in iq)):
         errs.append("image_queries must be 2–3 short English phrases")

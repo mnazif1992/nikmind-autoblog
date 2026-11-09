@@ -102,7 +102,7 @@ function cover_html(string $lang, array $a): string {
     $by = $c['creator'] !== '' ? h($c['creator']) . ' / ' : '';
     $credit = ($lang === 'fa' ? 'عکس: ' : 'Photo: ') . $by . h(ucfirst($c['source'])) . ' (' . h($c['license']) . ')';
     if ($c['page'] !== '') $credit = '<a href="' . h($c['page']) . '" target="_blank" rel="noopener nofollow">' . $credit . '</a>';
-    return '<figure class="nn-cover"><img src="' . h($c['url']) . '" alt="' . h($a['title']) . '" width="' . (int)$c['w'] . '" height="' . (int)$c['h']
+    return '<figure class="article-cover nn-cover"><img src="' . h($c['url']) . '" alt="' . h($a['title']) . '" width="' . (int)$c['w'] . '" height="' . (int)$c['h']
         . '" fetchpriority="high"><figcaption>' . $credit . '</figcaption></figure>';
 }
 function card_img(array $a): string {

@@ -76,6 +76,7 @@
   "topic_id": "T001",
   "slug": "example-first-topic",
   "date": "YYYY-MM-DD",
+  "cluster": "guides",
   "image_queries": ["family dinner table", "airport departure board", "city street evening"],
   "fa": {
     "title": "", "seo_title": "", "meta_description": "", "excerpt": "",

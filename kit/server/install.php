@@ -107,12 +107,14 @@ if ($add !== '') {
 /* 7. panel + webhook */
 if (!$CHECK) { $p = install_panel(); $p === true ? $ok('panel installed in /' . PANEL_DIR . '/') : $no("panel: $p"); }
 $me = tg('getMe', []);
-if (!$me) { $no('Telegram rejected the bot token (getMe failed)'); $finish(); }
+if (!$me) { $no(messenger_name() . ' rejected the bot token (getMe failed)'); $finish(); }
 $bot = $me['result']['username'];
-$ok("Telegram bot @$bot");
+$ok(messenger_name() . " bot @$bot");
 $hook = SITE . '/' . PANEL_DIR . '/hook.php';
 if (!$CHECK) {
-    $w = tg('setWebhook', ['url' => $hook, 'secret_token' => HOOK_SECRET, 'allowed_updates' => ['message', 'callback_query'], 'drop_pending_updates' => false]);
+    $w = messenger() === 'bale'
+        ? tg('setWebhook', ['url' => $hook . '?k=' . HOOK_SECRET])          // Bale: no secret header, the secret rides in the URL
+        : tg('setWebhook', ['url' => $hook, 'secret_token' => HOOK_SECRET, 'allowed_updates' => ['message', 'callback_query'], 'drop_pending_updates' => false]);
     $w ? $ok('webhook set') : $no('setWebhook failed (is the site on valid HTTPS?)');
     with_state(function (array &$s) { $s['webhook'] = true; }, 30);
     tg('setMyCommands', ['commands' => [
@@ -125,7 +127,7 @@ if (!$CHECK) {
 }
 $wi = tg('getWebhookInfo', []);
 $wurl = $wi['result']['url'] ?? '';
-$wurl === $hook ? $ok('webhook points here' . (!empty($wi['result']['last_error_message']) ? ' (last error: ' . $wi['result']['last_error_message'] . ')' : ''))
+strtok($wurl, '?') === $hook ? $ok('webhook points here' . (!empty($wi['result']['last_error_message']) ? ' (last error: ' . $wi['result']['last_error_message'] . ')' : ''))
                 : $no("webhook is '$wurl', expected $hook");
 $panel = http(panel_url() . '?t=' . time());
 $panel['code'] === 200 && str_contains($panel['body'], 'telegram-web-app') ? $ok('panel page is reachable') : $no('panel page did not load (' . $panel['code'] . ')');
@@ -148,6 +150,8 @@ $ov ? $ok('Openverse photos reachable') : $no('Openverse search failed (covers w
 $s = state_load();
 $rep[] = '';
 $rep[] = 'cron (every minute):  * * * * *  cd ' . AB . ' && ' . PHP_BINARY . ' run.php >> logs/cron.txt 2>&1';
-if (!$s['chat_ids']) $rep[] = "OWNER: open this link in Telegram and press Start — the first person to do it becomes the owner:\n       https://t.me/$bot?start=" . OWNER_CLAIM;
+if (!$s['chat_ids']) $rep[] = messenger() === 'bale'
+    ? "OWNER: open the bot @$bot in Bale and send exactly this message (the first person to do it becomes the owner):\n       /start " . OWNER_CLAIM
+    : "OWNER: open this link in Telegram and press Start — the first person to do it becomes the owner:\n       https://t.me/$bot?start=" . OWNER_CLAIM;
 else $rep[] = 'owner: ' . member_name($s, owner_id($s)) . ' · members: ' . count($s['chat_ids']);
 $finish();

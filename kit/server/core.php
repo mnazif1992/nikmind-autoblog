@@ -183,7 +183,12 @@ function set_mode(array &$s, bool $auto): void {
 
 /* ---------------- telegram updates ---------------- */
 function main_kb2(): array {
-    return ['keyboard' => [[['text' => '✍️ مقاله‌ی جدید'], ['text' => '⚙️ تنظیمات']], [['text' => '/status']]], 'resize_keyboard' => true, 'is_persistent' => true];
+    $last = messenger() === 'bale' ? [['text' => '🗂 پنل'], ['text' => '/status']] : [['text' => '/status']];
+    return ['keyboard' => [[['text' => '✍️ مقاله‌ی جدید'], ['text' => '⚙️ تنظیمات']], $last], 'resize_keyboard' => true, 'is_persistent' => true];
+}
+function send_panel_link($cid): void {
+    tg('sendMessage', ['chat_id' => $cid, 'text' => 'پنل نیک‌نگار 👇 (این لینک مخصوص توست و ۱۴ روز اعتبار دارد؛ برای کسی نفرستش)',
+        'reply_markup' => ['inline_keyboard' => [[['text' => '🗂 باز کردن پنل نیک‌نگار', 'web_app' => ['url' => panel_url()]]]]]]);
 }
 function handle_update(array &$s, array $u): void {
     $s['tg_offset'] = max((int)$s['tg_offset'], (int)($u['update_id'] ?? 0));
@@ -208,6 +213,7 @@ function handle_update(array &$s, array $u): void {
             return;
         }
         if ($text === '✍️ مقاله‌ی جدید' || $text === '/write') { request_write($s, $cid); return; }
+        if ($text === '🗂 پنل' || $text === '/panel') { send_panel_link($cid); return; }
         if ($text === '⚙️ تنظیمات' || $text === '/settings') {
             tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => settings_text($s), 'reply_markup' => ['inline_keyboard' => settings_buttons($s)]]);
             return;

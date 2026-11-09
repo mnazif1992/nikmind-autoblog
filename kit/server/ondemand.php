@@ -19,9 +19,7 @@ function write_flag(array $s): bool {
     logline('flag: GitHub write failed ' . ($r['code'] ?? 0));
     return false;
 }
-function main_kb(): array {
-    return ['keyboard' => [[['text' => '✍️ مقاله‌ی جدید'], ['text' => '⚙️ تنظیمات']], [['text' => '/status']]], 'resize_keyboard' => true, 'is_persistent' => true];
-}
+function main_kb(): array { return main_kb2(); }
 /** When the hourly writer runs next (site.json "ondemand_check": minute, first and last hour). */
 function next_check_text(): string {
     $c = (array)site('ondemand_check', ['minute' => 23, 'from' => 8, 'to' => 23]);

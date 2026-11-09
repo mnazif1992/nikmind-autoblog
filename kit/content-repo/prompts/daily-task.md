@@ -14,6 +14,7 @@ Run every day. Nobody is watching; do not ask questions. Decide, do it, and keep
    - If two picked topics share a `cluster`, swap the second for the next queued topic from another cluster, if there is one.
    - If a topic's `slug` starts with `topic-`, replace it with a short English slug (lowercase words with dashes) that describes the keyword, and save it in `topics.json`.
 5. For each topic, write `drafts/<date>-<slug>.json`:
+   - Top level: `topic_id`, `slug`, `date`, `cluster` (copy the topic's `cluster`), `image_queries`.
    - One key per language in `site/profile.json` (e.g. `"fa"`, `"en"`), each with the fields in the guide. Use the topic's `keywords.<code>` as that language's `primary_keyword`, and its `angle`.
    - Write the full article. No placeholders, no "TODO".
    - `image_queries` must fit this article specifically (see the guide), not a generic scene.

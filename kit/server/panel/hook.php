@@ -1,8 +1,9 @@
 <?php
-// Telegram webhook: button taps and messages arrive here instantly.
+// Messenger webhook (Telegram or Bale): button taps and messages arrive here instantly.
 declare(strict_types=1);
 require '__NN_AB__/core.php';   // install.php writes the real path here
-if (($_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? '') !== HOOK_SECRET) { http_response_code(403); exit; }
+$given = (string)($_SERVER['HTTP_X_TELEGRAM_BOT_API_SECRET_TOKEN'] ?? ($_GET['k'] ?? ''));   // Bale has no secret header, so the secret rides in the URL
+if (HOOK_SECRET === '' || !hash_equals(HOOK_SECRET, $given)) { http_response_code(403); exit; }
 $u = json_decode((string)file_get_contents('php://input'), true);
 @set_time_limit(120);
 ignore_user_abort(true);
