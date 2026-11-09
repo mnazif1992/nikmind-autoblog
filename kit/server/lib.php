@@ -419,7 +419,7 @@ function render_article(string $lang, array $a, bool $live): string {
         '{{CAT_NAME}}' => h(cat_name((string)($a['cluster'] ?? ''))),
         '{{CAT_URL}}' => h(cat_url((string)($a['cluster'] ?? '')) ?: SITE . $Lc['base']),
         '{{MODIFIED}}' => '<time datetime="' . $a['date'] . '">' . show_date($lang, $a['date']) . '</time>',
-        '{{RELATED}}' => '<!--nn:related-->' . related_cards($lang, $a['slug']) . '<!--/nn:related-->',
+        '{{RELATED}}' => '<!--nn:related-->' . related_cards($lang, $a['slug'], (string)($a['cluster'] ?? '')) . '<!--/nn:related-->',
     ]);
     return fill_alts($html, fn($l) => post_url($l, $a['slug']));
 }
@@ -434,10 +434,27 @@ function card_html(string $lang, array $p): string {
         '{{EXCERPT}}' => h($p['excerpt']), '{{DATE}}' => show_date($lang, $p['date']), '{{READ}}' => num($lang, $p['read_min']) . $Lc['read'],
         '{{CAT}}' => h(cat_name((string)($p['cat'] ?? ''))), '{{CAT_URL}}' => h(cat_url((string)($p['cat'] ?? '')))]);
 }
-function related_cards(string $lang, string $slug): string {
-    $out = '';
-    foreach (array_slice(array_values(array_filter(posts($lang), fn($p) => $p['slug'] !== $slug)), 0, 3) as $p) $out .= card_html($lang, $p) . "\n";
-    return $out;
+/** Three "more articles" cards: new posts of the same category first, then the site's own older cards from that
+ *  category page (so the block is never empty on a site that already had articles), then any other new post. */
+function related_cards(string $lang, string $slug, string $cat = ''): string {
+    $others = array_values(array_filter(posts($lang), fn($p) => $p['slug'] !== $slug));
+    $same = array_values(array_filter($others, fn($p) => $cat !== '' && ($p['cat'] ?? '') === $cat));
+    $cards = array_map(fn($p) => card_html($lang, $p), array_slice($same, 0, 3));
+    if (count($cards) < 3 && cat_url($cat) !== '') {
+        $page = (string)@file_get_contents(PUB . cat_url($cat) . 'index.html');
+        $page = preg_replace('#<!--nn:cards-->.*?<!--/nn:cards-->#s', '', $page);
+        preg_match_all('#<a class="post"[^>]*href="([^"]+)"[^>]*>.*?</a>#s', $page, $m, PREG_SET_ORDER);
+        foreach ($m as $x) {
+            if (count($cards) >= 3) break;
+            if (str_contains($x[1], "/$slug/")) continue;
+            $cards[] = $x[0];
+        }
+    }
+    foreach ($others as $p) {
+        if (count($cards) >= 3) break;
+        if (!in_array($p, $same, true)) $cards[] = card_html($lang, $p);
+    }
+    return implode("\n", $cards) . ($cards ? "\n" : '');
 }
 function replace_region(string $html, string $name, string $inner, ?int &$count = 0): string {
     return preg_replace_callback('#<!--nn:' . $name . '-->.*?<!--/nn:' . $name . '-->#s',
@@ -515,7 +532,7 @@ function publish_side_effects(string $lang, array $a): array {
         $f = L($lang)['dir'] . '/' . $p['slug'] . '/index.html';
         $html = (string)@file_get_contents($f);
         if ($html === '' || !str_contains($html, '<!--nn:related-->')) continue;
-        write_file($f, replace_region($html, 'related', related_cards($lang, $p['slug'])));
+        write_file($f, replace_region($html, 'related', related_cards($lang, $p['slug'], (string)($p['cat'] ?? ''))));
         $done[] = 'related ' . $p['slug'];
     }
     return $done;
