@@ -10,6 +10,7 @@ AUTH="Authorization: Basic $(printf 'x-access-token:%s' "$GT" | base64 -w0)"
 code=$(curl -s -o /dev/null -w '%{http_code}' -H "Authorization: Bearer $GT" https://api.github.com/repos/$REPO)
 [ "$code" = 200 ] || { echo "The token cannot see $REPO yet (HTTP $code). Add honeymo-app to the token, then run this again."; exit 1; }
 cd $SRC || exit 1
+git config --global --get-all safe.directory | grep -qx "$SRC" || git config --global --add safe.directory "$SRC"
 cp -a $SRC/deploy/.env /root/honeymo.env.bak 2>/dev/null
 cat > .gitignore.nn <<'IGN'
 node_modules/
