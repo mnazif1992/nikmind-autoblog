@@ -133,7 +133,22 @@ function tg(string $method, array $params): ?array {
         foreach (['text', 'caption'] as $k) if (isset($params[$k]) && ($params['parse_mode'] ?? '') === 'HTML') $params[$k] = html_to_bale((string)$params[$k]);
         unset($params['parse_mode'], $params['disable_web_page_preview'], $params['disable_notification'], $params['is_persistent']);
     }
-    $r = http($base . TG_BOT_TOKEN . '/' . $method, $params, 40);
+    $photo = is_string($params['photo'] ?? null) ? (string)$params['photo'] : '';
+    $local = str_starts_with($photo, SITE . '/') ? PUB . (string)parse_url($photo, PHP_URL_PATH) : '';
+    if ($local !== '' && is_file($local)) {
+        // upload our own images as a file: the messenger's servers cannot always reach the site (Bale often cannot)
+        $form = [];
+        foreach ($params as $k => $v) $form[$k] = is_array($v) ? json_encode($v, JSON_UNESCAPED_UNICODE) : (is_bool($v) ? ($v ? 'true' : 'false') : (string)$v);
+        $tmp = '';
+        if (str_ends_with($local, '.webp') && function_exists('imagecreatefromwebp') && ($im = @imagecreatefromwebp($local))) {   // JPEG is the safest photo format for both messengers
+            $tmp = AB . '/state/upload-' . getmypid() . '.jpg'; imagejpeg($im, $tmp, 88); imagedestroy($im);
+        }
+        $form['photo'] = $tmp !== '' ? new CURLFile($tmp, 'image/jpeg', 'cover.jpg') : new CURLFile($local, mime_content_type($local) ?: 'image/webp', basename($local));
+        $c = curl_init($base . TG_BOT_TOKEN . '/' . $method);
+        curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 60, CURLOPT_POST => true, CURLOPT_POSTFIELDS => $form]);
+        $b = curl_exec($c); $r = ['code' => (int)curl_getinfo($c, CURLINFO_HTTP_CODE), 'body' => is_string($b) ? $b : '', 'err' => curl_error($c)]; curl_close($c);
+        if ($tmp !== '') @unlink($tmp);
+    } else $r = http($base . TG_BOT_TOKEN . '/' . $method, $params, 40);
     $j = json_decode($r['body'], true);
     if (!is_array($j) || empty($j['ok'])) { logline("msg $method failed: " . substr($r['body'] ?: $r['err'], 0, 300)); return null; }
     return $j;
