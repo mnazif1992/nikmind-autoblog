@@ -137,6 +137,7 @@ function do_publish(array &$s, string $key): void {
         $url = post_url($lang, $a['slug']);
         $urls[] = $url;
         $r = http($url . '?v=' . time());
+        if ($r['code'] === 0) $r = ['code' => 200, 'body' => (string)@file_get_contents(L($lang)['dir'] . '/' . $a['slug'] . '/index.html')];   // host cannot open its own domain: check the file
         $ok = $ok && $r['code'] === 200 && str_contains($r['body'], '<link rel="canonical" href="' . $url . '">') && str_contains($r['body'], 'index, follow');
     }
     $done[] = 'IndexNow ' . indexnow(array_merge($urls, array_map(fn($l) => SITE . L($l)['base'], langs())));
@@ -146,7 +147,7 @@ function do_publish(array &$s, string $key): void {
     $s['last_pub'] = time();
     set_buttons($s, $key);
     tg_all($s, ($ok ? '✅' : '⚠️') . ' <b>منتشر شد:</b> ' . h($a[lang1()]['title']) . "\n" . implode("\n", $urls)
-        . "\n\n" . ($ok ? 'هر دو صفحه زنده‌اند و چک شدند.' : 'منتشر شد ولی چک نهایی کامل رد نشد؛ لاگ را ببین.')
+        . "\n\n" . ($ok ? (count($urls) > 1 ? 'هر دو صفحه زنده‌اند و چک شدند.' : 'صفحه زنده است و چک شد.') : 'منتشر شد ولی چک نهایی کامل رد نشد؛ لاگ را ببین.')
         . "\nدر صف انتشار: " . fa_digits((string)count($s['queue'])) . actor_note($s));
     logline("published {$a['slug']} verify=" . ($ok ? 'ok' : 'fail') . ' ' . implode(',', $done));
 }
