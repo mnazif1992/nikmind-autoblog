@@ -2,6 +2,9 @@
 // One-off: adds /members to the bot's command list and tells the owner how adding people works.
 require __DIR__ . '/core.php';
 $rep = [];
+$dst = PUB . '/' . PANEL_DIR . '/app/api.php';
+if (is_file($dst)) copy($dst, AB . '/backups/api-' . date('Ymd-His') . '.php');
+$rep[] = 'panel api ' . json_encode(copy(__DIR__ . '/panel/api.php', $dst) && hash_file('sha256', $dst) === hash_file('sha256', __DIR__ . '/panel/api.php'));
 $rep[] = 'commands: ' . json_encode(tg('setMyCommands', ['commands' => [
     ['command' => 'status', 'description' => 'وضعیت نیک‌نگار'], ['command' => 'settings', 'description' => 'تنظیمات انتشار'],
     ['command' => 'write', 'description' => 'نوشتن مقاله‌ی جدید'], ['command' => 'publishnow', 'description' => 'انتشار فوری مقاله‌ی بعدی صف'],
