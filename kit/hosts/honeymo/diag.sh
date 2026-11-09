@@ -15,6 +15,9 @@ R=/tmp/nn-status.txt
   echo "### cron.txt (last 30)"; tail -n 30 $AB/logs/cron.txt 2>&1
   echo "### heal log (last 10)"; tail -n 10 /var/log/niknegar-heal.log 2>&1
   echo "### web build log (last 15)"; tail -n 15 /var/log/niknegar-webbuild.log 2>&1
+  echo "### app autodeploy"; cat /var/lib/honeymo-deploy/status.json 2>&1; echo "deployed=$(cat /var/lib/honeymo-deploy/deployed 2>/dev/null) head=$(git -C /srv/honeymo rev-parse --short HEAD 2>/dev/null) stash=$(git -C /srv/honeymo stash list 2>/dev/null | wc -l)"
+  tail -n 12 /var/log/honeymo-deploy.log 2>&1; grep -iE 'error|fail' /var/lib/honeymo-deploy/last-build.log 2>/dev/null | tail -8
+  echo "### admin accounts (count only)"; docker exec honeymo-db-1 psql -U honeymo -d honeymo -tAc "select count(*) from admin_users" 2>&1 | head -2
   echo "### files"; ls -la $AB/state $AB/drafts 2>&1 | head -30; ls /var/www/honeymo-blog/blog 2>&1 | head -30
 } > $R 2>&1
 h=$(sed 1d $R | md5sum | cut -d' ' -f1)

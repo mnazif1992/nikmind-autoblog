@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Nik-Negar on honeymo.ir — keeps the blog wired into the HoneyMo stack. Runs from root's cron every 5 minutes and is safe to run any time.
-# The app is redeployed from the Mac with push.sh, which replaces /srv/honeymo; this puts the blog parts back right after:
+# The app is rebuilt from GitHub by /usr/local/sbin/honeymo-autodeploy.sh (the blog parts below are now in the app's repo too);
+# this stays as a safety net and puts the blog parts back if they ever go missing:
 #   1. Caddy: serve /blog/ pages and the panel from /var/www/honeymo-blog when the file exists (everything else still goes to the app)
 #   2. docker-compose: mount that folder and the PHP socket into the caddy container
 #   3. the app's service worker: let /blog and the panel load from the network instead of the cached app shell
@@ -82,7 +83,10 @@ fi
 # 3 + 4. assets copied from the running app container (only when they changed)
 if docker inspect "$WEB" >/dev/null 2>&1; then
   sw=$(docker exec "$WEB" cat $HTML/sw.js 2>/dev/null || true)
-  if [ -n "$sw" ]; then
+  if [ -n "$sw" ] && printf '%s' "$sw" | grep -qF '/^\/blog/'; then
+    # the app's own service worker already leaves /blog and the panel alone (vite.config.ts) — serve it as is
+    if [ -f "$PUB/sw.js" ]; then mv "$PUB/sw.js" "$BK/sw.js.$(date +%s)"; log "sw.js: the app's own worker handles /blog now — override retired"; fi
+  elif [ -n "$sw" ]; then
     patched=$(printf '%s' "$sw" | sed 's#denylist:\[/^\\/api\\//\]#denylist:[/^\\/api\\//,/^\\/blog/,/^\\/tg-/]#')
     if [ "$patched" != "$(cat "$PUB/sw.js" 2>/dev/null)" ]; then
       if [ "$patched" != "$sw" ]; then printf '%s' "$patched" > "$PUB/sw.js"; log "sw.js: /blog and panel excluded from the app shell"
