@@ -103,9 +103,12 @@ function card_img(array $a): string {
 }
 
 /** Sends the cover to Telegram with a "another photo" button. */
-function send_cover_preview(array &$s, string $key, array $a): void {
-    if (empty($a['cover'])) { tg_all($s, '🖼 برای این مقاله عکس مناسبی پیدا نشد؛ بدون عکس منتشر می‌شود.', [[['text' => '🔄 دوباره بگرد', 'callback_data' => "i:$key"]]]); return; }
-    foreach ($s['chat_ids'] as $cid) {
+function send_cover_preview(array &$s, string $key, array $a, ?array $to = null): void {
+    if (empty($a['cover'])) {
+        if ($to === null) tg_all($s, '🖼 برای این مقاله عکس مناسبی پیدا نشد؛ بدون عکس منتشر می‌شود.', [[['text' => '🔄 دوباره بگرد', 'callback_data' => "i:$key"]]]);
+        return;
+    }
+    foreach ($to ?? $s['chat_ids'] as $cid) {
         tg('sendPhoto', ['chat_id' => $cid, 'photo' => strtok($a['cover']['url'], '?') . '?t=' . time(),
             'caption' => 'عکس کاور: ' . $a['cover']['source'] . ' · ' . $a['cover']['license'] . "\nجست‌وجو: " . $a['cover']['query'],
             'reply_markup' => ['inline_keyboard' => [[['text' => '🔄 عکس دیگر', 'callback_data' => "i:$key"]]]]]);

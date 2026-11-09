@@ -3,6 +3,7 @@
 declare(strict_types=1);
 require_once __DIR__ . '/lib.php';
 require_once __DIR__ . '/ondemand.php';
+require_once __DIR__ . '/access.php';
 date_default_timezone_set('Asia/Tehran');
 
 /* ---------------- locking ---------------- */
@@ -31,12 +32,23 @@ function set_buttons(array $s, string $key): void {
 function settings_text(array $s): string {
     return "⚙️ <b>تنظیمات</b>\n\nحالت انتشار: " . (auto_mode($s) ? '🤖 <b>خودکار</b> — پیش‌نویس‌ها بدون تأیید در نوبت منتشر می‌شوند' : '👀 <b>با بازبینی</b> — هر پیش‌نویس منتظر تأیید توست')
         . "\nوضعیت: " . (!empty($s['paused']) ? '⏸ متوقف' : '▶️ فعال')
-        . "\nنوبت‌های امروز: " . implode(' و ', array_map(fn($t) => fa_digits(date('H:i', $t)), todays_slots($s)));
+        . "\nنوبت‌های امروز: " . implode(' و ', array_map(fn($t) => fa_digits(date('H:i', $t)), todays_slots($s)))
+        . "\nاعضا: " . fa_digits((string)count($s['chat_ids'])) . ' نفر · /members';
 }
 function settings_buttons(array $s): array {
     return [[auto_mode($s) ? ['text' => '👀 برگرد به بازبینی دستی', 'callback_data' => 'm:manual'] : ['text' => '🤖 انتشار خودکار (بدون تأیید)', 'callback_data' => 'm:auto']],
             [!empty($s['paused']) ? ['text' => '▶️ ادامه', 'callback_data' => 's:resume'] : ['text' => '⏸ توقف موقت', 'callback_data' => 's:pause']],
             [['text' => '🗂 باز کردن پنل نیک‌نگار', 'web_app' => ['url' => panel_url()]]]];
+}
+
+function draft_body(array $a): string {
+    return '<b>' . h($a['fa']['title']) . "</b>\n" . h($a['fa']['meta_description'])
+        . "\n\n🇮🇷 " . fa_digits((string)$a['fa']['words']) . ' کلمه · ' . h($a['fa']['primary_keyword']) . "\n" . SITE . L('fa')['base'] . $a['slug'] . '/'
+        . "\n\n🇬🇧 " . h($a['en']['title']) . ' · ' . fa_digits((string)$a['en']['words']) . ' کلمه · ' . h($a['en']['primary_keyword'])
+        . "\n" . SITE . L('en')['base'] . $a['slug'] . '/' . "\n\nپیش‌نمایش‌ها فعلاً از دید گوگل مخفی‌اند.";
+}
+function draft_msg(array $s, array $a, bool $queued): string {
+    return ($queued ? "⏱ <b>پیش‌نویس در صف انتشار</b> (" . next_slot_text($s) . ")\n\n" : "📝 <b>پیش‌نویس منتظر تأیید</b>\n\n") . draft_body($a);
 }
 
 /* ---------------- drafts from GitHub / inbox ---------------- */
@@ -76,11 +88,7 @@ function check_drafts(array &$s): void {
         $s['drafts'][$key] = ['file' => $f['name'], 'slug' => $a['slug'], 'title' => $a['fa']['title'], 'status' => $status, 'msgs' => [], 'at' => date('c'),
                               'words' => $a['fa']['words'], 'kw' => $a['fa']['primary_keyword']];
         if ($auto) $s['queue'][] = $key;
-        $msg = ($auto ? "🤖 <b>پیش‌نویس تازه — در صف انتشار خودکار</b> (" . next_slot_text($s) . ")\n\n" : "📝 <b>پیش‌نویس تازه</b>\n\n")
-            . '<b>' . h($a['fa']['title']) . "</b>\n" . h($a['fa']['meta_description'])
-            . "\n\n🇮🇷 " . fa_digits((string)$a['fa']['words']) . ' کلمه · ' . h($a['fa']['primary_keyword']) . "\n" . SITE . L('fa')['base'] . $a['slug'] . '/'
-            . "\n\n🇬🇧 " . h($a['en']['title']) . ' · ' . fa_digits((string)$a['en']['words']) . ' کلمه · ' . h($a['en']['primary_keyword'])
-            . "\n" . SITE . L('en')['base'] . $a['slug'] . '/' . "\n\nپیش‌نمایش‌ها فعلاً از دید گوگل مخفی‌اند.";
+        $msg = ($auto ? "🤖 <b>پیش‌نویس تازه — در صف انتشار خودکار</b> (" . next_slot_text($s) . ")\n\n" : "📝 <b>پیش‌نویس تازه</b>\n\n") . draft_body($a);
         $s['drafts'][$key]['msgs'] = tg_all($s, $msg, draft_buttons($key, $status));
         send_cover_preview($s, $key, $a);
         logline("draft ready {$a['slug']} ($status)");
@@ -132,7 +140,7 @@ function do_publish(array &$s, string $key): void {
     set_buttons($s, $key);
     tg_all($s, ($ok ? '✅' : '⚠️') . ' <b>منتشر شد:</b> ' . h($a['fa']['title']) . "\n" . $urls[0] . "\n" . $urls[1]
         . "\n\n" . ($ok ? 'هر دو صفحه زنده‌اند و چک شدند.' : 'منتشر شد ولی چک نهایی کامل رد نشد؛ لاگ را ببین.')
-        . "\nدر صف انتشار: " . fa_digits((string)count($s['queue'])));
+        . "\nدر صف انتشار: " . fa_digits((string)count($s['queue'])) . actor_note($s));
     logline("published {$a['slug']} verify=" . ($ok ? 'ok' : 'fail') . ' ' . implode(',', $done));
 }
 function approve_key(array &$s, string $key): bool {
@@ -140,7 +148,7 @@ function approve_key(array &$s, string $key): bool {
     $s['drafts'][$key]['status'] = 'queued';
     $s['queue'][] = $key;
     set_buttons($s, $key);
-    tg_all($s, '⏱ در صف رفت. زمان انتشار: ' . next_slot_text($s) . "\n(" . h($s['drafts'][$key]['title']) . ')');
+    tg_all($s, '⏱ در صف رفت. زمان انتشار: ' . next_slot_text($s) . "\n(" . h($s['drafts'][$key]['title']) . ')' . actor_note($s));
     return true;
 }
 function reject_key(array &$s, string $key): bool {
@@ -154,7 +162,7 @@ function reject_key(array &$s, string $key): bool {
     $d['status'] = 'rejected';
     $s['queue'] = array_values(array_diff($s['queue'], [$key]));
     set_buttons($s, $key);
-    tg_all($s, '🗑 رد شد و پیش‌نمایش‌ها از سایت برداشته شدند: ' . h($d['title']));
+    tg_all($s, '🗑 رد شد و پیش‌نمایش‌ها از سایت برداشته شدند: ' . h($d['title']) . actor_note($s));
     logline("rejected {$d['slug']}");
     return true;
 }
@@ -177,11 +185,20 @@ function handle_update(array &$s, array $u): void {
         $text = trim($u['message']['text'] ?? '');
         if (!$s['chat_ids']) {
             $s['chat_ids'][] = $cid;
+            remember_member($s, $u['message']['from'] ?? []);
             tg('sendMessage', ['chat_id' => $cid, 'reply_markup' => main_kb2(), 'text' => "سلام 👋\nاین چت ثبت شد. پیش‌نویس‌ها و خبر انتشار مقاله‌های iranian.nikmindclinic.com از این به بعد این‌جا می‌آید."]);
             logline("registered chat $cid");
             return;
         }
-        if (!in_array($cid, $s['chat_ids'], true)) return;
+        if (!in_array($cid, $s['chat_ids'], true)) { handle_stranger($s, $u['message']); return; }
+        remember_member($s, $u['message']['from'] ?? []);
+        set_actor($u['message']['from'] ?? []);
+        if ($text === '/members' || $text === '👥 اعضا') {
+            if (!is_owner($s, $cid)) { tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => members_text($s)]); return; }
+            $kb = members_buttons($s);
+            tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => members_text($s)] + ($kb ? ['reply_markup' => ['inline_keyboard' => $kb]] : []));
+            return;
+        }
         if ($text === '✍️ مقاله‌ی جدید' || $text === '/write') { request_write($s, $cid); return; }
         if ($text === '⚙️ تنظیمات' || $text === '/settings') {
             tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => settings_text($s), 'reply_markup' => ['inline_keyboard' => settings_buttons($s)]]);
@@ -198,8 +215,8 @@ function handle_update(array &$s, array $u): void {
                 . ($last ? "\nآخرین: " . h($last['title']) : '')]);
             return;
         }
-        if ($text === '/pause') { $s['paused'] = true; tg('sendMessage', ['chat_id' => $cid, 'text' => '⏸ متوقف شد.']); return; }
-        if ($text === '/resume') { $s['paused'] = false; $s['fails'] = 0; tg('sendMessage', ['chat_id' => $cid, 'text' => '▶️ دوباره فعال شد.']); return; }
+        if ($text === '/pause') { $s['paused'] = true; tg('sendMessage', ['chat_id' => $cid, 'text' => '⏸ متوقف شد.']); notify_others($s, $cid, '⏸ نیک‌نگار متوقف شد.' . actor_note($s)); return; }
+        if ($text === '/resume') { $s['paused'] = false; $s['fails'] = 0; tg('sendMessage', ['chat_id' => $cid, 'text' => '▶️ دوباره فعال شد.']); notify_others($s, $cid, '▶️ نیک‌نگار دوباره فعال شد.' . actor_note($s)); return; }
         if ($text === '/publishnow') { if ($s['queue']) publish_next($s); else tg('sendMessage', ['chat_id' => $cid, 'text' => 'صف انتشار خالی است.']); return; }
         return;
     }
@@ -207,10 +224,27 @@ function handle_update(array &$s, array $u): void {
         $cq = $u['callback_query'];
         $cid = $cq['message']['chat']['id'] ?? 0;
         if (!in_array($cid, $s['chat_ids'], true)) return;
+        remember_member($s, $cq['from'] ?? []);
+        set_actor($cq['from'] ?? []);
         [$act, $arg] = array_pad(explode(':', $cq['data'] ?? '', 2), 2, '');
         $ack = fn($t) => tg('answerCallbackQuery', ['callback_query_id' => $cq['id'], 'text' => $t]);
+        if (in_array($act, ['g', 'x', 'k'], true)) {               // access management: owner only
+            $arg = preg_replace('/[^0-9\-]/', '', $arg);
+            if (!is_owner($s, $cid)) { $ack('فقط مدیر می‌تواند اعضا را تغییر دهد'); return; }
+            if ($act === 'g') $ack(grant_access($s, $cid, $arg));
+            elseif ($act === 'x') $ack(deny_access($s, $cid, $arg));
+            else {
+                $ack(revoke_access($s, $arg));
+                $kb = members_buttons($s);
+                tg('editMessageText', ['chat_id' => $cid, 'message_id' => $cq['message']['message_id'], 'parse_mode' => 'HTML', 'text' => members_text($s),
+                    'reply_markup' => ['inline_keyboard' => $kb]]);
+            }
+            return;
+        }
         if ($act === 'm' || $act === 's') {
+            $before = [auto_mode($s), !empty($s['paused'])];
             if ($act === 'm') set_mode($s, $arg === 'auto'); else { $s['paused'] = $arg === 'pause'; if (!$s['paused']) $s['fails'] = 0; }
+            if ($before !== [auto_mode($s), !empty($s['paused'])]) notify_others($s, $cid, settings_change_text($s, $act));
             $ack('ذخیره شد');
             tg('editMessageText', ['chat_id' => $cid, 'message_id' => $cq['message']['message_id'], 'parse_mode' => 'HTML', 'text' => settings_text($s), 'reply_markup' => ['inline_keyboard' => settings_buttons($s)]]);
             return;

@@ -26,6 +26,7 @@ $action = (string)($req['action'] ?? 'state');
 $key = preg_replace('/[^a-f0-9]/', '', (string)($req['key'] ?? ''));
 @set_time_limit(120);
 ignore_user_abort(true);
+set_actor($user);
 
 if (str_starts_with($action, 'topic')) {                       // keyword queue (topics.json in the GitHub repo)
     require_once '/home/mrnazif/autoblog/topics.php';
@@ -45,8 +46,14 @@ $res = with_state(function (array &$s) use ($action, $key, $req, $uid) {
         case 'publish': publish_key($s, $key); break;
         case 'reject': reject_key($s, $key); break;
         case 'cover': if (in_array($s['drafts'][$key]['status'] ?? '', ['pending', 'queued'], true)) swap_cover($s, $key); break;
-        case 'mode': set_mode($s, !empty($req['auto'])); break;
-        case 'pause': $s['paused'] = !empty($req['paused']); if (!$s['paused']) $s['fails'] = 0; break;
+        case 'mode':
+            $was = auto_mode($s); set_mode($s, !empty($req['auto']));
+            if ($was !== auto_mode($s)) notify_others($s, $uid, settings_change_text($s, 'm'));
+            break;
+        case 'pause':
+            $was = !empty($s['paused']); $s['paused'] = !empty($req['paused']); if (!$s['paused']) $s['fails'] = 0;
+            if ($was !== $s['paused']) notify_others($s, $uid, settings_change_text($s, 's'));
+            break;
         case 'write': request_write($s, $uid); break;
         default: return ['ok' => false, 'error' => 'unknown action'];
     }
