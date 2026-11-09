@@ -15,11 +15,12 @@ say "1/5 PHP"
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq >/dev/null
 apt-get install -y -qq php-cli php-fpm php-curl php-gd php-mbstring php-xml >/dev/null
-php -v | head -1
+php -v 2>&1 | sed -n 1p
 php -r 'echo function_exists("imagewebp") ? "GD webp: ok\n" : "GD webp: MISSING\n";'
 
 say "2/5 kit files"
-KIT_SHA=$(curl -fsS https://api.github.com/repos/mnazif1992/nikmind-autoblog/commits/main | grep -m1 '"sha"' | cut -d'"' -f4)
+curl -fsS https://api.github.com/repos/mnazif1992/nikmind-autoblog/commits/main -o /tmp/nn-commit.json
+KIT_SHA=$(grep -m1 '"sha"' /tmp/nn-commit.json | cut -d'"' -f4)
 RAW="https://raw.githubusercontent.com/mnazif1992/nikmind-autoblog/$KIT_SHA/kit"
 echo "kit commit $KIT_SHA"
 mkdir -p "$AB" "$PUB" "$AB/backups"
@@ -59,6 +60,7 @@ unset BT
 
 say "4/5 read-only report of the current web setup"
 R=/tmp/nn-report.txt
+set +e +o pipefail   # the report only reads; a missing file must not stop it
 {
   echo "### date"; date; echo "### php"; php -v | head -1; ls /etc/php/; systemctl is-active "php*-fpm" 2>/dev/null || true
   echo "### docker ps"; docker ps --format '{{.Names}} | {{.Image}} | {{.Status}}'
@@ -76,7 +78,8 @@ R=/tmp/nn-report.txt
 } > $R 2>&1
 put(){ # path file
   local b64 sha; b64=$(base64 -w0 "$2")
-  sha=$(curl -s -H "Authorization: Bearer $GT" "https://api.github.com/repos/$REPO/contents/$1" | grep -m1 '"sha"' | cut -d'"' -f4 || true)
+  curl -s -H "Authorization: Bearer $GT" "https://api.github.com/repos/$REPO/contents/$1" -o /tmp/nn-get.json || true
+  sha=$(grep -m1 '"sha"' /tmp/nn-get.json | cut -d'"' -f4 || true)
   printf '{"message":"server report","content":"%s"%s}' "$b64" "${sha:+,\"sha\":\"$sha\"}" > /tmp/nn-put.json
   curl -s -o /dev/null -w "$1 -> %{http_code}\n" -X PUT -H "Authorization: Bearer $GT" "https://api.github.com/repos/$REPO/contents/$1" --data @/tmp/nn-put.json
 }
