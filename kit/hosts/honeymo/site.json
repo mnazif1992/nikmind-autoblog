@@ -1,0 +1,84 @@
+{
+  "site_name": "هانیمو",
+  "url": "https://honeymo.ir",
+  "public_html": "/var/www/honeymo-blog",
+  "content_repo": "mnazif1992/honeymo-blog",
+  "timezone": "Asia/Tehran",
+  "messenger": "bale",
+  "posts_per_day": 2,
+  "daily_write_time": "08:13",
+  "publish_slots": [
+    "11:30",
+    "20:30"
+  ],
+  "slot_jitter_minutes": [
+    7,
+    25
+  ],
+  "ondemand_check": {
+    "minute": 53,
+    "from": 8,
+    "to": 23
+  },
+  "publisher_type": "Organization",
+  "logo": "/icon-512.png",
+  "default_og_image": "/og/default.jpg",
+  "covers_path": "blog/assets/covers",
+  "sitemaps": [
+    "/sitemap.xml"
+  ],
+  "link_targets": [
+    "/products/signature",
+    "/calendar"
+  ],
+  "min_internal_links": 2,
+  "related_fallback": "/blog/index.html",
+  "clusters": {
+    "guide": "راهنما",
+    "compare": "مقایسه",
+    "gift": "هدیه",
+    "health": "سلامت"
+  },
+  "fallback_image_queries": [
+    "warm tea cup",
+    "cozy blanket bed",
+    "hot water bottle"
+  ],
+  "bad_photo_words": [
+    "tampon",
+    "sanitary",
+    "menstrua",
+    "pregnan",
+    "hospital",
+    "syringe"
+  ],
+  "image_proxy": "https://iranian.nikmindclinic.com/tg-da689bc85bfc/img.php?k=7c83eb782d01e689a6d873101134a874&u=",
+  "indexnow_endpoint": "https://www.bing.com/indexnow",
+  "kit_repo": "mnazif1992/nikmind-autoblog",
+  "kit_path": "kit/server",
+  "kit_branch": "main",
+  "auto_update": true,
+  "langs": [
+    {
+      "code": "fa",
+      "base": "/blog/",
+      "home": "/",
+      "home_name": "خانه",
+      "blog_name": "مجله",
+      "cta": "/products/signature",
+      "cta_text": "امضای هانیمو رو ببین",
+      "author": "بی‌تا صادقی",
+      "author_url": "",
+      "author_title": "هم‌بنیان‌گذار هانیمو",
+      "disclaimer": "این مطلب برای آگاهیه و جای معاینه و مشورت با پزشک رو نمی‌گیره",
+      "publisher": "هانیمو",
+      "suffix": " | مجله‌ی هانیمو",
+      "blog_title": "مجله‌ی هانیمو",
+      "blog_description": "درباره‌ی درد، گرما، چرخه و هدیه دادن. کوتاه، بدون اغراق، قابل اعتماد.",
+      "read": " دقیقه خواندن",
+      "related": "بیشتر بخون",
+      "min_words": 800,
+      "empty": ""
+    }
+  ]
+}

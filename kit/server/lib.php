@@ -440,13 +440,14 @@ function related_cards(string $lang, string $slug, string $cat = ''): string {
     $others = array_values(array_filter(posts($lang), fn($p) => $p['slug'] !== $slug));
     $same = array_values(array_filter($others, fn($p) => $cat !== '' && ($p['cat'] ?? '') === $cat));
     $cards = array_map(fn($p) => card_html($lang, $p), array_slice($same, 0, 3));
-    if (count($cards) < 3 && cat_url($cat) !== '') {
-        $page = (string)@file_get_contents(PUB . cat_url($cat) . 'index.html');
+    $fallback = cat_url($cat) !== '' ? cat_url($cat) . 'index.html' : (string)site('related_fallback', '');   // e.g. "/blog/index.html"
+    if (count($cards) < 3 && $fallback !== '') {
+        $page = (string)@file_get_contents(PUB . '/' . ltrim($fallback, '/'));
         $page = preg_replace('#<!--nn:cards-->.*?<!--/nn:cards-->#s', '', $page);
-        preg_match_all('#<a class="post"[^>]*href="([^"]+)"[^>]*>.*?</a>#s', $page, $m, PREG_SET_ORDER);
+        preg_match_all('#<a (?=[^>]*class="(?:post|nn-card)\b)[^>]*href="([^"]+)"[^>]*>.*?</a>#s', $page, $m, PREG_SET_ORDER);
         foreach ($m as $x) {
             if (count($cards) >= 3) break;
-            if (str_contains($x[1], "/$slug/")) continue;
+            if (str_contains($x[1], "/$slug/") || str_ends_with($x[1], "/$slug")) continue;
             $cards[] = $x[0];
         }
     }
