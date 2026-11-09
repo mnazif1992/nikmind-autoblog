@@ -111,26 +111,32 @@ if (!$me) { $no(messenger_name() . ' rejected the bot token (getMe failed)'); $f
 $bot = $me['result']['username'];
 $ok(messenger_name() . " bot @$bot");
 $hook = SITE . '/' . PANEL_DIR . '/hook.php';
-if (!$CHECK) {
-    $w = messenger() === 'bale'
-        ? tg('setWebhook', ['url' => $hook . '?k=' . HOOK_SECRET])          // Bale: no secret header, the secret rides in the URL
-        : tg('setWebhook', ['url' => $hook, 'secret_token' => HOOK_SECRET, 'allowed_updates' => ['message', 'callback_query'], 'drop_pending_updates' => false]);
-    $w ? $ok('webhook set') : $no('setWebhook failed (is the site on valid HTTPS?)');
-    with_state(function (array &$s) { $s['webhook'] = true; }, 30);
-    tg('setMyCommands', ['commands' => [
-        ['command' => 'status', 'description' => 'وضعیت نیک‌نگار'], ['command' => 'settings', 'description' => 'تنظیمات انتشار'],
-        ['command' => 'write', 'description' => 'نوشتن مقاله‌ی جدید'], ['command' => 'publishnow', 'description' => 'انتشار فوری مقاله‌ی بعدی صف'],
-        ['command' => 'members', 'description' => 'اعضا و دسترسی‌ها']]]);
-    tg('setChatMenuButton', ['menu_button' => ['type' => 'web_app', 'text' => 'نیک‌نگار', 'web_app' => ['url' => panel_url()]]]);
-    tg('setMyDescription', ['description' => 'نیک‌نگار — میز تحریریه‌ی بلاگ ' . site('site_name') . ". ربات خصوصی است.\nطراحی و ساخت: دکتر محمدرضا نظیف"]);
-    tg('setMyShortDescription', ['short_description' => 'میز تحریریه‌ی بلاگ ' . site('site_name')]);
+if (messenger() === 'bale') {
+    // Bale's servers do not deliver webhooks to most hosts, so run.php polls Bale every few seconds instead.
+    if (!$CHECK) { tg('deleteWebhook', []); with_state(function (array &$s) { $s['webhook'] = false; }, 30); }
+    $ok('Bale: messages are fetched by run.php every few seconds (no webhook)');
+} else {
+    if (!$CHECK) {
+        $w = tg('setWebhook', ['url' => $hook, 'secret_token' => HOOK_SECRET, 'allowed_updates' => ['message', 'callback_query'], 'drop_pending_updates' => false]);
+        $w ? $ok('webhook set') : $no('setWebhook failed (is the site on valid HTTPS?)');
+        with_state(function (array &$s) { $s['webhook'] = true; }, 30);
+        tg('setMyCommands', ['commands' => [
+            ['command' => 'status', 'description' => 'وضعیت نیک‌نگار'], ['command' => 'settings', 'description' => 'تنظیمات انتشار'],
+            ['command' => 'write', 'description' => 'نوشتن مقاله‌ی جدید'], ['command' => 'publishnow', 'description' => 'انتشار فوری مقاله‌ی بعدی صف'],
+            ['command' => 'members', 'description' => 'اعضا و دسترسی‌ها']]]);
+        tg('setChatMenuButton', ['menu_button' => ['type' => 'web_app', 'text' => 'نیک‌نگار', 'web_app' => ['url' => panel_url()]]]);
+        tg('setMyDescription', ['description' => 'نیک‌نگار — میز تحریریه‌ی بلاگ ' . site('site_name') . ". ربات خصوصی است.\nطراحی و ساخت: دکتر محمدرضا نظیف"]);
+        tg('setMyShortDescription', ['short_description' => 'میز تحریریه‌ی بلاگ ' . site('site_name')]);
+    }
+    $wi = tg('getWebhookInfo', []);
+    $wurl = $wi['result']['url'] ?? '';
+    $wurl === $hook ? $ok('webhook points here' . (!empty($wi['result']['last_error_message']) ? ' (last error: ' . $wi['result']['last_error_message'] . ')' : ''))
+                    : $no("webhook is '$wurl', expected $hook");
 }
-$wi = tg('getWebhookInfo', []);
-$wurl = $wi['result']['url'] ?? '';
-strtok($wurl, '?') === $hook ? $ok('webhook points here' . (!empty($wi['result']['last_error_message']) ? ' (last error: ' . $wi['result']['last_error_message'] . ')' : ''))
-                : $no("webhook is '$wurl', expected $hook");
+// the server often cannot open its own domain (no hairpin routing), so a failed self-check is only a note
 $panel = http(panel_url() . '?t=' . time());
-$panel['code'] === 200 && str_contains($panel['body'], 'telegram-web-app') ? $ok('panel page is reachable') : $no('panel page did not load (' . $panel['code'] . ')');
+$panel['code'] === 200 && str_contains($panel['body'], 'telegram-web-app') ? $ok('panel page is reachable')
+    : $info('panel page could not be opened from this server (' . $panel['code'] . ') — open ' . panel_url() . ' in a browser to check');
 
 /* 8. GitHub content repo */
 $g = gh_api('GET', '');
