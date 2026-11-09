@@ -7,6 +7,11 @@ header('Cache-Control: no-store');
 header('X-Robots-Tag: noindex');
 function out(array $x, int $code = 200): void { http_response_code($code); echo json_encode($x, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); exit; }
 
+if (isset($_GET['log'])) {                            // error/boot report from the mini app page (no secrets in it)
+    $m = substr(preg_replace('/\s+/', ' ', (string)file_get_contents('php://input')), 0, 400);
+    if ($m !== '') logline('panel client: ' . $m);
+    out(['ok' => true]);
+}
 $uid = 0; $user = [];
 $req = json_decode((string)file_get_contents('php://input'), true) ?: [];
 $init = (string)($req['_init'] ?? ($_SERVER['HTTP_X_INIT_DATA'] ?? ''));

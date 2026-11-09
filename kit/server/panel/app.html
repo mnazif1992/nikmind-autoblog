@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>نیک‌نگار</title>
+<script>
+// tiny error reporter: any script error in the mini app is written to the server log (helps when a messenger shows a blank page)
+window.nnLog = function (m) { try { navigator.sendBeacon('api.php?log=1', JSON.stringify(m)); } catch (e) {} };
+window.addEventListener('error', function (e) { nnLog({err: String(e.message || e), at: (e.filename || '').split('/').pop() + ':' + (e.lineno || 0)}); });
+</script>
 <script src="__NN_SDK__"></script>
 <style>
 @font-face{font-family:Vazirmatn;src:url(/blog/assets/fonts/ab35d003-11eb-422a-a217-49310806b33b.woff2) format("woff2");font-display:swap}
@@ -21,6 +26,7 @@
   --peach-soft:color-mix(in srgb,var(--peach) 15%,var(--card));
   --r:18px;
 }
+html.dark{--bg:#14171a;--card:#1d2125;--text:#e6ecef;--hint:#8a969e}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 Vazirmatn,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit}
@@ -420,12 +426,11 @@ if (tg) {
   tg.ready(); tg.expand();
   try { tg.setHeaderColor('secondary_bg_color'); tg.setBackgroundColor('secondary_bg_color'); } catch (e) {}
   if (MB) MB.onClick(requestWrite);
-  try {                                                         // Bale gives the theme as an object, not as CSS variables
-    const tp = tg.themeParams || {}, rs = document.documentElement.style;
-    for (const k in tp) if (/^#[0-9a-f]{6}$/i.test(tp[k]) && !getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-' + k.replace(/_/g, '-')))
-      rs.setProperty('--tg-theme-' + k.replace(/_/g, '-'), tp[k]);
-  } catch (e) {}
+
 }
+// Bale does not set Telegram's theme CSS variables: follow its light/dark setting with our own palette
+if (window.Bale && WA === Bale.WebApp && WA.colorScheme === 'dark') document.documentElement.classList.add('dark');
+nnLog({boot: WA ? (window.Bale && Bale.WebApp === WA ? 'bale' : 'telegram') : 'browser', v: WA && WA.version, init: (INIT || '').length, scheme: WA && WA.colorScheme, w: innerWidth, ua: navigator.userAgent.slice(0, 120)});
 (async () => {                                    // the Bale SDK can fill initData a moment after the page loads
   for (let i = 0; i < 15 && WA && !INIT; i++) { await new Promise(r => setTimeout(r, 100)); INIT = WA.initData || ''; }
   load();
