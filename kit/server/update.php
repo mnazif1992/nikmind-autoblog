@@ -19,7 +19,6 @@ function kit_raw(string $file): array {
          . trim((string)site('kit_path', 'kit/server'), '/') . '/' . $file . '?t=' . time();
     $c = curl_init($url);
     $h = ['User-Agent: nik-negar/' . KIT_VERSION];
-    if (preg_match('/^(github_pat_|ghp_)/', GH_TOKEN)) $h[] = 'Authorization: Bearer ' . GH_TOKEN;
     curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 40, CURLOPT_HTTPHEADER => $h]);
     $b = curl_exec($c); $code = (int)curl_getinfo($c, CURLINFO_HTTP_CODE); curl_close($c);
     return ['code' => $code, 'body' => is_string($b) ? $b : ''];
