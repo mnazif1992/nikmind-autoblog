@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
 <title>نیک‌نگار</title>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script src="__NN_SDK__"></script>
 <style>
 @font-face{font-family:Vazirmatn;src:url(/blog/assets/fonts/ab35d003-11eb-422a-a217-49310806b33b.woff2) format("woff2");font-display:swap}
 :root{
@@ -239,7 +239,9 @@ details.used summary::-webkit-details-marker{display:none}
 <div class="toast" id="toast"></div>
 
 <script>
-const tg = window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp : null;
+const WA = (window.Bale && Bale.WebApp) || (window.Telegram && Telegram.WebApp) || null;   // Bale and Telegram mini apps share the same API shape
+const tg = WA && WA.initData ? WA : null;
+const MB = tg && tg.MainButton ? tg.MainButton : null;                                      // Bale has no MainButton: the floating button is used instead
 const BLUE = '#3d8fc4';
 const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
 const $ = id => document.getElementById(id);
@@ -251,7 +253,7 @@ let S = null, T = null, tab = 'pending', view = 'drafts', busy = false;
 function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2600); }
 function haptic(k) { try { tg.HapticFeedback.notificationOccurred(k); } catch (e) {} }
 function tap() { try { tg.HapticFeedback.impactOccurred('light'); } catch (e) {} }
-function ask(text) { return new Promise(r => tg ? tg.showConfirm(text, r) : r(confirm(text))); }
+function ask(text) { return new Promise(r => tg && tg.showConfirm ? tg.showConfirm(text, r) : r(confirm(text))); }
 
 async function api(action, body = {}) {
   const res = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Init-Data': tg ? tg.initData : '', 'X-Panel-Token': PANEL_TOKEN },
@@ -308,7 +310,7 @@ function card(i) {
 
 function setMain() {
   const txt = S && S.write_pending ? '✍️ مقاله‌ی جدید (' + fa(S.write_pending) + ' در صف نوشتن)' : '✍️ نوشتن مقاله‌ی جدید';
-  if (tg) { tg.MainButton.setParams({ text: txt, color: BLUE, text_color: '#ffffff', is_visible: true }); }
+  if (MB) { MB.setParams({ text: txt, color: BLUE, text_color: '#ffffff', is_visible: true }); }
   else { $('fab').textContent = txt; $('fab').style.display = 'block'; }
 }
 
@@ -321,10 +323,10 @@ async function load(spin) {
 async function act(action, body, msg) {
   if (busy) return; busy = true;
   document.querySelectorAll('main button, main input').forEach(b => b.disabled = true);
-  if (tg) tg.MainButton.showProgress(false);
+  if (MB) MB.showProgress(false);
   try { const j = await api(action, body); S = j.state; render(); haptic('success'); if (msg) toast(msg); }
   catch (e) { haptic('error'); toast('خطا: ' + e.message); render(); }
-  finally { busy = false; document.querySelectorAll('main button, main input').forEach(b => b.disabled = false); if (tg) tg.MainButton.hideProgress(); }
+  finally { busy = false; document.querySelectorAll('main button, main input').forEach(b => b.disabled = false); if (MB) MB.hideProgress(); }
 }
 async function requestWrite() {
   tap();
@@ -391,7 +393,7 @@ document.addEventListener('click', async e => {
     return;
   }
   const l = e.target.closest('[data-link]');
-  if (l) { e.preventDefault(); tg ? tg.openLink(l.href) : window.open(l.href); return; }
+  if (l) { e.preventDefault(); tg && tg.openLink ? tg.openLink(l.href) : window.open(l.href); return; }
   const t = e.target.closest('.tab'); if (t) { tap(); tab = t.dataset.tab; render(); return; }
   const b = e.target.closest('button[data-a]'); if (!b) return;
   const key = b.dataset.k, a = b.dataset.a;
@@ -412,7 +414,12 @@ $('fab').addEventListener('click', requestWrite);
 if (tg) {
   tg.ready(); tg.expand();
   try { tg.setHeaderColor('secondary_bg_color'); tg.setBackgroundColor('secondary_bg_color'); } catch (e) {}
-  tg.MainButton.onClick(requestWrite);
+  if (MB) MB.onClick(requestWrite);
+  try {                                                         // Bale gives the theme as an object, not as CSS variables
+    const tp = tg.themeParams || {}, rs = document.documentElement.style;
+    for (const k in tp) if (/^#[0-9a-f]{6}$/i.test(tp[k]) && !getComputedStyle(document.documentElement).getPropertyValue('--tg-theme-' + k.replace(/_/g, '-')))
+      rs.setProperty('--tg-theme-' + k.replace(/_/g, '-'), tp[k]);
+  } catch (e) {}
 }
 load();
 setInterval(() => { if (!busy && document.visibilityState === 'visible') load(); }, 30000);

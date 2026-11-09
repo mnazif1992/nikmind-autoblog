@@ -63,7 +63,7 @@ function kit_update(): array {
     return $out;
 }
 
-/** Copies the webhook and the Telegram panel into public_html/<PANEL_DIR>/ with this install's path written in. */
+/** Copies the webhook and the mini app panel (Telegram or Bale SDK) into public_html/<PANEL_DIR>/ with this install's path written in. */
 function install_panel() {
     if (!preg_match('/^[a-z0-9-]{8,}$/', PANEL_DIR)) return 'PANEL_DIR is not set';
     $dir = PUB . '/' . PANEL_DIR;
@@ -72,7 +72,8 @@ function install_panel() {
     foreach ($map as $src => $dst) {
         $c = (string)@file_get_contents(AB . '/' . $src);
         if ($c === '') return "missing $src";
-        write_file($dst, str_replace('__NN_AB__', AB, $c));
+        $sdk = messenger() === 'bale' ? 'https://tapi.bale.ai/miniapp.js' : 'https://telegram.org/js/telegram-web-app.js';
+        write_file($dst, str_replace(['__NN_AB__', '__NN_SDK__'], [AB, $sdk], $c));
     }
     copy("$dir/.htaccess", "$dir/app/.htaccess");
     return true;

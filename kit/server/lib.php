@@ -103,7 +103,7 @@ function http(string $url, ?array $json = null, int $timeout = 30): array {
 
 /* ---------------- messenger (Telegram or Bale) ---------------- */
 // Bale's bot API mirrors Telegram's, with these differences handled here: no HTML parse_mode (we convert to its markdown),
-// no web_app buttons (we send a signed panel link instead), and no command menu / menu button / descriptions.
+// and no command menu / menu button / descriptions through the API. Mini apps (web_app buttons) work as in Telegram.
 function messenger(): string { return site('messenger', 'telegram') === 'bale' ? 'bale' : 'telegram'; }
 function messenger_name(): string { return messenger() === 'bale' ? 'بله' : 'تلگرام'; }
 const BALE_SKIP = ['setMyCommands', 'setChatMenuButton', 'setMyDescription', 'setMyShortDescription', 'setMyName'];
@@ -132,11 +132,6 @@ function tg(string $method, array $params): ?array {
         $base = 'https://tapi.bale.ai/bot';
         foreach (['text', 'caption'] as $k) if (isset($params[$k]) && ($params['parse_mode'] ?? '') === 'HTML') $params[$k] = html_to_bale((string)$params[$k]);
         unset($params['parse_mode'], $params['disable_web_page_preview'], $params['disable_notification'], $params['is_persistent']);
-        if (isset($params['reply_markup']['inline_keyboard'])) {
-            foreach ($params['reply_markup']['inline_keyboard'] as &$row) foreach ($row as &$btn)
-                if (isset($btn['web_app'])) { $btn = ['text' => $btn['text'], 'url' => panel_link($params['chat_id'] ?? 0)]; }
-            unset($row, $btn);
-        }
     }
     $r = http($base . TG_BOT_TOKEN . '/' . $method, $params, 40);
     $j = json_decode($r['body'], true);

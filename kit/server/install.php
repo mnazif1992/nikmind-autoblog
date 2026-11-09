@@ -135,7 +135,7 @@ if (messenger() === 'bale') {
 }
 // the server often cannot open its own domain (no hairpin routing), so a failed self-check is only a note
 $panel = http(panel_url() . '?t=' . time());
-$panel['code'] === 200 && str_contains($panel['body'], 'telegram-web-app') ? $ok('panel page is reachable')
+$panel['code'] === 200 && str_contains($panel['body'], 'api.php') ? $ok('panel page is reachable')
     : $info('panel page could not be opened from this server (' . $panel['code'] . ') — open ' . panel_url() . ' in a browser to check');
 
 /* 8. GitHub content repo */
