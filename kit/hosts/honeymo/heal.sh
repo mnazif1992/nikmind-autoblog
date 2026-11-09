@@ -99,5 +99,33 @@ if docker inspect "$WEB" >/dev/null 2>&1; then
     [ "$want" != "$(cat "$PUB/robots.txt" 2>/dev/null)" ] && { printf '%s\n' "$want" > "$PUB/robots.txt"; log "robots.txt updated"; }
   fi
 fi
+# 5. the app's «مجله» tab: open the static magazine page with a normal page load instead of the app's own old list.
+#    One line in apps/web/src/app/Link.tsx, then the web image is rebuilt in the background (the running site stays up meanwhile).
+LINK=/srv/honeymo/apps/web/src/app/Link.tsx
+need_build=0
+if [ -f "$LINK" ] && ! grep -q 'nik-negar' "$LINK"; then
+  if grep -q '^    e.preventDefault();$' "$LINK"; then
+    backup "$LINK"
+    php -r '$f=$argv[1]; $c=file_get_contents($f); $c=preg_replace("/^    e\.preventDefault\(\);$/m", "    // nik-negar: the magazine index is a static page now; open it with a normal page load\n    if (/^\\/blog\\/?$/.test(href)) return;\n    e.preventDefault();", $c, 1); file_put_contents($f, $c);' "$LINK"
+    log "app Link.tsx: /blog opens the static magazine"; need_build=1
+  else
+    log "app Link.tsx: expected line not found — not changed"
+  fi
+fi
+if [ -f "$LINK" ] && grep -q 'nik-negar' "$LINK" && docker inspect "$WEB" >/dev/null 2>&1; then
+  if ! docker exec "$WEB" sh -c "grep -lF '^\/blog\/?\$/' $HTML/assets/*.js" >/dev/null 2>&1; then need_build=1; fi
+fi
+if [ $need_build = 1 ]; then
+  last=$(cat /var/lib/niknegar-webbuild.last 2>/dev/null || echo 0)
+  if [ -f /run/niknegar/webbuild.pid ] && kill -0 "$(cat /run/niknegar/webbuild.pid)" 2>/dev/null; then :
+  elif [ $(( $(date +%s) - last )) -lt 21600 ] && [ "${1:-}" != "--build-now" ]; then log "web rebuild needed, but one was tried less than 6 h ago"
+  else
+    date +%s > /var/lib/niknegar-webbuild.last
+    setsid nohup bash -c "echo \"=== \$(date -Is) build web\"; cd $DEPLOY && docker compose build web && docker compose up -d web && echo BUILD-OK || echo BUILD-FAILED" >> /var/log/niknegar-webbuild.log 2>&1 < /dev/null &
+    echo $! > /run/niknegar/webbuild.pid
+    log "web rebuild started in the background (log: /var/log/niknegar-webbuild.log)"
+  fi
+fi
+
 chown -R www-data:www-data "$PUB" 2>/dev/null
 exit 0

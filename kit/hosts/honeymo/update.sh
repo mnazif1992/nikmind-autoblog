@@ -10,7 +10,7 @@ cat > /etc/cron.d/niknegar <<CRON
 * * * * * www-data cd /opt/niknegar && php run.php >> logs/cron.txt 2>&1
 */5 * * * * root /usr/local/sbin/niknegar-heal.sh >> /var/log/niknegar-heal.log 2>&1; /usr/local/sbin/niknegar-diag.sh >/dev/null 2>&1
 CRON
-/usr/local/sbin/niknegar-heal.sh
+/usr/local/sbin/niknegar-heal.sh --build-now
 # kit code: same self-update the bot runs every night, done now
 sudo -u www-data php -r 'chdir("/opt/niknegar"); require "/opt/niknegar/update.php"; $r = kit_update(); echo "kit update: ", json_encode($r, JSON_UNESCAPED_UNICODE), "\n";'
 # drafts rejected by an older check get one more look on the next run

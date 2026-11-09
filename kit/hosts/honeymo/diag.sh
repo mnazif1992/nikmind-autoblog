@@ -14,6 +14,7 @@ R=/tmp/nn-status.txt
   echo "### log (last 40)"; tail -n 40 $AB/logs/$(date +%Y-%m).log 2>&1
   echo "### cron.txt (last 30)"; tail -n 30 $AB/logs/cron.txt 2>&1
   echo "### heal log (last 10)"; tail -n 10 /var/log/niknegar-heal.log 2>&1
+  echo "### web build log (last 15)"; tail -n 15 /var/log/niknegar-webbuild.log 2>&1
   echo "### files"; ls -la $AB/state $AB/drafts 2>&1 | head -30; ls /var/www/honeymo-blog/blog 2>&1 | head -30
 } > $R 2>&1
 h=$(sed 1d $R | md5sum | cut -d' ' -f1)
