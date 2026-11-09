@@ -513,7 +513,7 @@ function publish_side_effects(string $lang, array $a): array {
 
 function indexnow(array $urls): string {
     if (!INDEXNOW_KEY) return 'no key';
-    $r = http('https://api.indexnow.org/indexnow', ['host' => (string)parse_url(SITE, PHP_URL_HOST), 'key' => INDEXNOW_KEY,
+    $r = http((string)site('indexnow_endpoint', 'https://api.indexnow.org/indexnow'), ['host' => (string)parse_url(SITE, PHP_URL_HOST), 'key' => INDEXNOW_KEY,
         'keyLocation' => SITE . '/' . INDEXNOW_KEY . '.txt', 'urlList' => $urls], 20);
     return (string)$r['code'];
 }

@@ -6,6 +6,8 @@ declare(strict_types=1);
 define('COVER_DIR', PUB . '/' . trim((string)site('covers_path', 'blog/assets/covers'), '/'));
 define('COVER_URL', SITE . '/' . trim((string)site('covers_path', 'blog/assets/covers'), '/'));
 
+/** Hosts that block image CDNs (e.g. servers in Iran) fetch photos through a small proxy on another server: site.json "image_proxy". */
+function image_fetch_url(string $u): string { $p = (string)site('image_proxy', ''); return $p === '' ? $u : $p . rawurlencode($u); }
 function openverse_search(string $q, string $sources = ''): array {
     $p = ['q' => $q, 'license' => 'cc0,pdm', 'category' => 'photograph', 'mature' => 'false', 'page_size' => 20];
     if ($sources !== '') $p['source'] = $sources;
@@ -48,7 +50,7 @@ function attach_cover(array $a, array &$s, bool $next = false): array {
                 if (preg_match(bad_photo_re(), $txt)) { $skip['topic'] = ($skip['topic'] ?? 0) + 1; continue; }
                 $w = (int)($img['width'] ?? 0); $h = (int)($img['height'] ?? 0);
                 if ($w < 1000 || $h < 600 || $w < $h * 1.25 || $w * $h > 40000000) { $skip['size'] = ($skip['size'] ?? 0) + 1; continue; }
-                $file = http((string)$img['url'], null, 60);
+                $file = http(image_fetch_url((string)$img['url']), null, 60);
                 if ($file['code'] !== 200 || strlen($file['body']) < 20000) { $skip['download'] = ($skip['download'] ?? 0) + 1; continue; }
                 $srcImg = @imagecreatefromstring($file['body']);
                 if (!$srcImg) { $skip['decode'] = ($skip['decode'] ?? 0) + 1; continue; }
