@@ -1,0 +1,11 @@
+{
+  "site_name": "کلینیک نمونه",
+  "url": "https://blog.example.com",
+  "posts_per_day": 2,
+  "internal_links": [3, 6],
+  "image_query_banned_words": [],
+  "langs": [
+    {"code": "fa", "label": "فارسی", "base": "/blog/", "cta": "/#contact", "min_words": 900, "target_words": [1100, 1600], "banned": []},
+    {"code": "en", "label": "English", "base": "/en/blog/", "cta": "/en/#contact", "min_words": 900, "target_words": [1000, 1500], "banned": []}
+  ]
+}

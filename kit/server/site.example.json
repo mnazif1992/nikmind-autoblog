@@ -1,0 +1,65 @@
+{
+  "site_name": "کلینیک نمونه",
+  "url": "https://blog.example.com",
+  "public_html": "/home/USER/domains/blog.example.com/public_html",
+  "content_repo": "GITHUB_USER/example-content",
+  "timezone": "Asia/Tehran",
+
+  "posts_per_day": 2,
+  "daily_write_time": "06:47",
+  "publish_slots": ["11:00", "20:00"],
+  "slot_jitter_minutes": [7, 25],
+  "ondemand_check": {"minute": 23, "from": 8, "to": 23},
+
+  "publisher_type": "Organization",
+  "logo": "/images/logo.png",
+  "author_image": "/images/author.jpg",
+  "default_og_image": "/images/og.jpg",
+  "covers_path": "blog/assets/covers",
+  "sitemaps": ["/sitemap.xml"],
+  "link_targets": ["/#contact", "/about/"],
+  "min_internal_links": 2,
+
+  "clusters": {"guides": "راهنماها", "faq": "پرسش‌های رایج", "local": "شهرها و کشورها"},
+  "fallback_image_queries": ["city street", "person laptop"],
+  "bad_photo_words": [],
+
+  "kit_repo": "mnazif1992/nikmind-autoblog",
+  "kit_path": "kit/server",
+  "kit_branch": "main",
+  "auto_update": true,
+
+  "langs": [
+    {
+      "code": "fa",
+      "base": "/blog/",
+      "home": "/",
+      "cta": "/#contact",
+      "cta_text": "رزرو مشاوره",
+      "author": "دکتر نام نویسنده",
+      "author_url": "/about/",
+      "author_title": "عنوان و تخصص نویسنده",
+      "disclaimer": "",
+      "publisher": "کلینیک نمونه",
+      "suffix": " | کلینیک نمونه",
+      "blog_title": "مقالات کلینیک نمونه",
+      "blog_description": "یک جمله درباره‌ی این‌که این بلاگ برای چه کسی است.",
+      "min_words": 900
+    },
+    {
+      "code": "en",
+      "base": "/en/blog/",
+      "home": "/en/",
+      "cta": "/en/#contact",
+      "cta_text": "Book a consultation",
+      "author": "Dr. Author Name",
+      "author_url": "/en/about/",
+      "author_title": "Title and specialty",
+      "publisher": "Example Clinic",
+      "suffix": " | Example Clinic",
+      "blog_title": "Example Clinic articles",
+      "blog_description": "One sentence about who this blog is for.",
+      "min_words": 900
+    }
+  ]
+}

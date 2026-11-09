@@ -1,0 +1,10 @@
+[
+ {
+  "id": "T001",
+  "slug": "example-first-topic",
+  "keywords": {"fa": "کلمه‌ی کلیدی نمونه", "en": "example keyword"},
+  "cluster": "guides",
+  "angle": "برای چه کسی است و دقیقاً به کدام سؤالش جواب می‌دهد",
+  "status": "queued"
+ }
+]

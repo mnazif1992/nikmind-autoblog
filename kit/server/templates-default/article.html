@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{SEO_TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<meta name="robots" content="{{ROBOTS}}">
+<link rel="canonical" href="{{URL}}">
+{{HREFLANG}}
+<meta property="og:type" content="article">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESC}}">
+<meta property="og:url" content="{{URL}}">
+<meta property="og:image" content="{{OG_IMAGE}}">
+<meta property="article:published_time" content="{{ISO}}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" href="{{FEED_URL}}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+{{LD}}
+<style>
+/* Nik-Negar default article template. Replace the header/footer/colors with the site's own (see docs/PLAYBOOK.md, step 5). */
+:root{--bg:#fbfaf7;--card:#fff;--text:#1d2329;--muted:#5d6670;--line:#e8e4dc;--accent:#2f6f8f;--accent-soft:#e7f0f4;--radius:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Vazirmatn,Inter,Tahoma,system-ui,sans-serif;line-height:1.9;font-size:17px}
+html[lang=en] body{font-family:Inter,system-ui,sans-serif;line-height:1.75}
+a{color:var(--accent)}
+.nn-wrap{max-width:760px;margin:0 auto;padding:0 18px}
+.nn-head{border-bottom:1px solid var(--line);background:var(--card)}
+.nn-head .nn-wrap{display:flex;align-items:center;gap:16px;min-height:62px;max-width:1100px}
+.nn-brand{font-weight:800;color:var(--text);text-decoration:none;font-size:18px}
+.nn-nav{display:flex;gap:16px;margin-inline-start:auto;align-items:center;font-size:15px}
+.nn-nav a{color:var(--muted);text-decoration:none}.nn-nav a:hover{color:var(--accent)}
+.nn-crumbs{font-size:14px;color:var(--muted);margin:28px 0 8px}.nn-crumbs a{color:var(--muted);text-decoration:none}
+h1{font-size:clamp(28px,4.4vw,40px);line-height:1.35;margin:6px 0 14px;font-weight:800;letter-spacing:-.01em}
+.nn-meta{display:flex;flex-wrap:wrap;gap:6px 14px;color:var(--muted);font-size:14.5px;margin-bottom:24px}
+.nn-meta a{color:inherit}
+.nn-cover{margin:0 0 26px}.nn-cover img{width:100%;height:auto;border-radius:var(--radius);display:block;aspect-ratio:3/2;object-fit:cover}
+.nn-cover figcaption{font-size:12px;color:var(--muted);margin-top:6px}.nn-cover figcaption a{color:inherit}
+.nn-toc{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px 18px;margin:0 0 28px}
+.nn-toc summary{cursor:pointer;font-weight:600}.nn-toc ol{margin:10px 0 4px;padding-inline-start:22px}.nn-toc a{color:var(--text);text-decoration:none}
+.nn-prose h2{font-size:25px;line-height:1.45;margin:42px 0 10px;scroll-margin-top:20px}
+.nn-prose h3{font-size:19.5px;margin:28px 0 6px}
+.nn-prose p,.nn-prose li{margin:0 0 14px}
+.nn-prose blockquote{margin:22px 0;padding:10px 18px;border-inline-start:4px solid var(--accent);background:var(--accent-soft);border-radius:8px}
+.nn-prose table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15px}.nn-prose th,.nn-prose td{border:1px solid var(--line);padding:8px 10px}
+.nn-cta{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;background:var(--accent);color:#fff;border-radius:var(--radius);padding:20px 22px;margin:40px 0}
+.nn-cta b{font-size:18px}.nn-cta a{background:#fff;color:var(--accent);text-decoration:none;font-weight:700;border-radius:10px;padding:10px 18px}
+.nn-author{display:flex;gap:14px;border-top:1px solid var(--line);padding-top:22px;margin-top:34px;font-size:15px;color:var(--muted)}
+.nn-author b{color:var(--text);display:block}
+.nn-related{max-width:1100px;margin:46px auto 0;padding:0 18px}
+.nn-related h2{font-size:22px;margin:0 0 16px}
+.nn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+.nn-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;color:var(--text);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.nn-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(20,30,40,.08)}
+.nn-card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--line)}
+.nn-card-body{padding:14px 16px 16px}.nn-card h3{font-size:17px;line-height:1.55;margin:0 0 6px}
+.nn-card p{font-size:14.5px;color:var(--muted);margin:0 0 10px;line-height:1.7}
+.nn-card-meta{display:flex;gap:12px;font-size:12.5px;color:var(--muted)}
+.nn-foot{border-top:1px solid var(--line);margin-top:56px;padding:22px 0 30px;color:var(--muted);font-size:14px}
+.nn-foot .nn-wrap{max-width:1100px;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}
+@media (max-width:600px){body{font-size:16px}.nn-nav .nn-hide{display:none}}
+</style>
+</head>
+<body>
+<header class="nn-head"><div class="nn-wrap">
+  <a class="nn-brand" href="{{HOME_URL}}">{{SITE_NAME}}</a>
+  <nav class="nn-nav"><a class="nn-hide" href="{{HOME_URL}}">{{HOME_NAME}}</a><a href="{{BLOG_URL}}">{{BLOG_NAME}}</a>{{LANG_SWITCH}}</nav>
+</div></header>
+
+<main class="nn-wrap">
+  <nav class="nn-crumbs"><a href="{{HOME_URL}}">{{HOME_NAME}}</a> / <a href="{{BLOG_URL}}">{{BLOG_NAME}}</a></nav>
+  <article>
+    <h1>{{TITLE}}</h1>
+    <div class="nn-meta"><span>{{AUTHOR_HTML}}</span><span>{{TIME}}</span><span>{{READ}}</span></div>
+    {{COVER}}
+    {{TOC}}
+    <div class="nn-prose">{{PROSE}}</div>
+    <aside class="nn-cta"><b>{{SITE_NAME}}</b><a href="{{CTA_URL}}">{{CTA_TEXT}}</a></aside>
+    <div class="nn-author"><div><b>{{AUTHOR_NAME}}</b>{{AUTHOR_BIO}}</div></div>
+  </article>
+</main>
+
+<section class="nn-related">
+  <h2>{{RELATED_TITLE}}</h2>
+  <div class="nn-grid">{{RELATED}}</div>
+</section>
+
+<footer class="nn-foot"><div class="nn-wrap"><span>© {{YEAR}} {{SITE_NAME}}</span><a href="{{FEED_URL}}">RSS</a></div></footer>
+</body>
+</html>

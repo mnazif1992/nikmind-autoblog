@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="{{LANG}}" dir="{{DIR}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{BLOG_TITLE}}</title>
+<meta name="description" content="{{BLOG_DESC}}">
+<meta name="robots" content="{{ROBOTS}}">
+<link rel="canonical" href="{{URL}}">
+{{HREFLANG}}
+<link rel="alternate" type="application/rss+xml" href="{{FEED_URL}}">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* Nik-Negar default blog index. If you rebuild this page by hand, keep the two nn:cards comment markers around the cards. */
+:root{--bg:#fbfaf7;--card:#fff;--text:#1d2329;--muted:#5d6670;--line:#e8e4dc;--accent:#2f6f8f;--radius:14px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Vazirmatn,Inter,Tahoma,system-ui,sans-serif;line-height:1.85}
+html[lang=en] body{font-family:Inter,system-ui,sans-serif}
+.nn-wrap{max-width:1100px;margin:0 auto;padding:0 18px}
+.nn-head{border-bottom:1px solid var(--line);background:var(--card)}
+.nn-head .nn-wrap{display:flex;align-items:center;gap:16px;min-height:62px}
+.nn-brand{font-weight:800;color:var(--text);text-decoration:none;font-size:18px}
+.nn-nav{display:flex;gap:16px;margin-inline-start:auto;font-size:15px}.nn-nav a{color:var(--muted);text-decoration:none}
+.nn-hero{padding:46px 0 26px}.nn-hero h1{font-size:clamp(28px,4.4vw,40px);margin:0 0 8px;line-height:1.35}.nn-hero p{color:var(--muted);margin:0;max-width:640px}
+.nn-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px;padding-bottom:30px}
+.nn-card{display:block;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;color:var(--text);text-decoration:none;transition:transform .15s,box-shadow .15s}
+.nn-card:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(20,30,40,.08)}
+.nn-card img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;background:var(--line)}
+.nn-card-body{padding:14px 16px 16px}.nn-card h3{font-size:17.5px;line-height:1.55;margin:0 0 6px}
+.nn-card p{font-size:14.5px;color:var(--muted);margin:0 0 10px;line-height:1.7}
+.nn-card-meta{display:flex;gap:12px;font-size:12.5px;color:var(--muted)}
+.nn-empty{color:var(--muted);grid-column:1/-1;padding:40px 0}
+.nn-foot{border-top:1px solid var(--line);margin-top:30px;padding:22px 0 30px;color:var(--muted);font-size:14px}
+.nn-foot .nn-wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between}.nn-foot a{color:inherit}
+</style>
+</head>
+<body>
+<header class="nn-head"><div class="nn-wrap">
+  <a class="nn-brand" href="{{HOME_URL}}">{{SITE_NAME}}</a>
+  <nav class="nn-nav"><a href="{{HOME_URL}}">{{HOME_NAME}}</a>{{LANG_SWITCH}}</nav>
+</div></header>
+<main class="nn-wrap">
+  <section class="nn-hero"><h1>{{BLOG_TITLE}}</h1><p>{{BLOG_DESC}}</p></section>
+  <div class="nn-grid">{{CARDS}}</div>
+</main>
+<footer class="nn-foot"><div class="nn-wrap"><span>© {{YEAR}} {{SITE_NAME}}</span><a href="{{FEED_URL}}">RSS</a></div></footer>
+</body>
+</html>

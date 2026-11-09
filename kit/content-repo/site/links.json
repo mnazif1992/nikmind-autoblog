@@ -1,0 +1,12 @@
+{
+  "fa": [
+    {"url": "/", "title": "صفحه‌ی اصلی"},
+    {"url": "/#contact", "title": "رزرو مشاوره (دعوت به اقدام)"},
+    {"url": "/about/", "title": "درباره‌ی نویسنده"}
+  ],
+  "en": [
+    {"url": "/en/", "title": "Home"},
+    {"url": "/en/#contact", "title": "Book a consultation (call to action)"},
+    {"url": "/en/about/", "title": "About the author"}
+  ]
+}

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>نیک‌نگار</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+@font-face{font-family:Vazirmatn;src:url(/blog/assets/fonts/ab35d003-11eb-422a-a217-49310806b33b.woff2) format("woff2");font-display:swap}
+:root{
+  --bg:var(--tg-theme-secondary-bg-color,#f2f6f6);
+  --card:var(--tg-theme-section-bg-color,var(--tg-theme-bg-color,#ffffff));
+  --text:var(--tg-theme-text-color,#18262d);
+  --hint:var(--tg-theme-hint-color,#80909a);
+  --danger:var(--tg-theme-destructive-text-color,#d4574e);
+  --blue:#3d8fc4; --mint:#4fb096; --peach:#e39367;
+  --line:color-mix(in srgb,var(--hint) 18%,transparent);
+  --blue-soft:color-mix(in srgb,var(--blue) 12%,var(--card));
+  --mint-soft:color-mix(in srgb,var(--mint) 14%,var(--card));
+  --peach-soft:color-mix(in srgb,var(--peach) 15%,var(--card));
+  --r:18px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 Vazirmatn,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit}
+main{padding:16px 14px 96px;max-width:620px;margin:0 auto}
+
+/* header */
+.top{display:flex;align-items:center;gap:12px;margin:2px 2px 16px}
+.logo{width:46px;height:46px;border-radius:14px;background:#fff url(/blog/assets/img/12a7b8f4-3b62-48d5-9eb2-6fae242db22f.webp) center/78% no-repeat;box-shadow:0 1px 0 var(--line),0 4px 14px rgba(20,60,80,.08);flex:none}
+.brand{flex:1;min-width:0}
+.brand h1{margin:0;font-size:21px;font-weight:800;letter-spacing:-.2px;line-height:1.3}
+.brand p{margin:0;color:var(--hint);font-size:12.5px}
+.iconbtn{width:38px;height:38px;border-radius:12px;border:0;background:var(--card);display:grid;place-items:center;cursor:pointer;flex:none}
+.iconbtn svg{width:19px;height:19px;stroke:var(--hint)}
+.iconbtn.spin svg{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(-360deg)}}
+
+/* hero */
+.hero{border-radius:var(--r);padding:16px;margin-bottom:14px;background:
+  radial-gradient(120% 140% at 100% 0%,color-mix(in srgb,var(--mint) 22%,transparent),transparent 60%),
+  radial-gradient(120% 140% at 0% 100%,color-mix(in srgb,var(--blue) 20%,transparent),transparent 60%),var(--card)}
+.hero .head{font-weight:800;font-size:16.5px;margin:0 0 2px}
+.hero .note{color:var(--hint);font-size:13px;margin:0 0 14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:color-mix(in srgb,var(--card) 82%,transparent);border-radius:14px;padding:10px 8px;text-align:center;backdrop-filter:blur(6px)}
+.stat b{display:block;font-size:22px;line-height:1.2;font-weight:800}
+.stat span{font-size:11.5px;color:var(--hint)}
+.stat.p b{color:var(--peach)} .stat.q b{color:var(--blue)} .stat.d b{color:var(--mint)}
+.next{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:13px;color:var(--hint)}
+.next svg{width:16px;height:16px;stroke:var(--blue);flex:none}
+.next b{color:var(--text)}
+
+/* grouped list (settings) */
+.sec{font-size:12.5px;color:var(--hint);font-weight:700;margin:20px 6px 8px}
+.group{background:var(--card);border-radius:var(--r);overflow:hidden}
+.item{display:flex;align-items:center;gap:12px;padding:13px 14px}
+.item+.item{border-top:1px solid var(--line)}
+.ico{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex:none;font-size:17px}
+.ico.b{background:var(--blue-soft)} .ico.m{background:var(--mint-soft)} .ico.p{background:var(--peach-soft)}
+.item .txt{flex:1;min-width:0}
+.item .t{font-weight:700;font-size:14.5px;line-height:1.4}
+.item .d{color:var(--hint);font-size:12.5px;line-height:1.5}
+.val{color:var(--hint);font-size:13.5px;white-space:nowrap}
+.switch{position:relative;width:48px;height:29px;flex:none}
+.switch input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer;z-index:1}
+.switch span{position:absolute;inset:0;background:var(--line);border-radius:99px;transition:background .2s}
+.switch span:before{content:"";position:absolute;width:23px;height:23px;top:3px;right:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
+.switch input:checked+span{background:var(--mint)}
+.switch input:checked+span:before{transform:translateX(-19px)}
+.switch.b input:checked+span{background:var(--blue)}
+
+/* tabs */
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);background:var(--card);border-radius:14px;padding:4px;margin:0 0 12px}
+.tab{border:0;background:transparent;color:var(--hint);font-size:13px;font-weight:700;padding:8px 4px;border-radius:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px}
+.tab i{font-style:normal;font-size:11px;min-width:20px;height:20px;line-height:20px;border-radius:99px;background:var(--bg);padding:0 6px}
+.tab.on{background:var(--blue);color:#fff}
+.tab.on i{background:rgba(255,255,255,.22)}
+
+/* post cards */
+.post{background:var(--card);border-radius:var(--r);overflow:hidden;margin-bottom:14px;box-shadow:0 1px 0 var(--line)}
+.cover{position:relative;aspect-ratio:16/9;background:var(--blue-soft) center/cover no-repeat}
+.cover:after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(transparent,rgba(0,0,0,.38))}
+.cover .badge{position:absolute;top:10px;right:10px;z-index:1}
+.cover .when{position:absolute;bottom:8px;left:12px;z-index:1;color:#fff;font-size:12px;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+.badge{font-size:11.5px;font-weight:800;padding:4px 10px;border-radius:99px;background:#fff;color:#18262d}
+.badge.pending{color:#b2622f} .badge.queued{color:var(--blue)} .badge.published{color:#2b8a70}
+.pbody{padding:13px 15px 15px}
+.pbody h3{margin:0 0 3px;font-size:16px;line-height:1.6;font-weight:800}
+.pbody .en{direction:ltr;text-align:left;color:var(--hint);font-size:12.5px;margin:0 0 10px;line-height:1.45}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.chip{font-size:12px;padding:3px 10px;border-radius:99px;background:var(--bg);color:var(--hint)}
+.links{display:flex;gap:8px;margin-bottom:12px}
+.links a{flex:1;text-align:center;font-size:12.5px;font-weight:700;text-decoration:none;color:var(--blue);background:var(--blue-soft);padding:8px 6px;border-radius:11px}
+.primary{width:100%;border:0;border-radius:13px;padding:12px;background:var(--blue);color:#fff;font-weight:800;font-size:14.5px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.primary svg{width:18px;height:18px;stroke:#fff}
+.row3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.row3.row2{grid-template-columns:repeat(2,1fr)}
+.ghost{border:0;border-radius:12px;padding:9px 4px;background:var(--bg);font-size:12.5px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
+.ghost svg{width:16px;height:16px;stroke:currentColor}
+.ghost.red{color:var(--danger)}
+button[disabled]{opacity:.45;pointer-events:none}
+
+.empty{text-align:center;color:var(--hint);padding:38px 16px;background:var(--card);border-radius:var(--r);font-size:14px}
+.empty b{display:block;color:var(--text);font-size:15px;margin-bottom:4px}
+.skel{height:230px;border-radius:var(--r);background:linear-gradient(100deg,var(--card) 40%,var(--bg) 50%,var(--card) 60%);background-size:300% 100%;animation:sh 1.3s infinite;margin-bottom:14px}
+@keyframes sh{to{background-position:-150% 0}}
+.err{background:var(--card);border-radius:var(--r);padding:22px 18px;text-align:center;color:var(--hint)}
+.foot{text-align:center;color:var(--hint);font-size:12px;margin:26px 0 6px;line-height:1.9}
+.foot b{color:var(--text);font-weight:700}
+.fab{position:fixed;inset-inline:14px;bottom:16px;max-width:592px;margin:0 auto;border:0;border-radius:15px;padding:14px;background:var(--blue);color:#fff;font-weight:800;font-size:15px;box-shadow:0 8px 24px rgba(61,143,196,.35);display:none;cursor:pointer}
+.toast{position:fixed;inset-inline:16px;top:14px;max-width:420px;margin:0 auto;background:var(--text);color:var(--card);padding:11px 14px;border-radius:13px;font-size:13.5px;opacity:0;transform:translateY(-8px);transition:.25s;pointer-events:none;text-align:center;z-index:9}
+.toast.show{opacity:1;transform:none}
+/* views */
+.views{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:4px 0 6px}
+.view{border:0;border-radius:14px;background:var(--card);padding:10px 4px;font-size:13px;font-weight:800;color:var(--hint);cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+.view span{font-size:18px;line-height:1.2}
+.view.on{color:var(--blue);box-shadow:inset 0 0 0 2px var(--blue)}
+.pane[hidden]{display:none}
+/* keywords */
+.form{background:var(--card);border-radius:var(--r);padding:14px}
+.form label{display:block;font-size:12.5px;font-weight:700;color:var(--hint);margin:0 2px 5px}
+.form input,.form select,.form textarea{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:12px;padding:10px 12px;font:inherit;font-size:14px;margin-bottom:10px;outline:none}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:var(--blue)}
+.form .ltr{direction:ltr;text-align:left}
+.form textarea{min-height:58px;resize:vertical}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.notice{background:var(--peach-soft);color:var(--text);border-radius:14px;padding:12px 14px;font-size:13px;margin-bottom:12px}
+.kw{display:flex;align-items:center;gap:10px;padding:11px 12px}
+.kw+.kw{border-top:1px solid var(--line)}
+.kw .n{width:26px;height:26px;border-radius:9px;background:var(--bg);display:grid;place-items:center;font-size:12px;font-weight:800;color:var(--hint);flex:none}
+.kw .n.next{background:var(--blue);color:#fff}
+.kw .txt{flex:1;min-width:0}
+.kw .fa{font-weight:700;font-size:14px;line-height:1.5}
+.kw .en{direction:ltr;text-align:left;font-size:12px;color:var(--hint)}
+.kw .cl{font-size:11px;color:var(--hint);background:var(--bg);border-radius:99px;padding:1px 8px;white-space:nowrap}
+.mini{border:0;width:32px;height:32px;border-radius:10px;background:var(--bg);display:grid;place-items:center;cursor:pointer;flex:none;font-size:14px}
+.mini.red{color:var(--danger)}
+details.used{background:var(--card);border-radius:var(--r);margin-top:12px;overflow:hidden}
+details.used summary{padding:12px 14px;font-weight:700;font-size:13.5px;cursor:pointer;color:var(--hint);list-style:none}
+details.used summary::-webkit-details-marker{display:none}
+.kwhead{display:flex;justify-content:space-between;align-items:center;margin:18px 6px 8px}
+.kwhead .sec{margin:0}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+</svg>
+<main>
+  <header class="top">
+    <div class="logo" aria-hidden="true"></div>
+    <div class="brand"><h1>نیک‌نگار</h1><p id="siteName">میز تحریریه‌ی بلاگ</p></div>
+    <button class="iconbtn" id="refresh" aria-label="به‌روزرسانی"><svg><use href="#i-refresh"/></svg></button>
+  </header>
+
+  <section class="hero">
+    <p class="head" id="heroHead">در حال بارگذاری…</p>
+    <p class="note" id="heroNote">&nbsp;</p>
+    <div class="stats">
+      <div class="stat p"><b id="sPending">–</b><span>منتظر تأیید</span></div>
+      <div class="stat q"><b id="sQueued">–</b><span>در صف انتشار</span></div>
+      <div class="stat d"><b id="sWeek">–</b><span>منتشر در ۷ روز</span></div>
+    </div>
+    <div class="next"><svg><use href="#i-clock"/></svg><span id="next">&nbsp;</span></div>
+  </section>
+
+  <nav class="views">
+    <button class="view on" data-view="drafts"><span>📝</span>پیش‌نویس‌ها</button>
+    <button class="view" data-view="topics"><span>🔑</span>کلمات کلیدی</button>
+    <button class="view" data-view="settings"><span>⚙️</span>تنظیمات</button>
+  </nav>
+
+  <section class="pane" id="vDrafts">
+  <p class="sec">پیش‌نویس‌ها</p>
+  <nav class="tabs">
+    <button class="tab on" data-tab="pending">منتظر<i id="cPending">۰</i></button>
+    <button class="tab" data-tab="queued">در صف<i id="cQueued">۰</i></button>
+    <button class="tab" data-tab="published">منتشرشده<i id="cPublished">۰</i></button>
+  </nav>
+  <div id="list"><div class="skel"></div><div class="skel"></div></div>
+  </section>
+
+  <section class="pane" id="vTopics" hidden>
+    <div id="kwNotice"></div>
+    <p class="sec">افزودن کلمه‌ی کلیدی</p>
+    <form class="form" id="kwForm" autocomplete="off">
+      <label for="kw1" id="kw1L">کلمه‌ی کلیدی</label>
+      <input id="kw1" maxlength="80">
+      <div id="kw2Box"><label for="kw2" id="kw2L">کلمه‌ی کلیدی زبان دوم</label>
+      <input id="kw2" maxlength="80"></div>
+      <div class="two">
+        <div><label for="kwCl">دسته</label><select id="kwCl"></select></div>
+        <div><label for="kwPos">جای در صف</label><select id="kwPos"><option value="end">آخر صف</option><option value="top">اول صف</option></select></div>
+      </div>
+      <label for="kwAngle">زاویه‌ی مقاله (اختیاری)</label>
+      <textarea id="kwAngle" placeholder="مثلاً: برای چه کسی است و چه سؤالی را جواب می‌دهد"></textarea>
+      <button class="primary" type="submit">➕ افزودن به صف</button>
+    </form>
+    <div class="kwhead"><p class="sec">صف نوشتن</p><span class="hint" id="kwCount" style="font-size:12.5px;color:var(--hint)"></span></div>
+    <div class="group" id="kwList"><div class="skel" style="height:140px;margin:0"></div></div>
+    <details class="used" id="kwUsedBox"><summary id="kwUsedSum">نوشته‌شده‌ها</summary><div id="kwUsed"></div></details>
+  </section>
+
+  <section class="pane" id="vSettings" hidden>
+  <p class="sec">تنظیمات</p>
+  <div class="group">
+    <div class="item">
+      <div class="ico m">🤖</div>
+      <div class="txt"><div class="t">انتشار خودکار</div><div class="d">پیش‌نویس‌ها بدون تأیید تو، در نوبت‌های روزانه منتشر می‌شوند</div></div>
+      <label class="switch"><input type="checkbox" id="auto" aria-label="انتشار خودکار"><span></span></label>
+    </div>
+    <div class="item">
+      <div class="ico b">⏻</div>
+      <div class="txt"><div class="t">سیستم فعال</div><div class="d">اگر خاموش باشد نه پیش‌نویس می‌آید نه چیزی منتشر می‌شود</div></div>
+      <label class="switch b"><input type="checkbox" id="active" aria-label="سیستم فعال"><span></span></label>
+    </div>
+    <div class="item">
+      <div class="ico p">🕰</div>
+      <div class="txt"><div class="t">نوبت‌های انتشار امروز</div><div class="d">هر روز با چند دقیقه جابه‌جایی تصادفی</div></div>
+      <span class="val" id="slots">–</span>
+    </div>
+    <div class="item">
+      <div class="ico b">✍️</div>
+      <div class="txt"><div class="t">مقاله‌ی روزانه</div><div class="d" id="writeDesc">&nbsp;</div></div>
+      <span class="val" id="writeVal"></span>
+    </div>
+  </div>
+  </section>
+
+  <p class="foot"><b>نیک‌نگار</b> · نسخه‌ی <span id="ver">۱</span><br>طراحی و ساخت: دکتر محمدرضا نظیف</p>
+</main>
+<button class="fab" id="fab">✍️ نوشتن مقاله‌ی جدید</button>
+<div class="toast" id="toast"></div>
+
+<script>
+const tg = window.Telegram && Telegram.WebApp && Telegram.WebApp.initData ? Telegram.WebApp : null;
+const BLUE = '#3d8fc4';
+const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+const $ = id => document.getElementById(id);
+const esc = s => String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+let S = null, T = null, tab = 'pending', view = 'drafts', busy = false;
+
+function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2600); }
+function haptic(k) { try { tg.HapticFeedback.notificationOccurred(k); } catch (e) {} }
+function tap() { try { tg.HapticFeedback.impactOccurred('light'); } catch (e) {} }
+function ask(text) { return new Promise(r => tg ? tg.showConfirm(text, r) : r(confirm(text))); }
+
+async function api(action, body = {}) {
+  const res = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Init-Data': tg ? tg.initData : '' },
+    body: JSON.stringify({ action, ...body }) });
+  const j = await res.json().catch(() => ({ ok: false, error: 'پاسخ نامعتبر از سرور' }));
+  if (!j.ok) throw new Error(j.error || 'خطا');
+  return j;
+}
+
+function render() {
+  if (!S) return;
+  const by = st => S.items.filter(i => i.status === st);
+  const nP = by('pending').length, nQ = by('queued').length, nD = by('published').length;
+  $('sPending').textContent = fa(nP); $('sQueued').textContent = fa(nQ); $('sWeek').textContent = fa(S.published_week ?? 0);
+  $('cPending').textContent = fa(nP); $('cQueued').textContent = fa(nQ); $('cPublished').textContent = fa(nD);
+  $('heroHead').textContent = S.paused ? '⏸ نیک‌نگار فعلاً متوقف است'
+    : nP ? fa(nP) + ' پیش‌نویس منتظر نگاه توست' : nQ ? 'همه‌چیز مرتب است؛ ' + fa(nQ) + ' مقاله در صف انتشار' : 'همه‌چیز مرتب است';
+  $('heroNote').textContent = S.auto ? 'حالت خودکار روشن است؛ پیش‌نویس‌ها بدون تأیید در نوبت منتشر می‌شوند.'
+    : 'حالت بازبینی: هر مقاله فقط بعد از تأیید تو منتشر می‌شود.';
+  $('next').innerHTML = 'انتشار بعدی: <b>' + esc(S.next) + '</b>' + (S.write_pending ? ' · ' + fa(S.write_pending) + ' مقاله در حال نوشتن' : '');
+  $('auto').checked = !!S.auto; $('active').checked = !S.paused;
+  $('slots').textContent = S.slots.map(fa).join(' و ');
+  $('writeVal').textContent = S.write_pending ? fa(S.write_pending) + ' در صف' : '';
+  if (S.site) $('siteName').textContent = 'میز تحریریه‌ی بلاگ ' + S.site;
+  $('writeDesc').textContent = 'هر روز ساعت ' + fa(S.write_time) + ' ' + fa(S.per_day) + ' مقاله' + (S.langs.length > 1 ? ' (' + S.langs.map(l => l.label).join(' و ') + ')' : '') + ' نوشته می‌شود';
+  $('ver').textContent = fa(S.version || '1');
+  document.querySelectorAll('.tab').forEach(b => b.classList.toggle('on', b.dataset.tab === tab));
+  let items = by(tab);
+  if (tab === 'queued') items.sort((a, b) => (a.queue_pos || 99) - (b.queue_pos || 99));
+  const empty = {
+    pending: ['چیزی منتظر تأیید نیست', 'پیش‌نویس بعدی فردا صبح می‌رسد، یا همین حالا یکی سفارش بده.'],
+    queued: ['صف انتشار خالی است', 'مقاله‌هایی که «در نوبت» بگذاری این‌جا می‌آیند.'],
+    published: ['هنوز چیزی منتشر نشده', 'اولین مقاله را از تب «منتظر» منتشر کن.'] }[tab];
+  $('list').innerHTML = items.length ? items.map(card).join('') : '<div class="empty"><b>' + empty[0] + '</b>' + empty[1] + '</div>';
+  setMain();
+}
+
+function card(i) {
+  const label = { pending: 'منتظر تأیید', queued: 'نوبت ' + fa(i.queue_pos || ''), published: 'منتشر شد' }[i.status];
+  const when = i.at ? new Date(i.at).toLocaleString('fa-IR', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' }) : '';
+  const g = (a, ic, t, cls) => '<button class="ghost ' + (cls || '') + '" data-a="' + a + '" data-k="' + i.key + '"><svg><use href="#i-' + ic + '"/></svg>' + t + '</button>';
+  let acts = '';
+  if (i.status === 'pending') acts = '<button class="primary" data-a="publish" data-k="' + i.key + '"><svg><use href="#i-send"/></svg>انتشار همین حالا</button>'
+    + '<div class="row3">' + g('approve', 'clock', 'در نوبت') + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
+  if (i.status === 'queued') acts = '<button class="primary" data-a="publish" data-k="' + i.key + '"><svg><use href="#i-send"/></svg>انتشار همین حالا</button>'
+    + '<div class="row3 row2">' + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
+  return '<article class="post">'
+    + '<div class="cover" style="background-image:url(\'' + esc(i.cover) + '\')"><span class="badge ' + i.status + '">' + label + '</span><span class="when">' + when + '</span></div>'
+    + '<div class="pbody"><h3>' + esc(i.title) + '</h3>' + (i.title2 ? '<p class="en" dir="auto">' + esc(i.title2) + '</p>' : '')
+    + '<div class="chips"><span class="chip">' + fa(i.words) + ' کلمه</span><span class="chip">' + esc(i.kw) + '</span></div>'
+    + '<div class="links">' + (i.links || []).map((l, n) => '<a href="' + esc(l.url) + '" data-link>' + (n ? esc(l.label) : (i.status === 'published' ? 'مقاله' : 'پیش‌نمایش') + ' ' + esc(l.label)) + '</a>').join('') + '</div>'
+    + acts + '</div></article>';
+}
+
+function setMain() {
+  const txt = S && S.write_pending ? '✍️ مقاله‌ی جدید (' + fa(S.write_pending) + ' در صف نوشتن)' : '✍️ نوشتن مقاله‌ی جدید';
+  if (tg) { tg.MainButton.setParams({ text: txt, color: BLUE, text_color: '#ffffff', is_visible: true }); }
+  else { $('fab').textContent = txt; $('fab').style.display = 'block'; }
+}
+
+async function load(spin) {
+  if (spin) $('refresh').classList.add('spin');
+  try { const j = await api('state'); S = j.state; render(); }
+  catch (e) { $('list').innerHTML = '<div class="err"><b style="display:block;color:var(--text);margin-bottom:4px">پنل باز نشد</b>' + esc(e.message) + '<br>نیک‌نگار را از داخل ربات تلگرام باز کن.</div>'; $('heroHead').textContent = 'نیک‌نگار'; }
+  finally { $('refresh').classList.remove('spin'); }
+}
+async function act(action, body, msg) {
+  if (busy) return; busy = true;
+  document.querySelectorAll('main button, main input').forEach(b => b.disabled = true);
+  if (tg) tg.MainButton.showProgress(false);
+  try { const j = await api(action, body); S = j.state; render(); haptic('success'); if (msg) toast(msg); }
+  catch (e) { haptic('error'); toast('خطا: ' + e.message); render(); }
+  finally { busy = false; document.querySelectorAll('main button, main input').forEach(b => b.disabled = false); if (tg) tg.MainButton.hideProgress(); }
+}
+async function requestWrite() {
+  tap();
+  if (!(await ask('یک مقاله‌ی تازه نوشته شود؟ پیش‌نویسش با عکس در تلگرام می‌آید.'))) return;
+  act('write', {}, 'سفارش ثبت شد؛ پیش‌نویس در تلگرام می‌آید');
+}
+
+function renderTopics() {
+  if (!T) return;
+  if (S && S.langs) {
+    const [a, b] = S.langs;
+    $('kw1L').textContent = 'کلمه‌ی کلیدی ' + a.label; $('kw1').dir = a.dir;
+    $('kw2Box').hidden = !b;
+    if (b) { $('kw2L').textContent = 'کلمه‌ی کلیدی ' + b.label + ' (برای نسخه‌ی ' + b.label + ')'; $('kw2').dir = b.dir; }
+  }
+  $('kwNotice').innerHTML = T.can_edit ? '' : '<div class="notice">فهرست را می‌بینی، ولی برای اضافه و حذف کردن، توکن گیت‌هاب باید یک بار در تنظیمات سرور گذاشته شود.</div>';
+  $('kwForm').style.display = T.can_edit ? '' : 'none';
+  if (!$('kwCl').options.length) $('kwCl').innerHTML = Object.entries(T.clusters).map(([k, v]) => '<option value="' + k + '"' + '' + '>' + v + '</option>').join('');
+  $('kwCount').textContent = fa(T.queued.length) + ' کلمه · حدود ' + fa(Math.ceil(T.queued.length / Math.max(1, (S && S.per_day) || 2))) + ' روز';
+  $('kwList').innerHTML = T.queued.length ? T.queued.map((k, i) => '<div class="kw"><span class="n' + (i < 2 ? ' next' : '') + '">' + fa(i + 1) + '</span>'
+    + '<div class="txt"><div class="fa" dir="auto">' + esc(k.k1) + '</div>' + (k.k2 ? '<div class="en" dir="auto">' + esc(k.k2) + '</div>' : '') + '</div>'
+    + '<span class="cl">' + esc(k.cluster_fa) + '</span>'
+    + (T.can_edit ? (i ? '<button class="mini" data-t="topic_top" data-id="' + k.id + '" title="اول صف">⬆</button>' : '')
+      + '<button class="mini red" data-t="topic_del" data-id="' + k.id + '" title="حذف">✕</button>' : '') + '</div>').join('')
+    : '<div class="empty" style="border-radius:0">صف خالی است؛ یک کلمه‌ی کلیدی اضافه کن.</div>';
+  $('kwUsedSum').textContent = 'نوشته‌شده‌ها (' + fa(T.done.length) + ')';
+  $('kwUsed').innerHTML = T.done.map(k => '<div class="kw"><div class="txt"><div class="fa" dir="auto">' + esc(k.k1) + '</div>' + (k.k2 ? '<div class="en" dir="auto">' + esc(k.k2) + '</div>' : '') + '</div><span class="cl">' + esc(k.drafted ? fa(k.drafted) : k.cluster_fa) + '</span></div>').join('');
+}
+async function loadTopics() {
+  try { const j = await api('topics'); T = j.topics; renderTopics(); }
+  catch (e) { $('kwList').innerHTML = '<div class="err">' + esc(e.message) + '</div>'; }
+}
+async function topicAct(action, body, msg) {
+  if (busy) return; busy = true;
+  document.querySelectorAll('#vTopics button, #vTopics input, #vTopics select, #vTopics textarea').forEach(b => b.disabled = true);
+  try { const j = await api(action, body); T = j.topics; renderTopics(); haptic('success'); if (msg) toast(msg); return true; }
+  catch (e) { haptic('error'); toast(e.message); return false; }
+  finally { busy = false; document.querySelectorAll('#vTopics button, #vTopics input, #vTopics select, #vTopics textarea').forEach(b => b.disabled = false); }
+}
+function showView(v) {
+  view = v;
+  document.querySelectorAll('.view').forEach(b => b.classList.toggle('on', b.dataset.view === v));
+  $('vDrafts').hidden = v !== 'drafts'; $('vTopics').hidden = v !== 'topics'; $('vSettings').hidden = v !== 'settings';
+  if (v === 'topics' && !T) loadTopics();
+}
+$('kwForm').addEventListener('submit', async e => {
+  e.preventDefault(); tap();
+  const two = S && S.langs.length > 1;
+  const body = { k1: $('kw1').value.trim(), k2: $('kw2').value.trim(), cluster: $('kwCl').value, angle: $('kwAngle').value.trim() };
+  if (!body.k1 || (two && !body.k2)) { toast(two ? 'کلمه‌ی کلیدی هر دو زبان را بنویس' : 'کلمه‌ی کلیدی را بنویس'); return; }
+  const ok = await topicAct('topic_add', body, 'به صف اضافه شد');
+  if (!ok) return;
+  if ($('kwPos').value === 'top') { const last = T.queued[T.queued.length - 1]; if (last) await topicAct('topic_top', { id: last.id }, 'اول صف قرار گرفت'); }
+  $('kw1').value = ''; $('kw2').value = ''; $('kwAngle').value = '';
+});
+
+document.addEventListener('click', async e => {
+  const v = e.target.closest('.view'); if (v) { tap(); showView(v.dataset.view); return; }
+  const k = e.target.closest('[data-t]');
+  if (k) {
+    tap();
+    if (k.dataset.t === 'topic_del' && !(await ask('این کلمه‌ی کلیدی از صف نوشتن حذف شود؟'))) return;
+    topicAct(k.dataset.t, { id: k.dataset.id }, k.dataset.t === 'topic_del' ? 'حذف شد' : 'رفت اول صف');
+    return;
+  }
+  const l = e.target.closest('[data-link]');
+  if (l) { e.preventDefault(); tg ? tg.openLink(l.href) : window.open(l.href); return; }
+  const t = e.target.closest('.tab'); if (t) { tap(); tab = t.dataset.tab; render(); return; }
+  const b = e.target.closest('button[data-a]'); if (!b) return;
+  const key = b.dataset.k, a = b.dataset.a;
+  tap();
+  if (a === 'publish' && !(await ask('همین حالا روی سایت منتشر شود؟'))) return;
+  if (a === 'reject' && !(await ask('این مقاله رد شود و پیش‌نمایشش از سایت برداشته شود؟'))) return;
+  act(a, { key }, { publish: 'منتشر شد ✅', approve: 'رفت در صف انتشار', reject: 'رد شد', cover: 'عکس عوض شد' }[a]);
+});
+$('auto').addEventListener('change', async e => {
+  const on = e.target.checked;
+  if (on && !(await ask('با روشن شدن انتشار خودکار، پیش‌نویس‌ها بدون تأیید تو در نوبت‌های روزانه منتشر می‌شوند. روشن شود؟'))) { e.target.checked = false; return; }
+  act('mode', { auto: on }, on ? 'انتشار خودکار روشن شد' : 'بازبینی دستی روشن شد');
+});
+$('active').addEventListener('change', e => act('pause', { paused: !e.target.checked }, e.target.checked ? 'نیک‌نگار فعال شد' : 'نیک‌نگار متوقف شد'));
+$('refresh').addEventListener('click', () => { tap(); load(true); });
+$('fab').addEventListener('click', requestWrite);
+
+if (tg) {
+  tg.ready(); tg.expand();
+  try { tg.setHeaderColor('secondary_bg_color'); tg.setBackgroundColor('secondary_bg_color'); } catch (e) {}
+  tg.MainButton.onClick(requestWrite);
+}
+load();
+setInterval(() => { if (!busy && document.visibilityState === 'visible') load(); }, 30000);
+</script>
+</body>
+</html>
