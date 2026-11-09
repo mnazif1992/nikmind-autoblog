@@ -212,7 +212,13 @@ function known_urls(): array {
     foreach (langs() as $l) { $urls[] = L($l)['home']; $urls[] = SITE . L($l)['base']; foreach (posts($l) as $p) $urls[] = post_url($l, $p['slug']); }
     foreach ((array)site('link_targets', []) as $u) $urls[] = abs_url((string)$u);
     foreach ((array)site('sitemaps', ['/sitemap.xml']) as $f) {
-        if (preg_match_all('#<loc>([^<]+)</loc>#', (string)@file_get_contents(PUB . '/' . ltrim($f, '/')), $m)) $urls = array_merge($urls, $m[1]);
+        $x = (string)@file_get_contents(PUB . '/' . ltrim($f, '/'));
+        if ($x === '') {   // the site's own sitemap is served by the app, not from public_html: fetch it (cached for an hour)
+            $c = AB . '/state/sitemap-' . substr(md5($f), 0, 8) . '.xml';
+            if (!is_file($c) || filemtime($c) < time() - 3600) { $r = http(SITE . '/' . ltrim($f, '/'), null, 20); if ($r['code'] === 200 && str_contains($r['body'], '<loc>')) @file_put_contents($c, $r['body']); }
+            $x = (string)@file_get_contents($c);
+        }
+        if (preg_match_all('#<loc>([^<]+)</loc>#', $x, $m)) $urls = array_merge($urls, array_map('trim', $m[1]));
     }
     return array_values(array_unique($urls));
 }

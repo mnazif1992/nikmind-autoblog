@@ -11,5 +11,9 @@ cat > /etc/cron.d/niknegar <<CRON
 */5 * * * * root /usr/local/sbin/niknegar-heal.sh >> /var/log/niknegar-heal.log 2>&1; /usr/local/sbin/niknegar-diag.sh >/dev/null 2>&1
 CRON
 /usr/local/sbin/niknegar-heal.sh
+# kit code: same self-update the bot runs every night, done now
+sudo -u www-data php -r 'chdir("/opt/niknegar"); require "/opt/niknegar/update.php"; $r = kit_update(); echo "kit update: ", json_encode($r, JSON_UNESCAPED_UNICODE), "\n";'
+# drafts rejected by an older check get one more look on the next run
+sudo -u www-data php -r 'require "/opt/niknegar/core.php"; $n = with_state(function (array &$s) { $n = 0; foreach ($s["drafts"] as $k => $d) if (($d["status"] ?? "") === "invalid") { unset($s["drafts"][$k]); $n++; } $s["fails"] = 0; return $n; }, 30); echo "invalid drafts to re-check: ", (int)$n, "\n";'
 /usr/local/sbin/niknegar-diag.sh --force
 echo "done"
