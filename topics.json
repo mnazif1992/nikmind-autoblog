@@ -37,7 +37,8 @@
   "en_keyword": "regret after moving abroad",
   "cluster": "migration",
   "angle": "حس پشیمانی بعد از مهاجرت: چه چیزی طبیعی است، چه چیزی هشدار است، و چطور با آن کنار بیاییم بدون تصمیم عجولانه",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-09"
  },
  {
   "id": "T005",
@@ -55,7 +56,8 @@
   "en_keyword": "farsi speaking therapist london",
   "cluster": "country",
   "angle": "پیدا کردن روانشناس فارسی‌زبان در لندن و بریتانیا؛ NHS، صف انتظار و جلسه‌ی آنلاین",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-09"
  },
  {
   "id": "T007",
