@@ -8,27 +8,35 @@ header('X-Robots-Tag: noindex');
 function out(array $x, int $code = 200): void { http_response_code($code); echo json_encode($x, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); exit; }
 
 $uid = 0; $user = [];
-$init = (string)($_SERVER['HTTP_X_INIT_DATA'] ?? '');
-if ($init !== '') {                                   // opened as a Telegram mini app: verify the signed initData
-    $pairs = [];
-    foreach (explode('&', $init) as $kv) { if ($kv === '') continue; [$k, $v] = array_pad(explode('=', $kv, 2), 2, ''); $pairs[rawurldecode($k)] = rawurldecode($v); }
-    $hash = $pairs['hash'] ?? '';
-    unset($pairs['hash']);
-    ksort($pairs);
-    $check = implode("\n", array_map(fn($k, $v) => "$k=$v", array_keys($pairs), $pairs));
-    $secret = hash_hmac('sha256', TG_BOT_TOKEN, 'WebAppData', true);
-    if ($hash === '' || !hash_equals(hash_hmac('sha256', $check, $secret), $hash)) out(['ok' => false, 'error' => 'دسترسی نداری'], 401);
+$req = json_decode((string)file_get_contents('php://input'), true) ?: [];
+$init = (string)($req['_init'] ?? ($_SERVER['HTTP_X_INIT_DATA'] ?? ''));
+if ($init !== '') {                                   // opened as a Telegram / Bale mini app: verify the signed initData
+    $hash = ''; $ok = false;
+    // Telegram and Bale sign the same way; clients differ in how spaces are encoded, so try both decodings
+    foreach (['rawurldecode', 'urldecode'] as $dec) {
+        $pairs = [];
+        foreach (explode('&', $init) as $kv) { if ($kv === '') continue; [$k, $v] = array_pad(explode('=', $kv, 2), 2, ''); $pairs[$dec($k)] = $dec($v); }
+        $hash = strtolower((string)($pairs['hash'] ?? ''));
+        unset($pairs['hash']);
+        ksort($pairs);
+        $check = implode("\n", array_map(fn($k, $v) => "$k=$v", array_keys($pairs), $pairs));
+        foreach ([hash_hmac('sha256', TG_BOT_TOKEN, 'WebAppData', true), hash_hmac('sha256', 'WebAppData', TG_BOT_TOKEN, true)] as $secret)
+            if ($hash !== '' && hash_equals(hash_hmac('sha256', $check, $secret), $hash)) { $ok = true; break 2; }
+    }
+    if (!$ok) {
+        logline('panel: init data rejected (' . ($req['_client'] ?? '?') . '; fields: ' . implode(',', array_keys($pairs)) . '; hash ' . ($hash === '' ? 'missing' : strlen($hash) . ' chars') . ')');
+        out(['ok' => false, 'error' => 'دسترسی نداری (امضای بله/تلگرام تأیید نشد)'], 401);
+    }
     if (time() - (int)($pairs['auth_date'] ?? 0) > 86400) out(['ok' => false, 'error' => 'نشست منقضی شده؛ پنل را دوباره باز کن'], 401);
     $user = json_decode($pairs['user'] ?? '{}', true) ?: [];
     $uid = (int)($user['id'] ?? 0);
 } else {                                              // opened from a signed link the bot sent (Bale, or any browser)
     $uid = panel_token_uid((string)($_SERVER['HTTP_X_PANEL_TOKEN'] ?? ''));
-    if (!$uid) out(['ok' => false, 'error' => 'لینک پنل منقضی شده؛ از ربات لینک تازه بگیر (/panel)'], 401);
+    if (!$uid) { logline('panel: opened without init data or link (' . ($req['_client'] ?? '?') . ')'); out(['ok' => false, 'error' => 'پنل را از دکمه‌ی «🗂 پنل» داخل ربات باز کن (یا از /panel لینک تازه بگیر)'], 401); }
     $user = ['id' => $uid, 'first_name' => member_name(state_load(), $uid)];
 }
-if (!in_array($uid, state_load()['chat_ids'], true)) out(['ok' => false, 'error' => 'دسترسی نداری'], 403);
+if (!in_array($uid, state_load()['chat_ids'], true)) { logline("panel: user $uid is not a member"); out(['ok' => false, 'error' => 'دسترسی نداری'], 403); }
 
-$req = json_decode((string)file_get_contents('php://input'), true) ?: [];
 $action = (string)($req['action'] ?? 'state');
 $key = preg_replace('/[^a-f0-9]/', '', (string)($req['key'] ?? ''));
 @set_time_limit(120);

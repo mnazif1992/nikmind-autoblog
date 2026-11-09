@@ -240,7 +240,10 @@ details.used summary::-webkit-details-marker{display:none}
 
 <script>
 const WA = (window.Bale && Bale.WebApp) || (window.Telegram && Telegram.WebApp) || null;   // Bale and Telegram mini apps share the same API shape
-const tg = WA && WA.initData ? WA : null;
+// initData normally comes from the SDK; some clients only put it in the URL (#tgWebAppData=...), so read that too
+const HASH_INIT = (() => { const m = (location.hash + '&' + location.search).match(/tgWebAppData=([^&]+)/); try { return m ? decodeURIComponent(m[1]) : ''; } catch (e) { return ''; } })();
+let INIT = (WA && WA.initData) || HASH_INIT;
+const tg = WA && (WA.initData || HASH_INIT) ? WA : null;
 const MB = tg && tg.MainButton ? tg.MainButton : null;                                      // Bale has no MainButton: the floating button is used instead
 const BLUE = '#3d8fc4';
 const fa = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
@@ -256,8 +259,10 @@ function tap() { try { tg.HapticFeedback.impactOccurred('light'); } catch (e) {}
 function ask(text) { return new Promise(r => tg && tg.showConfirm ? tg.showConfirm(text, r) : r(confirm(text))); }
 
 async function api(action, body = {}) {
-  const res = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Init-Data': tg ? tg.initData : '', 'X-Panel-Token': PANEL_TOKEN },
-    body: JSON.stringify({ action, ...body }) });
+  if (!INIT && WA && WA.initData) INIT = WA.initData;
+  // init data travels in the body: a header cannot carry non-Latin characters, and some clients do not URL-encode it
+  const res = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Panel-Token': PANEL_TOKEN },
+    body: JSON.stringify({ action, ...body, _init: INIT, _client: WA ? (window.Bale && Bale.WebApp === WA ? 'bale ' : 'telegram ') + (WA.version || '') : 'browser' }) });
   const j = await res.json().catch(() => ({ ok: false, error: 'پاسخ نامعتبر از سرور' }));
   if (!j.ok) throw new Error(j.error || 'خطا');
   return j;
@@ -421,7 +426,10 @@ if (tg) {
       rs.setProperty('--tg-theme-' + k.replace(/_/g, '-'), tp[k]);
   } catch (e) {}
 }
-load();
+(async () => {                                    // the Bale SDK can fill initData a moment after the page loads
+  for (let i = 0; i < 15 && WA && !INIT; i++) { await new Promise(r => setTimeout(r, 100)); INIT = WA.initData || ''; }
+  load();
+})();
 setInterval(() => { if (!busy && document.visibilityState === 'visible') load(); }, 30000);
 </script>
 </body>
