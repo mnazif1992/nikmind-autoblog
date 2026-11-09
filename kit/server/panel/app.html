@@ -27,6 +27,12 @@ window.addEventListener('error', function (e) { nnLog({err: String(e.message || 
   --r:18px;
 }
 html.dark{--bg:#14171a;--card:#1d2125;--text:#e6ecef;--hint:#8a969e}
+.nn-dlg{position:fixed;inset:0;background:rgba(10,20,25,.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.nn-dlg .box{background:var(--card);color:var(--text);border-radius:16px;padding:18px 18px 14px;max-width:360px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.nn-dlg p{margin:0 0 14px;line-height:1.9}
+.nn-dlg .row{display:flex;gap:8px;justify-content:flex-start}
+.nn-dlg button{border:0;border-radius:11px;padding:9px 18px;font-weight:700;cursor:pointer}
+.nn-dlg .yes{background:var(--blue);color:#fff}.nn-dlg .no{background:var(--line)}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 Vazirmatn,system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;-webkit-font-smoothing:antialiased}
 button{font:inherit;color:inherit}
@@ -263,7 +269,23 @@ let S = null, T = null, tab = 'pending', view = 'drafts', busy = false;
 function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2600); }
 function haptic(k) { try { tg.HapticFeedback.notificationOccurred(k); } catch (e) {} }
 function tap() { try { tg.HapticFeedback.impactOccurred('light'); } catch (e) {} }
-function ask(text) { return new Promise(r => tg && tg.showConfirm ? tg.showConfirm(text, r) : r(confirm(text))); }
+const IS_BALE = !!(window.Bale && WA === Bale.WebApp);
+const MSG = IS_BALE ? 'بله' : 'تلگرام';
+// Telegram's native confirm when available; otherwise our own dialog (Bale's web client is an iframe where confirm() is blocked,
+// and its showConfirm needs a newer client than many users have)
+function ask(text) {
+  if (tg && !IS_BALE && tg.showConfirm) return new Promise(r => tg.showConfirm(text, r));
+  return new Promise(r => {
+    const bg = document.createElement('div'); bg.className = 'nn-dlg';
+    bg.innerHTML = '<div class="box"><p></p><div class="row"><button class="no">انصراف</button><button class="yes">بله</button></div></div>';
+    bg.querySelector('p').textContent = text;
+    const done = v => { bg.remove(); r(v); };
+    bg.querySelector('.yes').onclick = () => done(true);
+    bg.querySelector('.no').onclick = () => done(false);
+    bg.onclick = e => { if (e.target === bg) done(false); };
+    document.body.appendChild(bg);
+  });
+}
 
 async function api(action, body = {}) {
   if (!INIT && WA && WA.initData) INIT = WA.initData;
@@ -342,8 +364,8 @@ async function act(action, body, msg) {
 }
 async function requestWrite() {
   tap();
-  if (!(await ask('یک مقاله‌ی تازه نوشته شود؟ پیش‌نویسش با عکس در تلگرام می‌آید.'))) return;
-  act('write', {}, 'سفارش ثبت شد؛ پیش‌نویس در تلگرام می‌آید');
+  if (!(await ask('یک مقاله‌ی تازه نوشته شود؟ پیش‌نویسش با عکس در ' + MSG + ' می‌آید.'))) return;
+  act('write', {}, 'سفارش ثبت شد؛ پیش‌نویس در ' + MSG + ' می‌آید');
 }
 
 function renderTopics() {
