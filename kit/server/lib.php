@@ -517,9 +517,77 @@ function build_feed(string $lang): string {
     return '<?xml version="1.0" encoding="UTF-8"?>' . "\n<rss version=\"2.0\"><channel>\n<title>" . h($Lc['feed_title']) . "</title>\n<link>"
         . SITE . $Lc['base'] . "</link>\n<description>" . h($Lc['feed_title']) . "</description>\n<language>$lang</language>\n" . $items . "</channel></rss>\n";
 }
+/* ---------------- home page "latest articles" block ---------------- */
+/** File of a language's home page, e.g. "/" -> public_html/index.html, "/en/" -> public_html/en/index.html. */
+function home_file(string $lang): string {
+    $p = trim((string)parse_url(L($lang)['home'], PHP_URL_PATH), '/');
+    return PUB . ($p === '' ? '' : "/$p") . '/index.html';
+}
+/** First time only: wraps the cards already in the home page's article grid in <!--nn:latest:N--> markers.
+ *  The grid is the first <div> whose class has one of site.json "home_grid_classes" (default: home-posts). */
+function home_mark(string $html): ?string {
+    foreach ((array)site('home_grid_classes', ['home-posts']) as $cls) {
+        $re = '#(<div\b[^>]*\bclass="[^"]*\b' . preg_quote((string)$cls, '#') . '\b[^"]*"[^>]*>)'
+            . '((?:\s*<a\b(?=[^>]*\bclass="(?:post|nn-card)\b)[^>]*>.*?</a>)+)#s';
+        if (!preg_match($re, $html, $m, PREG_OFFSET_CAPTURE)) continue;
+        $n = preg_match_all('#<a\b[^>]*>#', $m[2][0]);
+        $wrapped = $m[1][0] . "<!--nn:latest:$n-->" . $m[2][0] . "\n<!--/nn:latest-->";
+        return substr($html, 0, $m[0][1]) . $wrapped . substr($html, $m[0][1] + strlen($m[0][0]));
+    }
+    return null;
+}
+/** Newest articles first, then the site's own older cards from the blog index, as many as the block held at first. */
+function home_cards(string $lang, int $n): string {
+    $cards = []; $seen = [];
+    foreach (posts($lang) as $p) {
+        if (count($cards) >= $n) break;
+        $href = L($lang)['base'] . $p['slug'] . '/';
+        if (isset($seen[$href])) continue;
+        $seen[$href] = 1; $cards[] = card_html($lang, $p);
+    }
+    $page = (string)@file_get_contents(L($lang)['dir'] . '/index.html');
+    $page = preg_replace('#<!--nn:cards-->.*?<!--/nn:cards-->#s', '', $page);
+    preg_match_all('#<a (?=[^>]*class="(?:post|nn-card)\b)[^>]*href="([^"]+)"[^>]*>.*?</a>#s', $page, $m, PREG_SET_ORDER);
+    foreach ($m as $x) {
+        if (count($cards) >= $n) break;
+        $href = '/' . ltrim((string)parse_url($x[1], PHP_URL_PATH), '/');
+        if (isset($seen[$href])) continue;
+        $seen[$href] = 1; $cards[] = $x[0];
+    }
+    return implode("\n", $cards) . "\n";
+}
+/** Puts the newest articles at the top of the home page's article block. Pages without such a block are left alone. */
+function update_home(string $lang): string {
+    $f = home_file($lang);
+    $html = (string)@file_get_contents($f);
+    if ($html === '') return 'home skipped (no page)';
+    if (!preg_match('#<!--nn:latest(?::(\d+))?-->#', $html)) {
+        $marked = home_mark($html);
+        if ($marked === null) { logline("home $f has no article grid (" . implode(', ', (array)site('home_grid_classes', ['home-posts'])) . '); left untouched'); return 'home skipped (no grid)'; }
+        $html = $marked;
+    }
+    preg_match('#<!--nn:latest(?::(\d+))?-->#', $html, $mm);
+    $n = max(1, (int)($mm[1] ?? 0) ?: (int)site('home_cards', 6));
+    $new = preg_replace_callback('#<!--nn:latest(?::\d+)?-->.*?<!--/nn:latest-->#s',
+        fn() => "<!--nn:latest:$n-->\n" . home_cards($lang, $n) . '<!--/nn:latest-->', $html, 1);
+    if ($new !== null && $new !== (string)@file_get_contents($f)) write_file($f, $new);
+    return 'home';
+}
+/** Runs from cron: refreshes the home block whenever the newest articles changed (also heals installs updated after publishing). */
+function sync_homes(array &$s): void {
+    foreach (langs() as $lang) {
+        $sig = md5(implode('|', array_map(fn($p) => $p['slug'], array_slice(posts($lang), 0, 12))) . '#' . @filemtime(L($lang)['dir'] . '/index.html'));
+        if (($s['home_sig'][$lang] ?? '') === $sig) continue;
+        try { $r = update_home($lang); logline("home $lang: $r"); }
+        catch (Throwable $e) { logline("home $lang failed: " . $e->getMessage()); }
+        $s['home_sig'][$lang] = $sig;
+    }
+}
+
 function publish_side_effects(string $lang, array $a): array {
     posts_add($lang, $a);
     $done = [update_index($lang)];
+    try { $done[] = update_home($lang); } catch (Throwable $e) { logline('home update failed: ' . $e->getMessage()); }
     write_sitemap($lang); $done[] = 'sitemap';
     write_file(L($lang)['dir'] . '/feed.xml', build_feed($lang)); $done[] = 'rss';
     // category page: same marker region, only this category's posts

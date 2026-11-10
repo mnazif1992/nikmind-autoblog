@@ -18,6 +18,7 @@ with_state(function (array &$s) use ($argv) {
         if ($r['changed']) { logline('kit updated: ' . implode(', ', $r['changed'])); tg_all($s, '🔧 نیک‌نگار به‌روز شد (' . h(implode('، ', $r['changed'])) . ').'); }
         if ($r['errors']) logline('kit update problems: ' . implode(' | ', $r['errors']));
     }
+    sync_homes($s);
     if (!empty($s['paused'])) return;
     if (time() - (int)$s['last_gh'] >= 5 * 60 || in_array('--now', $argv ?? [], true)) {
         $s['last_gh'] = time();
