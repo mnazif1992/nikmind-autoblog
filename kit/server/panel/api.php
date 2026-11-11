@@ -59,6 +59,23 @@ if (str_starts_with($action, 'topic')) {                       // keyword queue 
     } catch (Throwable $e) { out(['ok' => false, 'error' => $e->getMessage()], 400); }
 }
 
+if (in_array($action, ['draft_get', 'draft_save', 'upload_cover', 'upload_image'], true)) {   // editing text and photos
+    $res = with_state(function (array &$s) use ($action, $key, $req, $uid, $user) {
+        try {
+            if (!editable($s, $key)) throw new RuntimeException('این مقاله پیدا نشد یا دیگر قابل ویرایش نیست');
+            if ($action === 'draft_get') return ['ok' => true, 'draft' => draft_edit_view($s, $key)];
+            if ($action === 'draft_save') return ['ok' => true, 'saved' => save_draft_edit($s, $key, $req, $uid), 'state' => panel_state($s)];
+            if ($action === 'upload_cover') return ['ok' => true, 'saved' => upload_cover($s, $key, (string)($req['data'] ?? ''), $user, $uid), 'state' => panel_state($s)];
+            [$src, $w, $h] = save_inline_image((string)($s['drafts'][$key]['slug'] ?? 'post'), (string)($req['data'] ?? ''));
+            return ['ok' => true, 'image' => ['src' => $src, 'w' => $w, 'h' => $h]];
+        } catch (Throwable $e) {
+            logline("panel $action failed: " . $e->getMessage());
+            return ['ok' => false, 'error' => $e->getMessage()];
+        }
+    }, 60);
+    out($res ?? ['ok' => false, 'error' => 'سرور مشغول است؛ چند ثانیه بعد دوباره امتحان کن'], $res ? ($res['ok'] ? 200 : 400) : 503);
+}
+
 $res = with_state(function (array &$s) use ($action, $key, $req, $uid) {
     switch ($action) {
         case 'state': break;

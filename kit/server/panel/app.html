@@ -27,7 +27,7 @@ window.addEventListener('error', function (e) { nnLog({err: String(e.message || 
   --r:18px;
 }
 html.dark{--bg:#14171a;--card:#1d2125;--text:#e6ecef;--hint:#8a969e}
-.nn-dlg{position:fixed;inset:0;background:rgba(10,20,25,.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}
+.nn-dlg{position:fixed;inset:0;background:rgba(10,20,25,.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:70}
 .nn-dlg .box{background:var(--card);color:var(--text);border-radius:16px;padding:18px 18px 14px;max-width:360px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25)}
 .nn-dlg p{margin:0 0 14px;line-height:1.9}
 .nn-dlg .row{display:flex;gap:8px;justify-content:flex-start}
@@ -154,6 +154,49 @@ details.used summary{padding:12px 14px;font-weight:700;font-size:13.5px;cursor:p
 details.used summary::-webkit-details-marker{display:none}
 .kwhead{display:flex;justify-content:space-between;align-items:center;margin:18px 6px 8px}
 .kwhead .sec{margin:0}
+/* editor */
+body.editing .hero,body.editing .views,body.editing .pane:not(#vEdit),body.editing .top .iconbtn{display:none}
+.edtop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 2px 12px}
+.back{border:0;background:var(--card);border-radius:12px;padding:8px 14px;font-weight:700;font-size:13.5px;cursor:pointer}
+.edcover{position:relative;aspect-ratio:16/9;border-radius:var(--r);background:var(--blue-soft) center/cover no-repeat;margin-bottom:12px;overflow:hidden}
+.edcover .ovl{position:absolute;inset:auto 0 0 0;display:flex;gap:8px;align-items:center;justify-content:space-between;padding:10px;background:linear-gradient(transparent,rgba(0,0,0,.5))}
+.edcover .ovl span{color:#fff;font-size:11.5px;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.edcover .ovl button{border:0;border-radius:11px;padding:8px 12px;background:#fff;color:#18262d;font-weight:800;font-size:12.5px;cursor:pointer;white-space:nowrap}
+.ltabs{display:flex;gap:4px;background:var(--card);border-radius:14px;padding:4px;margin:0 0 12px}
+.ltab{flex:1;border:0;background:transparent;color:var(--hint);font-weight:700;font-size:13px;padding:8px;border-radius:11px;cursor:pointer}
+.ltab.on{background:var(--blue);color:#fff}
+.lbl{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.cnt{font-size:11.5px;font-weight:700;color:var(--hint)}
+.cnt.bad{color:var(--danger)} .cnt.good{color:#2b8a70}
+#edMeta,#edExcerpt{min-height:104px}
+.form .hintline{font-size:12px;color:var(--hint);margin:-4px 2px 12px;line-height:1.7}
+.tb{display:flex;flex-wrap:wrap;gap:5px;position:sticky;top:0;z-index:3;background:var(--card);padding:6px 0;margin-bottom:6px}
+.tb button{border:0;min-width:36px;height:34px;border-radius:10px;background:var(--bg);font-weight:800;font-size:13px;cursor:pointer;padding:0 9px}
+.tb .sep{width:1px;background:var(--line);margin:4px 2px}
+.prose{min-height:260px;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:6px 14px;outline:none;line-height:1.95;font-size:14.5px;margin-bottom:12px;overflow-wrap:anywhere}
+.prose:focus{border-color:var(--blue)}
+.prose h2{font-size:17.5px;margin:18px 0 6px;line-height:1.6}
+.prose h3{font-size:15.5px;margin:14px 0 4px}
+.prose h4{font-size:14.5px;margin:12px 0 4px}
+.prose p{margin:0 0 10px}
+.prose ul,.prose ol{margin:0 0 10px;padding-inline-start:22px}
+.prose a{color:var(--blue)}
+.prose blockquote{margin:10px 0;padding:6px 12px;border-inline-start:3px solid var(--blue);background:var(--blue-soft);border-radius:8px}
+.prose figure{margin:12px 0;text-align:center;cursor:pointer}
+.prose figure img{max-width:100%;height:auto;border-radius:10px;display:block;margin:0 auto}
+.prose figcaption{font-size:12px;color:var(--hint)}
+.prose table{border-collapse:collapse;width:100%;font-size:13px}.prose td,.prose th{border:1px solid var(--line);padding:4px 6px}
+.faq{border:1px solid var(--line);border-radius:12px;padding:10px 10px 0;margin-bottom:8px;position:relative}
+.faq .mini{position:absolute;top:6px;left:6px;width:28px;height:28px}
+.faq input{padding-left:40px}
+.ednotes{background:var(--peach-soft);border-radius:14px;padding:12px 14px;font-size:13px;margin:12px 0;line-height:1.8}
+.ednotes ul{margin:4px 0 0;padding-inline-start:18px}
+.ednotes.ok{background:var(--mint-soft)}
+.savebar{position:sticky;bottom:0;padding:10px 0 4px;background:linear-gradient(transparent,var(--bg) 30%)}
+.nn-dlg input{width:100%;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:11px;padding:9px 11px;font:inherit;margin:0 0 12px;outline:none}
+.wait{position:fixed;inset:0;background:rgba(10,20,25,.35);display:none;align-items:center;justify-content:center;z-index:60}
+.wait.on{display:flex}
+.wait div{background:var(--card);color:var(--text);border-radius:14px;padding:14px 20px;font-weight:700;font-size:14px}
 </style>
 </head>
 <body>
@@ -162,6 +205,8 @@ details.used summary::-webkit-details-marker{display:none}
   <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-image" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
 </svg>
 <main>
@@ -245,10 +290,52 @@ details.used summary::-webkit-details-marker{display:none}
   </div>
   </section>
 
+
+  <section class="pane" id="vEdit" hidden>
+    <div class="edtop"><button class="back" id="edBack">→ بازگشت</button><span class="badge" id="edBadge"></span></div>
+    <div class="edcover" id="edCover"><div class="ovl"><span id="edCoverNote">عکس کاور</span><button id="edCoverBtn" type="button">📷 عکس خودم</button></div></div>
+    <div class="ltabs" id="edLangs"></div>
+    <div class="form" id="edForm">
+      <label for="edTitle">عنوان مقاله</label>
+      <input id="edTitle" maxlength="200">
+      <div class="lbl"><label for="edSeo">عنوان سئو (در نتیجه‌ی گوگل)</label><span class="cnt" id="cSeo"></span></div>
+      <input id="edSeo" maxlength="200">
+      <div class="lbl"><label for="edMeta">توضیح متا (زیر عنوان در گوگل)</label><span class="cnt" id="cMeta"></span></div>
+      <textarea id="edMeta" maxlength="300"></textarea>
+      <label for="edExcerpt">خلاصه (روی کارت مقاله در بلاگ)</label>
+      <textarea id="edExcerpt" maxlength="300"></textarea>
+      <div class="lbl"><label>متن مقاله</label><span class="cnt" id="cWords"></span></div>
+      <p class="hintline" id="edKw"></p>
+      <div class="tb" id="edTb">
+        <button type="button" data-cmd="h2" title="تیتر اصلی">H2</button>
+        <button type="button" data-cmd="h3" title="تیتر فرعی">H3</button>
+        <button type="button" data-cmd="p" title="پاراگراف معمولی">¶</button>
+        <span class="sep"></span>
+        <button type="button" data-cmd="bold" title="پررنگ">B</button>
+        <button type="button" data-cmd="ul" title="فهرست">•≡</button>
+        <button type="button" data-cmd="ol" title="فهرست شماره‌دار">۱≡</button>
+        <button type="button" data-cmd="quote" title="نقل‌قول">❝</button>
+        <span class="sep"></span>
+        <button type="button" data-cmd="link" title="لینک">🔗</button>
+        <button type="button" data-cmd="unlink" title="برداشتن لینک">✕🔗</button>
+        <button type="button" data-cmd="img" title="عکس در متن">🖼 عکس</button>
+        <span class="sep"></span>
+        <button type="button" data-cmd="undo" title="برگرداندن">↶</button>
+      </div>
+      <div class="prose" id="edBody" contenteditable="true"></div>
+      <div class="lbl"><label>سؤال‌های متداول</label><span class="cnt" id="cFaq"></span></div>
+      <div id="edFaq"></div>
+      <button class="ghost" type="button" id="edFaqAdd" style="width:100%;margin-bottom:6px">＋ افزودن سؤال</button>
+    </div>
+    <div id="edNotes"></div>
+    <div class="savebar"><button class="primary" id="edSave" type="button">💾 ذخیره‌ی تغییرات</button></div>
+  </section>
   <p class="foot"><b>نیک‌نگار</b> · نسخه‌ی <span id="ver">۱</span><br>طراحی و ساخت: دکتر محمدرضا نظیف</p>
 </main>
 <button class="fab" id="fab">✍️ نوشتن مقاله‌ی جدید</button>
 <div class="toast" id="toast"></div>
+<div class="wait" id="wait"><div id="waitTxt">در حال آپلود…</div></div>
+<input type="file" id="fileIn" accept="image/*" hidden>
 
 <script>
 (() => {   // everything in its own scope: the Bale SDK declares short global names (S, T, …) that would clash
@@ -264,7 +351,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const PANEL_TOKEN = (() => { const m = location.hash.match(/t=([^&]+)/); let t = m ? decodeURIComponent(m[1]) : '';
   try { if (t) sessionStorage.setItem('nnt', t); else t = sessionStorage.getItem('nnt') || ''; } catch (e) {} return t; })();
-let S = null, T = null, tab = 'pending', view = 'drafts', busy = false;
+let S = null, T = null, tab = 'pending', view = 'drafts', busy = false, ED = null;
 
 function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2600); }
 function haptic(k) { try { tg.HapticFeedback.notificationOccurred(k); } catch (e) {} }
@@ -292,7 +379,7 @@ async function api(action, body = {}) {
   // init data travels in the body: a header cannot carry non-Latin characters, and some clients do not URL-encode it
   const res = await fetch('api.php', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Panel-Token': PANEL_TOKEN },
     body: JSON.stringify({ action, ...body, _init: INIT, _client: WA ? (window.Bale && Bale.WebApp === WA ? 'bale ' : 'telegram ') + (WA.version || '') : 'browser' }) });
-  const j = await res.json().catch(() => ({ ok: false, error: 'پاسخ نامعتبر از سرور' }));
+  const j = await res.json().catch(() => ({ ok: false, error: res.status === 413 ? 'عکس برای این سرور بزرگ است؛ عکس کوچک‌تری انتخاب کن' : 'پاسخ نامعتبر از سرور (' + res.status + ')' }));
   if (!j.ok) throw new Error(j.error || 'خطا');
   return j;
 }
@@ -334,6 +421,7 @@ function card(i) {
     + '<div class="row3">' + g('approve', 'clock', 'در نوبت') + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
   if (i.status === 'queued') acts = '<button class="primary" data-a="publish" data-k="' + i.key + '"><svg><use href="#i-send"/></svg>انتشار همین حالا</button>'
     + '<div class="row3 row2">' + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
+  acts += '<div class="row3 row2">' + g('edit', 'pen', 'ویرایش متن') + g('mycover', 'upload', 'عکس کاور خودم') + '</div>';
   return '<article class="post">'
     + '<div class="cover" style="background-image:url(\'' + esc(i.cover) + '\')"><span class="badge ' + i.status + '">' + label + '</span><span class="when">' + when + '</span></div>'
     + '<div class="pbody"><h3>' + esc(i.title) + '</h3>' + (i.title2 ? '<p class="en" dir="auto">' + esc(i.title2) + '</p>' : '')
@@ -343,6 +431,7 @@ function card(i) {
 }
 
 function setMain() {
+  if (ED) { if (MB) MB.hide(); $('fab').style.display = 'none'; return; }
   const txt = S && S.write_pending ? '✍️ مقاله‌ی جدید (' + fa(S.write_pending) + ' در صف نوشتن)' : '✍️ نوشتن مقاله‌ی جدید';
   if (MB) { MB.setParams({ text: txt, color: BLUE, text_color: '#ffffff', is_visible: true }); }
   else { $('fab').textContent = txt; $('fab').style.display = 'block'; }
@@ -350,7 +439,7 @@ function setMain() {
 
 async function load(spin) {
   if (spin) $('refresh').classList.add('spin');
-  try { const j = await api('state'); S = j.state; render(); }
+  try { const j = await api('state'); S = j.state; render(); openFromLink(); }
   catch (e) { $('list').innerHTML = '<div class="err"><b style="display:block;color:var(--text);margin-bottom:4px">پنل باز نشد</b>' + esc(e.message) + '<br>پنل را از داخل ربات باز کن.</div>'; $('heroHead').textContent = 'نیک‌نگار'; }
   finally { $('refresh').classList.remove('spin'); }
 }
@@ -432,6 +521,8 @@ document.addEventListener('click', async e => {
   const b = e.target.closest('button[data-a]'); if (!b) return;
   const key = b.dataset.k, a = b.dataset.a;
   tap();
+  if (a === 'edit') { openEditor(key); return; }
+  if (a === 'mycover') { pickPhoto('cover', key); return; }
   if (a === 'publish' && !(await ask('همین حالا روی سایت منتشر شود؟'))) return;
   if (a === 'reject' && !(await ask('این مقاله رد شود و پیش‌نمایشش از سایت برداشته شود؟'))) return;
   act(a, { key }, { publish: 'منتشر شد ✅', approve: 'رفت در صف انتشار', reject: 'رد شد', cover: 'عکس عوض شد' }[a]);
@@ -445,8 +536,251 @@ $('active').addEventListener('change', e => act('pause', { paused: !e.target.che
 $('refresh').addEventListener('click', () => { tap(); load(true); });
 $('fab').addEventListener('click', requestWrite);
 
+
+/* ---------- editor: text and photos ---------- */
+const chars = t => [...String(t || '')].length;
+const EDIT_LINK = new URLSearchParams(location.search).get('edit') || '';
+let linkUsed = false;
+function openFromLink() {
+  if (linkUsed || !EDIT_LINK || ED) return;
+  linkUsed = true;
+  if (S.items.some(i => i.key === EDIT_LINK)) openEditor(EDIT_LINK); else toast('این مقاله دیگر قابل ویرایش نیست');
+}
+function promptText(text, def, ph) {                 // small dialog with one text field (window.prompt is blocked in some messengers)
+  return new Promise(r => {
+    const bg = document.createElement('div'); bg.className = 'nn-dlg';
+    bg.innerHTML = '<div class="box"><p></p><input dir="auto"><div class="row"><button class="no">انصراف</button><button class="yes">تأیید</button></div></div>';
+    bg.querySelector('p').textContent = text;
+    const inp = bg.querySelector('input'); inp.value = def || ''; inp.placeholder = ph || '';
+    const done = v => { bg.remove(); r(v); };
+    bg.querySelector('.yes').onclick = () => done(inp.value.trim());
+    bg.querySelector('.no').onclick = () => done(null);
+    inp.onkeydown = e => { if (e.key === 'Enter') done(inp.value.trim()); };
+    document.body.appendChild(bg); setTimeout(() => inp.focus(), 50);
+  });
+}
+function waiting(on, t) { $('waitTxt').textContent = t || 'لطفاً صبر کن…'; $('wait').classList.toggle('on', !!on); }
+
+async function openEditor(key) {
+  tap(); waiting(true, 'در حال باز کردن…');
+  try {
+    const j = await api('draft_get', { key });
+    ED = { key, d: j.draft, lang: j.draft.langs[0].code, data: {} };
+    j.draft.langs.forEach(l => { ED.data[l.code] = { title: l.title, seo_title: l.seo_title, meta_description: l.meta_description, excerpt: l.excerpt, body: l.body, faq: (l.faq || []).map(f => ({ q: f.q, a: f.a })) }; });
+    document.body.classList.add('editing'); $('vEdit').hidden = false; $('edNotes').innerHTML = '';
+    renderEditor(); ED.snap = snapshot(); setMain(); scrollTo(0, 0);
+    if (tg && tg.BackButton) { try { tg.BackButton.show(); } catch (e) {} }
+  } catch (e) { toast(e.message); }
+  finally { waiting(false); }
+}
+function renderEditor() {
+  const d = ED.d, L = d.langs.find(l => l.code === ED.lang), x = ED.data[ED.lang];
+  $('edBadge').className = 'badge ' + d.status;
+  $('edBadge').textContent = { pending: 'منتظر تأیید', queued: 'در صف انتشار', published: 'منتشرشده' }[d.status] || '';
+  $('edCover').style.backgroundImage = d.cover ? "url('" + d.cover + "')" : '';
+  $('edCoverNote').textContent = d.cover ? (d.cover_own ? 'عکس آپلودشده' : 'عکس پیداشده‌ی خودکار') : 'هنوز عکس کاور ندارد';
+  $('edLangs').hidden = d.langs.length < 2;
+  $('edLangs').innerHTML = d.langs.map(l => '<button type="button" class="ltab' + (l.code === ED.lang ? ' on' : '') + '" data-lang="' + l.code + '">' + esc(l.label) + '</button>').join('');
+  ['edTitle', 'edSeo', 'edMeta', 'edExcerpt', 'edBody'].forEach(id => $(id).dir = L.dir);
+  $('edTitle').value = x.title; $('edSeo').value = x.seo_title; $('edMeta').value = x.meta_description; $('edExcerpt').value = x.excerpt;
+  $('edBody').innerHTML = x.body;
+  $('edBody').querySelectorAll('figure').forEach(f => f.setAttribute('contenteditable', 'false'));
+  $('edKw').textContent = 'کلمه‌ی کلیدی اصلی: «' + L.kw + '» — بهتر است در عنوان و پاراگراف اول بماند.';
+  renderFaq(); counters();
+  try { document.execCommand('defaultParagraphSeparator', false, 'p'); } catch (e) {}
+}
+function renderFaq() {
+  const x = ED.data[ED.lang], dir = ED.d.langs.find(l => l.code === ED.lang).dir;
+  $('edFaq').innerHTML = x.faq.map((f, i) => '<div class="faq" data-i="' + i + '"><button type="button" class="mini red" data-faqdel="' + i + '" title="حذف">✕</button>'
+    + '<input class="fq" dir="' + dir + '" placeholder="سؤال" value="' + esc(f.q) + '"><textarea class="fa2" dir="' + dir + '" placeholder="جواب">' + esc(f.a) + '</textarea></div>').join('');
+  $('cFaq').textContent = x.faq.length ? fa(x.faq.length) + ' سؤال' : '';
+}
+function readFaq() {
+  const x = ED.data[ED.lang];
+  x.faq = [...$('edFaq').querySelectorAll('.faq')].map(b => ({ q: b.querySelector('.fq').value.trim(), a: b.querySelector('.fa2').value.trim() }));
+}
+function readEditor() {                               // form -> data of the language on screen
+  if (!ED) return;
+  const x = ED.data[ED.lang];
+  x.title = $('edTitle').value.trim(); x.seo_title = $('edSeo').value.trim(); x.meta_description = $('edMeta').value.trim(); x.excerpt = $('edExcerpt').value.trim();
+  x.body = cleanBody($('edBody')); readFaq();
+}
+function snapshot() { readEditor(); return JSON.stringify(ED.data); }
+function counters() {
+  const set = (id, n, lo, hi) => { const el = $(id); el.textContent = fa(n) + ' نویسه · ' + fa(lo) + ' تا ' + fa(hi); el.className = 'cnt ' + (n >= lo && n <= hi ? 'good' : 'bad'); };
+  set('cSeo', chars($('edSeo').value.trim()), 20, 65);
+  set('cMeta', chars($('edMeta').value.trim()), 110, 170);
+  const t = $('edBody').innerText.trim();
+  $('cWords').textContent = fa(t ? t.split(/\s+/).length : 0) + ' کلمه';
+}
+/** Turns what the browser's editor produced into clean paragraphs (divs, stray text and spans become <p>). */
+function cleanBody(el) {
+  const root = el.cloneNode(true), out = document.createElement('div');
+  const BLOCK = ['P', 'H2', 'H3', 'H4', 'UL', 'OL', 'BLOCKQUOTE', 'TABLE', 'FIGURE'];
+  let cur = null;
+  const flush = () => { if (cur && (cur.textContent.trim() || cur.querySelector('img'))) out.appendChild(cur); cur = null; };
+  [...root.childNodes].forEach(n => {
+    if (n.nodeType === 1 && BLOCK.includes(n.tagName)) { flush(); if (n.tagName === 'FIGURE') n.removeAttribute('contenteditable'); out.appendChild(n); return; }
+    if (n.nodeType === 1 && n.tagName === 'DIV') {
+      flush();
+      if (n.querySelector('p,h2,h3,h4,ul,ol,blockquote,table,figure')) { out.insertAdjacentHTML('beforeend', cleanBody(n)); return; }
+      const p = document.createElement('p'); p.innerHTML = n.innerHTML; if (p.textContent.trim()) out.appendChild(p); return;
+    }
+    if (n.nodeType === 1 && n.tagName === 'BR') { flush(); return; }
+    if (n.nodeType === 3 && !n.textContent.trim() && !cur) return;
+    if (!cur) cur = document.createElement('p');
+    cur.appendChild(n);
+  });
+  flush();
+  out.querySelectorAll('span,font').forEach(sp => sp.replaceWith(...sp.childNodes));
+  out.querySelectorAll('[style]').forEach(x => x.removeAttribute('style'));
+  return out.innerHTML;
+}
+let savedRange = null;
+function keepSel() { const s = getSelection(); savedRange = s.rangeCount && $('edBody').contains(s.anchorNode) ? s.getRangeAt(0).cloneRange() : null; }
+function backSel() {
+  $('edBody').focus();
+  const s = getSelection(); s.removeAllRanges();
+  if (savedRange) s.addRange(savedRange);
+  else { const r = document.createRange(); r.selectNodeContents($('edBody')); r.collapse(false); s.addRange(r); }
+}
+async function toolbar(cmd) {
+  const ex = (c, v) => { try { document.execCommand(c, false, v); } catch (e) {} };
+  if (cmd === 'link') {
+    keepSel();
+    const sel = savedRange ? savedRange.toString() : '';
+    const url = await promptText(sel ? 'لینک برای «' + sel.slice(0, 40) + '»' : 'آدرس لینک (اول جایی از متن را انتخاب کن تا همان کلمه لینک شود)', 'https://', 'https://… یا /blog/…');
+    if (!url || url === 'https://') return;
+    backSel();
+    if (sel) ex('createLink', url); else ex('insertHTML', '<a href="' + esc(url) + '">' + esc(url) + '</a>');
+    return;
+  }
+  if (cmd === 'img') { keepSel(); pickPhoto('inline', ED.key); return; }
+  $('edBody').focus();
+  if (cmd === 'h2' || cmd === 'h3' || cmd === 'p') ex('formatBlock', '<' + cmd + '>');
+  else if (cmd === 'quote') ex('formatBlock', '<blockquote>');
+  else if (cmd === 'bold') ex('bold');
+  else if (cmd === 'ul') ex('insertUnorderedList');
+  else if (cmd === 'ol') ex('insertOrderedList');
+  else if (cmd === 'unlink') ex('unlink');
+  else if (cmd === 'undo') ex('undo');
+  counters();
+}
+async function closeEditor(force) {
+  if (!ED) return;
+  if (!force && snapshot() !== ED.snap && !(await ask('تغییرهایت ذخیره نشده‌اند. بدون ذخیره بیرون برویم؟'))) return;
+  ED = null; document.body.classList.remove('editing'); $('vEdit').hidden = true;
+  if (tg && tg.BackButton) { try { tg.BackButton.hide(); } catch (e) {} }
+  setMain(); render();
+}
+async function saveEditor() {
+  if (!ED || busy) return;
+  readEditor();
+  const d = ED.d;
+  for (const l of d.langs) { const x = ED.data[l.code];
+    if (!x.title || !x.seo_title || !x.meta_description || !x.excerpt || !x.body.replace(/<[^>]+>/g, '').trim()) {
+      if (l.code !== ED.lang) { readEditor(); ED.lang = l.code; renderEditor(); }
+      toast('عنوان، عنوان سئو، توضیح متا، خلاصه و متن نباید خالی باشند' + (d.langs.length > 1 ? ' (' + l.label + ')' : '')); return; } }
+  if (d.status === 'published' && !(await ask('این مقاله منتشر شده است. تغییرها همین حالا روی سایت می‌رود. ذخیره شود؟'))) return;
+  busy = true; $('edSave').disabled = true; $('edSave').textContent = 'در حال ذخیره…';
+  try {
+    const j = await api('draft_save', { key: ED.key, rev: d.rev, langs: ED.data });
+    S = j.state; const r = j.saved;
+    haptic('success');
+    const lang = ED.lang;
+    const g = await api('draft_get', { key: ED.key });            // the server's cleaned version (checked links, image sizes)
+    ED.d = g.draft; ED.lang = lang;
+    g.draft.langs.forEach(l => { ED.data[l.code] = { title: l.title, seo_title: l.seo_title, meta_description: l.meta_description, excerpt: l.excerpt, body: l.body, faq: (l.faq || []).map(f => ({ q: f.q, a: f.a })) }; });
+    renderEditor(); ED.snap = snapshot();
+    const live = d.status === 'published';
+    $('edNotes').innerHTML = !r.changed ? '<div class="ednotes ok">تغییری نبود که ذخیره شود.</div>'
+      : '<div class="ednotes ' + (r.notes.length ? '' : 'ok') + '"><b>✅ ذخیره شد' + (live ? ' و صفحه‌ی سایت به‌روز شد' : '؛ پیش‌نمایش هم به‌روز شد') + '.</b>'
+        + (r.notes.length ? '<br>چند نکته (مانع انتشار نیست):<ul>' + r.notes.map(n => '<li>' + esc(n) + '</li>').join('') + '</ul>' : '') + '</div>';
+    $('edNotes').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  } catch (e) { haptic('error'); toast(e.message); }
+  finally { busy = false; $('edSave').disabled = false; $('edSave').textContent = '💾 ذخیره‌ی تغییرات'; }
+}
+
+/* photos: resized on the phone first (fast upload, fits every host's size limit), always sent as JPEG */
+let photoFor = null;
+function pickPhoto(kind, key) { photoFor = { kind, key }; $('fileIn').value = ''; $('fileIn').click(); }
+async function shrink(file, maxSide) {
+  const url = URL.createObjectURL(file);
+  try {
+    const img = await new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = () => no(new Error('این فایل باز نشد؛ یک عکس JPG یا PNG انتخاب کن')); i.src = url; });
+    const k = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+    const w = Math.round(img.naturalWidth * k), h = Math.round(img.naturalHeight * k);
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, w, h); x.drawImage(img, 0, 0, w, h);
+    let q = 0.86, data = c.toDataURL('image/jpeg', q);
+    while (data.length > 900000 && q > 0.5) { q -= 0.08; data = c.toDataURL('image/jpeg', q); }
+    return { data, w, h };
+  } finally { URL.revokeObjectURL(url); }
+}
+$('fileIn').addEventListener('change', async () => {
+  const f = $('fileIn').files[0], job = photoFor; photoFor = null;
+  if (!f || !job) return;
+  if (busy) { toast('یک لحظه صبر کن؛ کار قبلی هنوز تمام نشده'); return; }
+  busy = true;
+  try {
+    waiting(true, 'در حال آماده کردن عکس…');
+    const p = await shrink(f, job.kind === 'cover' ? 1800 : 1400);
+    waiting(false);
+    if (job.kind === 'cover') {
+      if (p.w < 600 || p.h < 400) throw new Error('عکس کوچک است؛ دست‌کم ۶۰۰×۴۰۰ پیکسل لازم است');
+      if (p.h > p.w && !(await ask('این عکس عمودی است و برای کاور از وسطش یک تکه‌ی افقی بریده می‌شود. ادامه بدهیم؟'))) return;
+      const pub = (S.items.find(i => i.key === job.key) || {}).status === 'published';
+      if (pub && !(await ask('این مقاله منتشر شده است؛ عکس کاور همین حالا روی سایت عوض می‌شود. ادامه بدهیم؟'))) return;
+      waiting(true, 'در حال آپلود عکس کاور…');
+      const j = await api('upload_cover', { key: job.key, data: p.data });
+      S = j.state; haptic('success'); toast('عکس کاور عوض شد ✅');
+      if (ED && ED.key === job.key) { ED.d.cover = j.saved.cover; ED.d.cover_own = true; $('edCover').style.backgroundImage = "url('" + j.saved.cover + "')"; $('edCoverNote').textContent = 'عکس آپلودشده'; }
+      else render();
+    } else {
+      waiting(true, 'در حال آپلود عکس…');
+      const j = await api('upload_image', { key: job.key, data: p.data });
+      waiting(false);
+      const alt = await promptText('یک توضیح کوتاه برای این عکس (برای گوگل و نابینایان؛ اختیاری)', '', 'مثلاً: مشاوره‌ی آنلاین در خانه');
+      // the photo goes after the paragraph the cursor was in, never in the middle of a sentence
+      const body = $('edBody'); let blk = savedRange ? savedRange.startContainer : null;
+      while (blk && blk.parentNode !== body) blk = blk.parentNode;
+      const fig = document.createElement('figure'); fig.setAttribute('contenteditable', 'false');
+      const im = document.createElement('img'); im.src = j.image.src; im.alt = alt || ''; fig.appendChild(im);
+      if (blk) blk.after(fig); else body.appendChild(fig);
+      fig.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      haptic('success'); counters();
+    }
+  } catch (e) { haptic('error'); toast(e.message); }
+  finally { busy = false; waiting(false); }
+});
+
+$('edBack').addEventListener('click', () => closeEditor(false));
+$('edSave').addEventListener('click', saveEditor);
+$('edCoverBtn').addEventListener('click', () => { tap(); pickPhoto('cover', ED.key); });
+$('edTb').addEventListener('pointerdown', e => { if (e.target.closest('button')) e.preventDefault(); });   // keep the text selection while tapping the toolbar
+$('edTb').addEventListener('mousedown', e => { if (e.target.closest('button')) e.preventDefault(); });
+$('edTb').addEventListener('click', e => { const b = e.target.closest('button[data-cmd]'); if (b) { tap(); toolbar(b.dataset.cmd); } });
+$('edLangs').addEventListener('click', e => { const b = e.target.closest('.ltab'); if (!b || !ED) return; readEditor(); ED.lang = b.dataset.lang; renderEditor(); });
+$('edBody').addEventListener('input', counters);
+$('edBody').addEventListener('click', async e => {
+  const fig = e.target.closest('figure'); if (!fig) return;
+  if (await ask('این عکس از متن برداشته شود؟')) { fig.remove(); counters(); }
+});
+$('edBody').addEventListener('paste', e => {                 // paste as plain text: formatting from Word/web pages would break the page
+  const t = (e.clipboardData || window.clipboardData).getData('text/plain'); if (t === undefined) return;
+  e.preventDefault(); document.execCommand('insertText', false, t);
+});
+['edSeo', 'edMeta'].forEach(id => $(id).addEventListener('input', counters));
+$('edFaqAdd').addEventListener('click', () => { readFaq(); ED.data[ED.lang].faq.push({ q: '', a: '' }); renderFaq(); const q = $('edFaq').querySelectorAll('.fq'); q[q.length - 1].focus(); });
+$('edFaq').addEventListener('click', async e => {
+  const b = e.target.closest('[data-faqdel]'); if (!b) return;
+  if (!(await ask('این سؤال حذف شود؟'))) return;
+  readFaq(); ED.data[ED.lang].faq.splice(+b.dataset.faqdel, 1); renderFaq();
+});
+
 if (tg) {
   tg.ready(); tg.expand();
+  try { if (tg.BackButton) tg.BackButton.onClick(() => closeEditor(false)); } catch (e) {}
   try { tg.setHeaderColor('secondary_bg_color'); tg.setBackgroundColor('secondary_bg_color'); } catch (e) {}
   if (MB) MB.onClick(requestWrite);
 
@@ -458,7 +792,7 @@ nnLog({boot: WA ? (window.Bale && Bale.WebApp === WA ? 'bale' : 'telegram') : 'b
   for (let i = 0; i < 15 && WA && !INIT; i++) { await new Promise(r => setTimeout(r, 100)); INIT = WA.initData || ''; }
   load();
 })();
-setInterval(() => { if (!busy && document.visibilityState === 'visible') load(); }, 30000);
+setInterval(() => { if (!busy && !ED && document.visibilityState === 'visible') load(); }, 30000);
 })();
 </script>
 </body>

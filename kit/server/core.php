@@ -20,9 +20,10 @@ function panel_url(): string { return SITE . '/' . PANEL_DIR . '/app/'; }
 
 /* ---------------- keyboards ---------------- */
 function draft_buttons(string $key, string $status): array {
+    $edit = ['text' => '✏️ ویرایش متن و عکس', 'web_app' => ['url' => panel_url() . '?edit=' . $key]];   // opens the panel straight in this article's editor
     if ($status === 'pending') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '⏱ در نوبت بعدی', 'callback_data' => "p:$key"]],
-                                       [['text' => '❌ رد', 'callback_data' => "r:$key"]]];
-    if ($status === 'queued') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '❌ رد', 'callback_data' => "r:$key"]]];
+                                       [$edit, ['text' => '❌ رد', 'callback_data' => "r:$key"]]];
+    if ($status === 'queued') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '❌ رد', 'callback_data' => "r:$key"]], [$edit]];
     return [];
 }
 function set_buttons(array $s, string $key): void {
@@ -317,4 +318,114 @@ function panel_state(array $s): array {
             'published_week' => count(array_filter($s['published'], fn($p) => strtotime($p['at'] ?? '') > time() - 7 * 86400)),
             'site' => site('site_name', ''), 'langs' => array_map(fn($l) => ['code' => $l, 'label' => L($l)['label'], 'dir' => L($l)['dir_attr']], langs()),
             'write_time' => (string)site('daily_write_time', '06:47'), 'per_day' => (int)site('posts_per_day', 2), 'version' => KIT_VERSION];
+}
+
+/* ---------------- editing from the panel: text and photos ---------------- */
+const EDIT_FIELDS = ['title', 'seo_title', 'meta_description', 'excerpt'];
+function editable(array $s, string $key): bool { return in_array($s['drafts'][$key]['status'] ?? '', ['pending', 'queued', 'published'], true); }
+function draft_load(string $key): array {
+    $a = json_decode((string)@file_get_contents(AB . "/drafts/$key.json"), true);
+    if (!is_array($a)) throw new RuntimeException('فایل این مقاله روی سرور پیدا نشد');
+    return $a;
+}
+function draft_store(string $key, array $a): void { json_save(AB . "/drafts/$key.json", $a); }
+/** Fingerprint of the text only (a new cover photo does not count), so two people editing at once do not overwrite each other. */
+function draft_rev(array $a): string {
+    $t = [];
+    foreach (langs() as $l) { foreach (EDIT_FIELDS as $f) $t[] = $a[$l][$f] ?? ''; $t[] = $a[$l]['body_clean'] ?? ''; $t[] = json_encode($a[$l]['faq'] ?? []); }
+    return substr(md5(implode("\x1f", $t)), 0, 12);
+}
+/** What the panel editor shows. */
+function draft_edit_view(array $s, string $key): array {
+    $a = draft_load($key);
+    $v = ['key' => $key, 'status' => $s['drafts'][$key]['status'], 'slug' => $a['slug'], 'rev' => draft_rev($a), 'cover' => $a['cover']['card'] ?? '',
+          'cover_own' => !empty($a['cover']['own']), 'langs' => []];
+    foreach (langs() as $l) {
+        $x = ['code' => $l, 'label' => L($l)['label'], 'dir' => L($l)['dir_attr'], 'kw' => $a[$l]['primary_keyword'] ?? '', 'words' => (int)($a[$l]['words'] ?? 0),
+              'body' => preg_replace('# (id|target|rel)="[^"]*"#', '', (string)($a[$l]['body_clean'] ?? '')), 'faq' => $a[$l]['faq'] ?? [],
+              'url' => post_url($l, $a['slug'])];
+        foreach (EDIT_FIELDS as $f) $x[$f] = $a[$l][$f] ?? '';
+        $v['langs'][] = $x;
+    }
+    return $v;
+}
+/** Re-renders the article pages after a change; a published article also refreshes its card, sitemap, feed and IndexNow. */
+function rerender_draft(array &$s, string $key, array $a): array {
+    $live = ($s['drafts'][$key]['status'] ?? '') === 'published';
+    if ($live) foreach (langs() as $l) $a[$l]['modified'] = date('Y-m-d');
+    draft_store($key, $a);
+    $done = [];
+    foreach (langs() as $l) {
+        write_file(L($l)['dir'] . '/' . $a['slug'] . '/index.html', render_article($l, $a[$l], $live));
+        if ($live) $done = array_merge($done, array_map(fn($x) => "$l $x", refresh_side_effects($l, $a[$l])));
+    }
+    if ($live) {
+        $done[] = 'IndexNow ' . indexnow(array_map(fn($l) => post_url($l, $a['slug']), langs()));
+        foreach ($s['published'] as &$p) if (($p['key'] ?? '') === $key) $p['title'] = $a[lang1()]['title'];
+        unset($p);
+    }
+    $s['drafts'][$key]['title'] = $a[lang1()]['title'];
+    $s['drafts'][$key]['words'] = $a[lang1()]['words'] ?? 0;
+    return $done;
+}
+/** Problems found by the article checks, in plain Persian for the panel. */
+function fa_issue(string $e): string {
+    $lang = '';
+    if (preg_match('/^([A-Z]{2}): (.*)$/s', $e, $m)) { $lang = count(langs()) > 1 ? L(strtolower($m[1]))['label'] . ': ' : ''; $e = $m[2]; }
+    $names = ['title' => 'عنوان', 'seo_title' => 'عنوان سئو', 'meta_description' => 'توضیح متا', 'excerpt' => 'خلاصه', 'body_html' => 'متن مقاله', 'primary_keyword' => 'کلمه‌ی کلیدی'];
+    $map = [
+        '/^missing (\w+)$/' => fn($m) => '«' . ($names[$m[1]] ?? $m[1]) . '» خالی است',
+        '/^seo_title length (\d+)/' => fn($m) => 'عنوان سئو ' . fa_digits($m[1]) . ' نویسه است؛ برای گوگل بهتر است بین ۲۰ و ۶۵ باشد',
+        '/^meta_description length (\d+)/' => fn($m) => 'توضیح متا ' . fa_digits($m[1]) . ' نویسه است؛ برای گوگل بهتر است بین ۱۱۰ و ۱۷۰ باشد',
+        '/^primary keyword not in title$/' => fn($m) => 'کلمه‌ی کلیدی اصلی در عنوان نیست',
+        '/^word count (\d+) \((\d+)/' => fn($m) => 'متن ' . fa_digits($m[1]) . ' کلمه است؛ حداقل پیشنهادی ' . fa_digits($m[2]) . ' کلمه',
+        '/^primary keyword not in the opening paragraphs$/' => fn($m) => 'کلمه‌ی کلیدی اصلی در پاراگراف‌های اول نیامده',
+        '/^needs at least 3 H2$/' => fn($m) => 'کمتر از ۳ تیتر اصلی (H2) دارد',
+        '/^only (\d+) valid internal links \(min (\d+)\)$/' => fn($m) => fa_digits($m[1]) . ' لینک داخلی دارد؛ دست‌کم ' . fa_digits($m[2]) . ' تا پیشنهاد می‌شود',
+        '/^call-to-action link (.+) missing$/' => fn($m) => 'لینک دعوت به اقدام (' . $m[1] . ') در متن نیست',
+        '/^FAQ must have 3–6 items$/' => fn($m) => 'سؤال‌های متداول باید بین ۳ تا ۶ تا باشند',
+        '/^H1 inside body$/' => fn($m) => 'تیتر H1 در متن بود و برداشته شد (عنوان مقاله خودش H1 است)',
+        '/^unlinked: (.+)$/' => fn($m) => 'لینک ' . $m[1] . ' به صفحه‌ی شناخته‌شده‌ای نمی‌رسید و به متن ساده تبدیل شد',
+    ];
+    foreach ($map as $re => $fn) if (preg_match($re, $e, $m)) return $lang . $fn($m);
+    return $lang . $e;
+}
+/** Saves edited text. Only an empty required field blocks the save; the SEO checks come back as notes. */
+function save_draft_edit(array &$s, string $key, array $req, int $uid): array {
+    if (!editable($s, $key)) throw new RuntimeException('این مقاله دیگر قابل ویرایش نیست');
+    $a = draft_load($key);
+    if ((string)($req['rev'] ?? '') !== draft_rev($a)) throw new RuntimeException('کس دیگری همین حالا این مقاله را تغییر داده؛ ویرایشگر را ببند و دوباره باز کن تا نسخه‌ی تازه را ببینی');
+    $before = draft_rev($a);
+    $block = []; $notes = [];
+    foreach (langs() as $l) {
+        $in = $req['langs'][$l] ?? null;
+        if (!is_array($in)) throw new RuntimeException('متن ' . L($l)['label'] . ' نرسید');
+        $x = $a[$l];
+        foreach (EDIT_FIELDS as $f) $x[$f] = mb_substr(trim(str_replace(["\r", "\n"], ' ', (string)($in[$f] ?? ''))), 0, 300);
+        $x['body_html'] = mb_substr((string)($in['body'] ?? ''), 0, 200000);
+        $x['faq'] = array_slice(array_values(array_filter(array_map(fn($q) => ['q' => mb_substr(trim((string)($q['q'] ?? '')), 0, 300), 'a' => mb_substr(trim((string)($q['a'] ?? '')), 0, 2000)],
+            (array)($in['faq'] ?? [])), fn($q) => $q['q'] !== '' && $q['a'] !== '')), 0, 10);
+        $err = []; $warn = [];
+        $p = prepare_lang($l, $x, $a['slug'], (string)$a[$l]['date'], $err, $warn);
+        foreach ($err as $e) { if (preg_match('/^[A-Z]{2}: missing /', $e)) $block[] = fa_issue($e); else $notes[] = fa_issue($e); }
+        foreach ($warn as $w) $notes[] = fa_issue($w);
+        if (!array_filter($err, fn($e) => preg_match('/^[A-Z]{2}: missing /', $e))) $a[$l] = $p;
+    }
+    if ($block) throw new RuntimeException(implode(' · ', $block));
+    if (draft_rev($a) === $before) return ['changed' => false, 'notes' => [], 'rev' => $before];
+    $done = rerender_draft($s, $key, $a);
+    $live = $s['drafts'][$key]['status'] === 'published';
+    notify_others($s, $uid, '✏️ متن <b>' . h($a[lang1()]['title']) . '</b> در پنل ویرایش شد'
+        . ($live ? '؛ صفحه‌ی منتشرشده هم به‌روز شد.' : '؛ پیش‌نمایش به‌روز شد.') . "\n" . post_url(lang1(), $a['slug']) . actor_note($s));
+    logline("edited {$a['slug']} by uid $uid" . ($done ? ' (' . implode(', ', $done) . ')' : ''));
+    return ['changed' => true, 'notes' => array_values(array_unique($notes)), 'rev' => draft_rev($a)];
+}
+/** Cover photo uploaded from the panel. */
+function upload_cover(array &$s, string $key, string $data, array $user, int $uid): array {
+    if (!editable($s, $key)) throw new RuntimeException('این مقاله دیگر قابل ویرایش نیست');
+    $a = set_uploaded_cover($s, draft_load($key), $data, trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')));
+    rerender_draft($s, $key, $a);
+    notify_others($s, $uid, '🖼 عکس کاور <b>' . h($a[lang1()]['title']) . '</b> با عکسی که از پنل آپلود شد عوض شد.'
+        . ($s['drafts'][$key]['status'] === 'published' ? ' صفحه‌ی منتشرشده هم به‌روز شد.' : '') . actor_note($s));
+    return ['cover' => $a['cover']['card']];
 }

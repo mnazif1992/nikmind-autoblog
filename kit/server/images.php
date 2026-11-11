@@ -183,6 +183,7 @@ function crop_to(GdImage $src, int $sw, int $sh, int $tw, int $th, string $path,
 function cover_html(string $lang, array $a): string {
     if (empty($a['cover'])) return '';
     $c = $a['cover'];
+    if (!empty($c['own'])) return '<figure class="article-cover nn-cover"><img src="' . h($c['url']) . '" alt="' . h($a['title']) . '" width="' . (int)$c['w'] . '" height="' . (int)$c['h'] . '" fetchpriority="high"></figure>';
     $by = $c['creator'] !== '' ? h($c['creator']) . ' / ' : '';
     $credit = ($lang === 'fa' ? 'عکس: ' : 'Photo: ') . $by . h(ucfirst($c['source'])) . (str_starts_with((string)$c['license'], 'Pixabay') ? '' : ' (' . h($c['license']) . ')');
     if ($c['page'] !== '') $credit = '<a href="' . h($c['page']) . '" target="_blank" rel="noopener nofollow">' . $credit . '</a>';
@@ -202,7 +203,8 @@ function send_cover_preview(array &$s, string $key, array $a, ?array $to = null)
     }
     foreach ($to ?? $s['chat_ids'] as $cid) {
         tg('sendPhoto', ['chat_id' => $cid, 'photo' => strtok($a['cover']['url'], '?') . '?t=' . time(),
-            'caption' => 'عکس کاور: ' . $a['cover']['source'] . ' · ' . $a['cover']['license'] . "\nجست‌وجو: " . $a['cover']['query'],
+            'caption' => !empty($a['cover']['own']) ? 'عکس کاور: آپلود از پنل' . (($a['cover']['creator'] ?? '') !== '' ? ' (' . $a['cover']['creator'] . ')' : '')
+                : 'عکس کاور: ' . $a['cover']['source'] . ' · ' . $a['cover']['license'] . "\nجست‌وجو: " . $a['cover']['query'],
             'reply_markup' => ['inline_keyboard' => [[['text' => '🔄 عکس دیگر', 'callback_data' => "i:$key"]]]]]);
     }
 }
@@ -213,8 +215,63 @@ function swap_cover(array &$s, string $key): void {
     $a = json_decode((string)@file_get_contents($f), true);
     if (!is_array($a)) return;
     $a = attach_cover($a, $s, true);
-    file_put_contents($f, json_encode($a, JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
-    $live = ($s['drafts'][$key]['status'] ?? '') === 'published';
-    foreach (langs() as $lang) write_file(L($lang)['dir'] . '/' . $a['slug'] . '/index.html', render_article($lang, $a[$lang], $live));
+    rerender_draft($s, $key, $a);
     send_cover_preview($s, $key, $a);
+}
+
+/* ---------------- photos uploaded from the panel ---------------- */
+/** Site path of a photo in our own image folder (absolute or site-relative URL accepted), or '' if it is anything else. */
+function own_image_path(string $src): string {
+    $src = html_entity_decode(trim($src));
+    if (str_starts_with($src, SITE . '/')) $src = substr($src, strlen(SITE));
+    $src = strtok($src, '?#') ?: '';
+    $base = '/' . trim((string)site('covers_path', 'blog/assets/covers'), '/') . '/';
+    if (!str_starts_with($src, $base) || !preg_match('#^[a-z0-9/_.-]+\.webp$#', $src) || str_contains($src, '..')) return '';
+    return is_file(PUB . $src) ? $src : '';
+}
+/** Decodes a photo sent by the panel (base64 data URL or bare base64). Re-encoding later strips anything that is not pixels. */
+function upload_image_decode(string $data, int $minW, int $minH): GdImage {
+    @ini_set('memory_limit', '512M');
+    if (str_starts_with($data, 'data:')) $data = substr($data, (int)strpos($data, ',') + 1);
+    $bin = base64_decode($data, true);
+    if ($bin === false || strlen($bin) < 100) throw new RuntimeException('فایل عکس خوانده نشد');
+    if (strlen($bin) > 12 * 1024 * 1024) throw new RuntimeException('عکس بیش از حد بزرگ است');
+    $info = @getimagesizefromstring($bin);
+    if (!$info || !in_array($info[2], [IMAGETYPE_JPEG, IMAGETYPE_PNG, IMAGETYPE_WEBP, IMAGETYPE_GIF], true)) throw new RuntimeException('فقط عکس JPG، PNG یا WebP');
+    if ($info[0] * $info[1] > 60000000) throw new RuntimeException('ابعاد عکس بیش از حد بزرگ است');
+    if ($info[0] < $minW || $info[1] < $minH) throw new RuntimeException('عکس کوچک است؛ دست‌کم ' . fa_digits("{$minW}×{$minH}") . ' پیکسل لازم است');
+    $im = @imagecreatefromstring($bin);
+    if (!$im) throw new RuntimeException('فایل عکس خوانده نشد');
+    return $im;
+}
+/** Uploaded cover: same crops and files as a found photo, no credit line. Returns the updated article. */
+function set_uploaded_cover(array &$s, array $a, string $data, string $who): array {
+    $im = upload_image_decode($data, 600, 400);
+    $saved = save_cover_files($im, $a['slug']);
+    imagedestroy($im);
+    if (!$saved) throw new RuntimeException('ذخیره‌ی عکس روی سرور نشد');
+    $v = substr(md5($data . microtime()), 0, 6);
+    $a['cover'] = ['id' => 'upload-' . $v, 'url' => COVER_URL . '/' . $a['slug'] . '.webp?v=' . $v, 'card' => COVER_URL . '/' . $a['slug'] . '-card.webp?v=' . $v,
+                   'w' => $saved[0], 'h' => $saved[1], 'creator' => $who, 'source' => 'upload', 'page' => '', 'license' => '', 'query' => '', 'own' => true];
+    foreach (langs() as $l) if (isset($a[$l])) $a[$l]['cover'] = $a['cover'];
+    logline("cover {$a['slug']}: uploaded from the panel" . ($who !== '' ? " by $who" : ''));
+    return $a;
+}
+/** Photo for inside the article text: at most 1200 px wide, original proportions, WebP. Returns [site path, w, h]. */
+function save_inline_image(string $slug, string $data): array {
+    $im = upload_image_decode($data, 300, 200);
+    $sw = imagesx($im); $sh = imagesy($im);
+    $tw = min(1200, $sw); $th = (int)round($sh * $tw / $sw);
+    $dst = imagecreatetruecolor($tw, $th);
+    imagecopyresampled($dst, $im, 0, 0, 0, 0, $tw, $th, $sw, $sh);
+    imagedestroy($im);
+    @mkdir(COVER_DIR, 0755, true);
+    $name = $slug . '-in-' . substr(md5($data . microtime()), 0, 8) . '.webp';
+    $ok = imagewebp($dst, COVER_DIR . "/$name.tmp", 80);
+    imagedestroy($dst);
+    if (!$ok) throw new RuntimeException('ذخیره‌ی عکس روی سرور نشد');
+    rename(COVER_DIR . "/$name.tmp", COVER_DIR . "/$name");
+    @chmod(COVER_DIR . "/$name", 0644);
+    logline("inline photo $name uploaded from the panel");
+    return ['/' . trim((string)site('covers_path', 'blog/assets/covers'), '/') . "/$name", $tw, $th];
 }

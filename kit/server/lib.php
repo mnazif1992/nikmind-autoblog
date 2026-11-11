@@ -66,6 +66,17 @@ function posts_add(string $lang, array $a): void {
                           'read_min' => $a['read_min'], 'card' => $a['cover']['card'] ?? '', 'cat' => $a['cluster'] ?? '']);
     json_save(AB . "/state/posts-$lang.json", $list);
 }
+/** After an edit: same place in the list and same publish date, new title / excerpt / card / last-modified. */
+function posts_replace(string $lang, array $a): bool {
+    $list = posts($lang); $hit = false;
+    foreach ($list as &$p) if ($p['slug'] === $a['slug']) {
+        $p = array_merge($p, ['title' => $a['title'], 'excerpt' => $a['excerpt'], 'read_min' => $a['read_min'], 'card' => $a['cover']['card'] ?? '', 'mod' => $a['modified'] ?? '']);
+        $hit = true;
+    }
+    unset($p);
+    if ($hit) json_save(AB . "/state/posts-$lang.json", $list);
+    return $hit;
+}
 
 /* ---------------- safe file writes ---------------- */
 function backup_file(string $path): void {
@@ -225,8 +236,8 @@ function known_urls(): array {
 
 /* ---------------- sanitizing & checks ---------------- */
 function sanitize_body(string $html, array &$errors): string {
-    $allowed = ['p','h2','h3','h4','ul','ol','li','strong','em','b','i','a','blockquote','br','table','thead','tbody','tr','th','td'];
-    $drop = ['script','style','iframe','object','embed','form','input','img','svg','h1'];
+    $allowed = ['p','h2','h3','h4','ul','ol','li','strong','em','b','i','a','blockquote','br','table','thead','tbody','tr','th','td','img','figure','figcaption'];
+    $drop = ['script','style','iframe','object','embed','form','input','svg','h1'];
     $doc = new DOMDocument();
     libxml_use_internal_errors(true);
     $doc->loadHTML('<?xml encoding="utf-8"?><div id="root">' . $html . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
@@ -248,12 +259,31 @@ function sanitize_body(string $html, array &$errors): string {
             }
             $keep = [];
             if ($tag === 'a') $keep['href'] = $c->getAttribute('href');
+            if ($tag === 'img') {   // only photos uploaded from the panel (our own folder); anything else is dropped
+                $src = own_image_path($c->getAttribute('src'));
+                if ($src === '') { $n->removeChild($c); continue; }
+                $keep = ['src' => $src, 'alt' => trim($c->getAttribute('alt'))];
+            }
             while ($c->attributes->length) $c->removeAttribute($c->attributes->item(0)->nodeName);
             foreach ($keep as $k => $v) $c->setAttribute($k, $v);
-            if ($tag === 'p' && trim($c->textContent) === '') $n->removeChild($c);
+            if (in_array($tag, ['p', 'figure'], true) && trim($c->textContent) === '' && !$c->getElementsByTagName('img')->length) $n->removeChild($c);
         }
     };
     $walk($root);
+    // text left directly at the top (e.g. from an unwrapped <div>) goes into paragraphs
+    $block = ['p','h2','h3','h4','ul','ol','blockquote','table','figure'];
+    $run = null;
+    for ($c = $root->firstChild; $c; $c = $next) {
+        $next = $c->nextSibling;
+        $isBlock = $c instanceof DOMElement && in_array(strtolower($c->tagName), $block, true);
+        if ($isBlock || ($c instanceof DOMElement && strtolower($c->tagName) === 'br')) { if (!$isBlock) $root->removeChild($c); $run = null; continue; }
+        if ($run === null) {
+            if ($c instanceof DOMText && trim($c->textContent) === '') continue;
+            $run = $doc->createElement('p');
+            $root->insertBefore($run, $c);
+        }
+        $run->appendChild($c);
+    }
     $out = '';
     foreach ($root->childNodes as $ch) $out .= $doc->saveHTML($ch);
     return trim($out);
@@ -318,6 +348,11 @@ function prepare_lang(string $lang, array $a, string $slug, string $date, array 
         $toc[] = [$id, trim(html_entity_decode(strip_tags($m[1])))];
         return '<h2 id="' . h($id) . '">' . $m[1] . '</h2>';
     }, $body);
+    $body = preg_replace_callback('#<img src="([^"]+)" alt="([^"]*)">#u', function ($m) {   // size + lazy loading for photos in the text
+        $sz = @getimagesize(PUB . html_entity_decode($m[1]));
+        return '<img src="' . $m[1] . '" alt="' . $m[2] . '"' . ($sz ? ' width="' . $sz[0] . '" height="' . $sz[1] . '"' : '')
+            . ' loading="lazy" decoding="async" style="max-width:100%;height:auto;border-radius:12px;display:block;margin:0 auto">';
+    }, $body);
     $a['body_clean'] = $body;
     $a['toc'] = $toc;
     $a['words'] = $wc;
@@ -372,6 +407,8 @@ function render_article(string $lang, array $a, bool $live): string {
     $Lc = L($lang);
     $url = post_url($lang, $a['slug']);
     $iso = $a['date'] . 'T09:00:00' . date('P');
+    $mod = !empty($a['modified']) && $a['modified'] > $a['date'] ? (string)$a['modified'] : $a['date'];   // set when a published article is edited
+    $isoMod = $mod . 'T09:00:00' . date('P');
     $ogimg = !empty($a['cover']) ? strtok($a['cover']['url'], '?') : abs_url((string)site('default_og_image', ''));
     $person = array_filter(['@type' => 'Person', 'name' => $Lc['author'], 'url' => $Lc['author_url'], 'jobTitle' => $Lc['author_title'] ?? '',
                             'image' => abs_url((string)site('author_image', ''))]);
@@ -379,7 +416,7 @@ function render_article(string $lang, array $a, bool $live): string {
                                'logo' => abs_url((string)site('logo', ''))]);
     $ld = [array_filter([
         '@context' => 'https://schema.org', '@type' => 'BlogPosting', 'headline' => $a['title'], 'description' => $a['meta_description'],
-        'datePublished' => $iso, 'dateModified' => $iso, 'inLanguage' => $lang, 'mainEntityOfPage' => $url,
+        'datePublished' => $iso, 'dateModified' => $isoMod, 'inLanguage' => $lang, 'mainEntityOfPage' => $url,
         'author' => $person, 'publisher' => $publisher, 'image' => $ogimg,
     ]), [
         '@context' => 'https://schema.org', '@type' => 'BreadcrumbList', 'itemListElement' => [
@@ -424,7 +461,7 @@ function render_article(string $lang, array $a, bool $live): string {
         '{{RELATED_TITLE}}' => h($Lc['related']),
         '{{CAT_NAME}}' => h(cat_name((string)($a['cluster'] ?? ''))),
         '{{CAT_URL}}' => h(cat_url((string)($a['cluster'] ?? '')) ?: SITE . $Lc['base']),
-        '{{MODIFIED}}' => '<time datetime="' . $a['date'] . '">' . show_date($lang, $a['date']) . '</time>',
+        '{{MODIFIED}}' => '<time datetime="' . $mod . '">' . show_date($lang, $mod) . '</time>',
         '{{RELATED}}' => '<!--nn:related-->' . related_cards($lang, $a['slug'], (string)($a['cluster'] ?? '')) . '<!--/nn:related-->',
     ]);
     return fill_alts($html, fn($l) => post_url($l, $a['slug']));
@@ -503,7 +540,7 @@ function write_sitemap(string $lang): void {
     $Lc = L($lang);
     $x = '<?xml version="1.0" encoding="UTF-8"?>' . "\n" . '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n"
        . '<url><loc>' . SITE . $Lc['base'] . '</loc><lastmod>' . date('Y-m-d') . "</lastmod></url>\n";
-    foreach (posts($lang) as $p) $x .= '<url><loc>' . post_url($lang, $p['slug']) . '</loc><lastmod>' . $p['date'] . "</lastmod></url>\n";
+    foreach (posts($lang) as $p) $x .= '<url><loc>' . post_url($lang, $p['slug']) . '</loc><lastmod>' . max($p['date'], (string)($p['mod'] ?? '')) . "</lastmod></url>\n";
     write_file($Lc['dir'] . '/sitemap-blog.xml', $x . "</urlset>\n");
 }
 function build_feed(string $lang): string {
@@ -584,24 +621,44 @@ function sync_homes(array &$s): void {
     }
 }
 
+/** Category page: same marker region as the blog index, only this category's posts. */
+function update_category(string $lang, string $cluster): bool {
+    $cu = cat_url($cluster);
+    if ($cu === '' || !is_file(PUB . $cu . 'index.html')) return false;
+    $f = PUB . $cu . 'index.html';
+    $html = (string)file_get_contents($f);
+    if (!str_contains($html, '<!--nn:cards-->')) return false;
+    $cards = '';
+    foreach (posts($lang) as $p) if (($p['cat'] ?? '') === $cluster) $cards .= card_html($lang, $p) . "\n";
+    write_file($f, replace_region($html, 'cards', $cards));
+    return true;
+}
+/** A published article was edited (text or photo): its card changes everywhere it is shown. Order and dates stay as they were. */
+function refresh_side_effects(string $lang, array $a): array {
+    if (!posts_replace($lang, $a)) return ['not in post list'];
+    $done = [update_index($lang)];
+    try { $done[] = update_home($lang); } catch (Throwable $e) { logline('home update failed: ' . $e->getMessage()); }
+    write_sitemap($lang); $done[] = 'sitemap';
+    write_file(L($lang)['dir'] . '/feed.xml', build_feed($lang)); $done[] = 'rss';
+    if (update_category($lang, (string)($a['cluster'] ?? ''))) $done[] = 'category';
+    foreach (posts($lang) as $p) {                      // "more articles" blocks that show this article's card
+        if ($p['slug'] === $a['slug']) continue;
+        $f = L($lang)['dir'] . '/' . $p['slug'] . '/index.html';
+        $html = (string)@file_get_contents($f);
+        if (!preg_match('#<!--nn:related-->(.*?)<!--/nn:related-->#s', $html, $m) || !str_contains($m[1], '/' . $a['slug'] . '/')) continue;
+        write_file($f, replace_region($html, 'related', related_cards($lang, $p['slug'], (string)($p['cat'] ?? ''))));
+        $done[] = 'related ' . $p['slug'];
+    }
+    return $done;
+}
+
 function publish_side_effects(string $lang, array $a): array {
     posts_add($lang, $a);
     $done = [update_index($lang)];
     try { $done[] = update_home($lang); } catch (Throwable $e) { logline('home update failed: ' . $e->getMessage()); }
     write_sitemap($lang); $done[] = 'sitemap';
     write_file(L($lang)['dir'] . '/feed.xml', build_feed($lang)); $done[] = 'rss';
-    // category page: same marker region, only this category's posts
-    $cu = cat_url((string)($a['cluster'] ?? ''));
-    if ($cu !== '' && is_file(PUB . $cu . 'index.html')) {
-        $f = PUB . $cu . 'index.html';
-        $html = (string)file_get_contents($f);
-        if (str_contains($html, '<!--nn:cards-->')) {
-            $cards = '';
-            foreach (posts($lang) as $p) if (($p['cat'] ?? '') === $a['cluster']) $cards .= card_html($lang, $p) . "\n";
-            write_file($f, replace_region($html, 'cards', $cards));
-            $done[] = 'category ' . $a['cluster'];
-        }
-    }
+    if (update_category($lang, (string)($a['cluster'] ?? ''))) $done[] = 'category ' . $a['cluster'];
     // refresh the "more articles" block on the two newest older posts so the new one gets links right away
     foreach (array_slice(array_values(array_filter(posts($lang), fn($p) => $p['slug'] !== $a['slug'])), 0, 2) as $p) {
         $f = L($lang)['dir'] . '/' . $p['slug'] . '/index.html';
