@@ -107,7 +107,8 @@
   "en_keyword": "raising bilingual children",
   "cluster": "family",
   "angle": "بچه‌های دوزبانه‌ی خانواده‌های ایرانی: زبان، هویت، و نگرانی‌های رایج پدر و مادرها",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-11"
  },
  {
   "id": "T012",
@@ -116,7 +117,8 @@
   "en_keyword": "anxiety before moving abroad",
   "cluster": "migration",
   "angle": "استرس ماه‌های قبل از رفتن: تصمیم، خداحافظی، و آماده شدن روانی",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-11"
  },
  {
   "id": "T013",
