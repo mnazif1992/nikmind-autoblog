@@ -217,6 +217,20 @@ function handle_update(array &$s, array $u): void {
         }
         if ($text === '/pause') { $s['paused'] = true; tg('sendMessage', ['chat_id' => $cid, 'text' => '⏸ متوقف شد.']); notify_others($s, $cid, '⏸ نیک‌نگار متوقف شد.' . actor_note($s)); return; }
         if ($text === '/resume') { $s['paused'] = false; $s['fails'] = 0; tg('sendMessage', ['chat_id' => $cid, 'text' => '▶️ دوباره فعال شد.']); notify_others($s, $cid, '▶️ نیک‌نگار دوباره فعال شد.' . actor_note($s)); return; }
+        if ($text === '/photokey' || str_starts_with($text, '/photokey ')) {   // owner sets the free Pixabay API key for cover photos
+            if (!is_owner($s, $cid)) { tg('sendMessage', ['chat_id' => $cid, 'text' => 'فقط مالک ربات می‌تواند کلید عکس را تنظیم کند.']); return; }
+            $k = trim(substr($text, 9));
+            if ($k !== '' && isset($u['message']['message_id'])) tg('deleteMessage', ['chat_id' => $cid, 'message_id' => $u['message']['message_id']]);
+            if ($k === '') { tg('sendMessage', ['chat_id' => $cid, 'text' => photo_key('pixabay') !== '' ? "🖼 کلید Pixabay تنظیم شده و کاورها از Pixabay می‌آیند.\nعوض کردن: /photokey کلید-جدید · حذف: /photokey off" : "🖼 کلید Pixabay تنظیم نشده؛ کاورها از Openverse می‌آیند که عکس کم دارد.\nتنظیم: /photokey کلید"]); return; }
+            if ($k === 'off') { save_photo_key('pixabay', ''); tg('sendMessage', ['chat_id' => $cid, 'text' => '🖼 کلید Pixabay حذف شد.']); return; }
+            if (!preg_match('/^[0-9]+-[a-f0-9]{16,48}$/i', $k)) { tg('sendMessage', ['chat_id' => $cid, 'text' => 'این شبیه کلید Pixabay نیست (شکلش این است: عدد-حروف، مثل 12345678-0a1b2c…).']); return; }
+            [$code, $j] = photo_api('https://pixabay.com/api/?' . http_build_query(['key' => $k, 'q' => 'window', 'per_page' => 3]));
+            if ($code !== 200 || $j === null) { tg('sendMessage', ['chat_id' => $cid, 'text' => "Pixabay این کلید را قبول نکرد (کد $code). ذخیره نشد."]); return; }
+            save_photo_key('pixabay', $k);
+            tg('sendMessage', ['chat_id' => $cid, 'text' => '✅ کلید Pixabay ذخیره و تست شد (پیامت هم پاک شد). از این به بعد کاورها از Pixabay می‌آیند.']);
+            logline('pixabay key set');
+            return;
+        }
         if ($text === '/publishnow') { if ($s['queue']) publish_next($s); else tg('sendMessage', ['chat_id' => $cid, 'text' => 'صف انتشار خالی است.']); return; }
         return;
     }
