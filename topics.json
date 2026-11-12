@@ -127,7 +127,8 @@
   "en_keyword": "iranian psychiatrist germany",
   "cluster": "country",
   "angle": "کی روانپزشک لازم است نه روانشناس، و ایرانیان آلمان چه گزینه‌هایی دارند",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-12"
  },
  {
   "id": "T014",
@@ -136,7 +137,8 @@
   "en_keyword": "long distance relationship after moving abroad",
   "cluster": "family",
   "angle": "وقتی یکی رفته و دیگری مانده: نگه داشتن رابطه از راه دور و نشانه‌های خطر",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-12"
  },
  {
   "id": "T015",
