@@ -147,7 +147,8 @@
   "en_keyword": "therapy in farsi online",
   "cluster": "online",
   "angle": "جلسه‌ی آنلاین روان‌درمانی به فارسی دقیقاً چطور برگزار می‌شود؛ از پیش‌مشاوره تا جلسه‌ی اول",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-13"
  },
  {
   "id": "T016",
@@ -156,7 +157,8 @@
   "en_keyword": "regret moving to canada",
   "cluster": "migration",
   "angle": "تجربه‌های رایج ایرانیان کانادا که به پشیمانی می‌رسند و چطور فکر کنیم قبل از تصمیم به برگشت",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-13"
  },
  {
   "id": "T017",
