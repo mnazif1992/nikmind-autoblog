@@ -167,7 +167,8 @@
   "en_keyword": "persian psychologist sydney",
   "cluster": "country",
   "angle": "ایرانیان سیدنی و ملبورن و پیدا کردن روانشناس فارسی‌زبان",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-14"
  },
  {
   "id": "T018",
@@ -176,7 +177,8 @@
   "en_keyword": "culture shock in germany",
   "cluster": "migration",
   "angle": "چیزهایی از زندگی در آلمان که برای ایرانی‌ها شوک‌آور است و اثرش روی روان",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-14"
  },
  {
   "id": "T019",
