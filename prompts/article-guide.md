@@ -72,13 +72,14 @@
 **`image_prompt`** — یک تا سه جمله‌ی **انگلیسی** (۱۵ تا ۸۰ کلمه) که یک صحنه‌ی واقعی و آرام را دقیق توصیف کند:
 - **مخصوص همین مقاله.** کسی که فقط عکس را ببیند باید حدس بزند مقاله درباره‌ی چیست. صحنه‌ی عمومی که برای هر مقاله‌ای جواب بدهد ممنوع (`woman with laptop`، `man looking out window`).
 - **جزئیات ملموس:** چه چیزی، کجا، چه ساعتی، چه نوری، از چه زاویه‌ای؛ اشیا و جنسشان، فصل، فضای خانه یا شهر.
+- **اشیا را دقیق و با شکل آشنایشان نام ببر.** مدل از اسم کلی، چیز عجیب می‌سازد: `classic red rubber hot water bottle in a knitted cover` نه `hot water bottle`؛ `small curved Persian tea glass (estekan) on a saucer` نه `tea glass`. چیزی که شکلش مهم است را توصیف کن.
 - **آدم‌ها، اگر هستند:** از پشت، نیم‌رخ، دست‌ها یا از دور؛ سرگرم کاری واقعی. رو به دوربین، لبخند تبلیغاتی و ژست عکاسی نه.
 - **ننویس:** هر نوشته‌ی خوانا (تابلو، کتاب باز، صفحه‌ی گوشی با متن)، لوگو و برند، گریه و آسیب و بحران، بیمارستان و ابزار پزشکی، برهنگی، نماد مذهبی یا سیاسی، سبک کارتونی یا نقاشی. سبک عکاسی (نور طبیعی، بدون نوشته) را خود سرور اضافه می‌کند؛ لازم نیست تکرارش کنی.
 - صحنه‌ی مقاله‌های قبلی را تکرار نکن (`site/articles.json`).
 
 **جهت بصری این سایت (ایرانیان خارج از کشور):** خانه‌ها و شهرهای واقعی مهاجرت (آپارتمان اجاره‌ای، ایستگاه قطار، خیابان بارانی، آشپزخانه‌ی کوچک) با نشانه‌های آرام و بی‌کلیشه‌ی ایرانی وقتی به موضوع می‌خورد: استکان کمرباریک، قوری، گلیم یا قالیچه، عکس قدیمی خانوادگی، سبزی خوردن. نور طبیعی، رنگ‌های گرم و ملایم، حس خلوت و امیدوار؛ نه غمگین و تاریک.
 
-مثال خوب برای «دلتنگی خانواده بعد از مهاجرت»: `A tea glass on a narrow windowsill of a rented apartment abroad, a phone propped against it showing a paused video call with an elderly couple, a small Persian rug on the wooden floor, soft winter evening light, rain on the window.`
+مثال خوب برای «دلتنگی خانواده بعد از مهاجرت»: `A small curved Persian tea glass (estekan) on a saucer on a narrow windowsill of a rented apartment abroad, a phone propped against it showing a paused video call with an elderly couple, a small Persian rug on the wooden floor, soft winter evening light, rain on the window.`
 
 **`image_queries`** — پشتیبان، برای وقتی که ساختن نشد: ۲ تا ۳ عبارت **انگلیسی**، هر کدام ۲ تا ۴ کلمه‌ی دیدنی، از دقیق به عام. همان صحنه‌ی `image_prompt` را ساده کن (`tea glass windowsill`، `suitcase hallway`). کلمه‌ی احساسی (`anxiety`، `sad`، `therapy`)، برند و ملیت ننویس.
 
