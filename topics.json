@@ -187,7 +187,8 @@
   "en_keyword": "immigration stress",
   "cluster": "migration",
   "angle": "منابع استرس مهاجرت (اقامت، کار، زبان، پول) و ابزارهای ساده برای مدیریتش",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-15"
  },
  {
   "id": "T020",
@@ -196,7 +197,8 @@
   "en_keyword": "iranian therapist dubai",
   "cluster": "country",
   "angle": "ایرانیان امارات و دسترسی به روانشناس فارسی‌زبان؛ محرمانگی و جلسه‌ی آنلاین",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-15"
  },
  {
   "id": "T021",
