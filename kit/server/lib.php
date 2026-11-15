@@ -37,6 +37,37 @@ function L(string $lang): array {
     $L['feed_title'] = $L['feed_title'] ?? ($L['blog_title'] ?? ($L['blog_name'] . ' — ' . $L['site_name']));
     return $cache[$lang] = $L;
 }
+/* ---------------- byline: the main author, or the site's general editorial team ---------------- */
+// Every article is credited to the main author by default. Weaker SEO pieces can be moved to the team byline from the
+// bot or the panel, so the main author's personal brand only carries the articles they would sign themselves.
+// Team name, per language: set with /team in the bot (state/bylines.json), else "team_author" in site.json, else derived.
+const BYLINES = ['main', 'team'];
+function byline_default(): string { return in_array(site('default_byline', 'main'), BYLINES, true) ? (string)site('default_byline', 'main') : 'main'; }
+function byline_of(array $a): string { $b = (string)($a['byline'] ?? ''); return in_array($b, BYLINES, true) ? $b : byline_default(); }
+function team_names(): array { return json_load(AB . '/state/bylines.json', []); }
+function team_name(string $lang): string {
+    $Lc = L($lang);
+    $n = trim((string)(team_names()[$lang] ?? '')) ?: trim((string)($Lc['team_author'] ?? ''));
+    if ($n !== '') return $n;
+    $brand = (string)$Lc['site_name'];
+    return ['fa' => "تحریریه $brand", 'ar' => "فريق تحرير $brand"][$lang] ?? "$brand Editorial Team";
+}
+/** Who an article is credited to: name, link, short bio, schema type and photo. */
+function author_info(string $lang, string $byline): array {
+    $Lc = L($lang);
+    if ($byline !== 'team') return ['type' => 'Person', 'name' => (string)$Lc['author'], 'url' => (string)$Lc['author_url'],
+        'title' => (string)($Lc['author_title'] ?? ''), 'image' => abs_url((string)site('author_image', ''))];
+    return ['type' => 'Organization', 'name' => team_name($lang), 'url' => abs_url((string)($Lc['team_author_url'] ?? '')),
+        'title' => (string)($Lc['team_author_title'] ?? ''), 'image' => ''];
+}
+function byline_name(string $lang, string $byline): string { return author_info($lang, $byline)['name']; }
+/** Sets the byline on an article (all its languages). */
+function with_byline(array $a, string $byline): array {
+    $a['byline'] = $byline;
+    foreach (langs() as $l) if (isset($a[$l]) && is_array($a[$l])) $a[$l]['byline'] = $byline;
+    return $a;
+}
+
 function abs_url(string $u): string { return ($u === '' || preg_match('#^https?://#', $u)) ? $u : SITE . '/' . ltrim($u, '/'); }
 function post_url(string $lang, string $slug): string { return SITE . L($lang)['base'] . $slug . '/'; }
 
@@ -376,7 +407,8 @@ function validate_draft(array $d, array &$errors, array &$warnings): array {
         $out[$lang] = prepare_lang($lang, $d[$lang], $slug, $date, $errors, $warnings);
         $out[$lang]['cluster'] = $cl;
     }
-    return $out;
+    // a draft may ask for the team byline itself ("byline": "team"); otherwise the site's default (main author)
+    return with_byline($out, in_array($d['byline'] ?? '', BYLINES, true) ? (string)$d['byline'] : byline_default());
 }
 
 /* ---------------- rendering ---------------- */
@@ -410,8 +442,10 @@ function render_article(string $lang, array $a, bool $live): string {
     $mod = !empty($a['modified']) && $a['modified'] > $a['date'] ? (string)$a['modified'] : $a['date'];   // set when a published article is edited
     $isoMod = $mod . 'T09:00:00' . date('P');
     $ogimg = !empty($a['cover']) ? strtok($a['cover']['url'], '?') : abs_url((string)site('default_og_image', ''));
-    $person = array_filter(['@type' => 'Person', 'name' => $Lc['author'], 'url' => $Lc['author_url'], 'jobTitle' => $Lc['author_title'] ?? '',
-                            'image' => abs_url((string)site('author_image', ''))]);
+    $au = author_info($lang, byline_of($a));
+    $person = $au['type'] === 'Person'
+        ? array_filter(['@type' => 'Person', 'name' => $au['name'], 'url' => $au['url'], 'jobTitle' => $au['title'], 'image' => $au['image']])
+        : array_filter(['@type' => 'Organization', 'name' => $au['name'], 'url' => $au['url'] ?: $Lc['home']]);
     $publisher = array_filter(['@type' => (string)site('publisher_type', 'Organization'), 'name' => $Lc['site_name'], 'url' => $Lc['home'],
                                'logo' => abs_url((string)site('logo', ''))]);
     $ld = [array_filter([
@@ -450,9 +484,9 @@ function render_article(string $lang, array $a, bool $live): string {
         '{{ISO}}' => $iso,
         '{{LD}}' => $ldHtml,
         '{{TITLE}}' => h($a['title']),
-        '{{AUTHOR_HTML}}' => $Lc['author_url'] ? '<a href="' . h($Lc['author_url']) . '" rel="author">' . h($Lc['author']) . '</a>' : h($Lc['author']),
-        '{{AUTHOR_NAME}}' => h($Lc['author']),
-        '{{AUTHOR_BIO}}' => h(trim(($Lc['author_title'] ?? '') . (empty($Lc['disclaimer']) ? '' : '. ' . $Lc['disclaimer']), '. ')),
+        '{{AUTHOR_HTML}}' => $au['url'] ? '<a href="' . h($au['url']) . '" rel="author">' . h($au['name']) . '</a>' : h($au['name']),
+        '{{AUTHOR_NAME}}' => h($au['name']),
+        '{{AUTHOR_BIO}}' => h(trim($au['title'] . (empty($Lc['disclaimer']) ? '' : '. ' . $Lc['disclaimer']), '. ')),
         '{{TIME}}' => '<time datetime="' . $a['date'] . '">' . show_date($lang, $a['date']) . '</time>',
         '{{READ}}' => num($lang, $a['read_min']) . $Lc['read'],
         '{{COVER}}' => cover_html($lang, $a),

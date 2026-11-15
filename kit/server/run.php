@@ -18,6 +18,17 @@ with_state(function (array &$s) use ($argv) {
         if ($r['changed']) { logline('kit updated: ' . implode(', ', $r['changed'])); tg_all($s, '🔧 نیک‌نگار به‌روز شد (' . h(implode('، ', $r['changed'])) . ').'); }
         if ($r['errors']) logline('kit update problems: ' . implode(' | ', $r['errors']));
     }
+    // once per new version: tell the team what changed (installs that never had an owner have nobody to tell)
+    if ($s['chat_ids'] && ($s['seen_version'] ?? '') !== KIT_VERSION) {
+        $was = (string)($s['seen_version'] ?? '');
+        $s['seen_version'] = KIT_VERSION;
+        if ($was !== '' || $s['published'] || $s['drafts']) {
+            if (version_compare($was ?: '1.2.0', '1.3.0', '<')) tg_all($s, "✨ <b>تازه در نیک‌نگار: انتخاب نویسنده</b>\n\n"
+                . 'هر مقاله به‌طور پیش‌فرض به نام <b>' . h(byline_name(lang1(), byline_default())) . '</b> منتشر می‌شود. '
+                . 'زیر هر پیش‌نویس (و حتی مقاله‌ی منتشرشده) دکمه‌ی «👤 به نام…» هست که با یک ضربه آن را به <b>' . h(byline_name(lang1(), 'team')) . '</b> عوض می‌کند و برعکس. '
+                . "در پنل هم روی کارت هر مقاله همین انتخاب هست.\n\nاسم تحریریه را با /team ببین یا عوض کن، مثلاً:\n<code>/team " . h(byline_name(lang1(), 'team')) . '</code>');
+        }
+    }
     sync_homes($s);
     if (!empty($s['paused'])) return;
     if (time() - (int)$s['last_gh'] >= 5 * 60 || in_array('--now', $argv ?? [], true)) {

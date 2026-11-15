@@ -123,7 +123,7 @@ function welcome_text(array $s): string {
     $per = fa_digits((string)site('posts_per_day', 2));
     return "👋 <b>به نیک‌نگار خوش آمدی</b>\n"
      . "میز تحریریه‌ی بلاگ <b>" . h($host) . "</b>\n\n"
-     . "نیک‌نگار هر روز برای بلاگ " . h((string)site('site_name', $host)) . " مقاله می‌نویسد ($langTxt)، به نام " . h(L(lang1())['author']) . ". برایش عکس کاور پیدا می‌کند و پیش‌نویس را این‌جا می‌فرستد تا درباره‌اش تصمیم گرفته شود.\n\n"
+     . "نیک‌نگار هر روز برای بلاگ " . h((string)site('site_name', $host)) . " مقاله می‌نویسد ($langTxt)، به نام " . h(byline_name(lang1(), byline_default())) . ". برایش عکس کاور پیدا می‌کند و پیش‌نویس را این‌جا می‌فرستد تا درباره‌اش تصمیم گرفته شود.\n\n"
      . "<b>🗓 هر روز چه اتفاقی می‌افتد</b>\n"
      . "• ساعت " . fa_digits((string)site('daily_write_time', '06:47')) . " صبح $per مقاله‌ی تازه از صف کلمات کلیدی نوشته می‌شود.\n"
      . "• چند دقیقه بعد پیش‌نویس‌ها با عکس کاور این‌جا می‌رسند.\n"
@@ -134,6 +134,7 @@ function welcome_text(array $s): string {
      . "❌ <b>رد</b>: پیش‌نمایش از سایت برداشته می‌شود.\n"
      . "🔄 <b>عکس دیگر</b>، زیر عکس کاور: یک عکس تازه پیدا می‌کند.\n"
      . "✏️ <b>ویرایش متن و عکس</b>: ویرایشگر پنل باز می‌شود؛ متن، عنوان‌ها و سؤال‌ها را عوض کن، عکس کاور خودت را بگذار یا وسط متن عکس اضافه کن.\n"
+     . "👤 <b>به نام…</b>: نویسنده‌ی مقاله را بین " . h(byline_name(lang1(), 'main')) . " و " . h(byline_name(lang1(), 'team')) . " عوض می‌کند (حتی بعد از انتشار). اسم تحریریه با /team عوض می‌شود.\n"
      . "لینک‌های پیش‌نمایش را قبل از تصمیم باز کن. تا وقتی منتشر نشده‌اند، گوگل آن‌ها را نمی‌بیند.\n\n"
      . "<b>⌨️ دکمه‌های پایین صفحه</b>\n"
      . "✍️ <b>مقاله‌ی جدید</b>: یک مقاله‌ی اضافه سفارش می‌دهی و حداکثر حدود یک ساعت بعد پیش‌نویسش می‌رسد.\n"
@@ -165,7 +166,7 @@ function resend_open_drafts(array &$s, int $cid): void {
         if (!is_array($a)) continue;
         if ($n === 0) tg('sendMessage', ['chat_id' => $cid, 'text' => 'پیش‌نویس‌هایی که الان باز هستند 👇']);
         $r = tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'disable_web_page_preview' => true,
-            'text' => draft_msg($s, $a, $st === 'queued'), 'reply_markup' => ['inline_keyboard' => draft_buttons((string)$key, $st)]]);
+            'text' => draft_msg($s, $a, $st === 'queued'), 'reply_markup' => ['inline_keyboard' => draft_buttons((string)$key, $st, byline_of($a))]]);
         if ($r) $s['drafts'][$key]['msgs'][] = [$cid, $r['result']['message_id']];
         send_cover_preview($s, (string)$key, $a, [$cid]);
         $n++;

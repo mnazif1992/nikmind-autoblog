@@ -4,7 +4,7 @@
 declare(strict_types=1);
 
 const AB = __DIR__;
-const KIT_VERSION = '1.2.0';
+const KIT_VERSION = '1.3.0';
 
 (function () {
     $f = AB . '/site.json';

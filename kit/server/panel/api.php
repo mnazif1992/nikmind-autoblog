@@ -92,6 +92,10 @@ $res = with_state(function (array &$s) use ($action, $key, $req, $uid) {
             if ($was !== $s['paused']) notify_others($s, $uid, settings_change_text($s, 's'));
             break;
         case 'write': request_write($s, $uid); break;
+        case 'byline':
+            try { set_byline($s, $key, (string)($req['byline'] ?? ''), $uid); }
+            catch (Throwable $e) { return ['ok' => false, 'error' => $e->getMessage()]; }
+            break;
         default: return ['ok' => false, 'error' => 'unknown action'];
     }
     return ['ok' => true, 'state' => panel_state($s)];

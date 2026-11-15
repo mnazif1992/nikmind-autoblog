@@ -113,6 +113,11 @@ main{padding:16px 14px 96px;max-width:620px;margin:0 auto}
 .ghost svg{width:16px;height:16px;stroke:currentColor}
 .ghost.red{color:var(--danger)}
 button[disabled]{opacity:.45;pointer-events:none}
+.byline{display:flex;align-items:center;gap:8px;margin:0 0 12px}
+.byline .lb{font-size:12px;font-weight:700;color:var(--hint);flex:none}
+.byline .seg{flex:1;display:flex;gap:3px;background:var(--bg);border-radius:12px;padding:3px;min-width:0}
+.byline .seg button{flex:1;min-width:0;border:0;background:transparent;color:var(--hint);font-weight:700;font-size:12px;padding:7px 6px;border-radius:9px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.byline .seg button.on{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12);pointer-events:none}
 
 .empty{text-align:center;color:var(--hint);padding:38px 16px;background:var(--card);border-radius:var(--r);font-size:14px}
 .empty b{display:block;color:var(--text);font-size:15px;margin-bottom:4px}
@@ -422,12 +427,17 @@ function card(i) {
   if (i.status === 'queued') acts = '<button class="primary" data-a="publish" data-k="' + i.key + '"><svg><use href="#i-send"/></svg>انتشار همین حالا</button>'
     + '<div class="row3 row2">' + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
   acts += '<div class="row3 row2">' + g('edit', 'pen', 'ویرایش متن') + g('mycover', 'upload', 'عکس کاور خودم') + '</div>';
+  // byline: main author (default) or the editorial team; one tap switches it, also after publishing
+  const B = S.bylines || {}, cur = i.byline || 'main';
+  const by = B.team ? '<div class="byline"><span class="lb">به نام</span><div class="seg">'
+    + ['main', 'team'].map(m => '<button data-by="' + m + '" data-k="' + i.key + '" class="' + (cur === m ? 'on' : '') + '" title="' + esc(B[m]) + '">' + esc(B[m]) + '</button>').join('')
+    + '</div></div>' : '';
   return '<article class="post">'
     + '<div class="cover" style="background-image:url(\'' + esc(i.cover) + '\')"><span class="badge ' + i.status + '">' + label + '</span><span class="when">' + when + '</span></div>'
     + '<div class="pbody"><h3>' + esc(i.title) + '</h3>' + (i.title2 ? '<p class="en" dir="auto">' + esc(i.title2) + '</p>' : '')
     + '<div class="chips"><span class="chip">' + fa(i.words) + ' کلمه</span><span class="chip">' + esc(i.kw) + '</span></div>'
     + '<div class="links">' + (i.links || []).map((l, n) => '<a href="' + esc(l.url) + '" data-link>' + (n ? esc(l.label) : (i.status === 'published' ? 'مقاله' : 'پیش‌نمایش') + ' ' + esc(l.label)) + '</a>').join('') + '</div>'
-    + acts + '</div></article>';
+    + by + acts + '</div></article>';
 }
 
 function setMain() {
@@ -518,6 +528,14 @@ document.addEventListener('click', async e => {
   const l = e.target.closest('[data-link]');
   if (l) { e.preventDefault(); tg && tg.openLink ? tg.openLink(l.href) : window.open(l.href); return; }
   const t = e.target.closest('.tab'); if (t) { tap(); tab = t.dataset.tab; render(); return; }
+  const w = e.target.closest('button[data-by]');
+  if (w) {
+    tap();
+    const name = (S.bylines || {})[w.dataset.by] || '';
+    if (S.items.find(x => x.key === w.dataset.k && x.status === 'published') && !(await ask('این مقاله منتشر شده. نویسنده‌اش روی سایت به «' + name + '» عوض شود؟'))) return;
+    act('byline', { key: w.dataset.k, byline: w.dataset.by }, 'حالا به نام «' + name + '» است');
+    return;
+  }
   const b = e.target.closest('button[data-a]'); if (!b) return;
   const key = b.dataset.k, a = b.dataset.a;
   tap();

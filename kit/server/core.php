@@ -19,15 +19,18 @@ function auto_mode(array $s): bool { return array_key_exists('auto_publish', $s)
 function panel_url(): string { return SITE . '/' . PANEL_DIR . '/app/'; }
 
 /* ---------------- keyboards ---------------- */
-function draft_buttons(string $key, string $status): array {
+function draft_buttons(string $key, string $status, string $byline = ''): array {
     $edit = ['text' => '✏️ ویرایش متن و عکس', 'web_app' => ['url' => panel_url() . '?edit=' . $key]];   // opens the panel straight in this article's editor
+    // one tap switches the byline between the main author and the editorial team; the label shows who it is credited to now
+    $by = [['text' => '👤 به نام: ' . byline_name(lang1(), $byline ?: byline_default()) . ' · تغییر', 'callback_data' => "w:$key"]];
     if ($status === 'pending') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '⏱ در نوبت بعدی', 'callback_data' => "p:$key"]],
-                                       [$edit, ['text' => '❌ رد', 'callback_data' => "r:$key"]]];
-    if ($status === 'queued') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '❌ رد', 'callback_data' => "r:$key"]], [$edit]];
+                                       [$edit, ['text' => '❌ رد', 'callback_data' => "r:$key"]], $by];
+    if ($status === 'queued') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '❌ رد', 'callback_data' => "r:$key"]], [$edit], $by];
+    if ($status === 'published') return [$by];
     return [];
 }
 function set_buttons(array $s, string $key): void {
-    $kb = draft_buttons($key, $s['drafts'][$key]['status'] ?? '');
+    $kb = draft_buttons($key, $s['drafts'][$key]['status'] ?? '', (string)($s['drafts'][$key]['byline'] ?? ''));
     foreach ($s['drafts'][$key]['msgs'] ?? [] as [$c, $m]) tg('editMessageReplyMarkup', ['chat_id' => $c, 'message_id' => $m, 'reply_markup' => ['inline_keyboard' => $kb]]);
 }
 function settings_text(array $s): string {
@@ -94,10 +97,10 @@ function check_drafts(array &$s): void {
         $auto = auto_mode($s);
         $status = $auto ? 'queued' : 'pending';
         $s['drafts'][$key] = ['file' => $f['name'], 'slug' => $a['slug'], 'title' => $a[lang1()]['title'], 'status' => $status, 'msgs' => [], 'at' => date('c'),
-                              'words' => $a[lang1()]['words'], 'kw' => $a[lang1()]['primary_keyword']];
+                              'words' => $a[lang1()]['words'], 'kw' => $a[lang1()]['primary_keyword'], 'byline' => byline_of($a)];
         if ($auto) $s['queue'][] = $key;
         $msg = ($auto ? "🤖 <b>پیش‌نویس تازه — در صف انتشار خودکار</b> (" . next_slot_text($s) . ")\n\n" : "📝 <b>پیش‌نویس تازه</b>\n\n") . draft_body($a);
-        $s['drafts'][$key]['msgs'] = tg_all($s, $msg, draft_buttons($key, $status));
+        $s['drafts'][$key]['msgs'] = tg_all($s, $msg, draft_buttons($key, $status, byline_of($a)));
         send_cover_preview($s, $key, $a);
         logline("draft ready {$a['slug']} ($status)");
     }
@@ -142,6 +145,7 @@ function do_publish(array &$s, string $key): void {
         $ok = $ok && $r['code'] === 200 && str_contains($r['body'], '<link rel="canonical" href="' . $url . '">') && str_contains($r['body'], 'index, follow');
     }
     $done[] = 'IndexNow ' . indexnow(array_merge($urls, array_map(fn($l) => SITE . L($l)['base'], langs())));
+    draft_store($key, $a);                         // with the publish date, so later edits and byline changes keep it
     $d['status'] = 'published';
     $d['published_at'] = date('c');
     $s['published'][] = ['slug' => $a['slug'], 'title' => $a[lang1()]['title'], 'pub_day' => $today, 'at' => date('c'), 'key' => $key];
@@ -248,6 +252,7 @@ function handle_update(array &$s, array $u): void {
             logline('pixabay key set');
             return;
         }
+        if ($text === '/team' || str_starts_with($text, '/team ')) { team_command($s, $cid, trim(substr($text, 5))); return; }
         if ($text === '/publishnow') { if ($s['queue']) publish_next($s); else tg('sendMessage', ['chat_id' => $cid, 'text' => 'صف انتشار خالی است.']); return; }
         return;
     }
@@ -282,6 +287,13 @@ function handle_update(array &$s, array $u): void {
         }
         $st = $s['drafts'][$arg]['status'] ?? '';
         try {
+            if ($act === 'w') {
+                if (!editable($s, $arg)) { $ack('این مقاله دیگر قابل تغییر نیست'); return; }
+                $to = byline_of(draft_load($arg)) === 'team' ? 'main' : 'team';
+                $ack('حالا به نام «' . byline_name(lang1(), $to) . '»');
+                set_byline($s, $arg, $to, (int)$cid);
+                return;
+            }
             if ($act === 'i') { $ack('دنبال عکس دیگر…'); if (in_array($st, ['pending', 'queued'], true)) swap_cover($s, $arg); return; }
             if ($act === 'n') { $ack(in_array($st, ['pending', 'queued'], true) ? 'در حال انتشار…' : 'قبلاً تصمیم گرفته شده'); publish_key($s, $arg); return; }
             if ($act === 'p') { $ack($st === 'pending' ? 'رفت در صف' : 'قبلاً تصمیم گرفته شده'); approve_key($s, $arg); return; }
@@ -307,7 +319,7 @@ function panel_state(array $s): array {
         $a = json_decode((string)@file_get_contents(AB . "/drafts/$k.json"), true) ?: [];
         $items[] = ['key' => $k, 'status' => $d['status'], 'title' => $d['title'] ?? '', 'slug' => $d['slug'] ?? '',
             'title2' => count(langs()) > 1 ? ($a[langs()[1]]['title'] ?? '') : '', 'words' => (int)($a[lang1()]['words'] ?? 0), 'kw' => $a[lang1()]['primary_keyword'] ?? '',
-            'cover' => $a['cover']['card'] ?? '', 'at' => $d['published_at'] ?? $d['at'] ?? '',
+            'cover' => $a['cover']['card'] ?? '', 'at' => $d['published_at'] ?? $d['at'] ?? '', 'byline' => byline_of($a),
             'links' => array_map(fn($l) => ['label' => L($l)['label'], 'url' => post_url($l, (string)($d['slug'] ?? ''))], langs()),
             'queue_pos' => ($i = array_search($k, $s['queue'], true)) === false ? null : $i + 1];
         if (count($items) >= 40) break;
@@ -317,7 +329,8 @@ function panel_state(array $s): array {
             'published_total' => count($s['published']),
             'published_week' => count(array_filter($s['published'], fn($p) => strtotime($p['at'] ?? '') > time() - 7 * 86400)),
             'site' => site('site_name', ''), 'langs' => array_map(fn($l) => ['code' => $l, 'label' => L($l)['label'], 'dir' => L($l)['dir_attr']], langs()),
-            'write_time' => (string)site('daily_write_time', '06:47'), 'per_day' => (int)site('posts_per_day', 2), 'version' => KIT_VERSION];
+            'write_time' => (string)site('daily_write_time', '06:47'), 'per_day' => (int)site('posts_per_day', 2), 'version' => KIT_VERSION,
+            'bylines' => ['main' => byline_name(lang1(), 'main'), 'team' => byline_name(lang1(), 'team')]];
 }
 
 /* ---------------- editing from the panel: text and photos ---------------- */
@@ -352,6 +365,7 @@ function draft_edit_view(array $s, string $key): array {
 /** Re-renders the article pages after a change; a published article also refreshes its card, sitemap, feed and IndexNow. */
 function rerender_draft(array &$s, string $key, array $a): array {
     $live = ($s['drafts'][$key]['status'] ?? '') === 'published';
+    if ($live) $a = live_dates($a);
     if ($live) foreach (langs() as $l) $a[$l]['modified'] = date('Y-m-d');
     draft_store($key, $a);
     $done = [];
@@ -428,4 +442,66 @@ function upload_cover(array &$s, string $key, string $data, array $user, int $ui
     notify_others($s, $uid, '🖼 عکس کاور <b>' . h($a[lang1()]['title']) . '</b> با عکسی که از پنل آپلود شد عوض شد.'
         . ($s['drafts'][$key]['status'] === 'published' ? ' صفحه‌ی منتشرشده هم به‌روز شد.' : '') . actor_note($s));
     return ['cover' => $a['cover']['card']];
+}
+
+/* ---------------- byline: main author or editorial team ---------------- */
+/** A published article keeps the date it went live (drafts saved before v1.3 only had the writing date). */
+function live_dates(array $a): array {
+    foreach (langs() as $l) foreach (posts($l) as $p) if ($p['slug'] === ($a['slug'] ?? '') && !empty($p['date'])) $a[$l]['date'] = $p['date'];
+    return $a;
+}
+/** Credits an article to the main author or the editorial team and re-renders its pages (preview or live). */
+function set_byline(array &$s, string $key, string $to, int $uid): string {
+    if (!in_array($to, BYLINES, true)) throw new RuntimeException('نویسنده‌ی نامعتبر');
+    if (!editable($s, $key)) throw new RuntimeException('این مقاله دیگر قابل تغییر نیست');
+    $a = draft_load($key);
+    $name = byline_name(lang1(), $to);
+    if (byline_of($a) === $to && ($s['drafts'][$key]['byline'] ?? '') === $to) return $name;
+    $a = with_byline($a, $to);
+    $live = ($s['drafts'][$key]['status'] ?? '') === 'published';
+    if ($live) $a = live_dates($a);
+    draft_store($key, $a);
+    foreach (langs() as $l) write_file(L($l)['dir'] . '/' . $a['slug'] . '/index.html', render_article($l, $a[$l], $live));
+    $s['drafts'][$key]['byline'] = $to;
+    set_buttons($s, $key);
+    notify_others($s, $uid, '👤 <b>' . h($a[lang1()]['title']) . '</b> حالا به نام «' . h($name) . '» است'
+        . ($live ? '؛ صفحه‌ی منتشرشده هم به‌روز شد.' : '.') . actor_note($s));
+    logline("byline {$a['slug']} -> $to by uid $uid");
+    return $name;
+}
+/** Re-renders the articles credited to the team after its name changed. */
+function rerender_team_articles(array $s): int {
+    $n = 0;
+    foreach ($s['drafts'] as $k => $d) {
+        if (!in_array($d['status'] ?? '', ['pending', 'queued', 'published'], true)) continue;
+        $a = json_decode((string)@file_get_contents(AB . "/drafts/$k.json"), true);
+        if (!is_array($a) || byline_of($a) !== 'team') continue;
+        $live = $d['status'] === 'published';
+        if ($live) $a = live_dates($a);
+        foreach (langs() as $l) write_file(L($l)['dir'] . '/' . $a['slug'] . '/index.html', render_article($l, $a[$l], $live));
+        $n++;
+    }
+    return $n;
+}
+/** /team shows the two bylines; "/team NAME" sets the team name (first language), "/team en NAME" for another language, "/team off" resets. */
+function team_command(array &$s, $cid, string $arg): void {
+    $show = function () {
+        $t = "👤 <b>نویسنده‌ی مقاله‌ها</b>\nپیش‌فرض: <b>" . h(byline_name(lang1(), byline_default())) . "</b>\n";
+        foreach (langs() as $l) $t .= (count(langs()) > 1 ? h(L($l)['label']) . ': ' : '') . h(byline_name($l, 'main')) . ' ⇄ ' . h(team_name($l)) . "\n";
+        return $t . "\nزیر هر پیش‌نویس (و هر مقاله‌ی منتشرشده) دکمه‌ی «👤 به نام…» نویسنده را عوض می‌کند؛ در پنل هم همین‌طور."
+            . "\n\nعوض کردن اسم تحریریه: <code>/team تحریریه …</code>" . (count(langs()) > 1 ? "\nبرای زبان دیگر: <code>/team " . h(langs()[1]) . " …</code>" : '')
+            . "\nبرگشت به اسم پیش‌فرض: <code>/team off</code>";
+    };
+    if ($arg === '') { tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => $show()]); return; }
+    $lang = lang1();
+    if (preg_match('/^([a-z]{2})\s+(.+)$/su', $arg, $m) && in_array($m[1], langs(), true)) { $lang = $m[1]; $arg = trim($m[2]); }
+    $names = team_names();
+    if ($arg === 'off') unset($names[$lang]); else $names[$lang] = mb_substr(preg_replace('/\s+/u', ' ', strip_tags($arg)), 0, 60);
+    json_save(AB . '/state/bylines.json', $names);
+    $n = rerender_team_articles($s);
+    foreach ($s['drafts'] as $k => $d) if (($d['byline'] ?? '') === 'team') set_buttons($s, (string)$k);
+    tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => '✅ اسم تحریریه' . (count(langs()) > 1 ? ' (' . h(L($lang)['label']) . ')' : '')
+        . ': <b>' . h(team_name($lang)) . '</b>' . ($n ? "\n" . fa_digits((string)$n) . ' مقاله‌ی به نام تحریریه با اسم تازه به‌روز شد.' : '')]);
+    notify_others($s, $cid, '👤 اسم تحریریه شد «' . h(team_name($lang)) . '».' . actor_note($s));
+    logline("team name $lang: " . team_name($lang));
 }
