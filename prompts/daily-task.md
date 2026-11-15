@@ -15,13 +15,14 @@ Run every day. The person is not watching; do not ask questions. Decide, do it, 
    - It holds both the Persian and the English version, in the format in the guide.
    - Use the topic's `slug`, `fa_keyword`, `en_keyword` and `angle`.
    - Write the full article. No placeholders, no "TODO".
+   - Write `image_prompt` (the cover scene the AI draws) and `image_queries` for this article specifically, as in the guide's cover section. Picture the article's core moment first, then describe it.
    - Run `python3 tools/check.py drafts/<file>.json` and fix every ERROR. Read the WARNs and fix what is reasonable.
    - Repeat until it prints `OK`, at most 4 rounds. If it still fails, delete that draft file, set the topic `status` to `"needs_review"` with a short `"note"`, and move on to the next queued topic.
    - Before saving, reread the Persian text once as a picky Persian editor. Check ZWNJ (نیم‌فاصله), Persian punctuation, and no Arabic ي/ك. Cut sentences that sound translated or machine-written.
 6. Update the bookkeeping:
    - In `topics.json`, set each drafted topic to `"status": "drafted"` and add `"drafted": "<date>"`.
    - Append both language versions to `site/articles.json`:
-     `{"slug": ..., "lang": "fa", "url": "/blog/<slug>/", "title": ...}` and
+     `{"slug": ..., "lang": "fa", "url": "/blog/<slug>/", "title": ..., "image_prompt": "..."}` and
      `{"slug": ..., "lang": "en", "url": "/en/blog/<slug>/", "title": ...}`.
 7. If fewer than 14 topics are still `queued`, append 20 new ones at the end of `topics.json`. Each new topic:
    - continues the ID numbering;

@@ -59,6 +59,24 @@ if (str_starts_with($action, 'topic')) {                       // keyword queue 
     } catch (Throwable $e) { out(['ok' => false, 'error' => $e->getMessage()], 400); }
 }
 
+if (in_array($action, ['cover_options', 'cover_ai', 'cover_pick'], true)) {   // choosing the cover among several photos
+    @set_time_limit(180);
+    $run = function (array &$s) use ($action, $key, $req, $uid) {
+        try {
+            if (!editable($s, $key)) throw new RuntimeException('این مقاله پیدا نشد یا دیگر قابل ویرایش نیست');
+            if ($action === 'cover_options') return ['ok' => true, 'options' => cover_options($s, $key, mb_substr(trim((string)($req['q'] ?? '')), 0, 80))];
+            if ($action === 'cover_ai') return ['ok' => true, 'options' => cover_option_ai($key, mb_substr(trim((string)($req['prompt'] ?? '')), 0, 1200))];
+            return ['ok' => true, 'saved' => cover_pick($s, $key, preg_replace('/[^a-z0-9]/', '', (string)($req['n'] ?? '')), $uid), 'state' => panel_state($s)];
+        } catch (Throwable $e) {
+            logline("panel $action failed: " . $e->getMessage());
+            return ['ok' => false, 'error' => $e->getMessage()];
+        }
+    };
+    // searching and generating take a while and only read the state, so they run without holding the lock
+    if ($action === 'cover_pick') $res = with_state($run, 120); else { $s = state_load(); $res = $run($s); }
+    out($res ?? ['ok' => false, 'error' => 'سرور مشغول است؛ چند ثانیه بعد دوباره امتحان کن'], $res ? ($res['ok'] ? 200 : 400) : 503);
+}
+
 if (in_array($action, ['draft_get', 'draft_save', 'upload_cover', 'upload_image'], true)) {   // editing text and photos
     $res = with_state(function (array &$s) use ($action, $key, $req, $uid, $user) {
         try {

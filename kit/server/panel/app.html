@@ -127,6 +127,21 @@ button[disabled]{opacity:.45;pointer-events:none}
 .au-form .opt{font-weight:400;opacity:.8}
 .au-form .l2{border-top:1px dashed var(--line);padding-top:12px;margin-top:2px}
 .au-form .two button{margin:0}
+body.picking .hero,body.picking .views,body.picking .pane:not(#vPhotos),body.picking .top .iconbtn{display:none}
+.ph-cur{aspect-ratio:16/9;border-radius:var(--r);background:var(--blue-soft) center/cover no-repeat;margin-bottom:12px;position:relative;overflow:hidden}
+.ph-cur span{position:absolute;inset-inline-start:10px;bottom:10px;background:rgba(0,0,0,.55);color:#fff;font-size:11.5px;font-weight:700;border-radius:99px;padding:3px 10px}
+.ph-ai .head{font-weight:800;font-size:14.5px;margin:0 2px 4px}
+.ph-ai textarea{min-height:92px;font-size:13px;line-height:1.6}
+.phgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 4px}
+.ph{position:relative;border:0;padding:0;border-radius:14px;overflow:hidden;aspect-ratio:3/2;background:var(--card);cursor:pointer;display:block}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph .src{position:absolute;inset-inline-start:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;font-size:10.5px;font-weight:700;border-radius:99px;padding:2px 8px;max-width:85%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ph.ai .src{background:linear-gradient(90deg,#7b5cff,#3d8fc4)}
+.ph.skel{animation:sh 1.3s infinite;background:linear-gradient(100deg,var(--card) 40%,var(--bg) 50%,var(--card) 60%);background-size:300% 100%;cursor:default}
+.phsearch{display:flex;gap:8px;margin:0 0 4px}
+.phsearch input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:12px;padding:10px 12px;font:inherit;font-size:13.5px;outline:none}
+.phsearch button{border:0;border-radius:12px;padding:0 16px;background:var(--blue);color:#fff;font-weight:800;font-size:13px;cursor:pointer}
+.ph-empty{grid-column:1/-1;text-align:center;color:var(--hint);font-size:13px;padding:22px 10px;background:var(--card);border-radius:14px;line-height:1.9}
 .au-hint{font-size:12px;color:var(--hint);line-height:1.8;margin:8px 6px 0}
 
 .empty{text-align:center;color:var(--hint);padding:38px 16px;background:var(--card);border-radius:var(--r);font-size:14px}
@@ -331,7 +346,7 @@ body.editing .hero,body.editing .views,body.editing .pane:not(#vEdit),body.editi
 
   <section class="pane" id="vEdit" hidden>
     <div class="edtop"><button class="back" id="edBack">→ بازگشت</button><span class="badge" id="edBadge"></span></div>
-    <div class="edcover" id="edCover"><div class="ovl"><span id="edCoverNote">عکس کاور</span><button id="edCoverBtn" type="button">📷 عکس خودم</button></div></div>
+    <div class="edcover" id="edCover"><div class="ovl"><span id="edCoverNote">عکس کاور</span><span style="display:flex;gap:6px"><button id="edPickBtn" type="button">🖼 انتخاب</button><button id="edCoverBtn" type="button">📷 عکس خودم</button></span></div></div>
     <div class="ltabs" id="edLangs"></div>
     <div class="form" id="edForm">
       <label for="edTitle">عنوان مقاله</label>
@@ -368,6 +383,22 @@ body.editing .hero,body.editing .views,body.editing .pane:not(#vEdit),body.editi
     <div id="edNotes"></div>
     <div class="savebar"><button class="primary" id="edSave" type="button">💾 ذخیره‌ی تغییرات</button></div>
   </section>
+  <section class="pane" id="vPhotos" hidden>
+    <div class="edtop"><button class="back" id="phBack" type="button">→ بازگشت</button><span class="badge" id="phBadge">عکس کاور</span></div>
+    <div class="ph-cur" id="phCur"><span>کاور فعلی</span></div>
+    <div class="form ph-ai" id="phAi">
+      <p class="head">✨ عکسی فقط برای همین مقاله</p>
+      <p class="hintline">هوش مصنوعی صحنه‌ای را که این‌جا نوشته شده می‌سازد، با نور و رنگ طبیعی و بدون نوشته. صحنه را دقیق‌تر کن یا همین را نگه دار.</p>
+      <textarea id="phPrompt" class="ltr" dir="ltr" maxlength="1200" placeholder="A glass of tea on a windowsill, rainy street outside, soft morning light"></textarea>
+      <button class="primary" id="phGen" type="button">✨ بساز</button>
+    </div>
+    <div class="notice" id="phAiOff" hidden>ساخت عکس با هوش مصنوعی هنوز روشن نشده. مالک ربات یک بار کلید Cloudflare را با <b>/aikey</b> در ربات می‌فرستد.</div>
+    <div class="phgrid" id="phAiGrid"></div>
+    <p class="sec">عکس‌های آماده</p>
+    <form class="phsearch" id="phSearch" autocomplete="off"><input id="phQ" dir="ltr" placeholder="tea glass window rain"><button type="submit">بگرد</button></form>
+    <p class="au-hint" style="margin:2px 6px 0">جست‌وجو به انگلیسی و با چیزهای دیدنی بهتر جواب می‌دهد، نه با حس و حال.</p>
+    <div class="phgrid" id="phGrid"></div>
+  </section>
   <p class="foot"><b>نیک‌نگار</b> · نسخه‌ی <span id="ver">۱</span><br>طراحی و ساخت: دکتر محمدرضا نظیف</p>
 </main>
 <button class="fab" id="fab">✍️ نوشتن مقاله‌ی جدید</button>
@@ -389,7 +420,7 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const PANEL_TOKEN = (() => { const m = location.hash.match(/t=([^&]+)/); let t = m ? decodeURIComponent(m[1]) : '';
   try { if (t) sessionStorage.setItem('nnt', t); else t = sessionStorage.getItem('nnt') || ''; } catch (e) {} return t; })();
-let S = null, T = null, tab = 'pending', view = 'drafts', busy = false, ED = null;
+let S = null, T = null, tab = 'pending', view = 'drafts', busy = false, ED = null, PH = null;
 
 function toast(t) { const el = $('toast'); el.textContent = t; el.classList.add('show'); clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 2600); }
 function haptic(k) { try { tg.HapticFeedback.notificationOccurred(k); } catch (e) {} }
@@ -457,10 +488,12 @@ function card(i) {
   const g = (a, ic, t, cls) => '<button class="ghost ' + (cls || '') + '" data-a="' + a + '" data-k="' + i.key + '"><svg><use href="#i-' + ic + '"/></svg>' + t + '</button>';
   let acts = '';
   if (i.status === 'pending') acts = '<button class="primary" data-a="publish" data-k="' + i.key + '"><svg><use href="#i-send"/></svg>انتشار همین حالا</button>'
-    + '<div class="row3">' + g('approve', 'clock', 'در نوبت') + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
+    + '<div class="row3">' + g('approve', 'clock', 'در نوبت') + g('photos', 'image', 'انتخاب عکس') + g('reject', 'x', 'رد', 'red') + '</div>';
   if (i.status === 'queued') acts = '<button class="primary" data-a="publish" data-k="' + i.key + '"><svg><use href="#i-send"/></svg>انتشار همین حالا</button>'
-    + '<div class="row3 row2">' + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
-  acts += '<div class="row3 row2">' + g('edit', 'pen', 'ویرایش متن') + g('mycover', 'upload', 'عکس کاور خودم') + '</div>';
+    + '<div class="row3 row2">' + g('photos', 'image', 'انتخاب عکس') + g('reject', 'x', 'رد', 'red') + '</div>';
+  acts += i.status === 'published'
+    ? '<div class="row3">' + g('edit', 'pen', 'ویرایش متن') + g('photos', 'image', 'انتخاب عکس') + g('mycover', 'upload', 'عکس خودم') + '</div>'
+    : '<div class="row3 row2">' + g('edit', 'pen', 'ویرایش متن') + g('mycover', 'upload', 'عکس کاور خودم') + '</div>';
   // author: who the article goes out under; changing it re-renders the page, also after publishing
   const AU = S.authors || [], cur = i.byline || S.default_author || 'main';
   const by = AU.length ? '<div class="byline"><span class="lb">✍️ نویسنده</span><div class="sel"><select data-by-k="' + i.key + '" aria-label="نویسنده">'
@@ -474,7 +507,7 @@ function card(i) {
 }
 
 function setMain() {
-  if (ED) { if (MB) MB.hide(); $('fab').style.display = 'none'; return; }
+  if (ED || PH) { if (MB) MB.hide(); $('fab').style.display = 'none'; return; }
   const txt = S && S.write_pending ? '✍️ مقاله‌ی جدید (' + fa(S.write_pending) + ' در صف نوشتن)' : '✍️ نوشتن مقاله‌ی جدید';
   if (MB) { MB.setParams({ text: txt, color: BLUE, text_color: '#ffffff', is_visible: true }); }
   else { $('fab').textContent = txt; $('fab').style.display = 'block'; }
@@ -482,7 +515,7 @@ function setMain() {
 
 async function load(spin) {
   if (spin) $('refresh').classList.add('spin');
-  try { const j = await api('state'); S = j.state; render(); openFromLink(); openAuthorsFromLink(); }
+  try { const j = await api('state'); S = j.state; render(); openFromLink(); openAuthorsFromLink(); openPhotosFromLink(); }
   catch (e) { $('list').innerHTML = '<div class="err"><b style="display:block;color:var(--text);margin-bottom:4px">پنل باز نشد</b>' + esc(e.message) + '<br>پنل را از داخل ربات باز کن.</div>'; $('heroHead').textContent = 'نیک‌نگار'; }
   finally { $('refresh').classList.remove('spin'); }
 }
@@ -565,6 +598,7 @@ document.addEventListener('click', async e => {
   const key = b.dataset.k, a = b.dataset.a;
   tap();
   if (a === 'edit') { openEditor(key); return; }
+  if (a === 'photos') { openPhotos(key); return; }
   if (a === 'mycover') { pickPhoto('cover', key); return; }
   if (a === 'publish' && !(await ask('همین حالا روی سایت منتشر شود؟'))) return;
   if (a === 'reject' && !(await ask('این مقاله رد شود و پیش‌نمایشش از سایت برداشته شود؟'))) return;
@@ -589,6 +623,76 @@ function openFromLink() {
   linkUsed = true;
   if (S.items.some(i => i.key === EDIT_LINK)) openEditor(EDIT_LINK); else toast('این مقاله دیگر قابل ویرایش نیست');
 }
+/* ---------- choosing the cover among several photos ---------- */
+const PHOTOS_LINK = new URLSearchParams(location.search).get('photos') || '';
+let phLinkUsed = false;
+function openPhotosFromLink() {
+  if (phLinkUsed || !PHOTOS_LINK || ED || PH) return;
+  phLinkUsed = true;
+  if (S.items.some(i => i.key === PHOTOS_LINK)) openPhotos(PHOTOS_LINK); else toast('این مقاله دیگر قابل تغییر نیست');
+}
+const skel = n => Array.from({ length: n }, () => '<div class="ph skel"></div>').join('');
+function phTiles(list, ai) {
+  return list.map(o => '<button class="ph' + (ai ? ' ai' : '') + '" type="button" data-ph="' + esc(o.n) + '"><img src="' + esc(o.preview) + '" alt="" loading="lazy">'
+    + '<span class="src">' + (ai ? '✨ هوش مصنوعی' : esc(o.source + (o.creator ? ' · ' + o.creator : ''))) + '</span></button>').join('');
+}
+function renderPhotos() {
+  const o = PH.o; if (!o) return;
+  $('phCur').style.backgroundImage = o.cover ? "url('" + o.cover + "')" : '';
+  $('phAi').hidden = !o.ai_on; $('phAiOff').hidden = !!o.ai_on;
+  if (!PH.promptTouched) $('phPrompt').value = o.prompt || '';
+  $('phAiGrid').innerHTML = phTiles(o.ai, true);
+  $('phGrid').innerHTML = o.stock.length ? phTiles(o.stock, false)
+    : '<div class="ph-empty">عکس مناسبی پیدا نشد.<br>با کلمه‌های دیگری بگرد، مثلاً یک شیء یا صحنه‌ی ساده.</div>';
+}
+async function loadOptions(q) {
+  $('phGrid').innerHTML = skel(6);
+  try { const j = await api('cover_options', { key: PH.key, q: q || '' }); if (!PH) return; PH.o = j.options; renderPhotos(); }
+  catch (e) { if (PH) $('phGrid').innerHTML = '<div class="ph-empty">' + esc(e.message) + '</div>'; }
+}
+async function openPhotos(key) {
+  tap();
+  const it = S && S.items.find(i => i.key === key);
+  PH = { key, o: null, promptTouched: false };
+  document.body.classList.add('picking'); $('vPhotos').hidden = false; scrollTo(0, 0);
+  $('phBadge').textContent = it ? (it.title.length > 34 ? it.title.slice(0, 33) + '…' : it.title) : 'عکس کاور';
+  $('phCur').style.backgroundImage = it && it.cover ? "url('" + it.cover + "')" : '';
+  $('phAiGrid').innerHTML = ''; $('phQ').value = ''; $('phPrompt').value = '';
+  setMain();
+  if (tg && tg.BackButton) { try { tg.BackButton.show(); } catch (e) {} }
+  await loadOptions('');
+}
+function closePhotos() {
+  if (!PH) return;
+  PH = null; document.body.classList.remove('picking'); $('vPhotos').hidden = true;
+  if (tg && tg.BackButton) { try { tg.BackButton.hide(); } catch (e) {} }
+  setMain(); render();
+}
+$('phBack').addEventListener('click', () => { tap(); closePhotos(); });
+$('phPrompt').addEventListener('input', () => { if (PH) PH.promptTouched = true; });
+$('phSearch').addEventListener('submit', e => { e.preventDefault(); tap(); if (PH) loadOptions($('phQ').value.trim()); });
+$('phGen').addEventListener('click', async () => {
+  if (!PH || PH.gen) return; tap();
+  PH.gen = true; $('phGen').disabled = true; $('phGen').textContent = '⏳ در حال ساختن… حدود ۲۰ ثانیه';
+  $('phAiGrid').insertAdjacentHTML('afterbegin', '<div class="ph skel"></div>');
+  try { const j = await api('cover_ai', { key: PH.key, prompt: $('phPrompt').value.trim() }); if (PH) { PH.o = j.options; renderPhotos(); haptic('success'); } }
+  catch (e) { haptic('error'); toast(e.message); if (PH) renderPhotos(); }
+  finally { if (PH) PH.gen = false; $('phGen').disabled = false; $('phGen').textContent = '✨ بساز'; }
+});
+document.addEventListener('click', async e => {
+  const b = e.target.closest('button[data-ph]'); if (!b || !PH) return;
+  tap();
+  const it = S.items.find(i => i.key === PH.key);
+  if (!(await ask(it && it.status === 'published' ? 'این عکس کاور مقاله‌ی منتشرشده شود؟ صفحه‌ی سایت هم همین حالا عوض می‌شود.' : 'این عکس کاور مقاله شود؟'))) return;
+  waiting(true, 'در حال گذاشتن عکس…');
+  try {
+    const j = await api('cover_pick', { key: PH.key, n: b.dataset.ph });
+    S = j.state; haptic('success'); toast('کاور عوض شد ✅');
+    if (PH) { PH.o.cover = j.saved.cover; renderPhotos(); }
+  } catch (e2) { haptic('error'); toast(e2.message); }
+  finally { waiting(false); }
+});
+
 const AUTHORS_LINK = new URLSearchParams(location.search).get('authors') === '1';
 let auLinkUsed = false;
 function openAuthorsFromLink() {
@@ -876,6 +980,7 @@ $('fileIn').addEventListener('change', async () => {
 $('edBack').addEventListener('click', () => closeEditor(false));
 $('edSave').addEventListener('click', saveEditor);
 $('edCoverBtn').addEventListener('click', () => { tap(); pickPhoto('cover', ED.key); });
+$('edPickBtn').addEventListener('click', async () => { tap(); const k = ED.key; await closeEditor(false); if (!ED) openPhotos(k); });
 $('edTb').addEventListener('pointerdown', e => { if (e.target.closest('button')) e.preventDefault(); });   // keep the text selection while tapping the toolbar
 $('edTb').addEventListener('mousedown', e => { if (e.target.closest('button')) e.preventDefault(); });
 $('edTb').addEventListener('click', e => { const b = e.target.closest('button[data-cmd]'); if (b) { tap(); toolbar(b.dataset.cmd); } });
@@ -899,7 +1004,7 @@ $('edFaq').addEventListener('click', async e => {
 
 if (tg) {
   tg.ready(); tg.expand();
-  try { if (tg.BackButton) tg.BackButton.onClick(() => closeEditor(false)); } catch (e) {}
+  try { if (tg.BackButton) tg.BackButton.onClick(() => PH ? closePhotos() : closeEditor(false)); } catch (e) {}
   try { tg.setHeaderColor('secondary_bg_color'); tg.setBackgroundColor('secondary_bg_color'); } catch (e) {}
   if (MB) MB.onClick(requestWrite);
 
@@ -911,7 +1016,7 @@ nnLog({boot: WA ? (window.Bale && Bale.WebApp === WA ? 'bale' : 'telegram') : 'b
   for (let i = 0; i < 15 && WA && !INIT; i++) { await new Promise(r => setTimeout(r, 100)); INIT = WA.initData || ''; }
   load();
 })();
-setInterval(() => { if (!busy && !ED && document.visibilityState === 'visible') load(); }, 30000);
+setInterval(() => { if (!busy && !ED && !PH && document.visibilityState === 'visible') load(); }, 30000);
 })();
 </script>
 </body>

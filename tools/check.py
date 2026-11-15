@@ -12,6 +12,8 @@ BANNED = {
            "tapestry", "embark", "in conclusion", "game-changer", "unlock", "one of my clients", "my clients", "in my sessions"],
 }
 CTA = {"fa": "/#precounsel", "en": "/en/#precounsel"}
+IMAGE_PROMPT_BAD = ["text", "words", "letters", "sign", "signboard", "caption", "logo", "brand", "crying", "tears", "blood", "bloody", "wound",
+                    "hospital", "syringe", "pills", "nude", "naked", "suicide", "self-harm", "weapon", "gun", "cartoon", "illustration", "painting", "anime"]
 
 def text(h): return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(h))).strip()
 def norm(s): return s.replace("‌", " ").lower()
@@ -72,6 +74,21 @@ def main(path):
         errs.append("image_queries must be 2–3 short English phrases")
     elif any(w in " ".join(iq).lower() for w in ["iranian", "persian", "anxiety", "depression", "therapy", "suicide", "crying"]):
         errs.append("image_queries: use concrete visual scenes, not abstract/sensitive words")
+    ip = d.get("image_prompt")
+    if not isinstance(ip, str) or not ip.strip():
+        errs.append("image_prompt missing: 1–3 English sentences describing this article's cover scene (see the guide)")
+    else:
+        n = len(ip.split())
+        if not ip.isascii(): errs.append("image_prompt must be English")
+        elif n < 15 or n > 80: errs.append(f"image_prompt has {n} words (15–80)")
+        low = ip.lower()
+        bad = [w for w in IMAGE_PROMPT_BAD if re.search(r"\b" + re.escape(w) + r"\b", low)]
+        if bad: errs.append("image_prompt: remove " + ", ".join(bad) + " (no readable text, brands, distress, medical or explicit scenes)")
+        words = set(re.findall(r"[a-z]{4,}", low))
+        for x in arts:
+            pw = set(re.findall(r"[a-z]{4,}", (x.get("image_prompt") or "").lower()))
+            if words and pw and len(words & pw) / len(words) > 0.6:
+                warns.append(f"image_prompt is very close to the cover of {x.get('slug')} — make the scene specific to this article"); break
     for lang in ["fa", "en"]:
         if not isinstance(d.get(lang), dict): errs.append(f"{lang} version missing"); continue
         check_lang(lang, d[lang], slug, links, arts, errs, warns)

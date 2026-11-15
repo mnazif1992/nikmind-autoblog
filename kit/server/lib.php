@@ -424,7 +424,8 @@ function validate_draft(array $d, array &$errors, array &$warnings): array {
     if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) $date = date('Y-m-d');
     $cl = (string)($d['cluster'] ?? '');
     if ($cl !== '' && !array_key_exists($cl, (array)site('clusters', []))) { $warnings[] = "unknown cluster $cl"; $cl = ''; }
-    $out = ['slug' => $slug, 'date' => $date, 'topic_id' => $d['topic_id'] ?? '', 'image_queries' => $d['image_queries'] ?? [], 'cluster' => $cl];
+    $out = ['slug' => $slug, 'date' => $date, 'topic_id' => $d['topic_id'] ?? '', 'image_queries' => $d['image_queries'] ?? [], 'cluster' => $cl,
+            'image_prompt' => mb_substr(trim(strip_tags((string)($d['image_prompt'] ?? ''))), 0, 1200)];
     foreach (langs() as $lang) {
         if (!isset($d[$lang]) || !is_array($d[$lang])) { $errors[] = strtoupper($lang) . ': version missing'; continue; }
         $out[$lang] = prepare_lang($lang, $d[$lang], $slug, $date, $errors, $warnings);

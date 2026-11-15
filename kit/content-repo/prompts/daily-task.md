@@ -14,17 +14,17 @@ Run every day. Nobody is watching; do not ask questions. Decide, do it, and keep
    - If two picked topics share a `cluster`, swap the second for the next queued topic from another cluster, if there is one.
    - If a topic's `slug` starts with `topic-`, replace it with a short English slug (lowercase words with dashes) that describes the keyword, and save it in `topics.json`.
 5. For each topic, write `drafts/<date>-<slug>.json`:
-   - Top level: `topic_id`, `slug`, `date`, `cluster` (copy the topic's `cluster`), `image_queries`.
+   - Top level: `topic_id`, `slug`, `date`, `cluster` (copy the topic's `cluster`), `image_prompt`, `image_queries`.
    - One key per language in `site/profile.json` (e.g. `"fa"`, `"en"`), each with the fields in the guide. Use the topic's `keywords.<code>` as that language's `primary_keyword`, and its `angle`.
    - Write the full article. No placeholders, no "TODO".
-   - `image_queries` must fit this article specifically (see the guide), not a generic scene.
+   - `image_prompt` (the cover scene the AI draws) and `image_queries` must fit this article specifically (see the guide's cover section), not a generic scene. Picture the article's core moment first, then describe it.
    - Run `python3 tools/check.py drafts/<file>.json`. Fix every ERROR; fix the WARNs that are reasonable.
    - Repeat until it prints `OK`, at most 4 rounds. If it still fails, delete that draft, set the topic's `status` to `"needs_review"` with a short `"note"`, and move on to the next queued topic.
    - Before saving, reread each language once as a picky native editor. Cut sentences that sound translated or machine-written. For Persian: ZWNJ (نیم‌فاصله), Persian punctuation, no Arabic ي/ك.
 6. Bookkeeping:
    - In `topics.json`, set each drafted topic to `"status": "drafted"` and add `"drafted": "<date>"`.
    - Append one entry per language to `site/articles.json`:
-     `{"slug": ..., "lang": "<code>", "url": "<that language's base><slug>/", "title": ..., "image_queries": [...]}`.
+     `{"slug": ..., "lang": "<code>", "url": "<that language's base><slug>/", "title": ..., "image_prompt": "...", "image_queries": [...]}`.
 7. If fewer than 14 topics are still `queued`, append 20 new ones at the end of `topics.json`:
    - continue the ID numbering; unique English slugs; same cluster keys as the existing topics;
    - real search phrases this audience types (follow the guide's Section 1), not duplicates of existing topics or articles;

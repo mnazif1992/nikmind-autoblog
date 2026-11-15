@@ -254,6 +254,28 @@ function handle_update(array &$s, array $u): void {
         }
         if ($text === '/authors' || $text === '/team') { authors_message($cid); return; }
         if (str_starts_with($text, '/team ')) { team_command($s, $cid, trim(substr($text, 6))); return; }
+        if ($text === '/aikey' || str_starts_with($text, '/aikey ')) {   // owner sets the Cloudflare Workers AI key for AI cover photos
+            if (!is_owner($s, $cid)) { tg('sendMessage', ['chat_id' => $cid, 'text' => 'فقط مالک ربات می‌تواند کلید هوش مصنوعی را تنظیم کند.']); return; }
+            $k = trim(substr($text, 6));
+            if ($k !== '' && isset($u['message']['message_id'])) tg('deleteMessage', ['chat_id' => $cid, 'message_id' => $u['message']['message_id']]);
+            if ($k === '') { tg('sendMessage', ['chat_id' => $cid, 'text' => ai_enabled()
+                ? "✨ عکس کاورها با هوش مصنوعی ساخته می‌شوند (FLUX.2 روی Cloudflare).\nعوض کردن کلید: /aikey شناسه‌ی‌حساب توکن · خاموش کردن: /aikey off"
+                : "✨ ساخت عکس با هوش مصنوعی خاموش است؛ کاورها از عکس‌های آماده پیدا می‌شوند.\nروشن کردن: /aikey شناسه‌ی‌حساب توکن"]); return; }
+            if ($k === 'off') { save_photo_key('cloudflare', ''); tg('sendMessage', ['chat_id' => $cid, 'text' => '✨ ساخت عکس با هوش مصنوعی خاموش شد؛ از این به بعد عکس‌های آماده.']); return; }
+            $p = preg_split('/[\s:]+/', $k);
+            if (count($p) !== 2 || !preg_match('/^[a-f0-9]{32}$/i', $p[0]) || !preg_match('/^[A-Za-z0-9_\-]{30,}$/', $p[1])) {
+                tg('sendMessage', ['chat_id' => $cid, 'text' => "شکلش درست نیست. این‌طوری بفرست:\n/aikey شناسه‌ی‌حساب توکن\n(شناسه‌ی حساب ۳۲ نویسه است؛ با یک فاصله بعدش توکن)"]); return;
+            }
+            tg('sendMessage', ['chat_id' => $cid, 'text' => '⏳ دارم با این کلید یک عکس آزمایشی می‌سازم…']);
+            try { [$bin] = ai_generate('A cup of tea on a wooden table by a window, morning light. ' . AI_STYLE, 512, 512, [strtolower($p[0]), $p[1]]); }
+            catch (Throwable $e) { tg('sendMessage', ['chat_id' => $cid, 'text' => "Cloudflare جواب درست نداد؛ ذخیره نشد.\n" . $e->getMessage()]); return; }
+            save_photo_key('cloudflare', strtolower($p[0]) . ':' . $p[1]);
+            $f = AB . '/state/ai-test.jpg';
+            if (($im = @imagecreatefromstring($bin))) { imagejpeg($im, $f, 88); imagedestroy($im); }
+            tg('sendMessage', ['chat_id' => $cid, 'text' => '✅ کلید کار کرد و ذخیره شد (پیامت هم پاک شد). از این به بعد کاور هر مقاله را هوش مصنوعی برای همان مقاله می‌سازد؛ اگر نشد، عکس آماده می‌آید.']);
+            logline('cloudflare AI key set');
+            return;
+        }
         if ($text === '/publishnow') { if ($s['queue']) publish_next($s); else tg('sendMessage', ['chat_id' => $cid, 'text' => 'صف انتشار خالی است.']); return; }
         return;
     }

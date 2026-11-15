@@ -21,6 +21,14 @@ function kit_raw(string $file): array {
     $h = ['User-Agent: nik-negar/' . KIT_VERSION];
     curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 40, CURLOPT_HTTPHEADER => $h]);
     $b = curl_exec($c); $code = (int)curl_getinfo($c, CURLINFO_HTTP_CODE); curl_close($c);
+    if ($code !== 200) {   // raw.githubusercontent.com is unreachable from some hosts (e.g. in Iran) while api.github.com works: same file through the API
+        $api = 'https://api.github.com/repos/' . site('kit_repo', 'mnazif1992/nikmind-autoblog') . '/contents/'
+             . trim((string)site('kit_path', 'kit/server'), '/') . '/' . $file . '?ref=' . kit_ref();
+        $c = curl_init($api);
+        curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 40,
+            CURLOPT_HTTPHEADER => ['User-Agent: nik-negar/' . KIT_VERSION, 'Accept: application/vnd.github.raw', 'X-GitHub-Api-Version: 2022-11-28']]);
+        $b = curl_exec($c); $code = (int)curl_getinfo($c, CURLINFO_HTTP_CODE); curl_close($c);
+    }
     return ['code' => $code, 'body' => is_string($b) ? $b : ''];
 }
 
@@ -77,4 +85,20 @@ function install_panel() {
     }
     copy("$dir/.htaccess", "$dir/app/.htaccess");
     return true;
+}
+
+/** Proxy copies set up by hand (public_html/<panel>/img.php with its own secret) get the new code, secret kept. Never creates one. */
+function refresh_proxies(): array {
+    $src = (string)@file_get_contents(AB . '/img-proxy.php');
+    if ($src === '' || !preg_match("/const PROXY_KEY = 'CHANGE_ME';/", $src)) return [];
+    $done = [];
+    foreach (array_unique(array_filter([PUB . '/' . PANEL_DIR . '/img.php', PUB . '/' . PANEL_DIR . '/img-proxy.php', PUB . '/img-proxy.php'])) as $f) {
+        $cur = (string)@file_get_contents($f);
+        if (!preg_match("/const PROXY_KEY = '([A-Za-z0-9]{16,})';/", $cur, $m)) continue;
+        $new = str_replace("const PROXY_KEY = 'CHANGE_ME';", "const PROXY_KEY = '{$m[1]}';", $src);
+        if ($new === $cur) continue;
+        write_file($f, $new);
+        $done[] = str_replace(PUB, '', $f);
+    }
+    return $done;
 }

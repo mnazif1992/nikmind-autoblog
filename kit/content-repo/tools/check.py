@@ -12,6 +12,8 @@ BANNED = {  # phrases that make text read machine-written; site/profile.json can
     "en": ["in today's fast-paced", "delve", "navigate the complexities", "it's important to note", "it is important to note",
            "tapestry", "embark", "in conclusion", "game-changer", "unlock the"],
 }
+IMAGE_PROMPT_BAD = ["text", "words", "letters", "sign", "signboard", "caption", "logo", "brand", "crying", "tears", "blood", "bloody", "wound",
+                    "hospital", "syringe", "pills", "nude", "naked", "suicide", "self-harm", "weapon", "gun", "cartoon", "illustration", "painting", "anime"]
 IMAGE_BAD = ["anxiety", "depression", "therapy", "suicide", "crying", "sad", "stress", "logo", "brand"]
 
 def text(h): return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", html.unescape(h))).strip()
@@ -81,6 +83,22 @@ def main(path):
         if any(w in " ".join(iq).lower() for w in badw): errs.append("image_queries: describe a concrete visible scene, not feelings or sensitive words")
         prev = [q for x in arts for q in x.get("image_queries", [])]
         if iq[0].lower() in {q.lower() for q in prev}: warns.append("image_queries: first query was used before — pick a scene specific to this article")
+    ip = d.get("image_prompt")
+    if not isinstance(ip, str) or not ip.strip():
+        errs.append("image_prompt missing: 1–3 English sentences describing this article's cover scene (see the guide)")
+    else:
+        n = len(ip.split())
+        if not ip.isascii(): errs.append("image_prompt must be English")
+        elif n < 15 or n > 80: errs.append(f"image_prompt has {n} words (15–80)")
+        low = ip.lower()
+        bad = [w for w in IMAGE_PROMPT_BAD if re.search(r"\b" + re.escape(w) + r"\b", low)]
+        if bad: errs.append("image_prompt: remove " + ", ".join(bad) + " (no readable text, brands, distress, medical or explicit scenes)")
+        words = set(re.findall(r"[a-z]{4,}", low))
+        for x in arts:
+            pw = set(re.findall(r"[a-z]{4,}", (x.get("image_prompt") or "").lower()))
+            if words and pw and len(words & pw) / len(words) > 0.6:
+                warns.append(f"image_prompt is very close to the cover of {x.get('slug')} — make the scene specific to this article"); break
+
     for L in prof["langs"]:
         if not isinstance(d.get(L["code"]), dict): errs.append(f"{L['code']} version missing"); continue
         check_lang(L, d[L["code"]], slug, links, arts, prof, errs, warns)
