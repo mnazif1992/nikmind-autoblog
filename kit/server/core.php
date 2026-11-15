@@ -21,8 +21,8 @@ function panel_url(): string { return SITE . '/' . PANEL_DIR . '/app/'; }
 /* ---------------- keyboards ---------------- */
 function draft_buttons(string $key, string $status, string $byline = ''): array {
     $edit = ['text' => '✏️ ویرایش متن و عکس', 'web_app' => ['url' => panel_url() . '?edit=' . $key]];   // opens the panel straight in this article's editor
-    // one tap switches the byline between the main author and the editorial team; the label shows who it is credited to now
-    $by = [['text' => '👤 به نام: ' . byline_name(lang1(), $byline ?: byline_default()) . ' · تغییر', 'callback_data' => "w:$key"]];
+    // who the article goes out under; a tap opens the list of the site's authors on this message
+    $by = [['text' => '✍️ نویسنده: ' . byline_name(lang1(), $byline ?: byline_default()), 'callback_data' => "w:$key"]];
     if ($status === 'pending') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '⏱ در نوبت بعدی', 'callback_data' => "p:$key"]],
                                        [$edit, ['text' => '❌ رد', 'callback_data' => "r:$key"]], $by];
     if ($status === 'queued') return [[['text' => '🚀 انتشار همین حالا', 'callback_data' => "n:$key"], ['text' => '❌ رد', 'callback_data' => "r:$key"]], [$edit], $by];
@@ -252,7 +252,8 @@ function handle_update(array &$s, array $u): void {
             logline('pixabay key set');
             return;
         }
-        if ($text === '/team' || str_starts_with($text, '/team ')) { team_command($s, $cid, trim(substr($text, 5))); return; }
+        if ($text === '/authors' || $text === '/team') { authors_message($cid); return; }
+        if (str_starts_with($text, '/team ')) { team_command($s, $cid, trim(substr($text, 6))); return; }
         if ($text === '/publishnow') { if ($s['queue']) publish_next($s); else tg('sendMessage', ['chat_id' => $cid, 'text' => 'صف انتشار خالی است.']); return; }
         return;
     }
@@ -287,11 +288,15 @@ function handle_update(array &$s, array $u): void {
         }
         $st = $s['drafts'][$arg]['status'] ?? '';
         try {
-            if ($act === 'w') {
-                if (!editable($s, $arg)) { $ack('این مقاله دیگر قابل تغییر نیست'); return; }
-                $to = byline_of(draft_load($arg)) === 'team' ? 'main' : 'team';
-                $ack('حالا به نام «' . byline_name(lang1(), $to) . '»');
-                set_byline($s, $arg, $to, (int)$cid);
+            if ($act === 'w' || $act === 'v' || $act === 'u') {        // author: open the list / pick one / close the list
+                [$k, $id] = array_pad(explode(':', $arg, 2), 2, '');
+                if (!editable($s, $k)) { $ack('این مقاله دیگر قابل تغییر نیست'); return; }
+                $mid = ['chat_id' => $cid, 'message_id' => $cq['message']['message_id']];
+                if ($act === 'w') { $ack('به نام چه کسی منتشر شود؟'); tg('editMessageReplyMarkup', $mid + ['reply_markup' => ['inline_keyboard' => author_buttons($k, byline_of(draft_load($k)))]]); return; }
+                if ($act === 'u') { $ack('بدون تغییر'); tg('editMessageReplyMarkup', $mid + ['reply_markup' => ['inline_keyboard' => draft_buttons($k, $s['drafts'][$k]['status'] ?? '', byline_of(draft_load($k)))]]); return; }
+                if (!in_array($id, author_ids(), true)) { $ack('این نویسنده دیگر در فهرست نیست'); return; }
+                $ack('✔︎ از حالا به نام ' . byline_name(lang1(), $id));
+                set_byline($s, $k, $id, (int)$cid);
                 return;
             }
             if ($act === 'i') { $ack('دنبال عکس دیگر…'); if (in_array($st, ['pending', 'queued'], true)) swap_cover($s, $arg); return; }
@@ -330,7 +335,7 @@ function panel_state(array $s): array {
             'published_week' => count(array_filter($s['published'], fn($p) => strtotime($p['at'] ?? '') > time() - 7 * 86400)),
             'site' => site('site_name', ''), 'langs' => array_map(fn($l) => ['code' => $l, 'label' => L($l)['label'], 'dir' => L($l)['dir_attr']], langs()),
             'write_time' => (string)site('daily_write_time', '06:47'), 'per_day' => (int)site('posts_per_day', 2), 'version' => KIT_VERSION,
-            'bylines' => ['main' => byline_name(lang1(), 'main'), 'team' => byline_name(lang1(), 'team')]];
+            'authors' => authors_view($s), 'default_author' => byline_default()];
 }
 
 /* ---------------- editing from the panel: text and photos ---------------- */
@@ -450,13 +455,13 @@ function live_dates(array $a): array {
     foreach (langs() as $l) foreach (posts($l) as $p) if ($p['slug'] === ($a['slug'] ?? '') && !empty($p['date'])) $a[$l]['date'] = $p['date'];
     return $a;
 }
-/** Credits an article to the main author or the editorial team and re-renders its pages (preview or live). */
-function set_byline(array &$s, string $key, string $to, int $uid): string {
-    if (!in_array($to, BYLINES, true)) throw new RuntimeException('نویسنده‌ی نامعتبر');
+/** Credits an article to one of the site's authors and re-renders its pages (preview or live). */
+function set_byline(array &$s, string $key, string $to, int $uid, bool $quiet = false): string {
+    if (!in_array($to, author_ids(), true)) throw new RuntimeException('این نویسنده در فهرست نیست');
     if (!editable($s, $key)) throw new RuntimeException('این مقاله دیگر قابل تغییر نیست');
     $a = draft_load($key);
     $name = byline_name(lang1(), $to);
-    if (byline_of($a) === $to && ($s['drafts'][$key]['byline'] ?? '') === $to) return $name;
+    if (byline_of($a) === $to && ($s['drafts'][$key]['byline'] ?? '') === $to) { set_buttons($s, $key); return $name; }
     $a = with_byline($a, $to);
     $live = ($s['drafts'][$key]['status'] ?? '') === 'published';
     if ($live) $a = live_dates($a);
@@ -464,44 +469,137 @@ function set_byline(array &$s, string $key, string $to, int $uid): string {
     foreach (langs() as $l) write_file(L($l)['dir'] . '/' . $a['slug'] . '/index.html', render_article($l, $a[$l], $live));
     $s['drafts'][$key]['byline'] = $to;
     set_buttons($s, $key);
-    notify_others($s, $uid, '👤 <b>' . h($a[lang1()]['title']) . '</b> حالا به نام «' . h($name) . '» است'
-        . ($live ? '؛ صفحه‌ی منتشرشده هم به‌روز شد.' : '.') . actor_note($s));
+    if (!$quiet) notify_others($s, $uid, '✍️ «' . h($a[lang1()]['title']) . '» از حالا به نام <b>' . h($name) . '</b> است'
+        . ($live ? '؛ صفحه‌اش روی سایت هم عوض شد.' : '.') . actor_note($s));
     logline("byline {$a['slug']} -> $to by uid $uid");
     return $name;
 }
-/** Re-renders the articles credited to the team after its name changed. */
-function rerender_team_articles(array $s): int {
+/** Inline keyboard that replaces a draft's buttons while its author is being picked. */
+function author_buttons(string $key, string $cur): array {
+    $rows = [];
+    foreach (author_ids() as $id) $rows[] = [['text' => ($id === $cur ? '✔︎ ' : '') . byline_name(lang1(), $id), 'callback_data' => "v:$key:$id"]];
+    $rows[] = [['text' => '➕ نویسنده‌ی تازه', 'web_app' => ['url' => panel_url() . '?authors=1']], ['text' => '↩︎ بی‌خیال', 'callback_data' => "u:$key"]];
+    return $rows;
+}
+/** Re-renders the open and published articles credited to one author (after their name, bio or link changed). */
+function rerender_author_articles(array &$s, string $id): int {
     $n = 0;
     foreach ($s['drafts'] as $k => $d) {
         if (!in_array($d['status'] ?? '', ['pending', 'queued', 'published'], true)) continue;
         $a = json_decode((string)@file_get_contents(AB . "/drafts/$k.json"), true);
-        if (!is_array($a) || byline_of($a) !== 'team') continue;
+        if (!is_array($a) || byline_of($a) !== $id) continue;
         $live = $d['status'] === 'published';
         if ($live) $a = live_dates($a);
         foreach (langs() as $l) write_file(L($l)['dir'] . '/' . $a['slug'] . '/index.html', render_article($l, $a[$l], $live));
+        $s['drafts'][$k]['byline'] = $id;
+        set_buttons($s, (string)$k);
         $n++;
     }
     return $n;
 }
-/** /team shows the two bylines; "/team NAME" sets the team name (first language), "/team en NAME" for another language, "/team off" resets. */
+/** How many open or published articles each author has. */
+function author_counts(array $s): array {
+    $c = [];
+    foreach ($s['drafts'] as $k => $d) {
+        if (!in_array($d['status'] ?? '', ['pending', 'queued', 'published'], true)) continue;
+        $id = (string)($d['byline'] ?? '');
+        if ($id === '') { $a = json_decode((string)@file_get_contents(AB . "/drafts/$k.json"), true); $id = is_array($a) ? byline_of($a) : ''; }
+        if ($id !== '') $c[$id] = ($c[$id] ?? 0) + 1;
+    }
+    return $c;
+}
+/** The author list as the panel shows it. */
+function authors_view(array $s): array {
+    $b = bylines(); $cnt = author_counts($s); $out = [];
+    foreach (author_ids() as $id) {
+        $x = ['id' => $id, 'kind' => $id === 'main' || $id === 'team' ? $id : 'added', 'count' => $cnt[$id] ?? 0, 'langs' => []];
+        foreach (langs() as $l) {
+            $i = author_info($l, $id);
+            $x['langs'][$l] = ['name' => $i['name'], 'title' => $i['title'], 'url' => (string)(((array)(($b['authors'][$id] ?? [])['url'] ?? []))[$l] ?? '')];
+        }
+        $x['name'] = $x['langs'][lang1()]['name'];
+        $out[] = $x;
+    }
+    return $out;
+}
+/** Adds a writer, or changes the team's or an added writer's name, bio and page. The main author comes from site.json. */
+function author_save(array &$s, array $req, int $uid): array {
+    $id = preg_replace('/[^a-z0-9]/', '', (string)($req['id'] ?? ''));
+    if ($id === 'main') throw new RuntimeException('نویسنده‌ی اصلی از تنظیمات سایت می‌آید و از این‌جا عوض نمی‌شود');
+    $b = bylines();
+    if ($id !== '' && $id !== 'team' && !isset($b['authors'][$id])) throw new RuntimeException('این نویسنده دیگر در فهرست نیست');
+    $x = ['name' => [], 'title' => [], 'url' => []];
+    foreach (langs() as $l) {
+        $in = (array)($req['langs'][$l] ?? []);
+        $clean = fn($v, $n) => mb_substr(trim(preg_replace('/\s+/u', ' ', strip_tags((string)$v))), 0, $n);
+        $name = $clean($in['name'] ?? '', 60); $title = $clean($in['title'] ?? '', 120); $url = trim((string)($in['url'] ?? ''));
+        if ($l === 'fa') { $name = normalize_fa($name); $title = normalize_fa($title); }
+        if ($url !== '' && !preg_match('#^(/[^\s<>"]*|https://[^\s<>"]+)$#', $url)) throw new RuntimeException('لینک صفحه‌ی نویسنده باید با / (صفحه‌ای از همین سایت) یا https:// شروع شود');
+        if ($url !== '' && str_starts_with($url, 'https://') && !str_starts_with($url, SITE . '/')) throw new RuntimeException('لینک صفحه‌ی نویسنده باید صفحه‌ای از همین سایت باشد');
+        if ($name !== '') $x['name'][$l] = $name;
+        if ($title !== '') $x['title'][$l] = $title;
+        if ($url !== '') $x['url'][$l] = mb_substr($url, 0, 200);
+    }
+    if (empty($x['name'][lang1()]) && $id !== 'team') throw new RuntimeException('اسم نویسنده را بنویس');
+    $new = $x['name'][lang1()] ?? '';
+    foreach (author_ids() as $o) if ($o !== $id && $new !== '' && mb_strtolower(byline_name(lang1(), $o)) === mb_strtolower($new))
+        throw new RuntimeException('«' . $new . '» همین الان در فهرست نویسنده‌ها هست');
+    if ($id === '') { $b['seq'] = (int)($b['seq'] ?? 0) + 1; $id = 'a' . $b['seq']; }
+    $b['authors'][$id] = array_filter($x);
+    bylines_save($b);
+    $n = rerender_author_articles($s, $id);
+    notify_others($s, $uid, isset($req['id']) && $req['id'] !== ''
+        ? '✍️ مشخصات نویسنده‌ی <b>' . h(byline_name(lang1(), $id)) . '</b> به‌روز شد' . ($n ? ' و ' . fa_digits((string)$n) . ' مقاله‌اش هم.' : '.') . actor_note($s)
+        : '✍️ <b>' . h(byline_name(lang1(), $id)) . '</b> به فهرست نویسنده‌ها اضافه شد. از این به بعد زیر هر مقاله می‌شود او را انتخاب کرد.' . actor_note($s));
+    logline("author saved $id: " . byline_name(lang1(), $id) . " by uid $uid");
+    return ['id' => $id, 'updated' => $n];
+}
+/** Removes an added writer; their articles go to the editorial team (pages re-rendered). */
+function author_delete(array &$s, string $id, int $uid): int {
+    $b = bylines();
+    if (in_array($id, ['main', 'team'], true) || !isset($b['authors'][$id])) throw new RuntimeException('این نویسنده را نمی‌شود حذف کرد');
+    $name = byline_name(lang1(), $id);
+    $moved = 0;
+    foreach ($s['drafts'] as $k => $d) {
+        if (!in_array($d['status'] ?? '', ['pending', 'queued', 'published'], true)) continue;
+        $a = json_decode((string)@file_get_contents(AB . "/drafts/$k.json"), true);
+        if (is_array($a) && ($a['byline'] ?? '') === $id) { set_byline($s, (string)$k, 'team', $uid, true); $moved++; }
+    }
+    unset($b['authors'][$id]);
+    if (($b['default'] ?? '') === $id) unset($b['default']);
+    bylines_save($b);
+    notify_others($s, $uid, '✍️ <b>' . h($name) . '</b> از فهرست نویسنده‌ها برداشته شد' . ($moved ? '؛ ' . fa_digits((string)$moved) . ' مقاله‌اش به نام ' . h(team_name(lang1())) . ' رفت.' : '.') . actor_note($s));
+    logline("author removed $id ($name), moved $moved by uid $uid");
+    return $moved;
+}
+/** The author new articles go out under. Articles already written keep theirs. */
+function author_set_default(array &$s, string $id, int $uid): void {
+    if (!in_array($id, author_ids(), true)) throw new RuntimeException('این نویسنده در فهرست نیست');
+    $b = bylines(); $b['default'] = $id; bylines_save($b);
+    notify_others($s, $uid, '✍️ مقاله‌های تازه از این به بعد به نام <b>' . h(byline_name(lang1(), $id)) . '</b> می‌آیند.' . actor_note($s));
+    logline("default author $id by uid $uid");
+}
+/** /authors: the list, and a button that opens it in the panel. */
+function authors_message($cid): void {
+    $t = "✍️ <b>نویسنده‌های سایت</b>\n\n";
+    foreach (author_ids() as $id) $t .= ($id === byline_default() ? '★ ' : '• ') . h(byline_name(lang1(), $id)) . ($id === byline_default() ? ' — <i>پیش‌فرض مقاله‌های تازه</i>' : '') . "\n";
+    $t .= "\nزیر هر مقاله دکمه‌ی «✍️ نویسنده» هست؛ با آن می‌شود مقاله را به نام هر کدام کرد، حتی بعد از انتشار."
+        . "\nبرای افزودن نویسنده‌ی تازه یا عوض کردن اسم و معرفی‌ها، پنل را باز کن 👇";
+    tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => $t,
+        'reply_markup' => ['inline_keyboard' => [[['text' => '✍️ مدیریت نویسنده‌ها', 'web_app' => ['url' => panel_url() . '?authors=1']]]]]]);
+}
+/** "/team NAME" renames the editorial team (first language), "/team en NAME" another language, "/team off" resets it. */
 function team_command(array &$s, $cid, string $arg): void {
-    $show = function () {
-        $t = "👤 <b>نویسنده‌ی مقاله‌ها</b>\nپیش‌فرض: <b>" . h(byline_name(lang1(), byline_default())) . "</b>\n";
-        foreach (langs() as $l) $t .= (count(langs()) > 1 ? h(L($l)['label']) . ': ' : '') . h(byline_name($l, 'main')) . ' ⇄ ' . h(team_name($l)) . "\n";
-        return $t . "\nزیر هر پیش‌نویس (و هر مقاله‌ی منتشرشده) دکمه‌ی «👤 به نام…» نویسنده را عوض می‌کند؛ در پنل هم همین‌طور."
-            . "\n\nعوض کردن اسم تحریریه: <code>/team تحریریه …</code>" . (count(langs()) > 1 ? "\nبرای زبان دیگر: <code>/team " . h(langs()[1]) . " …</code>" : '')
-            . "\nبرگشت به اسم پیش‌فرض: <code>/team off</code>";
-    };
-    if ($arg === '') { tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => $show()]); return; }
     $lang = lang1();
     if (preg_match('/^([a-z]{2})\s+(.+)$/su', $arg, $m) && in_array($m[1], langs(), true)) { $lang = $m[1]; $arg = trim($m[2]); }
-    $names = team_names();
-    if ($arg === 'off') unset($names[$lang]); else $names[$lang] = mb_substr(preg_replace('/\s+/u', ' ', strip_tags($arg)), 0, 60);
-    json_save(AB . '/state/bylines.json', $names);
-    $n = rerender_team_articles($s);
-    foreach ($s['drafts'] as $k => $d) if (($d['byline'] ?? '') === 'team') set_buttons($s, (string)$k);
+    $b = bylines();
+    $t = (array)($b['authors']['team'] ?? []);
+    if ($arg === 'off') unset($t['name'][$lang]); else $t['name'][$lang] = mb_substr(preg_replace('/\s+/u', ' ', strip_tags($arg)), 0, 60);
+    $b['authors']['team'] = array_filter($t);
+    bylines_save($b);
+    $n = rerender_author_articles($s, 'team');
     tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => '✅ اسم تحریریه' . (count(langs()) > 1 ? ' (' . h(L($lang)['label']) . ')' : '')
-        . ': <b>' . h(team_name($lang)) . '</b>' . ($n ? "\n" . fa_digits((string)$n) . ' مقاله‌ی به نام تحریریه با اسم تازه به‌روز شد.' : '')]);
-    notify_others($s, $cid, '👤 اسم تحریریه شد «' . h(team_name($lang)) . '».' . actor_note($s));
+        . ' شد <b>' . h(team_name($lang)) . '</b>' . ($n ? "\n" . fa_digits((string)$n) . ' مقاله‌ای که به نام تحریریه بود با اسم تازه به‌روز شد.' : '')]);
+    notify_others($s, $cid, '✍️ اسم تحریریه شد <b>' . h(team_name($lang)) . '</b>.' . actor_note($s));
     logline("team name $lang: " . team_name($lang));
 }

@@ -123,7 +123,7 @@ if (messenger() === 'bale') {
         tg('setMyCommands', ['commands' => [
             ['command' => 'status', 'description' => 'وضعیت نیک‌نگار'], ['command' => 'settings', 'description' => 'تنظیمات انتشار'],
             ['command' => 'write', 'description' => 'نوشتن مقاله‌ی جدید'], ['command' => 'publishnow', 'description' => 'انتشار فوری مقاله‌ی بعدی صف'],
-            ['command' => 'members', 'description' => 'اعضا و دسترسی‌ها'], ['command' => 'team', 'description' => 'نویسنده‌ی مقاله‌ها و اسم تحریریه']]]);
+            ['command' => 'members', 'description' => 'اعضا و دسترسی‌ها'], ['command' => 'authors', 'description' => 'نویسنده‌ها و افزودن نویسنده‌ی تازه']]]);
         tg('setChatMenuButton', ['menu_button' => ['type' => 'web_app', 'text' => 'نیک‌نگار', 'web_app' => ['url' => panel_url()]]]);
         tg('setMyDescription', ['description' => 'نیک‌نگار — میز تحریریه‌ی بلاگ ' . site('site_name') . ". ربات خصوصی است.\nطراحی و ساخت: دکتر محمدرضا نظیف"]);
         tg('setMyShortDescription', ['short_description' => 'میز تحریریه‌ی بلاگ ' . site('site_name')]);

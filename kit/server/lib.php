@@ -37,34 +37,57 @@ function L(string $lang): array {
     $L['feed_title'] = $L['feed_title'] ?? ($L['blog_title'] ?? ($L['blog_name'] . ' — ' . $L['site_name']));
     return $cache[$lang] = $L;
 }
-/* ---------------- byline: the main author, or the site's general editorial team ---------------- */
-// Every article is credited to the main author by default. Weaker SEO pieces can be moved to the team byline from the
-// bot or the panel, so the main author's personal brand only carries the articles they would sign themselves.
-// Team name, per language: set with /team in the bot (state/bylines.json), else "team_author" in site.json, else derived.
-const BYLINES = ['main', 'team'];
-function byline_default(): string { return in_array(site('default_byline', 'main'), BYLINES, true) ? (string)site('default_byline', 'main') : 'main'; }
-function byline_of(array $a): string { $b = (string)($a['byline'] ?? ''); return in_array($b, BYLINES, true) ? $b : byline_default(); }
-function team_names(): array { return json_load(AB . '/state/bylines.json', []); }
+/* ---------------- authors (bylines) ---------------- */
+// Every article is credited to one author. "main" is the site's own author from site.json (default for new articles),
+// "team" is the general editorial byline, and the team can add more writers from the panel. Authors added from the
+// bot or panel, the team's name and the default live in state/bylines.json:
+//   {"default": "main", "seq": 2, "authors": {"team": {...}, "a1": {"name": {"fa": ".."}, "title": {..}, "url": {..}}}}
+function bylines(): array {
+    $b = json_load(AB . '/state/bylines.json', []);
+    $b['authors'] = is_array($b['authors'] ?? null) ? $b['authors'] : [];
+    return $b;
+}
+function bylines_save(array $b): void { json_save(AB . '/state/bylines.json', $b); }
+/** All author ids in display order: main, team, then the added writers. */
+function author_ids(): array {
+    return array_values(array_unique(array_merge(['main', 'team'], array_map('strval', array_keys(bylines()['authors'])))));
+}
+function byline_default(): string {
+    $ids = author_ids();
+    foreach ([(string)(bylines()['default'] ?? ''), (string)site('default_byline', 'main')] as $d) if (in_array($d, $ids, true)) return $d;
+    return 'main';
+}
+function byline_of(array $a): string { $b = (string)($a['byline'] ?? ''); return in_array($b, author_ids(), true) ? $b : byline_default(); }
+/** One field of a stored author in a language, falling back to the first language. */
+function author_field(array $x, string $f, string $lang): string {
+    $v = (array)($x[$f] ?? []);
+    return trim((string)($v[$lang] ?? '')) ?: ($f === 'name' ? trim((string)($v[lang1()] ?? '')) : '');
+}
 function team_name(string $lang): string {
     $Lc = L($lang);
-    $n = trim((string)(team_names()[$lang] ?? '')) ?: trim((string)($Lc['team_author'] ?? ''));
+    $n = author_field((array)(bylines()['authors']['team'] ?? []), 'name', $lang) ?: trim((string)($Lc['team_author'] ?? ''));
     if ($n !== '') return $n;
     $brand = (string)$Lc['site_name'];
     return ['fa' => "تحریریه $brand", 'ar' => "فريق تحرير $brand"][$lang] ?? "$brand Editorial Team";
 }
-/** Who an article is credited to: name, link, short bio, schema type and photo. */
-function author_info(string $lang, string $byline): array {
+/** Who an article is credited to: name, link, one-line bio, schema type and photo. */
+function author_info(string $lang, string $id): array {
     $Lc = L($lang);
-    if ($byline !== 'team') return ['type' => 'Person', 'name' => (string)$Lc['author'], 'url' => (string)$Lc['author_url'],
+    if (!in_array($id, author_ids(), true)) $id = byline_default();
+    if ($id === 'main') return ['type' => 'Person', 'name' => (string)$Lc['author'], 'url' => (string)$Lc['author_url'],
         'title' => (string)($Lc['author_title'] ?? ''), 'image' => abs_url((string)site('author_image', ''))];
-    return ['type' => 'Organization', 'name' => team_name($lang), 'url' => abs_url((string)($Lc['team_author_url'] ?? '')),
-        'title' => (string)($Lc['team_author_title'] ?? ''), 'image' => ''];
+    $x = (array)(bylines()['authors'][$id] ?? []);
+    if ($id === 'team') return ['type' => 'Organization', 'name' => team_name($lang),
+        'url' => abs_url(author_field($x, 'url', $lang) ?: (string)($Lc['team_author_url'] ?? '')),
+        'title' => author_field($x, 'title', $lang) ?: (string)($Lc['team_author_title'] ?? ''), 'image' => ''];
+    return ['type' => 'Person', 'name' => author_field($x, 'name', $lang), 'url' => abs_url(author_field($x, 'url', $lang)),
+        'title' => author_field($x, 'title', $lang), 'image' => ''];
 }
-function byline_name(string $lang, string $byline): string { return author_info($lang, $byline)['name']; }
+function byline_name(string $lang, string $id): string { return author_info($lang, $id)['name']; }
 /** Sets the byline on an article (all its languages). */
-function with_byline(array $a, string $byline): array {
-    $a['byline'] = $byline;
-    foreach (langs() as $l) if (isset($a[$l]) && is_array($a[$l])) $a[$l]['byline'] = $byline;
+function with_byline(array $a, string $id): array {
+    $a['byline'] = $id;
+    foreach (langs() as $l) if (isset($a[$l]) && is_array($a[$l])) $a[$l]['byline'] = $id;
     return $a;
 }
 
@@ -407,8 +430,8 @@ function validate_draft(array $d, array &$errors, array &$warnings): array {
         $out[$lang] = prepare_lang($lang, $d[$lang], $slug, $date, $errors, $warnings);
         $out[$lang]['cluster'] = $cl;
     }
-    // a draft may ask for the team byline itself ("byline": "team"); otherwise the site's default (main author)
-    return with_byline($out, in_array($d['byline'] ?? '', BYLINES, true) ? (string)$d['byline'] : byline_default());
+    // a draft may name its author itself ("byline": "team" or an added writer's id); otherwise the site's default
+    return with_byline($out, in_array((string)($d['byline'] ?? ''), author_ids(), true) ? (string)$d['byline'] : byline_default());
 }
 
 /* ---------------- rendering ---------------- */

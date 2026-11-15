@@ -113,11 +113,21 @@ main{padding:16px 14px 96px;max-width:620px;margin:0 auto}
 .ghost svg{width:16px;height:16px;stroke:currentColor}
 .ghost.red{color:var(--danger)}
 button[disabled]{opacity:.45;pointer-events:none}
-.byline{display:flex;align-items:center;gap:8px;margin:0 0 12px}
-.byline .lb{font-size:12px;font-weight:700;color:var(--hint);flex:none}
-.byline .seg{flex:1;display:flex;gap:3px;background:var(--bg);border-radius:12px;padding:3px;min-width:0}
-.byline .seg button{flex:1;min-width:0;border:0;background:transparent;color:var(--hint);font-weight:700;font-size:12px;padding:7px 6px;border-radius:9px;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.byline .seg button.on{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.12);pointer-events:none}
+.byline{display:flex;align-items:center;gap:10px;margin:0 0 12px;position:relative}
+.byline .lb{font-size:12.5px;font-weight:700;color:var(--hint);flex:none}
+.byline .sel{flex:1;min-width:0;position:relative}
+.byline .sel::after{content:"";position:absolute;inset-inline-end:13px;top:50%;width:7px;height:7px;border:solid var(--hint);border-width:0 2px 2px 0;transform:translateY(-70%) rotate(45deg);pointer-events:none}
+.byline select{width:100%;appearance:none;-webkit-appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:12px;padding:9px 12px;padding-inline-end:32px;font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;outline:none;text-overflow:ellipsis}
+.byline select:focus{border-color:var(--blue)}
+.au .t{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.tag{font-size:10.5px;font-weight:800;color:var(--mint);background:var(--mint-soft);border-radius:99px;padding:1px 8px}
+.au .acts{display:flex;gap:6px;flex:none}
+.au-form{margin-top:10px}
+.au-form .head{font-weight:800;font-size:14.5px;margin:0 2px 12px}
+.au-form .opt{font-weight:400;opacity:.8}
+.au-form .l2{border-top:1px dashed var(--line);padding-top:12px;margin-top:2px}
+.au-form .two button{margin:0}
+.au-hint{font-size:12px;color:var(--hint);line-height:1.8;margin:8px 6px 0}
 
 .empty{text-align:center;color:var(--hint);padding:38px 16px;background:var(--card);border-radius:var(--r);font-size:14px}
 .empty b{display:block;color:var(--text);font-size:15px;margin-bottom:4px}
@@ -293,6 +303,29 @@ body.editing .hero,body.editing .views,body.editing .pane:not(#vEdit),body.editi
       <span class="val" id="writeVal"></span>
     </div>
   </div>
+
+  <p class="sec" id="auSec">نویسنده‌ها</p>
+  <div class="group" id="auList"></div>
+  <p class="au-hint">هر مقاله به نام یکی از این‌ها روی سایت می‌رود. مقاله‌های تازه به نام نویسنده‌ی <b>پیش‌فرض</b> می‌آیند و نویسنده‌ی هر مقاله را از روی کارتش می‌شود عوض کرد، حتی بعد از انتشار.</p>
+  <form class="form au-form" id="auForm" autocomplete="off">
+    <p class="head" id="auHead">افزودن نویسنده</p>
+    <label for="auName">اسم، همان‌طور که زیر مقاله دیده شود</label>
+    <input id="auName" maxlength="60" placeholder="مثلاً سارا احمدی">
+    <label for="auTitle">یک خط معرفی <span class="opt">(اختیاری)</span></label>
+    <input id="auTitle" maxlength="120" placeholder="مثلاً روانشناس بالینی">
+    <label for="auUrl">صفحه‌ی معرفی روی همین سایت <span class="opt">(اختیاری)</span></label>
+    <input id="auUrl" class="ltr" dir="ltr" maxlength="200" placeholder="/about/">
+    <div class="l2" id="auL2" hidden>
+      <label for="auName2" id="auName2L">اسم</label>
+      <input id="auName2" maxlength="60" dir="auto">
+      <label for="auTitle2" id="auTitle2L">معرفی</label>
+      <input id="auTitle2" maxlength="120" dir="auto">
+      <label for="auUrl2" id="auUrl2L">صفحه‌ی معرفی</label>
+      <input id="auUrl2" class="ltr" dir="ltr" maxlength="200">
+    </div>
+    <div class="two"><button class="primary" type="submit" id="auSave">＋ افزودن به فهرست</button><button class="ghost" type="button" id="auCancel" hidden>انصراف</button></div>
+  </form>
+  <p class="au-hint">با لینک صفحه‌ی معرفی، اسم نویسنده زیر مقاله قابل کلیک می‌شود و گوگل هم می‌فهمد پشت مقاله آدم واقعی هست.</p>
   </section>
 
 
@@ -414,6 +447,7 @@ function render() {
     queued: ['صف انتشار خالی است', 'مقاله‌هایی که «در نوبت» بگذاری این‌جا می‌آیند.'],
     published: ['هنوز چیزی منتشر نشده', 'اولین مقاله را از تب «منتظر» منتشر کن.'] }[tab];
   $('list').innerHTML = items.length ? items.map(card).join('') : '<div class="empty"><b>' + empty[0] + '</b>' + empty[1] + '</div>';
+  renderAuthors();
   setMain();
 }
 
@@ -427,11 +461,10 @@ function card(i) {
   if (i.status === 'queued') acts = '<button class="primary" data-a="publish" data-k="' + i.key + '"><svg><use href="#i-send"/></svg>انتشار همین حالا</button>'
     + '<div class="row3 row2">' + g('cover', 'image', 'عکس دیگر') + g('reject', 'x', 'رد', 'red') + '</div>';
   acts += '<div class="row3 row2">' + g('edit', 'pen', 'ویرایش متن') + g('mycover', 'upload', 'عکس کاور خودم') + '</div>';
-  // byline: main author (default) or the editorial team; one tap switches it, also after publishing
-  const B = S.bylines || {}, cur = i.byline || 'main';
-  const by = B.team ? '<div class="byline"><span class="lb">به نام</span><div class="seg">'
-    + ['main', 'team'].map(m => '<button data-by="' + m + '" data-k="' + i.key + '" class="' + (cur === m ? 'on' : '') + '" title="' + esc(B[m]) + '">' + esc(B[m]) + '</button>').join('')
-    + '</div></div>' : '';
+  // author: who the article goes out under; changing it re-renders the page, also after publishing
+  const AU = S.authors || [], cur = i.byline || S.default_author || 'main';
+  const by = AU.length ? '<div class="byline"><span class="lb">✍️ نویسنده</span><div class="sel"><select data-by-k="' + i.key + '" aria-label="نویسنده">'
+    + AU.map(a => '<option value="' + a.id + '"' + (a.id === cur ? ' selected' : '') + '>' + esc(a.name) + '</option>').join('') + '</select></div></div>' : '';
   return '<article class="post">'
     + '<div class="cover" style="background-image:url(\'' + esc(i.cover) + '\')"><span class="badge ' + i.status + '">' + label + '</span><span class="when">' + when + '</span></div>'
     + '<div class="pbody"><h3>' + esc(i.title) + '</h3>' + (i.title2 ? '<p class="en" dir="auto">' + esc(i.title2) + '</p>' : '')
@@ -449,7 +482,7 @@ function setMain() {
 
 async function load(spin) {
   if (spin) $('refresh').classList.add('spin');
-  try { const j = await api('state'); S = j.state; render(); openFromLink(); }
+  try { const j = await api('state'); S = j.state; render(); openFromLink(); openAuthorsFromLink(); }
   catch (e) { $('list').innerHTML = '<div class="err"><b style="display:block;color:var(--text);margin-bottom:4px">پنل باز نشد</b>' + esc(e.message) + '<br>پنل را از داخل ربات باز کن.</div>'; $('heroHead').textContent = 'نیک‌نگار'; }
   finally { $('refresh').classList.remove('spin'); }
 }
@@ -528,14 +561,6 @@ document.addEventListener('click', async e => {
   const l = e.target.closest('[data-link]');
   if (l) { e.preventDefault(); tg && tg.openLink ? tg.openLink(l.href) : window.open(l.href); return; }
   const t = e.target.closest('.tab'); if (t) { tap(); tab = t.dataset.tab; render(); return; }
-  const w = e.target.closest('button[data-by]');
-  if (w) {
-    tap();
-    const name = (S.bylines || {})[w.dataset.by] || '';
-    if (S.items.find(x => x.key === w.dataset.k && x.status === 'published') && !(await ask('این مقاله منتشر شده. نویسنده‌اش روی سایت به «' + name + '» عوض شود؟'))) return;
-    act('byline', { key: w.dataset.k, byline: w.dataset.by }, 'حالا به نام «' + name + '» است');
-    return;
-  }
   const b = e.target.closest('button[data-a]'); if (!b) return;
   const key = b.dataset.k, a = b.dataset.a;
   tap();
@@ -564,6 +589,82 @@ function openFromLink() {
   linkUsed = true;
   if (S.items.some(i => i.key === EDIT_LINK)) openEditor(EDIT_LINK); else toast('این مقاله دیگر قابل ویرایش نیست');
 }
+const AUTHORS_LINK = new URLSearchParams(location.search).get('authors') === '1';
+let auLinkUsed = false;
+function openAuthorsFromLink() {
+  if (auLinkUsed || !AUTHORS_LINK || ED) return;
+  auLinkUsed = true; showView('settings');
+  setTimeout(() => $('auSec').scrollIntoView({ behavior: 'smooth', block: 'start' }), 80);
+}
+
+/* ---------- authors ---------- */
+let auEdit = null;                                    // id being edited, or null for a new author
+const KIND = { main: 'نویسنده‌ی اصلی سایت', team: 'اسم جمعی، بدون امضای شخصی', added: 'نویسنده' };
+function renderAuthors() {
+  if (!S || !S.authors) return;
+  const def = S.default_author, team = S.authors.find(a => a.id === 'team');
+  $('auList').innerHTML = S.authors.map(a => '<div class="item au"><div class="ico ' + (a.id === 'main' ? 'b' : a.id === 'team' ? 'p' : 'm') + '">' + (a.id === 'team' ? '🗞' : '✍️') + '</div>'
+    + '<div class="txt"><div class="t">' + esc(a.name) + (a.id === def ? '<span class="tag">پیش‌فرض</span>' : '') + '</div>'
+    + '<div class="d">' + esc((a.langs[S.langs[0].code] || {}).title || KIND[a.kind]) + (a.count ? '، <span style="white-space:nowrap">' + fa(a.count) + ' مقاله</span>' : '') + '</div></div>'
+    + '<div class="acts">' + (a.id !== def ? '<button class="mini" data-au="default" data-id="' + a.id + '" title="مقاله‌های تازه به نام این نویسنده بیایند">★</button>' : '')
+    + (a.id !== 'main' ? '<button class="mini" data-au="edit" data-id="' + a.id + '" title="ویرایش">✎</button>' : '')
+    + (a.kind === 'added' ? '<button class="mini red" data-au="del" data-id="' + a.id + '" title="حذف از فهرست">✕</button>' : '') + '</div></div>').join('');
+  const [, l2] = S.langs;
+  $('auL2').hidden = !l2;
+  if (l2) { $('auName2L').textContent = 'اسم به ' + l2.label; $('auTitle2L').textContent = 'معرفی به ' + l2.label; $('auUrl2L').textContent = 'صفحه‌ی معرفی ' + l2.label;
+    $('auName2').dir = l2.dir; $('auTitle2').dir = l2.dir; }
+  if (team && !auEdit) $('auName').placeholder = 'مثلاً سارا احمدی';
+}
+function auFill(a) {
+  const [l1, l2] = S.langs, g = (l, f) => ((a && a.langs[l.code]) || {})[f] || '';
+  auEdit = a ? a.id : null;
+  $('auHead').textContent = a ? 'ویرایش ' + (a.id === 'team' ? 'اسم جمعی' : '«' + a.name + '»') : 'افزودن نویسنده';
+  $('auSave').textContent = a ? '💾 ذخیره' : '＋ افزودن به فهرست';
+  $('auCancel').hidden = !a;
+  $('auName').value = g(l1, 'name'); $('auTitle').value = g(l1, 'title'); $('auUrl').value = g(l1, 'url');
+  if (l2) { $('auName2').value = g(l2, 'name'); $('auTitle2').value = g(l2, 'title'); $('auUrl2').value = g(l2, 'url'); }
+  $('auName').placeholder = a && a.id === 'team' ? 'مثلاً تحریریه ' + (S.site || '') : 'مثلاً سارا احمدی';
+}
+async function auCall(action, body, msg) {
+  if (busy) return false; busy = true;
+  document.querySelectorAll('#vSettings button, #vSettings input').forEach(b => b.disabled = true);
+  try { const j = await api(action, body); S = j.state; render(); haptic('success'); if (msg) toast(typeof msg === 'function' ? msg(j) : msg); return true; }
+  catch (e) { haptic('error'); toast(e.message); return false; }
+  finally { busy = false; document.querySelectorAll('#vSettings button, #vSettings input').forEach(b => b.disabled = false); }
+}
+$('auForm').addEventListener('submit', async e => {
+  e.preventDefault(); tap();
+  const [l1, l2] = S.langs, name = $('auName').value.trim();
+  if (!name && auEdit !== 'team') { toast('اسم نویسنده را بنویس'); $('auName').focus(); return; }
+  const langs = { [l1.code]: { name, title: $('auTitle').value.trim(), url: $('auUrl').value.trim() } };
+  if (l2) langs[l2.code] = { name: $('auName2').value.trim(), title: $('auTitle2').value.trim(), url: $('auUrl2').value.trim() };
+  const editing = auEdit;
+  const ok = await auCall('author_save', { id: editing || '', langs }, j => editing
+    ? 'ذخیره شد' + (j.saved.updated ? '؛ ' + fa(j.saved.updated) + ' مقاله‌اش هم به‌روز شد' : '')
+    : '«' + name + '» به فهرست اضافه شد');
+  if (ok) auFill(null);
+});
+$('auCancel').addEventListener('click', () => { tap(); auFill(null); });
+document.addEventListener('click', async e => {
+  const b = e.target.closest('button[data-au]'); if (!b) return;
+  tap();
+  const a = S.authors.find(x => x.id === b.dataset.id); if (!a) return;
+  if (b.dataset.au === 'edit') { auFill(a); $('auForm').scrollIntoView({ behavior: 'smooth', block: 'center' }); setTimeout(() => $('auName').focus(), 300); return; }
+  if (b.dataset.au === 'default') { if (!(await ask('مقاله‌های تازه از این به بعد به نام «' + a.name + '» بیایند؟ مقاله‌هایی که الان هستند نویسنده‌ی خودشان را نگه می‌دارند.'))) return; auCall('author_default', { id: a.id }, 'مقاله‌های تازه از این به بعد به نام «' + a.name + '» می‌آیند'); return; }
+  const team = (S.authors.find(x => x.id === 'team') || {}).name || 'تحریریه';
+  if (!(await ask('«' + a.name + '» از فهرست نویسنده‌ها برداشته شود؟' + (a.count ? ' ' + fa(a.count) + ' مقاله‌اش به نام «' + team + '» می‌رود.' : '')))) return;
+  if (auEdit === a.id) auFill(null);
+  auCall('author_delete', { id: a.id }, j => 'برداشته شد' + (j.moved ? '؛ ' + fa(j.moved) + ' مقاله به نام «' + team + '» رفت' : ''));
+});
+document.addEventListener('change', async e => {
+  const sel = e.target.closest('select[data-by-k]'); if (!sel) return;
+  tap();
+  const it = S.items.find(x => x.key === sel.dataset.byK), a = S.authors.find(x => x.id === sel.value);
+  if (!it || !a) return;
+  if (it.status === 'published' && !(await ask('این مقاله منتشر شده. نویسنده‌اش روی سایت هم به «' + a.name + '» عوض شود؟'))) { render(); return; }
+  act('byline', { key: it.key, byline: a.id }, '✍️ از حالا به نام «' + a.name + '»');
+});
+
 function promptText(text, def, ph) {                 // small dialog with one text field (window.prompt is blocked in some messengers)
   return new Promise(r => {
     const bg = document.createElement('div'); bg.className = 'nn-dlg';

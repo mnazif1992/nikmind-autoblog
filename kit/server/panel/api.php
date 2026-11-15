@@ -92,9 +92,14 @@ $res = with_state(function (array &$s) use ($action, $key, $req, $uid) {
             if ($was !== $s['paused']) notify_others($s, $uid, settings_change_text($s, 's'));
             break;
         case 'write': request_write($s, $uid); break;
-        case 'byline':
-            try { set_byline($s, $key, (string)($req['byline'] ?? ''), $uid); }
-            catch (Throwable $e) { return ['ok' => false, 'error' => $e->getMessage()]; }
+        case 'byline': case 'author_save': case 'author_delete': case 'author_default':   // authors: any member
+            try {
+                $id = preg_replace('/[^a-z0-9]/', '', (string)($req['id'] ?? ''));
+                if ($action === 'byline') set_byline($s, $key, (string)($req['byline'] ?? ''), $uid);
+                elseif ($action === 'author_save') { $r = author_save($s, $req, $uid); return ['ok' => true, 'saved' => $r, 'state' => panel_state($s)]; }
+                elseif ($action === 'author_delete') { $n = author_delete($s, $id, $uid); return ['ok' => true, 'moved' => $n, 'state' => panel_state($s)]; }
+                else author_set_default($s, $id, $uid);
+            } catch (Throwable $e) { return ['ok' => false, 'error' => $e->getMessage()]; }
             break;
         default: return ['ok' => false, 'error' => 'unknown action'];
     }
