@@ -17,15 +17,20 @@ function kit_ref(): string {
 function kit_raw(string $file): array {
     $url = 'https://raw.githubusercontent.com/' . site('kit_repo', 'mnazif1992/nikmind-autoblog') . '/' . kit_ref() . '/'
          . trim((string)site('kit_path', 'kit/server'), '/') . '/' . $file . '?t=' . time();
-    $c = curl_init($url);
-    $h = ['User-Agent: nik-negar/' . KIT_VERSION];
-    curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 40, CURLOPT_HTTPHEADER => $h]);
-    $b = curl_exec($c); $code = (int)curl_getinfo($c, CURLINFO_HTTP_CODE); curl_close($c);
+    static $rawDead = false;                          // once raw.githubusercontent.com fails, use the API for the rest of this update
+    $code = 0; $b = '';
+    if (!$rawDead) {
+        $c = curl_init($url);
+        $h = ['User-Agent: nik-negar/' . KIT_VERSION];
+        curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 40, CURLOPT_CONNECTTIMEOUT => 8, CURLOPT_HTTPHEADER => $h]);
+        $b = curl_exec($c); $code = (int)curl_getinfo($c, CURLINFO_HTTP_CODE); curl_close($c);
+        if ($code === 0) $rawDead = true;
+    }
     if ($code !== 200) {   // raw.githubusercontent.com is unreachable from some hosts (e.g. in Iran) while api.github.com works: same file through the API
         $api = 'https://api.github.com/repos/' . site('kit_repo', 'mnazif1992/nikmind-autoblog') . '/contents/'
              . trim((string)site('kit_path', 'kit/server'), '/') . '/' . $file . '?ref=' . kit_ref();
         $c = curl_init($api);
-        curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 40,
+        curl_setopt_array($c, [CURLOPT_RETURNTRANSFER => true, CURLOPT_TIMEOUT => 40, CURLOPT_CONNECTTIMEOUT => 10,
             CURLOPT_HTTPHEADER => ['User-Agent: nik-negar/' . KIT_VERSION, 'Accept: application/vnd.github.raw', 'X-GitHub-Api-Version: 2022-11-28']]);
         $b = curl_exec($c); $code = (int)curl_getinfo($c, CURLINFO_HTTP_CODE); curl_close($c);
     }
