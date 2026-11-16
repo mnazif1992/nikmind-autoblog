@@ -71,7 +71,11 @@
     },
     {
       "url": "/cities/",
-      "title": "همه‌ی شهرها — روانشناس ایرانی در شهر تو"
+      "title": "همه‌ی شهرها و کشورها — روانشناس ایرانی در شهر تو"
+    },
+    {
+      "url": "/countries/australia/",
+      "title": "روانشناس ایرانی در استرالیا"
     },
     {
       "url": "/cities/perth/",
@@ -86,6 +90,26 @@
       "title": "روانشناس ایرانی برای ساکنان ملبورن"
     },
     {
+      "url": "/cities/brisbane/",
+      "title": "روانشناس ایرانی برای ساکنان بریزبن"
+    },
+    {
+      "url": "/cities/adelaide/",
+      "title": "روانشناس ایرانی برای ساکنان آدلاید"
+    },
+    {
+      "url": "/countries/new-zealand/",
+      "title": "روانشناس ایرانی در نیوزیلند"
+    },
+    {
+      "url": "/cities/auckland/",
+      "title": "روانشناس ایرانی برای ساکنان اوکلند"
+    },
+    {
+      "url": "/countries/canada/",
+      "title": "روانشناس ایرانی در کانادا"
+    },
+    {
       "url": "/cities/toronto/",
       "title": "روانشناس ایرانی برای ساکنان تورنتو"
     },
@@ -98,12 +122,60 @@
       "title": "روانشناس ایرانی برای ساکنان مونترال"
     },
     {
+      "url": "/cities/ottawa/",
+      "title": "روانشناس ایرانی برای ساکنان اتاوا"
+    },
+    {
+      "url": "/cities/calgary/",
+      "title": "روانشناس ایرانی برای ساکنان کلگری"
+    },
+    {
+      "url": "/cities/edmonton/",
+      "title": "روانشناس ایرانی برای ساکنان ادمونتون"
+    },
+    {
+      "url": "/countries/usa/",
+      "title": "روانشناس ایرانی در آمریکا"
+    },
+    {
       "url": "/cities/los-angeles/",
       "title": "روانشناس ایرانی برای ساکنان لس‌آنجلس"
     },
     {
+      "url": "/cities/orange-county/",
+      "title": "روانشناس ایرانی برای ساکنان اورنج کانتی و ارواین"
+    },
+    {
+      "url": "/cities/san-diego/",
+      "title": "روانشناس ایرانی برای ساکنان سن‌دیگو"
+    },
+    {
       "url": "/cities/san-francisco/",
       "title": "روانشناس ایرانی برای ساکنان سان‌فرانسیسکو"
+    },
+    {
+      "url": "/cities/seattle/",
+      "title": "روانشناس ایرانی برای ساکنان سیاتل"
+    },
+    {
+      "url": "/cities/houston/",
+      "title": "روانشناس ایرانی برای ساکنان هیوستون"
+    },
+    {
+      "url": "/cities/dallas/",
+      "title": "روانشناس ایرانی برای ساکنان دالاس"
+    },
+    {
+      "url": "/cities/chicago/",
+      "title": "روانشناس ایرانی برای ساکنان شیکاگو"
+    },
+    {
+      "url": "/cities/boston/",
+      "title": "روانشناس ایرانی برای ساکنان بوستون"
+    },
+    {
+      "url": "/cities/atlanta/",
+      "title": "روانشناس ایرانی برای ساکنان آتلانتا"
     },
     {
       "url": "/cities/washington-dc/",
@@ -114,8 +186,20 @@
       "title": "روانشناس ایرانی برای ساکنان نیویورک"
     },
     {
+      "url": "/countries/uk/",
+      "title": "روانشناس ایرانی در بریتانیا"
+    },
+    {
       "url": "/cities/london/",
       "title": "روانشناس ایرانی برای ساکنان لندن"
+    },
+    {
+      "url": "/cities/manchester/",
+      "title": "روانشناس ایرانی برای ساکنان منچستر"
+    },
+    {
+      "url": "/countries/germany/",
+      "title": "روانشناس ایرانی در آلمان"
     },
     {
       "url": "/cities/hamburg/",
@@ -130,8 +214,72 @@
       "title": "روانشناس ایرانی برای ساکنان کلن"
     },
     {
+      "url": "/cities/dusseldorf/",
+      "title": "روانشناس ایرانی برای ساکنان دوسلدورف"
+    },
+    {
+      "url": "/cities/frankfurt/",
+      "title": "روانشناس ایرانی برای ساکنان فرانکفورت"
+    },
+    {
+      "url": "/cities/stuttgart/",
+      "title": "روانشناس ایرانی برای ساکنان اشتوتگارت"
+    },
+    {
       "url": "/cities/munich/",
       "title": "روانشناس ایرانی برای ساکنان مونیخ"
+    },
+    {
+      "url": "/countries/austria/",
+      "title": "روانشناس ایرانی در اتریش"
+    },
+    {
+      "url": "/cities/vienna/",
+      "title": "روانشناس ایرانی برای ساکنان وین"
+    },
+    {
+      "url": "/countries/switzerland/",
+      "title": "روانشناس ایرانی در سوئیس"
+    },
+    {
+      "url": "/cities/zurich/",
+      "title": "روانشناس ایرانی برای ساکنان زوریخ"
+    },
+    {
+      "url": "/countries/france/",
+      "title": "روانشناس ایرانی در فرانسه"
+    },
+    {
+      "url": "/cities/paris/",
+      "title": "روانشناس ایرانی برای ساکنان پاریس"
+    },
+    {
+      "url": "/countries/belgium/",
+      "title": "روانشناس ایرانی در بلژیک"
+    },
+    {
+      "url": "/cities/brussels/",
+      "title": "روانشناس ایرانی برای ساکنان بروکسل"
+    },
+    {
+      "url": "/countries/netherlands/",
+      "title": "روانشناس ایرانی در هلند"
+    },
+    {
+      "url": "/cities/amsterdam/",
+      "title": "روانشناس ایرانی برای ساکنان آمستردام"
+    },
+    {
+      "url": "/cities/rotterdam/",
+      "title": "روانشناس ایرانی برای ساکنان روتردام"
+    },
+    {
+      "url": "/cities/the-hague/",
+      "title": "روانشناس ایرانی برای ساکنان لاهه"
+    },
+    {
+      "url": "/countries/sweden/",
+      "title": "روانشناس ایرانی در سوئد"
     },
     {
       "url": "/cities/stockholm/",
@@ -142,16 +290,64 @@
       "title": "روانشناس ایرانی برای ساکنان گوتنبرگ"
     },
     {
-      "url": "/cities/amsterdam/",
-      "title": "روانشناس ایرانی برای ساکنان آمستردام"
+      "url": "/cities/malmo/",
+      "title": "روانشناس ایرانی برای ساکنان مالمو"
+    },
+    {
+      "url": "/countries/norway/",
+      "title": "روانشناس ایرانی در نروژ"
+    },
+    {
+      "url": "/cities/oslo/",
+      "title": "روانشناس ایرانی برای ساکنان اسلو"
+    },
+    {
+      "url": "/countries/denmark/",
+      "title": "روانشناس ایرانی در دانمارک"
+    },
+    {
+      "url": "/cities/copenhagen/",
+      "title": "روانشناس ایرانی برای ساکنان کپنهاگ"
+    },
+    {
+      "url": "/countries/italy/",
+      "title": "روانشناس ایرانی در ایتالیا"
+    },
+    {
+      "url": "/cities/milan/",
+      "title": "روانشناس ایرانی برای ساکنان میلان"
+    },
+    {
+      "url": "/countries/turkey/",
+      "title": "روانشناس ایرانی در ترکیه"
     },
     {
       "url": "/cities/istanbul/",
       "title": "روانشناس ایرانی برای ساکنان استانبول"
     },
     {
+      "url": "/cities/ankara/",
+      "title": "روانشناس ایرانی برای ساکنان آنکارا"
+    },
+    {
+      "url": "/countries/uae/",
+      "title": "روانشناس ایرانی در امارات"
+    },
+    {
       "url": "/cities/dubai/",
       "title": "روانشناس ایرانی برای ساکنان دبی"
+    },
+    {
+      "url": "/cities/abu-dhabi/",
+      "title": "روانشناس ایرانی برای ساکنان ابوظبی"
+    },
+    {
+      "url": "/countries/armenia/",
+      "title": "روانشناس ایرانی در ارمنستان"
+    },
+    {
+      "url": "/cities/yerevan/",
+      "title": "روانشناس ایرانی برای ساکنان ایروان"
     }
   ],
   "en": [
@@ -189,7 +385,11 @@
     },
     {
       "url": "/en/cities/",
-      "title": "All cities — Farsi-speaking therapist in your city"
+      "title": "All cities and countries — a Farsi-speaking therapist where you live"
+    },
+    {
+      "url": "/en/countries/australia/",
+      "title": "Farsi-Speaking Therapist for Iranians in Australia"
     },
     {
       "url": "/en/cities/perth/",
@@ -204,6 +404,26 @@
       "title": "Farsi-Speaking Therapist for Iranians in Melbourne"
     },
     {
+      "url": "/en/cities/brisbane/",
+      "title": "Farsi-Speaking Therapist for Iranians in Brisbane"
+    },
+    {
+      "url": "/en/cities/adelaide/",
+      "title": "Farsi-Speaking Therapist for Iranians in Adelaide"
+    },
+    {
+      "url": "/en/countries/new-zealand/",
+      "title": "Farsi-Speaking Therapist for Iranians in New Zealand"
+    },
+    {
+      "url": "/en/cities/auckland/",
+      "title": "Farsi-Speaking Therapist for Iranians in Auckland"
+    },
+    {
+      "url": "/en/countries/canada/",
+      "title": "Farsi-Speaking Therapist for Iranians in Canada"
+    },
+    {
       "url": "/en/cities/toronto/",
       "title": "Farsi-Speaking Therapist for Iranians in Toronto"
     },
@@ -216,12 +436,60 @@
       "title": "Farsi-Speaking Therapist for Iranians in Montreal"
     },
     {
+      "url": "/en/cities/ottawa/",
+      "title": "Farsi-Speaking Therapist for Iranians in Ottawa"
+    },
+    {
+      "url": "/en/cities/calgary/",
+      "title": "Farsi-Speaking Therapist for Iranians in Calgary"
+    },
+    {
+      "url": "/en/cities/edmonton/",
+      "title": "Farsi-Speaking Therapist for Iranians in Edmonton"
+    },
+    {
+      "url": "/en/countries/usa/",
+      "title": "Farsi-Speaking Therapist for Iranians in the US"
+    },
+    {
       "url": "/en/cities/los-angeles/",
       "title": "Farsi-Speaking Therapist for Iranians in Los Angeles"
     },
     {
+      "url": "/en/cities/orange-county/",
+      "title": "Farsi-Speaking Therapist for Iranians in Orange County"
+    },
+    {
+      "url": "/en/cities/san-diego/",
+      "title": "Farsi-Speaking Therapist for Iranians in San Diego"
+    },
+    {
       "url": "/en/cities/san-francisco/",
       "title": "Farsi-Speaking Therapist for Iranians in San Francisco"
+    },
+    {
+      "url": "/en/cities/seattle/",
+      "title": "Farsi-Speaking Therapist for Iranians in Seattle"
+    },
+    {
+      "url": "/en/cities/houston/",
+      "title": "Farsi-Speaking Therapist for Iranians in Houston"
+    },
+    {
+      "url": "/en/cities/dallas/",
+      "title": "Farsi-Speaking Therapist for Iranians in Dallas"
+    },
+    {
+      "url": "/en/cities/chicago/",
+      "title": "Farsi-Speaking Therapist for Iranians in Chicago"
+    },
+    {
+      "url": "/en/cities/boston/",
+      "title": "Farsi-Speaking Therapist for Iranians in Boston"
+    },
+    {
+      "url": "/en/cities/atlanta/",
+      "title": "Farsi-Speaking Therapist for Iranians in Atlanta"
     },
     {
       "url": "/en/cities/washington-dc/",
@@ -232,8 +500,20 @@
       "title": "Farsi-Speaking Therapist for Iranians in New York"
     },
     {
+      "url": "/en/countries/uk/",
+      "title": "Farsi-Speaking Therapist for Iranians in the UK"
+    },
+    {
       "url": "/en/cities/london/",
       "title": "Farsi-Speaking Therapist for Iranians in London"
+    },
+    {
+      "url": "/en/cities/manchester/",
+      "title": "Farsi-Speaking Therapist for Iranians in Manchester"
+    },
+    {
+      "url": "/en/countries/germany/",
+      "title": "Farsi-Speaking Therapist for Iranians in Germany"
     },
     {
       "url": "/en/cities/hamburg/",
@@ -248,8 +528,72 @@
       "title": "Farsi-Speaking Therapist for Iranians in Cologne"
     },
     {
+      "url": "/en/cities/dusseldorf/",
+      "title": "Farsi-Speaking Therapist for Iranians in Düsseldorf"
+    },
+    {
+      "url": "/en/cities/frankfurt/",
+      "title": "Farsi-Speaking Therapist for Iranians in Frankfurt"
+    },
+    {
+      "url": "/en/cities/stuttgart/",
+      "title": "Farsi-Speaking Therapist for Iranians in Stuttgart"
+    },
+    {
       "url": "/en/cities/munich/",
       "title": "Farsi-Speaking Therapist for Iranians in Munich"
+    },
+    {
+      "url": "/en/countries/austria/",
+      "title": "Farsi-Speaking Therapist for Iranians in Austria"
+    },
+    {
+      "url": "/en/cities/vienna/",
+      "title": "Farsi-Speaking Therapist for Iranians in Vienna"
+    },
+    {
+      "url": "/en/countries/switzerland/",
+      "title": "Farsi-Speaking Therapist for Iranians in Switzerland"
+    },
+    {
+      "url": "/en/cities/zurich/",
+      "title": "Farsi-Speaking Therapist for Iranians in Zurich"
+    },
+    {
+      "url": "/en/countries/france/",
+      "title": "Farsi-Speaking Therapist for Iranians in France"
+    },
+    {
+      "url": "/en/cities/paris/",
+      "title": "Farsi-Speaking Therapist for Iranians in Paris"
+    },
+    {
+      "url": "/en/countries/belgium/",
+      "title": "Farsi-Speaking Therapist for Iranians in Belgium"
+    },
+    {
+      "url": "/en/cities/brussels/",
+      "title": "Farsi-Speaking Therapist for Iranians in Brussels"
+    },
+    {
+      "url": "/en/countries/netherlands/",
+      "title": "Farsi-Speaking Therapist for Iranians in the Netherlands"
+    },
+    {
+      "url": "/en/cities/amsterdam/",
+      "title": "Farsi-Speaking Therapist for Iranians in Amsterdam"
+    },
+    {
+      "url": "/en/cities/rotterdam/",
+      "title": "Farsi-Speaking Therapist for Iranians in Rotterdam"
+    },
+    {
+      "url": "/en/cities/the-hague/",
+      "title": "Farsi-Speaking Therapist for Iranians in The Hague"
+    },
+    {
+      "url": "/en/countries/sweden/",
+      "title": "Farsi-Speaking Therapist for Iranians in Sweden"
     },
     {
       "url": "/en/cities/stockholm/",
@@ -260,16 +604,64 @@
       "title": "Farsi-Speaking Therapist for Iranians in Gothenburg"
     },
     {
-      "url": "/en/cities/amsterdam/",
-      "title": "Farsi-Speaking Therapist for Iranians in Amsterdam"
+      "url": "/en/cities/malmo/",
+      "title": "Farsi-Speaking Therapist for Iranians in Malmö"
+    },
+    {
+      "url": "/en/countries/norway/",
+      "title": "Farsi-Speaking Therapist for Iranians in Norway"
+    },
+    {
+      "url": "/en/cities/oslo/",
+      "title": "Farsi-Speaking Therapist for Iranians in Oslo"
+    },
+    {
+      "url": "/en/countries/denmark/",
+      "title": "Farsi-Speaking Therapist for Iranians in Denmark"
+    },
+    {
+      "url": "/en/cities/copenhagen/",
+      "title": "Farsi-Speaking Therapist for Iranians in Copenhagen"
+    },
+    {
+      "url": "/en/countries/italy/",
+      "title": "Farsi-Speaking Therapist for Iranians in Italy"
+    },
+    {
+      "url": "/en/cities/milan/",
+      "title": "Farsi-Speaking Therapist for Iranians in Milan"
+    },
+    {
+      "url": "/en/countries/turkey/",
+      "title": "Farsi-Speaking Therapist for Iranians in Türkiye"
     },
     {
       "url": "/en/cities/istanbul/",
       "title": "Farsi-Speaking Therapist for Iranians in Istanbul"
     },
     {
+      "url": "/en/cities/ankara/",
+      "title": "Farsi-Speaking Therapist for Iranians in Ankara"
+    },
+    {
+      "url": "/en/countries/uae/",
+      "title": "Farsi-Speaking Therapist for Iranians in the UAE"
+    },
+    {
       "url": "/en/cities/dubai/",
       "title": "Farsi-Speaking Therapist for Iranians in Dubai"
+    },
+    {
+      "url": "/en/cities/abu-dhabi/",
+      "title": "Farsi-Speaking Therapist for Iranians in Abu Dhabi"
+    },
+    {
+      "url": "/en/countries/armenia/",
+      "title": "Farsi-Speaking Therapist for Iranians in Armenia"
+    },
+    {
+      "url": "/en/cities/yerevan/",
+      "title": "Farsi-Speaking Therapist for Iranians in Yerevan"
     }
   ]
 }
