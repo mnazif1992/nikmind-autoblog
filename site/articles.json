@@ -238,5 +238,31 @@
   "lang": "en",
   "url": "/en/blog/iranian-therapist-dubai/",
   "title": "Iranian Therapist in Dubai: Local Options, Privacy and Therapy in Farsi"
+ },
+ {
+  "slug": "family-counseling-iranians-abroad",
+  "lang": "fa",
+  "url": "/blog/family-counseling-iranians-abroad/",
+  "title": "مشاوره خانواده برای ایرانیان خارج از کشور: وقتی نقش‌ها در خانه جابه‌جا می‌شوند",
+  "image_prompt": "A kitchen table in a small rented apartment abroad at dusk, a teenage girl seen from behind sitting beside her father and pointing at a stack of folded school forms, a small curved Persian tea glass (estekan) and a round metal teapot beside them, a laptop open on a paused video call with a grandmother, warm lamp light, rain on the window."
+ },
+ {
+  "slug": "family-counseling-iranians-abroad",
+  "lang": "en",
+  "url": "/en/blog/family-counseling-iranians-abroad/",
+  "title": "Family Therapy in Farsi: Help for Iranian Families Adjusting to Life Abroad"
+ },
+ {
+  "slug": "returning-to-iran-after-immigration",
+  "lang": "fa",
+  "url": "/blog/returning-to-iran-after-immigration/",
+  "title": "بازگشت به ایران بعد از مهاجرت: وقتی برگشتن هم سخت است",
+  "image_prompt": "Early morning in an old Tehran apartment kitchen, a half-unpacked hard-shell suitcase standing open on a patterned Persian rug in the doorway, a returning traveler seen from behind at the window holding a small curved Persian tea glass (estekan), a brass samovar on the counter, plane trees and hazy mountains outside, soft autumn light."
+ },
+ {
+  "slug": "returning-to-iran-after-immigration",
+  "lang": "en",
+  "url": "/en/blog/returning-to-iran-after-immigration/",
+  "title": "Reverse Culture Shock Returning Home to Iran: When Going Back Is Hard Too"
  }
 ]

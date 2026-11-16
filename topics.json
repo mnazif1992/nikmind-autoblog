@@ -207,7 +207,8 @@
   "en_keyword": "family therapy in farsi",
   "cluster": "online",
   "angle": "تعارض نسل‌ها و نقش‌ها در خانواده‌ی ایرانی مهاجر و کمک مشاوره‌ی خانواده",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-16"
  },
  {
   "id": "T022",
@@ -216,7 +217,8 @@
   "en_keyword": "reverse culture shock returning home",
   "cluster": "migration",
   "angle": "شوک فرهنگی معکوس: وقتی برگشتن هم سخت است",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-16"
  },
  {
   "id": "T023",
