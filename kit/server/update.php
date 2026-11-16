@@ -107,3 +107,9 @@ function refresh_proxies(): array {
     }
     return $done;
 }
+
+// Run by hand: php update.php  → updates now and prints what changed (same as the nightly run).
+if (PHP_SAPI === 'cli' && isset($argv[0]) && realpath($argv[0]) === __FILE__) {
+    $r = kit_update();
+    echo 'changed: ' . (implode(', ', $r['changed']) ?: 'nothing') . "\nerrors: " . (implode(' | ', $r['errors']) ?: 'none') . "\n";
+}
