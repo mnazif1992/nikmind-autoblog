@@ -227,7 +227,8 @@
   "en_keyword": "iranian therapist istanbul",
   "cluster": "country",
   "angle": "ایرانیان ترکیه و پیدا کردن روانشناس فارسی‌زبان در استانبول",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-17"
  },
  {
   "id": "T024",
@@ -236,7 +237,8 @@
   "en_keyword": "regret moving to germany",
   "cluster": "migration",
   "angle": "چرا بعضی ایرانی‌ها در آلمان پشیمان می‌شوند و چه کار می‌شود کرد",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-17"
  },
  {
   "id": "T025",

@@ -264,5 +264,31 @@
   "lang": "en",
   "url": "/en/blog/returning-to-iran-after-immigration/",
   "title": "Reverse Culture Shock Returning Home to Iran: When Going Back Is Hard Too"
+ },
+ {
+  "slug": "iranian-psychologist-istanbul",
+  "lang": "fa",
+  "url": "/blog/iranian-psychologist-istanbul/",
+  "title": "روانشناس ایرانی در استانبول: گزینه‌های محلی، زبان و جلسه‌ی آنلاین فارسی",
+  "image_prompt": "A small rented flat in Istanbul at dusk, a narrow balcony door open to tiled rooftops and the Bosphorus in the distance, a laptop open on a little wooden table beside a small curved Persian tea glass (estekan) on a saucer and a pair of wired earphones, a half-unpacked suitcase in the corner, a folded kilim on the chair, warm lamp light."
+ },
+ {
+  "slug": "iranian-psychologist-istanbul",
+  "lang": "en",
+  "url": "/en/blog/iranian-psychologist-istanbul/",
+  "title": "Iranian Therapist Istanbul: Local Options, Language and Online Therapy in Farsi"
+ },
+ {
+  "slug": "regret-immigration-germany",
+  "lang": "fa",
+  "url": "/blog/regret-immigration-germany/",
+  "title": "پشیمانی از مهاجرت به آلمان: از کجا می‌آید و با آن چه کنی",
+  "image_prompt": "A narrow balcony of a rented apartment in a German city on a grey November afternoon, a woman seen from behind wrapped in a wool blanket holding a small curved Persian tea glass (estekan), looking out at rows of pale apartment blocks and bare linden trees, a flattened cardboard moving box leaning by the balcony door, a small potted geranium on the railing, soft fading daylight."
+ },
+ {
+  "slug": "regret-immigration-germany",
+  "lang": "en",
+  "url": "/en/blog/regret-immigration-germany/",
+  "title": "Regret Moving to Germany? Where It Comes From and What Helps"
  }
 ]
