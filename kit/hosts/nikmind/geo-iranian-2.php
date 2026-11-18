@@ -54,6 +54,11 @@ $faq = function (string $h): ?array {
         $n = trim(html_entity_decode(strip_tags($x[1]), ENT_QUOTES | ENT_HTML5, 'UTF-8')); $a = trim(html_entity_decode(strip_tags($x[2]), ENT_QUOTES | ENT_HTML5, 'UTF-8'));
         if ($n !== '' && $a !== '') $q[] = ['@type' => 'Question', 'name' => preg_replace('/\s+/u', ' ', $n), 'acceptedAnswer' => ['@type' => 'Answer', 'text' => preg_replace('/\s+/u', ' ', $a)]];
     }
+    $q = array_values(array_filter($q, fn($x) => !str_contains($x['name'] . $x['acceptedAnswer']['text'], '${')));   // JS templates are not FAQ text
+    if (!$q && preg_match('#\bfaqs:\s*\[(.*?)\n\s*\]#s', $h, $blk)) {   // pages that draw the FAQ with JS: the same list from the page data
+        preg_match_all('#\{\s*q:\s*"((?:[^"\\\\]|\\\\.)*)",\s*a:\s*"((?:[^"\\\\]|\\\\.)*)"\s*\}#su', $blk[1], $mm, PREG_SET_ORDER);
+        foreach ($mm as $x) $q[] = ['@type' => 'Question', 'name' => stripcslashes($x[1]), 'acceptedAnswer' => ['@type' => 'Answer', 'text' => stripcslashes($x[2])]];
+    }
     return $q ? ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $q] : null;
 };
 $pages = ['/index.html' => ['fa', true], '/en/index.html' => ['en', true], '/about/index.html' => ['fa', false], '/en/about/index.html' => ['en', false],
