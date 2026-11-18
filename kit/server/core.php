@@ -313,6 +313,13 @@ function handle_update(array &$s, array $u): void {
             return;
         }
         if ($text === '/authors' || $text === '/team') { authors_message($cid); return; }
+        if ($text === '/reviews') {   // Google reviews: check now and say how it went (reviews.php)
+            require_once __DIR__ . '/reviews.php';
+            tg('sendMessage', ['chat_id' => $cid, 'text' => '⏳ دارم نظرهای گوگل را چک می‌کنم…']);
+            try { $t = reviews_command($s); } catch (Throwable $e) { $t = '⚠️ ' . h($e->getMessage()); }
+            tg('sendMessage', ['chat_id' => $cid, 'parse_mode' => 'HTML', 'text' => $t]);
+            return;
+        }
         if (str_starts_with($text, '/team ')) { team_command($s, $cid, trim(substr($text, 6))); return; }
         if ($text === '/aikey' || str_starts_with($text, '/aikey ')) {   // owner sets the Cloudflare Workers AI key for AI cover photos
             if (!is_owner($s, $cid)) { tg('sendMessage', ['chat_id' => $cid, 'text' => 'فقط مالک ربات می‌تواند کلید هوش مصنوعی را تنظیم کند.']); return; }

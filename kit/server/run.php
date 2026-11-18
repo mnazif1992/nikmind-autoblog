@@ -5,8 +5,10 @@
 //  - every 5 min: new drafts from the content repo -> validate -> cover photo -> hidden previews -> Telegram
 //  - approved / auto-mode articles go live at today's jittered slots
 //  - once a day (around 04:00): self-update from the kit repo, if "auto_update" is on in site.json
+//  - once a day (site/reviews.json in the content repo): Google reviews count and rating on the site (reviews.php)
 declare(strict_types=1);
 require __DIR__ . '/core.php';
+require_once __DIR__ . '/reviews.php';
 $START = time();
 
 with_state(function (array &$s) use ($argv) {
@@ -43,6 +45,7 @@ with_state(function (array &$s) use ($argv) {
         }
     }
     sync_homes($s);
+    try { reviews_tick($s); } catch (Throwable $e) { logline('google reviews error: ' . $e->getMessage()); }
     if (!empty($s['paused'])) return;
     if (time() - (int)$s['last_gh'] >= 5 * 60 || in_array('--now', $argv ?? [], true)) {
         $s['last_gh'] = time();
