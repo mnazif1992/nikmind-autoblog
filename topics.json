@@ -247,7 +247,8 @@
   "en_keyword": "farsi speaking psychiatrist",
   "cluster": "online",
   "angle": "ویزیت آنلاین روانپزشک به فارسی؛ کی لازم است و دارو از راه دور چطور مدیریت می‌شود (بدون توصیه‌ی دارویی)",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-18"
  },
  {
   "id": "T026",
@@ -256,7 +257,8 @@
   "en_keyword": "moving abroad alone",
   "cluster": "migration",
   "angle": "مهاجرت مجردی و تنها: آزادی، تنهایی، و ساختن شبکه‌ی حمایتی",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-18"
  },
  {
   "id": "T027",
