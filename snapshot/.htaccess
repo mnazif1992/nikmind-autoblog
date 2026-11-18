@@ -1,0 +1,7 @@
+ErrorDocument 404 /404.html
+# NikMind landing — always revalidate HTML so updates show up immediately
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|xml|txt)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
