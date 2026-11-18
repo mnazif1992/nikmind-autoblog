@@ -34,7 +34,7 @@ $clinic = function (string $lang) use ($SITE, $rv) {
         'image' => "$SITE/assets/6cf831b8-85a5-4f42-bc6a-33a81c97a96f.webp",
         'telephone' => '+98-21-82808055',
         'contactPoint' => ['@type' => 'ContactPoint', 'contactType' => 'customer service', 'telephone' => '+98-901-723-5974', 'url' => 'https://wa.me/989017235974',
-                           'availableLanguage' => ['fa', 'en'], 'hoursAvailable' => ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 'opens' => '10:00', 'closes' => '22:00']],
+                           'availableLanguage' => ['fa', 'en'], 'hoursAvailable' => ['@type' => 'OpeningHoursSpecification', 'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], 'opens' => '09:00', 'closes' => '22:30']],
         'address' => ['@type' => 'PostalAddress', 'streetAddress' => $fa ? 'شهرک اکباتان، فاز ۲، بلوک ۸، انتهای ورودی ۳' : 'Ekbatan Town, Phase 2, Block 8, end of entrance 3', 'addressLocality' => $fa ? 'تهران' : 'Tehran', 'addressCountry' => 'IR'],
         'geo' => ['@type' => 'GeoCoordinates', 'latitude' => 35.7116153, 'longitude' => 51.3042869],
         'hasMap' => 'https://maps.google.com/?cid=11891624365515058342',
