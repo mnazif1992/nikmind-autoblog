@@ -58,10 +58,59 @@ function draft_msg(array $s, array $a, bool $queued): string {
     return ($queued ? "⏱ <b>پیش‌نویس در صف انتشار</b> (" . next_slot_text($s) . ")\n\n" : "📝 <b>پیش‌نویس منتظر تأیید</b>\n\n") . draft_body($a);
 }
 
+/* ---------------- publish schedule from the content repo ---------------- */
+/** Checked copy of site/schedule.json, or null if it is unusable. Times "HH:MM", 1–8 of them, at least an hour apart. */
+function schedule_clean($j): ?array {
+    if (!is_array($j)) return null;
+    $out = [];
+    if (isset($j['publish_slots'])) {
+        $t = array_values(array_unique(array_map('strval', (array)$j['publish_slots'])));
+        sort($t);
+        if (!$t || count($t) > 8) return null;
+        foreach ($t as $i => $x) {
+            if (!preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', $x)) return null;
+            if ($i && strtotime("2000-01-01 $x") - strtotime('2000-01-01 ' . $t[$i - 1]) < 3600) return null;
+        }
+        $out['publish_slots'] = $t;
+    }
+    if (isset($j['posts_per_day'])) {
+        $n = (int)$j['posts_per_day'];
+        if ($n < 1 || $n > 10) return null;
+        $out['posts_per_day'] = $n;
+    }
+    if (isset($j['daily_write_time'])) {
+        if (!preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', (string)$j['daily_write_time'])) return null;
+        $out['daily_write_time'] = (string)$j['daily_write_time'];
+    }
+    return $out ?: null;
+}
+/** Picks up site/schedule.json from the content repo, so publish times can change without touching the host. No file = site.json values. */
+function sync_schedule(array &$s): void {
+    $f = AB . '/state/repo-schedule.json';
+    $r = gh_api('GET', '/contents/site/schedule.json?ref=main');
+    if ($r['code'] === 404) {
+        if (is_file($f)) { @unlink($f); unset($s['slots']); logline('site/schedule.json removed: back to site.json times'); tg_all($s, '🕒 برنامه‌ی انتشار به حالت پیش‌فرض سایت برگشت.'); }
+        return;
+    }
+    if ($r['code'] !== 200) return;
+    $c = schedule_clean(json_decode((string)base64_decode((string)($r['json']['content'] ?? '')), true));
+    if ($c === null) { if (($s['schedule_bad'] ?? '') !== date('Y-m-d')) { $s['schedule_bad'] = date('Y-m-d'); logline('site/schedule.json ignored: not valid'); } return; }
+    $new = json_encode($c, JSON_UNESCAPED_SLASHES);
+    if ((string)@file_get_contents($f) === $new) return;
+    @mkdir(AB . '/state', 0700, true);
+    file_put_contents($f, $new);
+    foreach ($c as $k => $v) $GLOBALS['NN_SITE'][$k] = $v;
+    unset($s['slots']);                                    // today's times are drawn again from the new list
+    logline('publish schedule from repo: ' . $new);
+    tg_all($s, '🕒 <b>برنامه‌ی انتشار عوض شد</b>' . (isset($c['posts_per_day']) ? "\nمقاله در روز: " . fa_digits((string)$c['posts_per_day']) : '')
+        . "\nنوبت‌های امروز: " . implode('، ', array_map(fn($t) => fa_digits(date('H:i', $t)), todays_slots($s))));
+}
+
 /* ---------------- drafts from GitHub / inbox ---------------- */
 function check_drafts(array &$s): void {
     $files = [];
     if (GITHUB_REPO !== '') {
+        sync_schedule($s);
         $r = gh_api('GET', '/contents/drafts?ref=main');      // uses GH_TOKEN when set, so the content repo may be private
         if ($r['code'] === 200) $files = array_values(array_filter((array)$r['json'], fn($x) => ($x['type'] ?? '') === 'file'));
         elseif ($r['code'] !== 404) logline('github list failed ' . $r['code']);

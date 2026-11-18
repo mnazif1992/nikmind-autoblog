@@ -267,6 +267,609 @@
   "en_keyword": "iranian therapist vienna",
   "cluster": "country",
   "angle": "ایرانیان اتریش و دسترسی به روان‌درمانی فارسی",
+  "status": "removed",
+  "note": "same keyword as the city/country page on the site; an article would compete with that page"
+ },
+ {
+  "id": "T032",
+  "slug": "iranian-psychologist-hamburg",
+  "fa_keyword": "روانشناس ایرانی در هامبورگ",
+  "en_keyword": "farsi therapist hamburg",
+  "cluster": "country",
+  "angle": "ایرانیان هامبورگ و شمال آلمان و روان‌درمانی فارسی",
+  "status": "removed",
+  "note": "same keyword as the city/country page on the site; an article would compete with that page"
+ },
+ {
+  "id": "T043",
+  "slug": "iranian-psychologist-sweden",
+  "fa_keyword": "روانشناس ایرانی در سوئد",
+  "en_keyword": "iranian therapist sweden",
+  "cluster": "country",
+  "angle": "ایرانیان سوئد و اسکاندیناوی و روان‌درمانی فارسی",
+  "status": "removed",
+  "note": "same keyword as the city/country page on the site; an article would compete with that page"
+ },
+ {
+  "id": "T050",
+  "slug": "iranian-psychologist-italy",
+  "fa_keyword": "روانشناس ایرانی در ایتالیا",
+  "en_keyword": "iranian therapist italy",
+  "cluster": "country",
+  "angle": "ایرانیان ایتالیا (اغلب دانشجو) و روان‌درمانی فارسی",
+  "status": "removed",
+  "note": "same keyword as the city/country page on the site; an article would compete with that page"
+ },
+ {
+  "id": "T031",
+  "slug": "regret-immigration-australia",
+  "fa_keyword": "پشیمانی از مهاجرت به استرالیا",
+  "en_keyword": "regret moving to australia",
+  "cluster": "migration",
+  "angle": "دوری، تنهایی و پشیمانی در استرالیا",
+  "status": "queued",
+  "region": "australia",
+  "hub": "/countries/australia/"
+ },
+ {
+  "id": "T038",
+  "slug": "regret-immigration-usa",
+  "fa_keyword": "پشیمانی از مهاجرت به آمریکا",
+  "en_keyword": "regret moving to usa",
+  "cluster": "migration",
+  "angle": "پشیمانی در آمریکا: انتظار در برابر واقعیت",
+  "status": "queued",
+  "region": "usa",
+  "hub": "/countries/usa/"
+ },
+ {
+  "id": "T030",
+  "slug": "culture-shock-canada",
+  "fa_keyword": "شوک فرهنگی در کانادا",
+  "en_keyword": "culture shock in canada",
+  "cluster": "migration",
+  "angle": "تفاوت‌های فرهنگی کانادا که ایرانی‌ها تجربه می‌کنند",
+  "status": "queued",
+  "region": "other",
+  "hub": "/countries/canada/"
+ },
+ {
+  "id": "T061",
+  "slug": "loneliness-after-moving-to-perth",
+  "fa_keyword": "تنهایی بعد از مهاجرت به پرت استرالیا",
+  "en_keyword": "loneliness after moving to perth",
+  "cluster": "migration",
+  "angle": "پرت استرالیا شهری آرام و دور از بقیه‌ی کشور است: جمع کوچک‌تر ایرانی، فاصله‌های طولانی و زندگی با ماشین. چطور در چنین شهری حلقه‌ی آدم‌های خودت را بسازی.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T037",
+  "slug": "culture-shock-usa",
+  "fa_keyword": "شوک فرهنگی در آمریکا",
+  "en_keyword": "culture shock in america",
+  "cluster": "migration",
+  "angle": "تجربه‌ی ایرانی‌ها از فرهنگ آمریکا و اثرش روی روان",
+  "status": "queued",
+  "region": "usa",
+  "hub": "/countries/usa/"
+ },
+ {
+  "id": "T035",
+  "slug": "iranian-psychiatrist-toronto",
+  "fa_keyword": "روانپزشک ایرانی در تورنتو",
+  "en_keyword": "iranian psychiatrist toronto",
+  "cluster": "country",
+  "angle": "ایرانیان کانادا و دسترسی به روانپزشک فارسی‌زبان",
+  "status": "queued",
+  "region": "other",
+  "hub": "/cities/toronto/"
+ },
+ {
+  "id": "T062",
+  "slug": "fifo-work-mental-health-perth",
+  "fa_keyword": "کار فایفو و سلامت روان",
+  "en_keyword": "fifo work mental health",
+  "cluster": "migration",
+  "angle": "کار چرخشی در معدن و پروژه‌های دور غرب استرالیا: اثرش روی خواب، حال و رابطه، و فشاری که روی همسر و بچه‌ها در پرت استرالیا می‌ماند. نشانه‌های خطر و راه‌های مراقبت.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T076",
+  "slug": "persian-couples-therapy-los-angeles",
+  "fa_keyword": "زوج درمانی ایرانی در لس‌آنجلس",
+  "en_keyword": "persian couples therapy los angeles",
+  "cluster": "family",
+  "angle": "زوج ایرانی در جامعه‌ی بزرگ و نزدیک ایرانی لس‌آنجلس: نگاه و دخالت خانواده‌ها، فاصله‌ی نسل‌ها و ترس از حرف مردم. کی سراغ زوج‌درمانی برویم.",
+  "hub": "/cities/los-angeles/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T047",
+  "slug": "marriage-counseling-germany",
+  "fa_keyword": "مشاوره ازدواج در آلمان",
+  "en_keyword": "marriage counseling germany farsi",
+  "cluster": "online",
+  "angle": "زوج‌های ایرانی آلمان و مشاوره‌ی ازدواج به فارسی",
+  "status": "queued",
+  "region": "other",
+  "hub": "/countries/germany/"
+ },
+ {
+  "id": "T063",
+  "slug": "job-search-stress-perth",
+  "fa_keyword": "استرس کاریابی در پرت استرالیا",
+  "en_keyword": "job hunting stress perth",
+  "cluster": "migration",
+  "angle": "وقتی «تجربه‌ی کاری محلی» می‌خواهند، رزومه‌ها بی‌جواب می‌ماند و کار پایین‌تر از تخصص تنها گزینه به نظر می‌رسد. مراقبت از اعتمادبه‌نفس و حال در ماه‌های کاریابی.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T077",
+  "slug": "community-pressure-los-angeles-iranians",
+  "fa_keyword": "چشم و هم‌چشمی در جامعه ایرانی لس‌آنجلس",
+  "en_keyword": "pressure in the persian community los angeles",
+  "cluster": "migration",
+  "angle": "مقایسه‌ی خانه و ماشین و موفقیت بچه‌ها، مهمانی‌هایی که خسته‌ات می‌کند. اثرش روی عزت‌نفس و راه‌های فاصله گرفتن بدون بریدن.",
+  "hub": "/cities/los-angeles/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T093",
+  "slug": "job-search-stress-toronto",
+  "fa_keyword": "استرس کاریابی در تورنتو",
+  "en_keyword": "job search stress toronto newcomers",
+  "cluster": "migration",
+  "angle": "«سابقه‌ی کار کانادایی» که می‌خواهند، رزومه‌های بی‌جواب و کار موقت. حفظ اعتمادبه‌نفس و حال در ماه‌های اول تورنتو.",
+  "hub": "/cities/toronto/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T064",
+  "slug": "couples-conflict-sydney",
+  "fa_keyword": "اختلاف زوجین ایرانی در سیدنی",
+  "en_keyword": "iranian couples counselling sydney",
+  "cluster": "family",
+  "angle": "فشار هزینه‌ی زندگی سیدنی، یکی زودتر کار پیدا می‌کند و نقش‌ها جابه‌جا می‌شود. دعواهای تکراری از کجا می‌آید و کی وقت زوج‌درمانی است.",
+  "hub": "/cities/sydney/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T078",
+  "slug": "therapy-insurance-usa-farsi",
+  "fa_keyword": "بیمه و روانشناس فارسی‌زبان در آمریکا",
+  "en_keyword": "does insurance cover therapy in the us",
+  "cluster": "country",
+  "angle": "کلیات in-network و out-of-network، و چرا پیدا کردن درمانگر فارسی‌زبان داخل شبکه‌ی بیمه سخت است. بدون عدد و قیمت و بدون جزئیات قطعی بیمه.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T094",
+  "slug": "french-language-stress-montreal",
+  "fa_keyword": "استرس زبان فرانسه در مونترال",
+  "en_keyword": "french language stress montreal",
+  "cluster": "migration",
+  "angle": "وقتی انگلیسی‌ات خوب است ولی کار و اداره فرانسه می‌خواهد. حس عقب‌ماندگی، خستگی ذهنی زبان دوم و راه‌های کنار آمدن.",
+  "hub": "/cities/montreal/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T065",
+  "slug": "rental-stress-sydney",
+  "fa_keyword": "استرس اجاره خانه در سیدنی",
+  "en_keyword": "rental stress sydney",
+  "cluster": "migration",
+  "angle": "بازدیدهای شلوغ، درخواست‌های ردشده و اسباب‌کشی‌های پشت سر هم. اثر بی‌ثباتی خانه روی خواب، رابطه و حس امنیت، و کارهایی که از دستت برمی‌آید.",
+  "hub": "/cities/sydney/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T079",
+  "slug": "green-card-waiting-anxiety",
+  "fa_keyword": "استرس انتظار گرین کارت",
+  "en_keyword": "green card waiting anxiety",
+  "cluster": "migration",
+  "angle": "سال‌ها انتظار، برنامه‌هایی که عقب می‌افتد و نگرانی از هر نامه. کنار آمدن با بلاتکلیفی بدون اینکه زندگی معلق بماند؛ بدون جزئیات حقوقی.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T095",
+  "slug": "waiting-for-canadian-pr-anxiety",
+  "fa_keyword": "استرس انتظار اقامت دائم کانادا",
+  "en_keyword": "waiting for canadian pr anxiety",
+  "cluster": "migration",
+  "angle": "قرعه‌ها و امتیازهایی که عوض می‌شود و زندگی که منتظر یک ایمیل است. مدیریت بلاتکلیفی؛ بدون جزئیات حقوقی.",
+  "hub": "/countries/canada/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T066",
+  "slug": "international-student-stress-melbourne",
+  "fa_keyword": "استرس دانشجویان ایرانی در ملبورن",
+  "en_keyword": "international student stress melbourne",
+  "cluster": "migration",
+  "angle": "شهریه، ساعت محدود کار پاره‌وقت، ددلاین‌ها و تنهایی. نشانه‌های فرسودگی در دانشجوی بین‌المللی و اینکه از کجا کمک بگیرد.",
+  "hub": "/cities/melbourne/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T080",
+  "slug": "cant-see-family-visa-usa",
+  "fa_keyword": "سال‌ها ندیدن خانواده به خاطر ویزا",
+  "en_keyword": "not seeing family for years because of visa",
+  "cluster": "family",
+  "angle": "نه تو می‌توانی برگردی و نه آن‌ها می‌توانند بیایند. سوگ مبهم، عروسی و تولدهایی که از دست می‌رود و راه‌های نگه داشتن رابطه؛ بدون هیچ موضع سیاسی.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T096",
+  "slug": "nhs-therapy-waiting-list",
+  "fa_keyword": "صف انتظار NHS برای روان‌درمانی",
+  "en_keyword": "nhs therapy waiting list",
+  "cluster": "country",
+  "angle": "صف‌های طولانی خدمات عمومی سلامت روان در بریتانیا، بدون عدد قطعی. کی دکتر عمومی و خدمات محلی لازم است و کی جلسه‌ی آنلاین فارسی در این فاصله کمک می‌کند.",
+  "hub": "/countries/uk/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T067",
+  "slug": "winter-blues-melbourne",
+  "fa_keyword": "دلگرفتگی زمستان در ملبورن",
+  "en_keyword": "winter blues melbourne",
+  "cluster": "migration",
+  "angle": "زمستان خاکستری و هوای چهارفصل در یک روز. فرق دلگرفتگی فصلی با افسردگی، و روتین ساده‌ی نور و حرکت و آدم.",
+  "hub": "/cities/melbourne/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T081",
+  "slug": "tech-layoff-visa-stress",
+  "fa_keyword": "استرس اخراج و ویزای کاری در آمریکا",
+  "en_keyword": "h1b layoff stress",
+  "cluster": "migration",
+  "angle": "اخراج در شرکت‌های تکنولوژی وقتی اقامتت به کارت بسته است: مهلت محدود، ترس از برگشتن و شرم. مدیریت اضطراب در هفته‌های اول؛ بدون جزئیات حقوقی.",
+  "hub": "/cities/san-francisco/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T097",
+  "slug": "loneliness-in-berlin",
+  "fa_keyword": "تنهایی در برلین",
+  "en_keyword": "loneliness in berlin",
+  "cluster": "migration",
+  "angle": "شهری پر از آدم‌های تازه‌رسیده که دوستی‌هایش زود می‌آید و زود می‌رود. چرا تنهایی در برلین شکل خاصی دارد و چه کمکی می‌کند.",
+  "hub": "/cities/berlin/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T068",
+  "slug": "waiting-for-pr-australia-anxiety",
+  "fa_keyword": "استرس انتظار اقامت دائم استرالیا",
+  "en_keyword": "waiting for pr australia anxiety",
+  "cluster": "migration",
+  "angle": "زندگی با ویزای موقت و بریجینگ، برنامه‌هایی که معلق می‌ماند و بررسی مدام وضعیت پرونده. کنار آمدن با چیزی که دست تو نیست، بدون جزئیات حقوقی.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T082",
+  "slug": "imposter-syndrome-international-students",
+  "fa_keyword": "سندرم ایمپاستر در دانشجویان ایرانی",
+  "en_keyword": "imposter syndrome international students",
+  "cluster": "migration",
+  "angle": "وسط هم‌کلاسی‌های دانشگاه‌های سطح بالای بوستون، حس اینکه «من اشتباهی این‌جام». از کجا می‌آید و چطور کمرنگش کنیم.",
+  "hub": "/cities/boston/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T098",
+  "slug": "stress-learning-german",
+  "fa_keyword": "فشار یادگیری زبان آلمانی",
+  "en_keyword": "stress learning german",
+  "cluster": "migration",
+  "angle": "کلاس‌ها و امتحان‌های زبان، حس کودک شدن در ادارات و محل کار. خستگی ذهنی زبان دوم و راه‌های نگه داشتن انگیزه.",
+  "hub": "/countries/germany/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T069",
+  "slug": "adjusting-to-life-in-brisbane",
+  "fa_keyword": "سازگاری با زندگی در بریزبن",
+  "en_keyword": "adjusting to life in brisbane",
+  "cluster": "migration",
+  "angle": "ماه‌های اول بعد از رسیدن به بریزبن: گرما و رطوبت، فاصله‌ها، اولین کار و اولین دوست. انتظار واقع‌بینانه از سال اول.",
+  "hub": "/cities/brisbane/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T083",
+  "slug": "phd-student-mental-health-usa",
+  "fa_keyword": "سلامت روان دانشجویان دکتری ایرانی در آمریکا",
+  "en_keyword": "phd student mental health usa",
+  "cluster": "migration",
+  "angle": "رابطه با استاد راهنما، فاند، ویزای تک‌ورودی و سال‌ها دوری از خانه. نشانه‌های فرسودگی و جاهایی که می‌شود کمک گرفت.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T099",
+  "slug": "housing-stress-netherlands",
+  "fa_keyword": "استرس پیدا کردن خانه در هلند",
+  "en_keyword": "housing stress netherlands",
+  "cluster": "migration",
+  "angle": "بازار تنگ اجاره، اتاق‌های موقت و اسباب‌کشی‌های پشت سر هم. اثر بی‌خانمانی موقت روی روان و کارهایی که از دستت برمی‌آید.",
+  "hub": "/countries/netherlands/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T070",
+  "slug": "homesick-in-adelaide",
+  "fa_keyword": "دلتنگی ایران در آدلاید",
+  "en_keyword": "homesick in adelaide",
+  "cluster": "migration",
+  "angle": "شهر کوچک‌تر و آرام‌تر؛ خلوتی که هم خوب است هم سنگین. وصل ماندن به خانواده و در عین حال ساختن زندگی همین‌جا.",
+  "hub": "/cities/adelaide/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T084",
+  "slug": "persian-family-counseling-irvine",
+  "fa_keyword": "مشاوره خانواده ایرانی در اورنج کانتی",
+  "en_keyword": "persian family counseling irvine",
+  "cluster": "family",
+  "angle": "سه نسل نزدیک هم: پدربزرگ و مادربزرگ، والدین و بچه‌هایی که انگلیسی فکر می‌کنند. تعارض‌های رایج و کی مشاوره‌ی خانواده کمک می‌کند.",
+  "hub": "/cities/orange-county/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T100",
+  "slug": "dark-winter-sweden",
+  "fa_keyword": "زمستان تاریک سوئد و حال روحی",
+  "en_keyword": "dark winter sweden mood",
+  "cluster": "migration",
+  "angle": "روزهای خیلی کوتاه زمستان اسکاندیناوی برای کسی که از ایران آمده. فرق دلگرفتگی با افسردگی و روتینی که کمک می‌کند.",
+  "hub": "/countries/sweden/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T071",
+  "slug": "time-difference-family-australia-iran",
+  "fa_keyword": "اختلاف ساعت استرالیا با ایران و تماس با خانواده",
+  "en_keyword": "time difference australia iran family calls",
+  "cluster": "family",
+  "angle": "وقتی صبح تو نیمه‌شب آن‌هاست: تماس‌های جاافتاده، خبر بد در ساعت خواب، حس جاماندن از اتفاق‌های خانه. ساختن ریتم سالم برای ارتباط.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T085",
+  "slug": "iranian-american-parents-and-kids",
+  "fa_keyword": "شکاف نسلی والدین ایرانی و فرزندان آمریکایی",
+  "en_keyword": "iranian american parents and kids",
+  "cluster": "family",
+  "angle": "بچه‌ای که در آمریکا بزرگ شده و والدینی که با معیارهای ایران تربیت شده‌اند: زبان، آزادی، انتخاب رشته و رابطه. پل زدن بین دو دنیا.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T101",
+  "slug": "turkey-residence-permit-stress",
+  "fa_keyword": "استرس اقامت در ترکیه",
+  "en_keyword": "turkey residence permit stress",
+  "cluster": "migration",
+  "angle": "تمدیدهای پشت سر هم و قانون‌هایی که عوض می‌شود. زندگی با بلاتکلیفی در استانبول و آنکارا؛ بدون جزئیات حقوقی.",
+  "hub": "/countries/turkey/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T072",
+  "slug": "raising-iranian-teenagers-australia",
+  "fa_keyword": "تربیت نوجوان ایرانی در استرالیا",
+  "en_keyword": "raising iranian teenagers in australia",
+  "cluster": "family",
+  "angle": "آزادی بیشتر نوجوان در مدرسه و جامعه‌ی استرالیا، فارسی که کم‌رنگ می‌شود و دعواهای فرهنگی. گفت‌وگو به جای کنترل.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T086",
+  "slug": "seasonal-depression-seattle",
+  "fa_keyword": "افسردگی فصلی در سیاتل",
+  "en_keyword": "seasonal depression seattle",
+  "cluster": "migration",
+  "angle": "ماه‌های طولانی ابری و بارانی برای کسی که به آفتاب ایران عادت دارد. فرق دلگرفتگی با افسردگی فصلی و کارهایی که واقعاً کمک می‌کند.",
+  "hub": "/cities/seattle/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T102",
+  "slug": "work-stress-in-dubai",
+  "fa_keyword": "فشار کاری ایرانیان در دبی",
+  "en_keyword": "work stress in dubai",
+  "cluster": "migration",
+  "angle": "ساعت کار طولانی، اقامتی که به کار بسته است و فاصله‌ی کم ولی سخت با ایران. نشانه‌های فرسودگی و مراقبت از خود.",
+  "hub": "/cities/dubai/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T073",
+  "slug": "social-anxiety-after-moving-to-australia",
+  "fa_keyword": "اضطراب اجتماعی بعد از مهاجرت به استرالیا",
+  "en_keyword": "social anxiety after moving to australia",
+  "cluster": "migration",
+  "angle": "لهجه، small talk استرالیایی و ترس از اشتباه زبانی سر کار. فرق خجالت عادی دوره‌ی سازگاری با اضطرابی که زندگی را محدود می‌کند.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T087",
+  "slug": "burnout-in-new-york",
+  "fa_keyword": "فرسودگی کاری مهاجران در نیویورک",
+  "en_keyword": "burnout in new york",
+  "cluster": "migration",
+  "angle": "سرعت شهر، ساعت کار طولانی و فشار ثابت کردن خود به عنوان مهاجر. نشانه‌های فرسودگی و کی باید جدی‌اش گرفت.",
+  "hub": "/cities/new-york/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T103",
+  "slug": "living-in-limbo-armenia",
+  "fa_keyword": "زندگی موقت در ارمنستان",
+  "en_keyword": "living in armenia in limbo",
+  "cluster": "migration",
+  "angle": "ایروان به عنوان ایستگاه میانی: منتظر ویزا یا تصمیم بعدی، با چمدان نیمه‌باز. چطور در «فعلاً» زندگی کنیم.",
+  "hub": "/countries/armenia/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T074",
+  "slug": "parents-visiting-from-iran-australia",
+  "fa_keyword": "آمدن پدر و مادر از ایران به استرالیا",
+  "en_keyword": "parents visiting from iran australia",
+  "cluster": "family",
+  "angle": "ماه‌های اقامت والدین: خوشحالی، اصطکاک سر سبک زندگی، و خانه‌ای که بعد از رفتنشان یک‌دفعه خالی می‌شود.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T088",
+  "slug": "raising-iranian-kids-in-texas",
+  "fa_keyword": "تربیت فرزند ایرانی در تگزاس",
+  "en_keyword": "raising iranian kids in texas",
+  "cluster": "family",
+  "angle": "خانواده‌های ایرانی در دالاس و هیوستون: مدرسه، فارسی در خانه و دوست‌های تازه‌ی بچه‌ها. حفظ پیوند با فرهنگ بدون فشار.",
+  "hub": "/cities/dallas/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T104",
+  "slug": "homesick-in-new-zealand",
+  "fa_keyword": "دلتنگی بعد از مهاجرت به نیوزیلند",
+  "en_keyword": "homesick in new zealand",
+  "cluster": "migration",
+  "angle": "دورترین نقطه از خانه: پرواز طولانی، اختلاف ساعت زیاد و جمع کوچک ایرانی. کنار آمدن با دوری و ساختن زندگی در اوکلند و بقیه‌ی شهرها.",
+  "hub": "/countries/new-zealand/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T075",
+  "slug": "medicare-mental-health-plan-farsi",
+  "fa_keyword": "مدیکر و روانشناس فارسی‌زبان در استرالیا",
+  "en_keyword": "medicare mental health plan farsi speaking psychologist",
+  "cluster": "country",
+  "angle": "کلیات مسیر جی‌پی و ارجاع به روانشناس در استرالیا، بدون جزئیات قطعی بیمه و تعرفه. کی سیستم محلی لازم است، کی جلسه‌ی آنلاین فارسی منطقی است و چطور این دو را کنار هم داشته باشی.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T089",
+  "slug": "marrying-a-non-iranian",
+  "fa_keyword": "ازدواج با غیرایرانی در آمریکا",
+  "en_keyword": "marrying a non iranian",
+  "cluster": "family",
+  "angle": "عشق از دو فرهنگ: خانواده‌ای که کنار نمی‌آید، زبان مشترک و جشن‌ها و تصمیم درباره‌ی بچه‌ها. کی زوج‌درمانی کمک می‌کند.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T105",
+  "slug": "iranian-students-in-italy-stress",
+  "fa_keyword": "استرس دانشجویان ایرانی در ایتالیا",
+  "en_keyword": "iranian students in italy stress",
+  "cluster": "migration",
+  "angle": "بورسیه، خوابگاه، بوروکراسی و زبان ایتالیایی در میلان و شهرهای دانشجویی. نشانه‌های فرسودگی و از کجا کمک بگیرند.",
+  "hub": "/countries/italy/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T090",
+  "slug": "caring-for-aging-parents-in-the-us",
+  "fa_keyword": "مراقبت از پدر و مادر سالمند در آمریکا",
+  "en_keyword": "caring for aging immigrant parents",
+  "cluster": "family",
+  "angle": "والدینی که پیش تو آمده‌اند و زبان و دوستی ندارند؛ تنهایی آن‌ها، خستگی تو و احساس گناه. تقسیم بار و مراقبت از خودت.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T106",
+  "slug": "cost-of-living-stress-london",
+  "fa_keyword": "استرس هزینه زندگی در لندن",
+  "en_keyword": "cost of living stress london",
+  "cluster": "migration",
+  "angle": "اجاره و رفت‌وآمد گران، کار دوم و حساب‌وکتاب هر ماه. اثر نگرانی مالی روی خواب و رابطه؛ بدون عدد و توصیه‌ی مالی.",
+  "hub": "/cities/london/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T091",
+  "slug": "financial-stress-immigrants-usa",
+  "fa_keyword": "استرس مالی بعد از مهاجرت به آمریکا",
+  "en_keyword": "financial stress immigrants usa",
+  "cluster": "migration",
+  "angle": "اجاره، بدهی کارت اعتباری و هزینه‌های غیرمنتظره در سال‌های اول. اثر نگرانی مالی روی خواب و رابطه؛ بدون عدد و توصیه‌ی مالی.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T092",
+  "slug": "online-therapy-in-farsi-from-the-us",
+  "fa_keyword": "مشاوره آنلاین فارسی با اختلاف ساعت آمریکا",
+  "en_keyword": "online therapy in farsi from the us",
+  "cluster": "online",
+  "angle": "اختلاف ساعت با تهران، پیدا کردن ساعت مناسب جلسه، حریم خصوصی در خانه و اینکه کی جلسه‌ی آنلاین کافی نیست و درمانگر محلی لازم است.",
+  "hub": "/countries/usa/",
+  "region": "usa",
   "status": "queued"
  },
  {
@@ -288,33 +891,6 @@
   "status": "queued"
  },
  {
-  "id": "T030",
-  "slug": "culture-shock-canada",
-  "fa_keyword": "شوک فرهنگی در کانادا",
-  "en_keyword": "culture shock in canada",
-  "cluster": "migration",
-  "angle": "تفاوت‌های فرهنگی کانادا که ایرانی‌ها تجربه می‌کنند",
-  "status": "queued"
- },
- {
-  "id": "T031",
-  "slug": "regret-immigration-australia",
-  "fa_keyword": "پشیمانی از مهاجرت به استرالیا",
-  "en_keyword": "regret moving to australia",
-  "cluster": "migration",
-  "angle": "دوری، تنهایی و پشیمانی در استرالیا",
-  "status": "queued"
- },
- {
-  "id": "T032",
-  "slug": "iranian-psychologist-hamburg",
-  "fa_keyword": "روانشناس ایرانی در هامبورگ",
-  "en_keyword": "farsi therapist hamburg",
-  "cluster": "country",
-  "angle": "ایرانیان هامبورگ و شمال آلمان و روان‌درمانی فارسی",
-  "status": "queued"
- },
- {
   "id": "T033",
   "slug": "couples-conflict-after-immigration",
   "fa_keyword": "اختلاف زوجین بعد از مهاجرت",
@@ -333,39 +909,12 @@
   "status": "queued"
  },
  {
-  "id": "T035",
-  "slug": "iranian-psychiatrist-toronto",
-  "fa_keyword": "روانپزشک ایرانی در تورنتو",
-  "en_keyword": "iranian psychiatrist toronto",
-  "cluster": "country",
-  "angle": "ایرانیان کانادا و دسترسی به روانپزشک فارسی‌زبان",
-  "status": "queued"
- },
- {
   "id": "T036",
   "slug": "grieving-from-abroad",
   "fa_keyword": "سوگ از راه دور",
   "en_keyword": "grieving a loved one from abroad",
   "cluster": "migration",
   "angle": "وقتی عزیزی در ایران فوت می‌کند و نمی‌شود برگشت؛ سوگ ناتمام",
-  "status": "queued"
- },
- {
-  "id": "T037",
-  "slug": "culture-shock-usa",
-  "fa_keyword": "شوک فرهنگی در آمریکا",
-  "en_keyword": "culture shock in america",
-  "cluster": "migration",
-  "angle": "تجربه‌ی ایرانی‌ها از فرهنگ آمریکا و اثرش روی روان",
-  "status": "queued"
- },
- {
-  "id": "T038",
-  "slug": "regret-immigration-usa",
-  "fa_keyword": "پشیمانی از مهاجرت به آمریکا",
-  "en_keyword": "regret moving to usa",
-  "cluster": "migration",
-  "angle": "پشیمانی در آمریکا: انتظار در برابر واقعیت",
   "status": "queued"
  },
  {
@@ -405,15 +954,6 @@
   "status": "queued"
  },
  {
-  "id": "T043",
-  "slug": "iranian-psychologist-sweden",
-  "fa_keyword": "روانشناس ایرانی در سوئد",
-  "en_keyword": "iranian therapist sweden",
-  "cluster": "country",
-  "angle": "ایرانیان سوئد و اسکاندیناوی و روان‌درمانی فارسی",
-  "status": "queued"
- },
- {
   "id": "T044",
   "slug": "residency-uncertainty-stress",
   "fa_keyword": "استرس اقامت",
@@ -441,15 +981,6 @@
   "status": "queued"
  },
  {
-  "id": "T047",
-  "slug": "marriage-counseling-germany",
-  "fa_keyword": "مشاوره ازدواج در آلمان",
-  "en_keyword": "marriage counseling germany farsi",
-  "cluster": "online",
-  "angle": "زوج‌های ایرانی آلمان و مشاوره‌ی ازدواج به فارسی",
-  "status": "queued"
- },
- {
   "id": "T048",
   "slug": "language-barrier-therapy",
   "fa_keyword": "روان‌درمانی به زبان مادری",
@@ -465,15 +996,6 @@
   "en_keyword": "caring for aging parents from abroad",
   "cluster": "family",
   "angle": "پیر شدن پدر و مادر از راه دور؛ نگرانی، احساس گناه، تصمیم‌ها",
-  "status": "queued"
- },
- {
-  "id": "T050",
-  "slug": "iranian-psychologist-italy",
-  "fa_keyword": "روانشناس ایرانی در ایتالیا",
-  "en_keyword": "iranian therapist italy",
-  "cluster": "country",
-  "angle": "ایرانیان ایتالیا (اغلب دانشجو) و روان‌درمانی فارسی",
   "status": "queued"
  },
  {

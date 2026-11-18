@@ -1,0 +1,5 @@
+{
+  "note": "Publish times (Tehran) used by the website server. Each time moves by a random 7-25 minutes every day. Edit only to change the publishing rhythm.",
+  "posts_per_day": 6,
+  "publish_slots": ["08:40", "11:10", "13:40", "16:10", "18:40", "21:10"]
+}

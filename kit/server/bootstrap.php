@@ -10,6 +10,9 @@ const KIT_VERSION = '1.3.0';
     $f = AB . '/site.json';
     $j = is_file($f) ? json_decode((string)file_get_contents($f), true) : null;
     if (!is_array($j)) { error_log('nik-negar: site.json missing or not valid JSON in ' . AB); if (PHP_SAPI === 'cli') echo "site.json missing or not valid JSON in " . AB . "\n"; exit(1); }
+    // Publish times and posts per day may also come from the content repo (site/schedule.json); check_drafts() keeps a checked copy here.
+    $o = is_file(AB . '/state/repo-schedule.json') ? json_decode((string)file_get_contents(AB . '/state/repo-schedule.json'), true) : null;
+    if (is_array($o)) foreach (['publish_slots', 'posts_per_day', 'daily_write_time'] as $k) if (isset($o[$k])) $j[$k] = $o[$k];
     $GLOBALS['NN_SITE'] = $j;
     define('SITE', rtrim((string)$j['url'], '/'));
     define('PUB', rtrim((string)$j['public_html'], '/'));
