@@ -1,0 +1,774 @@
+{
+"about/index.html": {
+"orig": "375cb93af04caf57c1a51b3b332dc7517a564348363ad99f810ff7093839bf67",
+"new": "75ff3bef309a14fab3781b1e129135d96f0fc930a8c3b6c117e19b9ec8dba3f4"
+},
+"cities/abu-dhabi/index.html": {
+"orig": "3e926b086a68242856098683d0721db6ce4fb4fcfd4996a06854bdddd80ede10",
+"new": "82f993c9c232c7012c86ebc257c2118cb4631e7e2346a3157eb01152649b49b8"
+},
+"cities/adelaide/index.html": {
+"orig": "601cff5fcbcb134a8f3889028935082be21681f972e14ac02d487597530977f6",
+"new": "ccdc887dde0eafa179237fb1dbcf32e080a08e6415d4ab33502c34fa194f3d39"
+},
+"cities/amsterdam/index.html": {
+"orig": "4e9f31386eeed1427ad484b86f33fbe0838137f200c9f612cb9de38fe162acf8",
+"new": "828e4a12e43852a699458de888d495b1805f5919224ddab4cd827f57574de44a"
+},
+"cities/ankara/index.html": {
+"orig": "2324685a74b6810ecf90436de0d4a91667c3f23833ac74352914c1e18e55fb88",
+"new": "2b907c29376f5696371fd8a9e3e6558dfa44c9af0ce78765410ba7a7594fc72f"
+},
+"cities/auckland/index.html": {
+"orig": "aff2a99e12b130f0d3d51bf473e2565ae2a53c29d69d01a4b897dba7b56e0eaa",
+"new": "2bd4942468dbad26e8aaf2e634804e234ab2d26233c08acf2f9e23cc1c3e9fb6"
+},
+"cities/berlin/index.html": {
+"orig": "aecaa08552486a7d81c570da0e2283f537b466c4b3543558bb5a07930ae09717",
+"new": "e589e7b3417969822dbb24ce844c5c5da72d06e9e8f36b19b1c793fc326431f5"
+},
+"cities/boston/index.html": {
+"orig": "241033fd18550af2525436bebcb17dc1a75f4bba9cf08faa436dbe929c02cfdb",
+"new": "cddb8ce622a9084edb04a4c30e26a743c13e263c913a49c84ccfb6b47a20b275"
+},
+"cities/brisbane/index.html": {
+"orig": "fa7c8aa740b8895f1125aae44a10be16779ebd97c3907e0d1902aacabdd7e692",
+"new": "0536c5088019ad93e1a8d5605a2d634ec6db17553a9311739ea14018e28bb2f7"
+},
+"cities/brussels/index.html": {
+"orig": "c787ea7f37cdc3e7fc054647c313c81d04f406cb0f77bcce5bc7f9ad2bb54dbb",
+"new": "dac8ade34f070a3361ba88eb60361f9f4a0d6fe2e4c67e3e9fdc28f06a69b539"
+},
+"cities/calgary/index.html": {
+"orig": "d3adfee9b02cc60be760c2fe6ea1522c424e8b152139f3d5caa33e883142c82e",
+"new": "4fc808151f9e656a12b9368ab86153066158dd508f5d91c165202bff8d194fbe"
+},
+"cities/chicago/index.html": {
+"orig": "c59f3f455717c6067ab126cff9afdfe271aac1a0169974d8b3c911412fc5cd5f",
+"new": "dce437f1d61f0143e4521e3bf9feeb2a541bc54ab0778c982821953c360163de"
+},
+"cities/cologne/index.html": {
+"orig": "7eb3802f02e0d238e0a78a5b1df4c22dd364a068dcaadefb06a89d347d6e6a45",
+"new": "51816862d7b7dd39a182b084407547afb1b3735add2bad6f73a78baa1fde3aa0"
+},
+"cities/copenhagen/index.html": {
+"orig": "89d82e14e36552946d5a70a7ea0a2b2a565238cc6386768e547bb05f78608fba",
+"new": "2b8424c13765b04b15168ebfb6e880c31888927a20a872049dfcf131eeb01ef1"
+},
+"cities/dallas/index.html": {
+"orig": "e836520dd694d28e308b3bb6047f79b4bd79eced283bb22bc9a126a4fd257214",
+"new": "37075815d15dcdb45a76bd03889bb7fdd6ab70a5937fb422cac70d6b5785cb31"
+},
+"cities/dubai/index.html": {
+"orig": "f12e536d01a10f3fb3da22514c29a951de802977ea95d18d1b18baa222f180d0",
+"new": "5419374edb9086171de218ec4f58e95b469c598baf5ef3228fe7f3e46bff657c"
+},
+"cities/edmonton/index.html": {
+"orig": "c30e8f59269af0b47b84d5720216941a2668a0b9403116c409b0a100cd2f350a",
+"new": "bd7cdd5ce8bcdf86a456105e0d24eaaccb25ea51e4d9f8f22d7a8ad369428842"
+},
+"cities/frankfurt/index.html": {
+"orig": "696dc617dcba792a5cb1cfc5d458615957f56fa949123b0dd789079d20df1a8b",
+"new": "6389b9ac7996060b18a363b91754843cf7a96d6fd62e7c380621ee58b07a4f65"
+},
+"cities/hamburg/index.html": {
+"orig": "8e10ff0dbc1920dca6b33730b4dcfaf145aad5ac7641dbe136d8a2f937a1ddf9",
+"new": "bec5e5c83ef7792a76649a4c6ba53ba568b8761b0314dc7d624208b16677ee64"
+},
+"cities/houston/index.html": {
+"orig": "cb7df22e545390d6686c9e470aa443522227f4578db20449ab99d67d727b2227",
+"new": "bde278128d73878005eab0befad1cf9eb519f34d592b97f2d4cf583335b9b9d0"
+},
+"cities/istanbul/index.html": {
+"orig": "768f36125858b0694f5aa1f2e1871cb758fc2fc2b6288b2c73765af4c6d31096",
+"new": "f89e8f23484f942dc1153b4497a37b68837d0f0f7dafac61b69d0fb99e55c780"
+},
+"cities/london/index.html": {
+"orig": "da43c2aa6c2960a865d57632fa0050615e73693fb0b177cc9b3e20092431582f",
+"new": "2c8196300bc31120449448eeabbaf4d450f8e5b8835582eaf06db6c308b9d2ce"
+},
+"cities/los-angeles/index.html": {
+"orig": "437b9e7304e0596c8917b09ca6398e20919329532a57a9b1079215f6295a2e0b",
+"new": "15262b69c7a01581dec1c7632d4d5c9e7f759d1f06c94e76dd7abf2faf7cd370"
+},
+"cities/malmo/index.html": {
+"orig": "b3a4c2190fe58eee0a6f559bea8dd04d57475cfe749d4a31c3c22f6b8b533669",
+"new": "ada511df4fd521f82826cfdde06c55e97a311c39d71ae14cc770190d098394c5"
+},
+"cities/manchester/index.html": {
+"orig": "2ccb2e8c80e2aa94a892f8afdf5e3592ebddba91f525856d7ba161a00c543382",
+"new": "e62da48a532f4328b20cf754cd8a440cf7072162fb2ae3c24cdacb9551702b76"
+},
+"cities/melbourne/index.html": {
+"orig": "9e8a2d8bff110dcd9f4887ea12ca096ab4a456ff0ce7756a9e5b7598ce0bc98c",
+"new": "a0a357958fc034950fc3946750408d881946d3c8c9f15e5f21cc4c80f5368157"
+},
+"cities/milan/index.html": {
+"orig": "cdf2b488f8f2b4f245f7ac53f4a23040e755a53c7b921d8ae88e0ab3cab933fe",
+"new": "d78833d09a5bc333280b0a6af8dcf16f8d0dbfcd87513dec201d4de5ea9bc773"
+},
+"cities/montreal/index.html": {
+"orig": "4c01a5e5df2a546012642c7ec0912745ef34add63e9617212c031e9159a499ee",
+"new": "5c25539851215621ceac966b504ddeafd66e427e67696c4d1e7f1ad9d0396560"
+},
+"cities/munich/index.html": {
+"orig": "fdf08d70fe1714f296282f425eed05fdc6f91267d69c9b71432e56620350d547",
+"new": "0843cbd3d1fd66ca0ddadcd85f034a1c1f88d44a82214eba31ff1b8320e03bd6"
+},
+"cities/orange-county/index.html": {
+"orig": "cac6e43e2505d1334fb562bb90ce4b15e4e0078762a6208705274eb83a338ce5",
+"new": "da8ef2c779f2c79d5730cd580730c4e04d2f52ae89a3a6192a8a3f3188106859"
+},
+"cities/oslo/index.html": {
+"orig": "dd898f704be48a29a5a15a1cb899e11046a58e54b2119633f219392bea29e914",
+"new": "3567a8ab645a8985e9e7977259d6cda4f894070feac3c5b8342ba9da82b91304"
+},
+"cities/ottawa/index.html": {
+"orig": "5aa78ec15285060872b122d7cb018c6b6927d6214ed6ce04ddde2dc9a0067051",
+"new": "77a09c260236456ee3447bedb243d49ccc590cb43b32560219cbb407f1cead80"
+},
+"cities/paris/index.html": {
+"orig": "3f23f507c2f638ff8cf33dbba8d7f558b8562c4bc7c5bd5021c1042c867e19c3",
+"new": "c66d00efbce5326be14111ea2568820b76bff0c78a4f62edbdd6220bc4e6023d"
+},
+"cities/perth/index.html": {
+"orig": "ff05d536137f579c1f29ecea2b2d775fc0021437fd8c8e4d86bd1dfd9baa0737",
+"new": "362f777b858a46a52235d6d74abd1b6220c76c4d2b31d9c41fc8636a39386a43"
+},
+"cities/rotterdam/index.html": {
+"orig": "eeeb6f391e0ee570143026c85a98d85c81692648afb63f13a7512b9daae1b1f1",
+"new": "600c80754ad47ff9b7a8062d576670d5b6f2e13c679041891062c625649fba7b"
+},
+"cities/sydney/index.html": {
+"orig": "96f8db04cdb9f2ec501fefce9a933610743c647f96d371ce2fd57cd729c5bab9",
+"new": "c8541dfa3c01713902b05fe46edc6ffdc70b3cb3d71ba4d952e7b5e6d036eb26"
+},
+"cities/the-hague/index.html": {
+"orig": "04912f9fcce02d8fd8ca05e6e67f182c3ee6e02ccc4d4e5e7ab61d58affad20d",
+"new": "4941a2b206c86cf5e2f825e8b1a69ff8b736f8135dee68a9b28ac770176263b8"
+},
+"cities/toronto/index.html": {
+"orig": "5939a846c42ee392cbd76cc2b263ce5bd6a563ba83a346dcf60a2f9b0cfafbf0",
+"new": "447abc92d41cff7640e15b543d8ec085ecb2598b5ea07703a282049467b97069"
+},
+"cities/vancouver/index.html": {
+"orig": "a92bbffdae35e7618585e97db1476b9f5ecce6531ff342062a511873cabc0613",
+"new": "7e23dcdd7fc2df6f7fb9c1e448bfeb6799041beef68ac3d1db9adc555415fddd"
+},
+"cities/vienna/index.html": {
+"orig": "2fae90872012af7c55faeb42ab8becf8c72a83c165c39a97d44258cfbdec8ec2",
+"new": "99677493a1e59c135f2b1acb76284ea8ca4af4724abb39744e4d64a37842f7cd"
+},
+"cities/washington-dc/index.html": {
+"orig": "292c47f49b3e22b5397a26e1293f21e1f34e87e9c766e6650ee435a145be0504",
+"new": "054bd6e82e156d9546f12e4d837cc5a67771ca0f578787434fa27f87bfc0fe68"
+},
+"cities/yerevan/index.html": {
+"orig": "ef03a6538c3674c3669104487339bd5d3cf0035e0f2e1f00e353e907a31b738c",
+"new": "bcb451a4805927ceff6d49a6e65da2c67363f7fa3bb14d52e5147259542baef5"
+},
+"cities/zurich/index.html": {
+"orig": "ef2dd1d8e561cd59297e797e9cf9fdc44c6538602f84e53410f81041d2bde3ee",
+"new": "4cd1f2a07c7a246fcb56655688137f807e97bcea5a279533eb1bc05220bd98ad"
+},
+"countries/armenia/index.html": {
+"orig": "2b2a9562e00359af10e0ed4681d3b798dc971724f5b14ae1ab1a808eda74420e",
+"new": "37765c6de9ee55ce71e6f3349ab6eeb9f21cf6e9b4b6a34c5da9145d80afc061"
+},
+"countries/australia/index.html": {
+"orig": "af1edb937f7690a5473865c33ded84f72f3b82608b042a5070385fbfa1e64822",
+"new": "a167d96dce637c2bd40c4cb4716de59aaf4d7f073016a37bb036991c90433541"
+},
+"countries/austria/index.html": {
+"orig": "d48b20067bf67f3d8f43fb50af4e5ce195720393161a2e2eb1597c6b0d4fe772",
+"new": "f4daec3c630377b4c194193875a8f5055472800f22b3a7145cb48e41bc7f1c0a"
+},
+"countries/belgium/index.html": {
+"orig": "4bdba2b976182b9f470d47749ce352b26ceeaf746375860939f2cee42c4ad630",
+"new": "89afb0a11d53beea1604e8b493c62b685ec4ceaa13653c1e59067d3a51397a84"
+},
+"countries/canada/index.html": {
+"orig": "dab2fa66ea32521662fcfe5302c6cbbdd51bdb008686f6ceab1396abb019574a",
+"new": "6ab1d90d16450429080ae40a6e1bde0d34f06095a85d0b86a58a963adfc56157"
+},
+"countries/denmark/index.html": {
+"orig": "208bb821fee22fcda53711d01532939eae4389bd2c941f28f351e8b017c1b988",
+"new": "8689371021c5e3a8779b37458132da6ba4ef09a9fb1902fce37508a1537154ba"
+},
+"countries/france/index.html": {
+"orig": "1bbc688ac7c6e290098b7388230c496f1a7743328ba488352141f423de4b7e06",
+"new": "64aef8091f579a95de17f5c8bb459c5ca3f08a473be2d530ac3e864b125eabe8"
+},
+"countries/germany/index.html": {
+"orig": "ef1d3c7cbb814235b3a1352a165273974ad18df8b62f1e8725d489655de1404a",
+"new": "e4da3e2531cbf3c641b274e495541a110668ba4da117efffa7ad5ff2f7faaea8"
+},
+"countries/italy/index.html": {
+"orig": "9640691335aa0caaabeb3b5e4c225e85679a64f96440bba6e068da97e89c3dce",
+"new": "7bbbafee5593273a9a96bded3465b7558def68c888f6a887437cb473692d1b36"
+},
+"countries/netherlands/index.html": {
+"orig": "e15fb56c10131d61c7e98590755f4267ba8cf512e52c7c863077765a70f2c597",
+"new": "e87ced030efdd29f354972fa398db1af419268523e294da1254a3bad93601756"
+},
+"countries/new-zealand/index.html": {
+"orig": "ac9a6c7bece5987ef92ed993e2838ca24274ad0113f0202a47941947a83d5294",
+"new": "c3827c779d85426f25a65ad989f73c8c719eeb411e75d15dd5163751fe302d3e"
+},
+"countries/norway/index.html": {
+"orig": "0abdb54c5782084524b67cedc52c14db8e73cd40292cad0ae74ba1ff95a4ad05",
+"new": "b3cf2ceed5af391004ca9c3ec7d558d16b10a064d34182d95ef77cf72502df39"
+},
+"countries/sweden/index.html": {
+"orig": "4f555fe3763f50a719c6f0a0126a6dced24d3ae174b59da0ab8351d3234f35b5",
+"new": "0a972aa32d5ec926e7fde38d62c46db369b76f7b55173a3a195607b009195f62"
+},
+"countries/switzerland/index.html": {
+"orig": "30b5847fe7608bbea0d769a1fdaffeef5cfc3305eaacbc56754c046d57fac238",
+"new": "2b71385ab31de31d763aa69586a32c2fa1aa628a78e91eec9b05b27ee32c645c"
+},
+"countries/turkey/index.html": {
+"orig": "9ec200458169a377bfa3903bdfbf43dc985be43dedd3db742675cd7ac21a595b",
+"new": "7f5bd128604d37ea189e28e8516c58aba4de1aab655952857e6ae45a26fc5df7"
+},
+"countries/uae/index.html": {
+"orig": "cbe89fc16bffcc331d9019120c23565f00d1f279f5d5a3b6c956240c844a08b2",
+"new": "300099b16c77be1a0991981a59df5745be323f403cfc01e0f6ad8cafad3fc213"
+},
+"countries/uk/index.html": {
+"orig": "f40c297730b71f43ed29e91e15ae94fc5110ce2d3b7951fc10f6956c55a6827e",
+"new": "4a599cdb44f4a0269244b9dbec259168d66f524ec0d043b4c728561ede0fc894"
+},
+"countries/usa/index.html": {
+"orig": "c7d9d93c12ddb805e887f2e31cdf3f10e973eb4c6f406f58f4f565bb9448b933",
+"new": "9b4a458a6dff5567a132352f70910bab112459ff43aa544f512d4f638a64ef53"
+},
+"en/about/index.html": {
+"orig": "38f9b4281cd2fd98b0568eeb68bf7cd98a4521481b31b517fb5a688a207a0d0b",
+"new": "77b29083665a9d951f7e066eb2ec7289a55a2f52fe8f9a01a215e1ae056302dd"
+},
+"en/cities/abu-dhabi/index.html": {
+"orig": "ac6483ba44a9b977bcf89b2595434200fa04614623e4668ed5c54e57735a361f",
+"new": "9699dae0fbb83f30204a3e438a7c0652d3fe237ed6ca8d929e35b58e64165fa5"
+},
+"en/cities/adelaide/index.html": {
+"orig": "42bd6bbbc17d9a1026ae785f2bcebe145878980099cd49ad14d6fb58c221b4df",
+"new": "81dffa62aef4d338ab7b4c0f1bea8861be5811321033224644e83db956c5ebd3"
+},
+"en/cities/amsterdam/index.html": {
+"orig": "341dd1e10cb878ca19b536409949d05959f105aace1542dcbc60bfdf467502da",
+"new": "3539cdd7da8e828d3003fbdf1459713f4e944ea879e8fc73f4e567ef30e2164c"
+},
+"en/cities/ankara/index.html": {
+"orig": "1fedb0ef93313c3165eeb55264935c02aba453dd2d81be8c0ae5cefdaf934f42",
+"new": "e74561b8d916d918219342cdabf423ac0752d82d64f60f6cb386f3657d276941"
+},
+"en/cities/atlanta/index.html": {
+"orig": "05df6bd181878693de475a02c5c49463eef88f7b88423c3f16bc7292aee7ed61",
+"new": "643b1b2d033a9c3b6ff3776d4602b6c481486bc549f2a9a8f6694f64670159a4"
+},
+"en/cities/auckland/index.html": {
+"orig": "d8c8dc9858fe8d2b78b865b3b9b479a2d8a0810aa1b473e957a7a93366f44c7e",
+"new": "e4efe9ee2b75dc536b261fcc304c1ca531bbd9991f491c7f3f10a564a020f094"
+},
+"en/cities/berlin/index.html": {
+"orig": "40704f1180c4926b6fd0c9b52904ef19415a9c61e47b598ad63874063e030b39",
+"new": "db0c6d0c21ad60d261226065072b86857af3e721dfd0bf84b4628620728139ae"
+},
+"en/cities/boston/index.html": {
+"orig": "ef3532d82893f818238109a3e5de8197986f3bcaf4ece03da65f03e101a36afe",
+"new": "e94a3ce523c946607d1e0260f60f4461524f590f4a5cd9507a30e8f8fe605c90"
+},
+"en/cities/brisbane/index.html": {
+"orig": "28f2bfb7841d7dd331b39b3b6ad7d39ae5951cea753eba8cba4581f6dee17d58",
+"new": "d0a8cd9d76e28e11134b2c754d638ffc2e92ad5826c62ca6d027eb7c1f67ccb5"
+},
+"en/cities/brussels/index.html": {
+"orig": "998d7c54656a8f92ddfa0130499cfc44cdccc297d6fcb2ea783424f649c4c2e5",
+"new": "43e3178ef935aa973bb5613734e309a9c3da0f5f64bf22a8e0a4b46258cdba3e"
+},
+"en/cities/copenhagen/index.html": {
+"orig": "89a5faa6f8c4714543c10ce321dde6fe6b035dc50c464989f6858d75aa6fe951",
+"new": "ab01032628aa95643d56fd5d6538763662c9324f5b15a270a320903df161fb33"
+},
+"en/cities/dallas/index.html": {
+"orig": "3c1fe395afc473357f89df39876183fe3f9fa5c1fd6701eb8170d9a1fd27be7a",
+"new": "75921152cf437ac6fb2f0d7b3f35a7ee255d1d58f06d4c758de069779d083b40"
+},
+"en/cities/dubai/index.html": {
+"orig": "83ddd2a8d1b75060b9c59ad4ff69606012523196eebdf95e25241cef7cfc8df8",
+"new": "0135c234b5243ae8699960d3989ae5c8dc7838174508b424e1c9174ebe9db7e5"
+},
+"en/cities/dusseldorf/index.html": {
+"orig": "23b8a1e0d5292cd80cf01a7e0461164442a050a47542e99f5be2ff4be279a8c3",
+"new": "3a6ae959f261e651db88fec934a2a2e87335dd8fdc607241125685ad646472f3"
+},
+"en/cities/frankfurt/index.html": {
+"orig": "27a76edabab9678907b2194bd6dea9230e13ef22eb08a0d80b0e903c9130ddfb",
+"new": "df361f51f4cba482cb440405f07aedf27ab571ddae08ce2da2951adca6c7fc0c"
+},
+"en/cities/hamburg/index.html": {
+"orig": "9af1a79c911dd0b3f8f8447eb48b8e1517cb01e4393e65bfd6f75a8e9e8340a7",
+"new": "0caf785db2e4fa48e1ec63a9fe66fd3c8d2b3d636e4d02e73651c66c25754aff"
+},
+"en/cities/houston/index.html": {
+"orig": "7bf6a253e8726cf7c86e11496a3babff177dca4b94ca10f052091017794e95c9",
+"new": "dcec1487329911ae76c90b94e7a135744b3e34729d73e90bd9d8b8dac64d7785"
+},
+"en/cities/istanbul/index.html": {
+"orig": "6efbdf9a07a540d3c94acd3505fe5cf1dbe185af7517e28800ed944c55fb9d0a",
+"new": "d4a4d307f3093b6c8d780d779cda958d8f4bf1be9b3fc02793d210f2f8e638f5"
+},
+"en/cities/london/index.html": {
+"orig": "65f54a1669fdb6177c399b5d0e16e88adb76baa0b996a1192fbbb99cee42a3a9",
+"new": "632bd58d8ca282458954741fb46afac8a94ca6df10e00b1ac8b148777492e638"
+},
+"en/cities/los-angeles/index.html": {
+"orig": "ed5585a06b907f329abf657a743694a7af3fc4483ffa545fb295aece674849a6",
+"new": "716046ff994d7a56a90b627c1d5eb7df6b11c9e9d12c3918a0d69a736e99b723"
+},
+"en/cities/malmo/index.html": {
+"orig": "7a53f66aafec69b2ee6d5a83c564a6e83f3bc2ae449057dae47faa84745d3b45",
+"new": "985c14353ca73d25e33e97eb46edf3dc40b1e93faa2e263497a387134e644837"
+},
+"en/cities/manchester/index.html": {
+"orig": "62e97eb132c8153713dd4a546cb1d8c566bbff20cccec2d12eb3241b0f4e3a9a",
+"new": "0251446b33bd3ec72c652a3e026cf108b67d67334219ace310d370d25acbae3f"
+},
+"en/cities/melbourne/index.html": {
+"orig": "fa655953a102c7bbc88a981448193868f0706c3a4cacc148abc510875d45120e",
+"new": "2c9b3f04dad6350c4a2a6810e77b7ee361886ea7132443410b1350071bf945b9"
+},
+"en/cities/milan/index.html": {
+"orig": "dc2dce958082712f9e1a65686a0b34dcc9dbfdbfc42ba96a4f3cba029b6ab384",
+"new": "bce4201967331dd3b1957381555a4bd76d1350130193e47b0283cf2b5c113623"
+},
+"en/cities/montreal/index.html": {
+"orig": "fc0ea09234628025cbbc81435d325264aa3a561a61ac88e5c5321f681df5b3f1",
+"new": "1ba55bc81b39b5e2c3a0ab5beb75048fcadbb49e09bd09791e023b04b8f943c1"
+},
+"en/cities/munich/index.html": {
+"orig": "43ac6b7411fee5ca972940fda409ee3edbe4e66962d06544b30600640b5fe2ae",
+"new": "75dd22781b5c980c13a37a4f02e8e01d57c49ea7c5c750d3086fac15c73ec154"
+},
+"en/cities/new-york/index.html": {
+"orig": "c6f9ce9252a0bd7274491b903064cbce731fc9c4f6d6b62780be5b337ed98a88",
+"new": "2b4d46845eee898d3934c7573856e1076f892e86979a3c4dc8bbbf23f12e0830"
+},
+"en/cities/orange-county/index.html": {
+"orig": "3a09560a006a797c5a9c6c650b8c7b5283869290c5e8527a65253d69c873b529",
+"new": "6cd43589969b30f44aae6ac41f6e3d7986c1e576b0b7d76c59e126becf21406f"
+},
+"en/cities/oslo/index.html": {
+"orig": "4450fda31523b79777bfbfb9cbcb4343cc225b6ee7ba26bfcb18b7d9ae967b4b",
+"new": "e90ce81b30243b657a4653b9b1c3cfb2288dc72d60e6a8dfff1484dd6fe6b19b"
+},
+"en/cities/ottawa/index.html": {
+"orig": "2cf9b5cb50f259c6966a151ac193de4f2c1164fb014610696ba060ffb3d1a6f8",
+"new": "42ae767054862a9f46e71dc9524326d9eac775efdd39959e1abff7a4c6c91e06"
+},
+"en/cities/paris/index.html": {
+"orig": "2431310149ff1155ac651e7c893c84ba975f18b61e90409d41ac4da9e00cddd6",
+"new": "5da49bb3d350622337856dac785ebd8559376d19962c7653bc0be9e3ea9d2802"
+},
+"en/cities/perth/index.html": {
+"orig": "e4ea6a4957d0ca9b3170e0320d684d006a176dc31e172b8bd762cf42225d2f5c",
+"new": "e37bfbc51159da95695c9c4848c1a40b1b4340ab0a383cef1a7ddd07ba99368e"
+},
+"en/cities/rotterdam/index.html": {
+"orig": "1c8af8d897a6c6c9235ea81ce2864590ad9c5df4991b3844b2daabbd8f46dcd0",
+"new": "f2518ffeafcd96b35f56db5b29e4b34675989481026b8043f39f13357e7be5fe"
+},
+"en/cities/san-diego/index.html": {
+"orig": "4d5b56a6e3bdf96b8418e216c9ee1e89fe8d46bb5ce3609de1bbbe7c455c83be",
+"new": "7015aa28beebe8dd7e4827cb1dbd1c3c12ab97edcee2bf1c148650d355e4600a"
+},
+"en/cities/san-francisco/index.html": {
+"orig": "ead8e818faf3bf125ca9916549c51651fc8b7dab3c00c20a2593318907730c05",
+"new": "076a44f03c6a503db4b4413dd79d8d2a96f51f57a20878ae529a223a2bea2434"
+},
+"en/cities/seattle/index.html": {
+"orig": "3072f96abddeff0efcc798eaafd09717fb0363f3e961f620fcdd157a5a1d3179",
+"new": "6deffb749993d1fe30f1efe3282fcc173e8aa93faeafcb9dfdddda2f25479167"
+},
+"en/cities/stockholm/index.html": {
+"orig": "30eaf4131a3f32143a0125beb4069e495d489c1cc22267b8b82b0c9103c5cb86",
+"new": "510ce1153ab4fbea156497edaff2a55c328fe482977327bb3cbd189f3deec972"
+},
+"en/cities/stuttgart/index.html": {
+"orig": "487c9969465a813d9c4f7c1c8f9ccccf54f046b6c693163f96da0ff54092af86",
+"new": "1f36690bdeb90220a9c0a6ad56b3f6fc2f282eb5bd758fb160df0fe0636e62e2"
+},
+"en/cities/sydney/index.html": {
+"orig": "3e53ef66487a9b23036ab63e70168fa6730e882c112878f1fb44b777d1c3e573",
+"new": "4653074b3f6e3aea7805a67931c549207676c488a415c5d0499388ab4fdd0545"
+},
+"en/cities/the-hague/index.html": {
+"orig": "a1a464121f4c5a7dc8274ff43b3cc23950b26228af68fe5ba26f9232a6937967",
+"new": "e89e649c4be3947fbb55bd8e4b45eaf9110a2d3ca72e805afc2045eb589254a1"
+},
+"en/cities/toronto/index.html": {
+"orig": "3f8337312876ac9e0ff16310725e599f7f5e3b09bc53d96d9645d2f653a08201",
+"new": "d74ce3b5997b849e702e71d6f0549405691fbeee2037ea3d5f53f05a2070e5d4"
+},
+"en/cities/vancouver/index.html": {
+"orig": "8681f641ccb288e19d7ac2131700abb0b0e9219a042a081b623ec0914adf6e91",
+"new": "efe79a871f39b4f4b3c440f5a5c17d007877492c667066bce4483dc8589438b6"
+},
+"en/cities/vienna/index.html": {
+"orig": "e163a8709327ae84dfc5370e9fcd64e65bb01da669be59093af00209d447e82c",
+"new": "bc27b756856fd4b8e8d5a923cb240f5e0bd24632f05f75e62a072428316992c6"
+},
+"en/cities/washington-dc/index.html": {
+"orig": "5de1f3859acacbb9780b9a590b22dfd29886934746927c9f14add90a9521f381",
+"new": "75a338ac9406037b7bd235a5b191ab9a0d4cb05c5e3844a8f5964e116e07a685"
+},
+"en/cities/yerevan/index.html": {
+"orig": "2c5273cd5f46e285f6542e29486d9ebbe27319e57f69f3a93d013757dfa254f3",
+"new": "9e8e29ef940e9b97b67ba9939d8221778c52a96336d8826d61a342bbd2ab2228"
+},
+"en/cities/zurich/index.html": {
+"orig": "73a535dd9177153c4d8ef8ba4a97daefb95a9c612987f8fe7d84a47c4bbebb5b",
+"new": "301edb41fb3668497f2fe86f4ebd3e02ae846b3c54b6c04540c0167aa9b5bc9e"
+},
+"en/countries/armenia/index.html": {
+"orig": "bcfabfe87e6112b66dea98455e8a1cce2e5311aded8ed5a171160be4446b2001",
+"new": "9dc8740d13ae55ed61b1ac3ea178848262b82d018faa465dd63ce961629f8893"
+},
+"en/countries/australia/index.html": {
+"orig": "3a05716042bc10ed7e001a8ea0998fe252184af485df364f3269035d41600a23",
+"new": "58fc74ebf528ac56b5642eb8736f87e1036708fb508ab07ee5286e3e0af652c0"
+},
+"en/countries/austria/index.html": {
+"orig": "0bb96b8792fad07e846bc140a71fb2ce9da1db52cdd259ab16f1328143ff7109",
+"new": "ce56aa5acc5aa11667ffa3f71b71c89fd0011d771057651ae9622751667cebc8"
+},
+"en/countries/belgium/index.html": {
+"orig": "ca8ebbb58672978a294830850facff33544783b839e4065a2900b0d98d2f862c",
+"new": "82dec41e8bcaae6b3d45d7831625fa36cfc580770bd30d7736b07685251fdfbd"
+},
+"en/countries/canada/index.html": {
+"orig": "89b4a08d08423472d4f6b79f6b4e3aa62b90ef7cddeb15225fd831ceaa7de91f",
+"new": "1c1f2435dcf28d0439908b0c35d4701bc63008c9e416a756d3d0bd056112e967"
+},
+"en/countries/denmark/index.html": {
+"orig": "3ce084d6af7b3e8193bdeee771fd9b45e77cd3ea602b4501e779d554c5a0e77d",
+"new": "95d8684836403c6dd402ca8540d7de9cd2e800ff6ac604a61ec66e3ebe1e037e"
+},
+"en/countries/france/index.html": {
+"orig": "96a20ae2bc812e9c71f66b31306b043b4f68b91f42b6640ff4735ff72f7b3dec",
+"new": "87673eaec42f24a700c7b6ca0f356cd6120cc9bcbd78732b352c718acb954d3f"
+},
+"en/countries/germany/index.html": {
+"orig": "ef314bc92aed148e85392b06ff488b47682ea0db9af8448144fc470a10139291",
+"new": "8392c8e71ca790b2b55aa7be1b29f002c15c816c8308acd03588f56a2003af7a"
+},
+"en/countries/italy/index.html": {
+"orig": "19ff2f1e02faaa7e6bd1e39e4af26d1fc72be0e025feccd1d95d34aa97e73d48",
+"new": "ed7ec146d0e52ab8c653637245510d39210eea97cc5259aa8122a877a8eb06f1"
+},
+"en/countries/netherlands/index.html": {
+"orig": "de5dda120693492cb2e91a533446fdc069a1a96bcb5e5aa330b16a67d9bb5fb7",
+"new": "4b69e82c7f8c9b0d95db9abecfd98fd6d198167d68bf1dcb197c544d1c837014"
+},
+"en/countries/new-zealand/index.html": {
+"orig": "0f81a34940589fdf358ef9d790c5fc7521282d7d6d2db8955d6811577445ad5e",
+"new": "12bdeaa758a7bd4317b6621ea24fb8d71de37cb50d97e27d4d418d9ad86fa3de"
+},
+"en/countries/norway/index.html": {
+"orig": "1f97473cf62154bb59de64252db06a724de2e36c67a7962e0f11f838143658d8",
+"new": "5cb0e030e9cf8bdf7abccca8be72c1683a9134cf9a1cb49ccdc9230b18040a81"
+},
+"en/countries/sweden/index.html": {
+"orig": "ce2fa2bc6706c4efa80ff2986eea827573950963baf94d61f8ac4fcad30f75e1",
+"new": "971cdf30700f41285884d6242c54bbb468d2ed7dcc519382b3a962c387df7223"
+},
+"en/countries/switzerland/index.html": {
+"orig": "1717aebef4dd72babde234faaa3afbc3bd6d581da6849371139459a8811cf59d",
+"new": "e00ac70e4cbbbd86decae641773df6fee09ca88eee71f7cbeb14faefee4c8f9e"
+},
+"en/countries/turkey/index.html": {
+"orig": "09ddc0869bf0621c4989f184bfa08a511eeb555790a3bfa53460b8c570e03424",
+"new": "917d51492edaebe6524b8239a8751d91360cf65ba8c496ca05d603dd9d51b2c0"
+},
+"en/countries/uae/index.html": {
+"orig": "ad5f19e1d5e2bb9ebe1dd6aff533f7c4148074954bf74a15d6db109d22f3d461",
+"new": "1a955b9240d9f9a22746411bc105c8d58bfb7c1df7661f5612bb19c0e0ea602c"
+},
+"en/countries/uk/index.html": {
+"orig": "1cef54826d858f54b3eca159b1b168c8bb01772d2793f1fff10794311e1dc5b8",
+"new": "9abf8d5255268db5a13bce584651846f87453c06389ba97f7fb8592d9265f301"
+},
+"en/countries/usa/index.html": {
+"orig": "402fe854a812c85db5a8b66559e171d343588d784458f75ac3e2da9ba7aad20f",
+"new": "bc2f251cc3f772651599701f5f3c5bfbaa0bdd73e9ce0baca2682a55698cd165"
+},
+"en/index.html": {
+"orig": "1b8b58bfff50e2234990a2765376fe629a038620a264f3182bb3effded2c06df",
+"new": "d930c97e99855c4951b870c43f6f9af73fbcfc7ac476f1a7d663ce1d1b7fea5d"
+},
+"en/therapists/ali-nazemzadeh/index.html": {
+"orig": "5df7025857f1a265b86c4fa186952d14aa5121591e368bcfeb61226692ba03d9",
+"new": "8c578f48295d0d954794c2e78e4b44a3bf537ae473ceb98a3ee7118d5306b511"
+},
+"en/therapists/atefeh-mohammadi/index.html": {
+"orig": "ed1165f2b3affb896680637f7d270394b15cd0b71b52b90c67c4b3a3cc11cd82",
+"new": "fc28486e35b4e22effb14a5e4b9b7af27e28c45fd7fc544fe1a7c537938a4bc9"
+},
+"en/therapists/azin-fathi/index.html": {
+"orig": "4fc7e0d733b21c6204484867acb269b39220e68eb4d1904c7bddbc911a216567",
+"new": "6b2f025d4778c3b6f7f39b728559dd113c3cff5034b4d892cee5f15fd38c7f83"
+},
+"en/therapists/elham-shariati/index.html": {
+"orig": "e12ddd0d7ffb94c066b9a44a647b57f196d649109e8ff4ff3925a8c577df2d49",
+"new": "5a599ffa95a506e1f3fc4475815824d4079a1bf5c0adc18304287df6ee8548cc"
+},
+"en/therapists/fariba-kamali/index.html": {
+"orig": "272916baa6f64a07b8a17db3de9b07268309b0db6bb258356adbba6a75770698",
+"new": "fdc9290da005cc34a2c0223df902b2f7b4a8106bc040918b77798b1628ec2403"
+},
+"en/therapists/farimah-farhangi/index.html": {
+"orig": "6b720654bdc947614a6283da6d2ea3b2d3a682e26bc9a5ca71a64a63361bcfda",
+"new": "0831d9776348def61b9cf2c959e57abb2eb240adceb87a9af2c1949618933d8f"
+},
+"en/therapists/farimah-zare/index.html": {
+"orig": "9d4a7deac44c95382011e178604000a29388ff4cff2194741f6a52e05be874bb",
+"new": "bc3bac34fe860ac9e93bd79db2313fe73025bb5dc744f77d2d2e5158b0e41087"
+},
+"en/therapists/farshad-aliari/index.html": {
+"orig": "d013152381fb548d6392181e356cc4f62af0033cd632a93c2ee0ff84d9ea91c9",
+"new": "ba221fad1ff2a4103dd754b047c5b81a85ccca746bffbdff18004f83f5affa9d"
+},
+"en/therapists/fatemeh-abazari/index.html": {
+"orig": "0661811c96553d39431517e9b3b987416051bad74cc89f166f5a13d37ef6a3e4",
+"new": "36870028ca58dcf98b6089bf47d41f0e15cf778d34dc2a28ed79a90ed5fac6b7"
+},
+"en/therapists/fatemeh-shabani/index.html": {
+"orig": "fd94cb69a275f58983c4c9e3c1822a9164fb5bd38a292d83cca2db7b36ab7995",
+"new": "9114223eb4e952b396dffb695e14d6bc6a365c3ff78d33418e8ead7aa4ae888c"
+},
+"en/therapists/hadis-negahdari/index.html": {
+"orig": "847905fd715b7eaa1dcd610a6df5bfef6916bc7f8a73f7707188765b68b9176a",
+"new": "c3a48bc93e7ba05cb660ba3b5a361bd4137dc7fc6e27a1d55a784093e1c00058"
+},
+"en/therapists/hani-rahimi/index.html": {
+"orig": "7d914074e0db869f2cdaf7914cbc2d0e7d74dd6367c368c9b31177323aa7c1cc",
+"new": "d190b2a155e3b191e0e4c3c762b16240bf427ba71073a78ac5b2ffe70aab9000"
+},
+"en/therapists/index.html": {
+"orig": "93ed5e3aeb47447820236bb8f9aa806f1c71ee6fa77a3d20b7e83ebb6ad84f3f",
+"new": "90a28f1807933069cce171f0a8c67c79236f871dbc572b0605138260539961d9"
+},
+"en/therapists/mahsa-naseri/index.html": {
+"orig": "1f3dbfe586ac80f73f6c02475e2efbf3dba8dacf116595675c832646f93152df",
+"new": "ab2902f2f966eb3c5c8aa5086e0d8d22b1fb6711cccdee428683ed4f107cdb34"
+},
+"en/therapists/meysam-nikdanesh/index.html": {
+"orig": "47c0cc093bd0d9fbb686758ffc9e7298b637413b27507059479753e61a7b8a8b",
+"new": "c43fc39bbd2043638d84f53cb1b956a1a6bd27629c0460ec0cd4907f9fe5ae15"
+},
+"en/therapists/mina-ansari/index.html": {
+"orig": "fd6c9eae68f1325573cda8ef8d17fcc2ee5ff3cacc66aa88ee30b0bb60bcc6cd",
+"new": "763c350fd1ca032087f8f76e72c15488ba34bc2ee63cae685c01442295d4f293"
+},
+"en/therapists/mohammad-ghazanfari/index.html": {
+"orig": "fda5b8c57d5a0c587e7c8f882c1da4677c501e593da2484384a13c68bb05090b",
+"new": "b58ce1df3c59f677e0ff20f941775342da8d514a1bb5843fcba5866743225264"
+},
+"en/therapists/mohammad-talaei/index.html": {
+"orig": "1864db490f2e0c0683860561d65c0d29d8e8049528a15ffa684ff24e89e29b91",
+"new": "3d18ff0123aab457995a8cbde0982db8a3d81b7121dab804fec803531448a4a0"
+},
+"en/therapists/mohammadhossein-farvardin/index.html": {
+"orig": "2c2b5701706cb83f8b16ed48aff335638e561c0bdb7f86bf274d24bf5f74aeb6",
+"new": "445a6d573585e0018494bdcdd391398824167986afef26f1e1669d22dd2d9970"
+},
+"en/therapists/mohammadreza-daroonparvar/index.html": {
+"orig": "b2df937a8fe8aa045358b048d1b4187373664785cb5a3899e6efaac4ac909074",
+"new": "12dea31d94a196aa6855a5b52bcc8853483168eb43f4a493910edfc0c06ae46f"
+},
+"en/therapists/mohammadreza-mohseni/index.html": {
+"orig": "cd9d264712810bc40a6d3d304a98a6f6c82f8516dbad35f891be9ba9e18d8eb2",
+"new": "ef721e374fa9093a000b6518c1006763509ce28cdae53e5a31492d4701afd385"
+},
+"en/therapists/monireh-hosseini/index.html": {
+"orig": "159a8b162a095460b63b89acdd6cf9b1e2d760ec6f82e58b73435a169b56027f",
+"new": "0e116f94032dcafcd91671f684c0ad1e5b93d93e066f632e891e12308f4d32af"
+},
+"en/therapists/nahid-bahadorian/index.html": {
+"orig": "808f9318dfc7becd41787548bd559499a68f1ceefe32575b47a9af1f6e8f07db",
+"new": "838c563b0316b8bc12bcd254cb45ea29031044f0983b5500eec2598b73d7aa97"
+},
+"en/therapists/nazanin-mirzakhani/index.html": {
+"orig": "4e29bbc86fce25ac48d9256579dfa4e5a852ca2766575d2bafc1ccb3a0e23f7f",
+"new": "c6560bbe53aa7229b8c821a825ceccecec6b34b985dd838988b0f3eb5943d079"
+},
+"en/therapists/negin-milani/index.html": {
+"orig": "16bf1b83ebf7aa9d78fe289fc3d3029c7659993c5e0e6be05936ac62bea3942a",
+"new": "6d6454a9f626cb4686d4183077710e30477dda27c12d2e14233565ea041fb9a7"
+},
+"en/therapists/nima-khazri/index.html": {
+"orig": "9436b00d1fb0dcdda686312c86f4acb3c83339342b9f7fc884b6c241b87f2674",
+"new": "5b1493fef0c2aa6363bdfb0e0d190a3451e6dcf5ce7d4230021c9f698120e7cc"
+},
+"en/therapists/sadaf-mafhoom/index.html": {
+"orig": "4e1b30a074ac4445890c14d3a777884fb040e20dff3fc739a34f3242eb337127",
+"new": "589c4caf3fc9e72dbb3e90426ff394be94a7aa311e8cdb017def9451014535ba"
+},
+"en/therapists/saeedeh-izadi/index.html": {
+"orig": "4456118e2a1ad28b49b78ff38c463ce62918d8e7b5aa9523f5eb815cbf0f07e2",
+"new": "8fd0fa5675b8e5029b6debd8a2429e6ddf575bf11bd4129c5c9f6653c4abb4c2"
+},
+"en/therapists/sareh-askari/index.html": {
+"orig": "026098bb0f18c22fe882b6f70052f831c34ded16a4c09f0ba3e354f57e476c10",
+"new": "3e0db388b241515429484cde9364bafd4e1d967d525cd2091e34709012fce018"
+},
+"en/therapists/yousef-asmari/index.html": {
+"orig": "87a33e31b5cb99cc1f2195e13885e9216c1f6f8f24b994cfbef6d2817acb677b",
+"new": "ee9d1ed943046e75af879b25d4b0b60ef8536d938ec9caa5729ea31c25857f5d"
+},
+"en/therapists/zahra-asl-soleimani/index.html": {
+"orig": "d94b71ef9fc6597051dc05b862a0d7a5c522b44b70c44fb2c4e64e6c63a864d4",
+"new": "6be11b74f2ffbdc92530c0014dbf9abcbfe8394eafe8900529da8511481ea663"
+},
+"en/therapists/zahra-rezazadeh/index.html": {
+"orig": "8100eb7b3e8712fd41e479c96a8a9b0cbfa4e6b566f488b66dfca4fc4a1b8f3a",
+"new": "57d4dad9207a683f2d537b5b601ab11fccf87232906dde81b3221999f1fdc870"
+},
+"en/therapists/zeinab-nikdanesh/index.html": {
+"orig": "85a15c4fa26128e2d295fc42b9509482331b840502a006f622adb28dca0fed43",
+"new": "1aba64b7be96a4e4998eb92c1c8faaa1d63dd8c8726c5c5cdcf2dd53e8366e5a"
+},
+"index.html": {
+"orig": "2f2dbb3c7fd00317bdf5e60156dc4462d955b989da268adc0282bab2708c5933",
+"new": "697d67d6f176ad992eb6ef4fd92c2a14a052696d580f0538d847e8c2f8416b42"
+},
+"therapists/ali-nazemzadeh/index.html": {
+"orig": "559e19c62f2462e8d5f1933260d4281fbe52d1409e058cac9c79429ab80e492a",
+"new": "667cf738a82d74e18566a305c7399951737182f9aced1f81b37ac65f168d4ea3"
+},
+"therapists/atefeh-mohammadi/index.html": {
+"orig": "0c3be73fd040a2b2a1c7399c48b79ce38500da39b2a48b25d9ffabb39113c718",
+"new": "0b43d005c4153ec9f75098245843958675125aba13eee16f8369ba0c642a63ba"
+},
+"therapists/azin-fathi/index.html": {
+"orig": "09b282ff143d0e927c4d9a45f6748bb4992d05d0d0eef8ff57498b9119519f34",
+"new": "4d5a5e304e39805707da53209a28b832d509558b5b4dc8095887bc97d83ef1c1"
+},
+"therapists/elham-shariati/index.html": {
+"orig": "014c12228d3ed6ec920766131740c7a74f4f26a19fb36671a39e6560812b00af",
+"new": "a81199f903a3f880e2ef1970f46a102eeb61109cc07b475dc15289fee191631f"
+},
+"therapists/fariba-kamali/index.html": {
+"orig": "0e65c0394340242107d5ea32d1d185f39fbe27e90ff6dde6c85bbb5bd36045ae",
+"new": "3f5d6e43d2c80b54bcf8dcc4a2f9f13829ea7b04c5e0942de076227bc361d357"
+},
+"therapists/farimah-farhangi/index.html": {
+"orig": "9900eda8a9ba15622a987e6543f8e0a83c1a5da87520a452be3bd1f8755851e5",
+"new": "14a58e00495dbdaaa36b257ffd38472577db695520c324fef1d7aad146ed9c73"
+},
+"therapists/farimah-zare/index.html": {
+"orig": "5299717b1ccceca7c77534a8013a80814997d9422adab3367084f2a28f97e851",
+"new": "82acef05cc1df8c3adba50df1fb27010b5aceb504d89b9f09d9bff9230c5cfcf"
+},
+"therapists/farshad-aliari/index.html": {
+"orig": "fbfb80e24702a7fd4ffbf800965a1580c072f96e6ea258d39cc0c5a56e10ad17",
+"new": "993f1eeb27e371349c9e4208e26323a24683fe025ca4239c908935c8072dd106"
+},
+"therapists/fatemeh-abazari/index.html": {
+"orig": "8061a068c2e6ae6a4d8afc877755a4ed16aff17f6bfa240fbb9d42f192b874db",
+"new": "3db7e6b351a8220fa94a365d8f9b4af5a7059452caa4e02fd5c688ed39e02842"
+},
+"therapists/fatemeh-shabani/index.html": {
+"orig": "e2ebcddef42af7f0d91d112a66c0fbac4b068490d7c085536c7ea0e6b430cbf3",
+"new": "628381d027fa3f2898dcc0150c85995b01f94a65345f59c55f988c905568528a"
+},
+"therapists/hadis-negahdari/index.html": {
+"orig": "ba274709bb0ff625d627475bba0adcea9f32a62e4a7aaad6cce22ef7d1f5ed79",
+"new": "b8566d4320842e6c1f1fb54ca113190f0abf88d434c0388362f8d8312d31f98b"
+},
+"therapists/hani-rahimi/index.html": {
+"orig": "5700a09fc20e9fe9484483495a0b513f3aac38fc01deadd4dc163956d9239ab7",
+"new": "4f333d0abfea3a3f8f3b81b7299028dc99c6c6cad8256c5ac5bc662285497736"
+},
+"therapists/index.html": {
+"orig": "60a68760ecf88fefbed415cb30f53817208db3484b3330e9879eb319fa8a11a2",
+"new": "bdb0694592cf93f26aa280a3df3e58c10a47e9aa1dffeacfb816e3ddab11c640"
+},
+"therapists/mahsa-naseri/index.html": {
+"orig": "935258e1444dc849f283813966c2035817fccfd6f911b16fb3bd2a50e645bf9a",
+"new": "106adb8661b030bfa44c4d365be5d9af7ceb7d2330e07dbb19c53342aa7c1a4b"
+},
+"therapists/meysam-nikdanesh/index.html": {
+"orig": "8027a04b5aa4ac207f3d60d495f841f676c2d96fbbf25af4cf1840929c62e0f2",
+"new": "18cbe0422d18a2efb92a28d41d443431428b70279ca6a22f9818c85fe9f02a04"
+},
+"therapists/mina-ansari/index.html": {
+"orig": "93c07cb6aa26ea94547497f3fea3d447120474666491845152ae4426d4fba99f",
+"new": "4bff8f6929b72cf1ac1d43f5a46c853eb2d7e60c54584a065e2d78527178b186"
+},
+"therapists/mohammad-ghazanfari/index.html": {
+"orig": "2835ffc7b449fb6cf6af60df560a78a7f70870045471ca243b6792664a14eeff",
+"new": "07d15daa14a533d5c4c9886645105d0ce716a2a6b8dc116069a18011648b2bbf"
+},
+"therapists/mohammad-talaei/index.html": {
+"orig": "f7523401b0772fb602ef5609926dba1a49441a75f9e58218c2d79a6e148a1ce1",
+"new": "6eaea343629c2b8042eb78f2bb5a7117ccf633a11f7eae2c61fbd230ac93f94b"
+},
+"therapists/mohammadhossein-farvardin/index.html": {
+"orig": "f8e553bbd89bf05b6d51c674dd51107739df3429a00a3cefc468ea63b2fb0aad",
+"new": "bb714b4f94da85a54f9e62e284556460df28e8ce71593c2ca5baad0d2f46d81c"
+},
+"therapists/mohammadreza-daroonparvar/index.html": {
+"orig": "9c7b6583b786ca0445cc9282cc0e320f3b46263767e677daacc1c68bf33c1c64",
+"new": "446eeedc1bdfcd7cf22e5ce570e676b439fdda90ffbaf69c6a88b262ae414fb9"
+},
+"therapists/mohammadreza-mohseni/index.html": {
+"orig": "5deb864dc34ac1ac7651dcc9524d4d4f753193cd5371a9fb2f46503b6e57e871",
+"new": "ddee78a78bdca33ac046db70c31c271d185d1034b937d05147eafa529017e128"
+},
+"therapists/monireh-hosseini/index.html": {
+"orig": "8fda49a7de9f13c0bae7421c4fbb3a7959ecf39dd2b097e9ead05a66bb1c1afb",
+"new": "fff492b0f90435c595203c363f246191e5e8b96332f4cc3c5437a951388b99e7"
+},
+"therapists/nahid-bahadorian/index.html": {
+"orig": "dc01d0c0ffa3f72bcf04848e33951db7bc2809d7fd9b28aa6cca47f4ae4753e9",
+"new": "30396000ab55c241308d1a1e6d1e7c2193bfdc47831cbaa4160cdbea189597a4"
+},
+"therapists/nazanin-mirzakhani/index.html": {
+"orig": "c900bd15c525584e281139b84b907f48299b98df7f6858435bea88dd09a639ec",
+"new": "c0cc3ab95399577f14725ef11d3b99dddf2317037d557fd9d50bf3b01c6106ca"
+},
+"therapists/negin-milani/index.html": {
+"orig": "83a9cb1a58d77e96abce4b1349c61d982a3375abc3cb573f5f8e906b4bef4282",
+"new": "2f2decb3824ce5fe6c3c50bf897c1818431f7f853a8c303eecda834e7c543e9d"
+},
+"therapists/nima-khazri/index.html": {
+"orig": "b9de77aa1012cbc805baade7d58d7b46b389e8698b97aae4c110597e60b2517f",
+"new": "99d3d180c6bb7319d174fd11d671465dba8200eb060e8dcb6207d2b7ab43464b"
+},
+"therapists/sadaf-mafhoom/index.html": {
+"orig": "7ab771bb7d3bc1b5eb0b04284d7084904387ff4fbb0faceefff1e3b860c6039d",
+"new": "ac661554fc2f8c3b5e0d5eb0c9469738f84ea818cf4cc15a4a9ddf4646e20b75"
+},
+"therapists/saeedeh-izadi/index.html": {
+"orig": "18c45a23c6020c8f694ea38aeed4b6e0e2831b4c21ae6e671f70ef6df0829341",
+"new": "2e6bc8887f47d0301949479724c250e853b01e3449638cfdcedad96c9b377e2e"
+},
+"therapists/yousef-asmari/index.html": {
+"orig": "dd403fe8d16e5fa371d9488d65f830385fab21d7c362249d00c503f0de14258b",
+"new": "d48f31c290b1e1d26904de15c679578a8a0427d71a74b51626cf2352d02170df"
+},
+"therapists/zahra-asl-soleimani/index.html": {
+"orig": "ce3b17b00a7dd5d9e4251b0244d7a8f403784f1726b4a5ed6b0c6c6c016606b5",
+"new": "5f4ac5c023603c7cfd0b4d5742657457a3c4de01fa0d094977999ddabf5b2785"
+},
+"therapists/zahra-rezazadeh/index.html": {
+"orig": "157458bb87bc1338abce7032f8d6731eca5504de54f9287151daca7a0f59dfb7",
+"new": "5a4b729bcf4c524c8aeb85f614e8cba9dba45fb9f94e83ff1a1b06fe8caac62b"
+},
+"therapists/zeinab-nikdanesh/index.html": {
+"orig": "4f0e64d8e40c2c473ab48a50e66f4e2b1601057908d6cf304261e933ca69338f",
+"new": "24e2ab26af3948641aac49bdbd36a7ac7452b9905c79b81a74c967c2d475194a"
+}
+}
