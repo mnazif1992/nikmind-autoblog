@@ -82,7 +82,11 @@ function schedule_clean($j): ?array {
         if (!preg_match('/^([01]\d|2[0-3]):[0-5]\d$/', (string)$j['daily_write_time'])) return null;
         $out['daily_write_time'] = (string)$j['daily_write_time'];
     }
-    return $out ?: null;
+    if (isset($j['announce'])) {                           // optional note for the team, sent once with the change message
+        $a = trim((string)$j['announce']);
+        if ($a !== '' && mb_strlen($a) <= 3000) $out['announce'] = $a;
+    }
+    return isset($out['publish_slots']) || isset($out['posts_per_day']) || isset($out['daily_write_time']) ? $out : null;
 }
 /** Picks up site/schedule.json from the content repo, so publish times can change without touching the host. No file = site.json values. */
 function sync_schedule(array &$s): void {
@@ -95,15 +99,22 @@ function sync_schedule(array &$s): void {
     if ($r['code'] !== 200) return;
     $c = schedule_clean(json_decode((string)base64_decode((string)($r['json']['content'] ?? '')), true));
     if ($c === null) { if (($s['schedule_bad'] ?? '') !== date('Y-m-d')) { $s['schedule_bad'] = date('Y-m-d'); logline('site/schedule.json ignored: not valid'); } return; }
-    $new = json_encode($c, JSON_UNESCAPED_SLASHES);
-    if ((string)@file_get_contents($f) === $new) return;
+    $new = json_encode($c, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    $old = (string)@file_get_contents($f);
+    if ($old === $new) return;
+    $o = json_decode($old, true) ?: [];
+    $same = fn(array $x) => array_diff_key($x, ['announce' => 1]);
+    $timesChanged = $same($o) !== $same($c);
+    $note = ($c['announce'] ?? '') !== '' && ($c['announce'] ?? '') !== ($o['announce'] ?? '')
+        ? "\n\n" . preg_replace('/\*([^*\n]+)\*/u', '<b>$1</b>', h($c['announce'])) : '';
     @mkdir(AB . '/state', 0700, true);
     file_put_contents($f, $new);
     foreach ($c as $k => $v) $GLOBALS['NN_SITE'][$k] = $v;
-    unset($s['slots']);                                    // today's times are drawn again from the new list
+    if ($timesChanged) unset($s['slots']);                // today's times are drawn again from the new list
     logline('publish schedule from repo: ' . $new);
-    tg_all($s, '🕒 <b>برنامه‌ی انتشار عوض شد</b>' . (isset($c['posts_per_day']) ? "\nمقاله در روز: " . fa_digits((string)$c['posts_per_day']) : '')
-        . "\nنوبت‌های امروز: " . implode('، ', array_map(fn($t) => fa_digits(date('H:i', $t)), todays_slots($s))));
+    if (!$timesChanged && $note === '') return;
+    tg_all($s, '🕒 <b>' . ($timesChanged ? 'برنامه‌ی انتشار عوض شد' : 'برنامه‌ی انتشار') . '</b>' . (isset($c['posts_per_day']) ? "\nمقاله در روز: " . fa_digits((string)$c['posts_per_day']) : '')
+        . "\nنوبت‌های امروز: " . implode('، ', array_map(fn($t) => fa_digits(date('H:i', $t)), todays_slots($s))) . $note);
 }
 
 /* ---------------- drafts from GitHub / inbox ---------------- */
