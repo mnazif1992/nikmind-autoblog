@@ -19,7 +19,7 @@ foreach (['fa' => '/therapists/', 'en' => '/en/therapists/'] as $lang => $base) 
         if (preg_match('#"' . preg_quote($slug, '#') . '":\s*(\{"quote".*?\]\})(?=,\s*"[a-z0-9-]+":\s*\{"quote"|\}\s*,?\s*\n)#su', $h, $d)) $det = json_decode($d[1], true) ?: [];
         $url = $SITE . $base . $slug . '/';
         $person = ['@context' => 'https://schema.org', '@type' => 'Person', '@id' => "$url#person", 'name' => $t[1], 'url' => $url,
-            'image' => $SITE . $t[3], 'jobTitle' => $t[2], 'knowsLanguage' => ['fa', 'en'],
+            'image' => $SITE . $t[3], 'jobTitle' => $t[2], 'knowsLanguage' => 'fa',
             'worksFor' => ['@type' => 'MedicalClinic', '@id' => "$SITE/#clinic", 'name' => $lang === 'fa' ? 'کلینیک روانشناسی نیک‌مایند' : 'NikMind Clinic']];
         if (!empty($det['bio'][0])) $person['description'] = (string)$det['bio'][0];
         if (!empty($det['education'])) $person['hasCredential'] = array_map(fn($e) => ['@type' => 'EducationalOccupationalCredential', 'name' => (string)$e], array_slice((array)$det['education'], 0, 4));
