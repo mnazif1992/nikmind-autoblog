@@ -316,5 +316,31 @@
   "lang": "en",
   "url": "/en/blog/moving-abroad-alone/",
   "title": "Moving Abroad Alone: Freedom, Loneliness and Finding Your People"
+ },
+ {
+  "slug": "regret-immigration-australia",
+  "lang": "fa",
+  "url": "/blog/regret-immigration-australia/",
+  "title": "پشیمانی از مهاجرت به استرالیا: وقتی دوری بیشتر از انتظارت سنگینی می‌کند",
+  "image_prompt": "A narrow balcony of a rented unit in an Australian suburb late at night, a small curved Persian tea glass (estekan) on a saucer on a white plastic outdoor table beside a phone lying face down, a folded kilim on the chair, eucalyptus trees silhouetted against a starry sky, warm lamplight from the living room behind a sliding glass door."
+ },
+ {
+  "slug": "regret-immigration-australia",
+  "lang": "en",
+  "url": "/en/blog/regret-immigration-australia/",
+  "title": "Regret Moving to Australia: When the Distance Weighs More Than You Expected"
+ },
+ {
+  "slug": "regret-immigration-usa",
+  "lang": "fa",
+  "url": "/blog/regret-immigration-usa/",
+  "title": "پشیمانی از مهاجرت به آمریکا: وقتی رؤیا با واقعیت فرق دارد",
+  "image_prompt": "A man seen from behind sitting in a parked car in a nearly empty American supermarket parking lot at dusk, paper grocery bags on the passenger seat with a bunch of fresh herbs sticking out, pink and orange sky over low suburban buildings and tall palm trees, parking lot lamps just switching on."
+ },
+ {
+  "slug": "regret-immigration-usa",
+  "lang": "en",
+  "url": "/en/blog/regret-immigration-usa/",
+  "title": "Regret Moving to USA? When the Dream and the Reality Don't Match"
  }
 ]

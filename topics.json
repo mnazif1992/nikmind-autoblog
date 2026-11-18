@@ -307,9 +307,10 @@
   "en_keyword": "regret moving to australia",
   "cluster": "migration",
   "angle": "دوری، تنهایی و پشیمانی در استرالیا",
-  "status": "queued",
+  "status": "drafted",
   "region": "australia",
-  "hub": "/countries/australia/"
+  "hub": "/countries/australia/",
+  "drafted": "2026-11-18"
  },
  {
   "id": "T038",
@@ -318,9 +319,10 @@
   "en_keyword": "regret moving to usa",
   "cluster": "migration",
   "angle": "پشیمانی در آمریکا: انتظار در برابر واقعیت",
-  "status": "queued",
+  "status": "drafted",
   "region": "usa",
-  "hub": "/countries/usa/"
+  "hub": "/countries/usa/",
+  "drafted": "2026-11-18"
  },
  {
   "id": "T030",
