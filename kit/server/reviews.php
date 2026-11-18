@@ -103,7 +103,7 @@ function reviews_rewrite(string $t, float $rating, int $count): array {
     $rating_res = [
         "/(class=\"(?:rev-num|rate)\">\s*)($R)(\s*<|\s)/u",                                                  // <span class="rev-num">4.9</span> · <span class="rate">4.9 <svg
         "/(^|[^0-9۰-۹.٫\/])($R)(\s+(?:در|on)\s+(?:Google(?:\s+Reviews)?|گوگل))/iu",                           // ۴.۹ در Google Reviews · ۴.۹ در گوگل · 4.9 on Google
-        "/(class=\"num\">\s*)($R)(\s*<\/p>\s*<p class=\"lbl\">[^<]{0,20}Google\s+Reviews)/iu",                // big stat: 4.9 / out of 5 on Google Reviews
+        "/(class=\"(?:num|stat-val)\">\s*)($R)(\s*<\/p>\s*<p class=\"(?:lbl|stat-lbl)\">[^<]{0,30}(?:Google|گوگل))/iu",   // big stat: 4.9 / out of 5 on Google Reviews · ۴.۹ / امتیاز در گوگل
         "/(^|[^0-9۰-۹.٫\/])($R)(\s*[·•|]\s*$N\s*(?:\+\s*)?(?:نظر|ریویو|(?:real\s+)?Google\s+reviews?))/iu",   // ۴.۹ · ۱۵۲ نظر در گوگل
     ];
     foreach ($rating_res as $re) $t = (string)preg_replace_callback($re, $rat, $t);
