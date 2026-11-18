@@ -770,5 +770,65 @@
 "therapists/zeinab-nikdanesh/index.html": {
 "orig": "4f0e64d8e40c2c473ab48a50e66f4e2b1601057908d6cf304261e933ca69338f",
 "new": "24e2ab26af3948641aac49bdbd36a7ac7452b9905c79b81a74c967c2d475194a"
+},
+"therapists/sareh-askari/index.html": {
+"orig": "c807465c4c8c7a72f3fc20365b31e17fd58fa29b97aafca6a1a3959bace09eff",
+"new": "792e56d51ceb377dea01664f8c3238fa51e9e436155438ccdfb22ffbe455b157"
+},
+"cities/atlanta/index.html": {
+"orig": "33885e75e00d4c940c43e9e772f59ff75792be04ed2f42ea4fe6cd258622a7b6",
+"new": "242815d95083c35fe55ebbba1ec33b954090e01ece939114fd8887b890510abc"
+},
+"cities/dusseldorf/index.html": {
+"orig": "e193e9cb429c53aef9e1f7f2e8f2da681fd9f8dfd5b799289916c10f39c2aae7",
+"new": "520abf66bdc31383ae2322d822f870959f13f61346c670703317af6a47f1136f"
+},
+"cities/gothenburg/index.html": {
+"orig": "03850ffdeb2cbd9eba2258e9813fc442d0ccd7c1e88784e8213711a4aaee8e5e",
+"new": "365a411e2e7fda64208b12b1aea26ade315363b4bc41682b462e34eeb44dd99f"
+},
+"cities/new-york/index.html": {
+"orig": "c96ac462beb78bcdfe7cf013d383674adb5822a66595f2c150b48d7cb26923ba",
+"new": "35c45b6550f57b30bd49349fb711548ce56e6a74d8e290e4120587d3b6c8b307"
+},
+"cities/san-diego/index.html": {
+"orig": "bf5889d36da269ccc9012f322cca7372e098e1589725e9e7a5b9a784a59c29f1",
+"new": "0de0d326d5a8aa42f1b2609da8338ff8193b58d5a3630a81b52436b8adddece6"
+},
+"cities/san-francisco/index.html": {
+"orig": "7f594e7f92df55a93c9b520f974d0c9e64d16b7330359f106ecdcdb3a30914a2",
+"new": "073cd2940ab90444ea31b8a3ab38a7699f25b6d98d1f43e9cf6292d31748d6d1"
+},
+"cities/seattle/index.html": {
+"orig": "1cf0303684ea07de1d96efa002d8c48f0256efe67548a88264a1f1a94f984aad",
+"new": "2cf53bdd0b597c526d3a60466fbe69d2e7426612495f4b6b74f1953f3826b77c"
+},
+"cities/stockholm/index.html": {
+"orig": "69cf263d75f34851970561ed89a529a9bac99ab76fc42f4e00b366ce0ea4e34f",
+"new": "4c36434fa14617df16c56853b68b917e377c7a451f954dda823a92a8b566c9c8"
+},
+"cities/stuttgart/index.html": {
+"orig": "4bc4612846acee0d58db86b5412215d0c673d9d4e749ea0fe66752185a6c8421",
+"new": "6aaffa8887093bd5703472d948d7c337115ae213d3d269d23686af197604a9f7"
+},
+"en/cities/calgary/index.html": {
+"orig": "96af2753566f8eaad31953df6f4505b9c49d113eaef26a3cf2b3e3a140b9d4d8",
+"new": "b27583717c21bb8ff4143a274462363589644f3559d06e9c9d5fe4e2f6c3c466"
+},
+"en/cities/chicago/index.html": {
+"orig": "7c1045769d4480ff1b6227a233bf143507d8570df5ff7d40ca8923da8cf2c7fe",
+"new": "baf56328ab3576d55201b6b9724b1d49d7ff5c88b8daee525e669472bca89ceb"
+},
+"en/cities/cologne/index.html": {
+"orig": "de96abd4315e6a31c631c61e68f09ae95f88f0f00aaab66006af2cdeafe219ab",
+"new": "5f247ec992148f103383c20c400fb507d415e20223dc49b4264cb7dbe7f92d5f"
+},
+"en/cities/edmonton/index.html": {
+"orig": "cc4c9af654fbae3533b947f7ee48445300f1bbbeefc192f0fba2b804c4e02d8f",
+"new": "2940b1541f6e07e7d52cb4ffd395faecdb257ade6d4ba56b8935d0d31b798c27"
+},
+"en/cities/gothenburg/index.html": {
+"orig": "24048865a30e2c7931df74df2c390cc3b2b29ebfbd69d4dbe0e663b345bcbaa4",
+"new": "0e083989b8ed38409de8879866e80a828a0b771f6defc8b540e2c1743d9a5c31"
 }
 }
