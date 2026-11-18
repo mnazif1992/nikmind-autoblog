@@ -1,346 +1,359 @@
 [
- {
-  "slug": "iranian-psychologist-germany",
-  "lang": "fa",
-  "url": "/blog/iranian-psychologist-germany/",
-  "title": "روانشناس ایرانی در آلمان: از صف انتظار تا جلسه‌ی آنلاین فارسی"
- },
- {
-  "slug": "iranian-psychologist-germany",
-  "lang": "en",
-  "url": "/en/blog/iranian-psychologist-germany/",
-  "title": "Iranian Therapist in Germany: Waiting Lists, Insurance and Therapy in Farsi"
- },
- {
-  "slug": "anxiety-after-immigration",
-  "lang": "fa",
-  "url": "/blog/anxiety-after-immigration/",
-  "title": "اضطراب بعد از مهاجرت: چرا می‌آید و چه کاری از دستت برمی‌آید"
- },
- {
-  "slug": "anxiety-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/anxiety-after-immigration/",
-  "title": "Anxiety After Immigration: Why It Happens and What Helps"
- },
- {
-  "slug": "farsi-therapist-toronto-vancouver",
-  "lang": "fa",
-  "url": "/blog/farsi-therapist-toronto-vancouver/",
-  "title": "روانشناس ایرانی در تورنتو و ونکوور: حضوری یا آنلاین؟"
- },
- {
-  "slug": "farsi-therapist-toronto-vancouver",
-  "lang": "en",
-  "url": "/en/blog/farsi-therapist-toronto-vancouver/",
-  "title": "Farsi Speaking Therapist in Toronto and Vancouver: In Person or Online?"
- },
- {
-  "slug": "regret-after-immigration",
-  "lang": "fa",
-  "url": "/blog/regret-after-immigration/",
-  "title": "پشیمانی از مهاجرت: حس طبیعی یا زنگ خطر؟"
- },
- {
-  "slug": "regret-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/regret-after-immigration/",
-  "title": "Regret After Moving Abroad: What's Normal and When to Worry"
- },
- {
-  "slug": "farsi-therapist-london",
-  "lang": "fa",
-  "url": "/blog/farsi-therapist-london/",
-  "title": "روانشناس ایرانی در لندن: NHS، بخش خصوصی یا جلسه‌ی آنلاین فارسی؟"
- },
- {
-  "slug": "farsi-therapist-london",
-  "lang": "en",
-  "url": "/en/blog/farsi-therapist-london/",
-  "title": "Farsi Speaking Therapist London: NHS, Private Care or Online?"
- },
- {
-  "slug": "culture-shock-after-immigration",
-  "lang": "fa",
-  "url": "/blog/culture-shock-after-immigration/",
-  "title": "شوک فرهنگی بعد از مهاجرت: مراحلش، غافلگیری‌ها و راه سازگاری"
- },
- {
-  "slug": "culture-shock-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/culture-shock-after-immigration/",
-  "title": "Culture Shock After Moving Abroad: Stages, Surprises and How to Adjust"
- },
- {
-  "slug": "marriage-counseling-iranians-abroad",
-  "lang": "fa",
-  "url": "/blog/marriage-counseling-iranians-abroad/",
-  "title": "مشاوره ازدواج برای ایرانیان خارج از کشور: زوج‌درمانی آنلاین به فارسی"
- },
- {
-  "slug": "marriage-counseling-iranians-abroad",
-  "lang": "en",
-  "url": "/en/blog/marriage-counseling-iranians-abroad/",
-  "title": "Farsi Speaking Marriage Counselor: Online Couples Therapy for Iranians Abroad"
- },
- {
-  "slug": "loneliness-after-immigration",
-  "lang": "fa",
-  "url": "/blog/loneliness-after-immigration/",
-  "title": "تنهایی بعد از مهاجرت: چرا سراغت می‌آید و چه کمکی می‌کند"
- },
- {
-  "slug": "loneliness-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/loneliness-after-immigration/",
-  "title": "Loneliness After Moving Abroad: Why It Happens and What Helps"
- },
- {
-  "slug": "homesickness-family-after-immigration",
-  "lang": "fa",
-  "url": "/blog/homesickness-family-after-immigration/",
-  "title": "دلتنگی خانواده بعد از مهاجرت: چرا گاهی شدیدتر می‌شود و چه کمکی می‌کند"
- },
- {
-  "slug": "homesickness-family-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/homesickness-family-after-immigration/",
-  "title": "How to Deal With Homesickness Abroad When You Miss Your Family"
- },
- {
-  "slug": "farsi-therapist-los-angeles-usa",
-  "lang": "fa",
-  "url": "/blog/farsi-therapist-los-angeles-usa/",
-  "title": "روانشناس ایرانی در آمریکا: از لس‌آنجلس تا ایالت‌های دیگر، حضوری یا آنلاین؟"
- },
- {
-  "slug": "farsi-therapist-los-angeles-usa",
-  "lang": "en",
-  "url": "/en/blog/farsi-therapist-los-angeles-usa/",
-  "title": "Farsi Speaking Therapist Los Angeles and Across the US: Your Options"
- },
- {
-  "slug": "bilingual-children",
-  "lang": "fa",
-  "url": "/blog/bilingual-children/",
-  "title": "کودک دوزبانه در خانواده‌ی ایرانی مهاجر: زبان، هویت و نگرانی‌های پدر و مادر"
- },
- {
-  "slug": "bilingual-children",
-  "lang": "en",
-  "url": "/en/blog/bilingual-children/",
-  "title": "Raising Bilingual Children in an Iranian Family Abroad: Language, Identity and Common Worries"
- },
- {
-  "slug": "anxiety-before-immigration",
-  "lang": "fa",
-  "url": "/blog/anxiety-before-immigration/",
-  "title": "اضطراب قبل از مهاجرت: وقتی هنوز نرفته‌ای ولی دلت آرام نمی‌گیرد"
- },
- {
-  "slug": "anxiety-before-immigration",
-  "lang": "en",
-  "url": "/en/blog/anxiety-before-immigration/",
-  "title": "Anxiety Before Moving Abroad: When You Haven't Left Yet but Can't Settle"
- },
- {
-  "slug": "iranian-psychiatrist-germany",
-  "lang": "fa",
-  "url": "/blog/iranian-psychiatrist-germany/",
-  "title": "روانپزشک ایرانی در آلمان: کی لازم است و چه راه‌هایی داری"
- },
- {
-  "slug": "iranian-psychiatrist-germany",
-  "lang": "en",
-  "url": "/en/blog/iranian-psychiatrist-germany/",
-  "title": "Iranian Psychiatrist in Germany: When You Need One and How to Find Care"
- },
- {
-  "slug": "long-distance-relationship-immigration",
-  "lang": "fa",
-  "url": "/blog/long-distance-relationship-immigration/",
-  "title": "رابطه از راه دور بعد از مهاجرت: چطور نگهش داری و کی نگران شوی"
- },
- {
-  "slug": "long-distance-relationship-immigration",
-  "lang": "en",
-  "url": "/en/blog/long-distance-relationship-immigration/",
-  "title": "Long Distance Relationship After Moving Abroad: What Helps and What to Watch For"
- },
- {
-  "slug": "online-therapy-session-how-it-works",
-  "lang": "fa",
-  "url": "/blog/online-therapy-session-how-it-works/",
-  "title": "مشاوره آنلاین برای ایرانیان خارج از کشور: جلسه دقیقاً چطور برگزار می‌شود؟"
- },
- {
-  "slug": "online-therapy-session-how-it-works",
-  "lang": "en",
-  "url": "/en/blog/online-therapy-session-how-it-works/",
-  "title": "Therapy in Farsi Online: How a Session Actually Works"
- },
- {
-  "slug": "regret-immigration-canada",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-canada/",
-  "title": "پشیمانی از مهاجرت به کانادا: قبل از تصمیم به برگشت به این‌ها فکر کن"
- },
- {
-  "slug": "regret-immigration-canada",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-canada/",
-  "title": "Regret Moving to Canada? What to Think About Before You Go Back"
- },
- {
-  "slug": "persian-psychologist-australia",
-  "lang": "fa",
-  "url": "/blog/persian-psychologist-australia/",
-  "title": "روانشناس ایرانی در استرالیا: از GP و مدیکر تا جلسه‌ی آنلاین فارسی"
- },
- {
-  "slug": "persian-psychologist-australia",
-  "lang": "en",
-  "url": "/en/blog/persian-psychologist-australia/",
-  "title": "Persian Psychologist Sydney and Melbourne: Local Care or Online in Farsi?"
- },
- {
-  "slug": "culture-shock-germany",
-  "lang": "fa",
-  "url": "/blog/culture-shock-germany/",
-  "title": "شوک فرهنگی در آلمان: چیزهایی که ایرانی‌ها را غافلگیر می‌کند و اثرش روی روان"
- },
- {
-  "slug": "culture-shock-germany",
-  "lang": "en",
-  "url": "/en/blog/culture-shock-germany/",
-  "title": "Culture Shock in Germany: What Surprises Iranians and How It Affects You"
- },
- {
-  "slug": "immigration-stress",
-  "lang": "fa",
-  "url": "/blog/immigration-stress/",
-  "title": "استرس مهاجرت: از کجا می‌آید و چطور مدیریتش کنی"
- },
- {
-  "slug": "immigration-stress",
-  "lang": "en",
-  "url": "/en/blog/immigration-stress/",
-  "title": "Immigration Stress: Where It Comes From and How to Manage It"
- },
- {
-  "slug": "iranian-therapist-dubai",
-  "lang": "fa",
-  "url": "/blog/iranian-therapist-dubai/",
-  "title": "روانشناس ایرانی در دبی: حضوری، آنلاین و دغدغه‌ی محرمانگی"
- },
- {
-  "slug": "iranian-therapist-dubai",
-  "lang": "en",
-  "url": "/en/blog/iranian-therapist-dubai/",
-  "title": "Iranian Therapist in Dubai: Local Options, Privacy and Therapy in Farsi"
- },
- {
-  "slug": "family-counseling-iranians-abroad",
-  "lang": "fa",
-  "url": "/blog/family-counseling-iranians-abroad/",
-  "title": "مشاوره خانواده برای ایرانیان خارج از کشور: وقتی نقش‌ها در خانه جابه‌جا می‌شوند",
-  "image_prompt": "A kitchen table in a small rented apartment abroad at dusk, a teenage girl seen from behind sitting beside her father and pointing at a stack of folded school forms, a small curved Persian tea glass (estekan) and a round metal teapot beside them, a laptop open on a paused video call with a grandmother, warm lamp light, rain on the window."
- },
- {
-  "slug": "family-counseling-iranians-abroad",
-  "lang": "en",
-  "url": "/en/blog/family-counseling-iranians-abroad/",
-  "title": "Family Therapy in Farsi: Help for Iranian Families Adjusting to Life Abroad"
- },
- {
-  "slug": "returning-to-iran-after-immigration",
-  "lang": "fa",
-  "url": "/blog/returning-to-iran-after-immigration/",
-  "title": "بازگشت به ایران بعد از مهاجرت: وقتی برگشتن هم سخت است",
-  "image_prompt": "Early morning in an old Tehran apartment kitchen, a half-unpacked hard-shell suitcase standing open on a patterned Persian rug in the doorway, a returning traveler seen from behind at the window holding a small curved Persian tea glass (estekan), a brass samovar on the counter, plane trees and hazy mountains outside, soft autumn light."
- },
- {
-  "slug": "returning-to-iran-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/returning-to-iran-after-immigration/",
-  "title": "Reverse Culture Shock Returning Home to Iran: When Going Back Is Hard Too"
- },
- {
-  "slug": "iranian-psychologist-istanbul",
-  "lang": "fa",
-  "url": "/blog/iranian-psychologist-istanbul/",
-  "title": "روانشناس ایرانی در استانبول: گزینه‌های محلی، زبان و جلسه‌ی آنلاین فارسی",
-  "image_prompt": "A small rented flat in Istanbul at dusk, a narrow balcony door open to tiled rooftops and the Bosphorus in the distance, a laptop open on a little wooden table beside a small curved Persian tea glass (estekan) on a saucer and a pair of wired earphones, a half-unpacked suitcase in the corner, a folded kilim on the chair, warm lamp light."
- },
- {
-  "slug": "iranian-psychologist-istanbul",
-  "lang": "en",
-  "url": "/en/blog/iranian-psychologist-istanbul/",
-  "title": "Iranian Therapist Istanbul: Local Options, Language and Online Therapy in Farsi"
- },
- {
-  "slug": "regret-immigration-germany",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-germany/",
-  "title": "پشیمانی از مهاجرت به آلمان: از کجا می‌آید و با آن چه کنی",
-  "image_prompt": "A narrow balcony of a rented apartment in a German city on a grey November afternoon, a woman seen from behind wrapped in a wool blanket holding a small curved Persian tea glass (estekan), looking out at rows of pale apartment blocks and bare linden trees, a flattened cardboard moving box leaning by the balcony door, a small potted geranium on the railing, soft fading daylight."
- },
- {
-  "slug": "regret-immigration-germany",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-germany/",
-  "title": "Regret Moving to Germany? Where It Comes From and What Helps"
- },
- {
-  "slug": "farsi-speaking-psychiatrist-online",
-  "lang": "fa",
-  "url": "/blog/farsi-speaking-psychiatrist-online/",
-  "title": "روانپزشک آنلاین فارسی‌زبان: کی لازم است و دارو از راه دور چطور پیش می‌رود",
-  "image_prompt": "Late afternoon in a small rented apartment abroad, a man seen from behind at a wooden desk facing an open laptop ready for a video consultation, a closed paper notebook and a pen beside it, a small curved Persian tea glass (estekan) on a saucer, a radiator under a tall window, soft autumn light."
- },
- {
-  "slug": "farsi-speaking-psychiatrist-online",
-  "lang": "en",
-  "url": "/en/blog/farsi-speaking-psychiatrist-online/",
-  "title": "Farsi Speaking Psychiatrist Online: When You Need One and How Medication Works"
- },
- {
-  "slug": "moving-abroad-alone",
-  "lang": "fa",
-  "url": "/blog/moving-abroad-alone/",
-  "title": "مهاجرت به تنهایی: بین آزادی و تنهایی، چطور آدم‌هایت را پیدا کنی",
-  "image_prompt": "A nearly empty studio apartment abroad on a bright late morning, a single hard-shell suitcase standing beside a mattress on the wooden floor, a rolled Persian kilim leaning against the wall, a young woman seen from behind hanging a small framed old family photo on a bare white wall, a potted basil plant on the windowsill."
- },
- {
-  "slug": "moving-abroad-alone",
-  "lang": "en",
-  "url": "/en/blog/moving-abroad-alone/",
-  "title": "Moving Abroad Alone: Freedom, Loneliness and Finding Your People"
- },
- {
-  "slug": "regret-immigration-australia",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-australia/",
-  "title": "پشیمانی از مهاجرت به استرالیا: وقتی دوری بیشتر از انتظارت سنگینی می‌کند",
-  "image_prompt": "A narrow balcony of a rented unit in an Australian suburb late at night, a small curved Persian tea glass (estekan) on a saucer on a white plastic outdoor table beside a phone lying face down, a folded kilim on the chair, eucalyptus trees silhouetted against a starry sky, warm lamplight from the living room behind a sliding glass door."
- },
- {
-  "slug": "regret-immigration-australia",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-australia/",
-  "title": "Regret Moving to Australia: When the Distance Weighs More Than You Expected"
- },
- {
-  "slug": "regret-immigration-usa",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-usa/",
-  "title": "پشیمانی از مهاجرت به آمریکا: وقتی رؤیا با واقعیت فرق دارد",
-  "image_prompt": "A man seen from behind sitting in a parked car in a nearly empty American supermarket parking lot at dusk, paper grocery bags on the passenger seat with a bunch of fresh herbs sticking out, pink and orange sky over low suburban buildings and tall palm trees, parking lot lamps just switching on."
- },
- {
-  "slug": "regret-immigration-usa",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-usa/",
-  "title": "Regret Moving to USA? When the Dream and the Reality Don't Match"
- }
+  {
+    "slug": "iranian-psychologist-germany",
+    "lang": "fa",
+    "url": "/blog/iranian-psychologist-germany/",
+    "title": "روانشناس ایرانی در آلمان: از صف انتظار تا جلسه‌ی آنلاین فارسی"
+  },
+  {
+    "slug": "iranian-psychologist-germany",
+    "lang": "en",
+    "url": "/en/blog/iranian-psychologist-germany/",
+    "title": "Iranian Therapist in Germany: Waiting Lists, Insurance and Therapy in Farsi"
+  },
+  {
+    "slug": "anxiety-after-immigration",
+    "lang": "fa",
+    "url": "/blog/anxiety-after-immigration/",
+    "title": "اضطراب بعد از مهاجرت: چرا می‌آید و چه کاری از دستت برمی‌آید"
+  },
+  {
+    "slug": "anxiety-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/anxiety-after-immigration/",
+    "title": "Anxiety After Immigration: Why It Happens and What Helps"
+  },
+  {
+    "slug": "farsi-therapist-toronto-vancouver",
+    "lang": "fa",
+    "url": "/blog/farsi-therapist-toronto-vancouver/",
+    "title": "روانشناس ایرانی در تورنتو و ونکوور: حضوری یا آنلاین؟"
+  },
+  {
+    "slug": "farsi-therapist-toronto-vancouver",
+    "lang": "en",
+    "url": "/en/blog/farsi-therapist-toronto-vancouver/",
+    "title": "Farsi Speaking Therapist in Toronto and Vancouver: In Person or Online?"
+  },
+  {
+    "slug": "regret-after-immigration",
+    "lang": "fa",
+    "url": "/blog/regret-after-immigration/",
+    "title": "پشیمانی از مهاجرت: حس طبیعی یا زنگ خطر؟"
+  },
+  {
+    "slug": "regret-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/regret-after-immigration/",
+    "title": "Regret After Moving Abroad: What's Normal and When to Worry"
+  },
+  {
+    "slug": "farsi-therapist-london",
+    "lang": "fa",
+    "url": "/blog/farsi-therapist-london/",
+    "title": "روانشناس ایرانی در لندن: NHS، بخش خصوصی یا جلسه‌ی آنلاین فارسی؟"
+  },
+  {
+    "slug": "farsi-therapist-london",
+    "lang": "en",
+    "url": "/en/blog/farsi-therapist-london/",
+    "title": "Farsi Speaking Therapist London: NHS, Private Care or Online?"
+  },
+  {
+    "slug": "culture-shock-after-immigration",
+    "lang": "fa",
+    "url": "/blog/culture-shock-after-immigration/",
+    "title": "شوک فرهنگی بعد از مهاجرت: مراحلش، غافلگیری‌ها و راه سازگاری"
+  },
+  {
+    "slug": "culture-shock-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/culture-shock-after-immigration/",
+    "title": "Culture Shock After Moving Abroad: Stages, Surprises and How to Adjust"
+  },
+  {
+    "slug": "marriage-counseling-iranians-abroad",
+    "lang": "fa",
+    "url": "/blog/marriage-counseling-iranians-abroad/",
+    "title": "مشاوره ازدواج برای ایرانیان خارج از کشور: زوج‌درمانی آنلاین به فارسی"
+  },
+  {
+    "slug": "marriage-counseling-iranians-abroad",
+    "lang": "en",
+    "url": "/en/blog/marriage-counseling-iranians-abroad/",
+    "title": "Farsi Speaking Marriage Counselor: Online Couples Therapy for Iranians Abroad"
+  },
+  {
+    "slug": "loneliness-after-immigration",
+    "lang": "fa",
+    "url": "/blog/loneliness-after-immigration/",
+    "title": "تنهایی بعد از مهاجرت: چرا سراغت می‌آید و چه کمکی می‌کند"
+  },
+  {
+    "slug": "loneliness-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/loneliness-after-immigration/",
+    "title": "Loneliness After Moving Abroad: Why It Happens and What Helps"
+  },
+  {
+    "slug": "homesickness-family-after-immigration",
+    "lang": "fa",
+    "url": "/blog/homesickness-family-after-immigration/",
+    "title": "دلتنگی خانواده بعد از مهاجرت: چرا گاهی شدیدتر می‌شود و چه کمکی می‌کند"
+  },
+  {
+    "slug": "homesickness-family-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/homesickness-family-after-immigration/",
+    "title": "How to Deal With Homesickness Abroad When You Miss Your Family"
+  },
+  {
+    "slug": "farsi-therapist-los-angeles-usa",
+    "lang": "fa",
+    "url": "/blog/farsi-therapist-los-angeles-usa/",
+    "title": "روانشناس ایرانی در آمریکا: از لس‌آنجلس تا ایالت‌های دیگر، حضوری یا آنلاین؟"
+  },
+  {
+    "slug": "farsi-therapist-los-angeles-usa",
+    "lang": "en",
+    "url": "/en/blog/farsi-therapist-los-angeles-usa/",
+    "title": "Farsi Speaking Therapist Los Angeles and Across the US: Your Options"
+  },
+  {
+    "slug": "bilingual-children",
+    "lang": "fa",
+    "url": "/blog/bilingual-children/",
+    "title": "کودک دوزبانه در خانواده‌ی ایرانی مهاجر: زبان، هویت و نگرانی‌های پدر و مادر"
+  },
+  {
+    "slug": "bilingual-children",
+    "lang": "en",
+    "url": "/en/blog/bilingual-children/",
+    "title": "Raising Bilingual Children in an Iranian Family Abroad: Language, Identity and Common Worries"
+  },
+  {
+    "slug": "anxiety-before-immigration",
+    "lang": "fa",
+    "url": "/blog/anxiety-before-immigration/",
+    "title": "اضطراب قبل از مهاجرت: وقتی هنوز نرفته‌ای ولی دلت آرام نمی‌گیرد"
+  },
+  {
+    "slug": "anxiety-before-immigration",
+    "lang": "en",
+    "url": "/en/blog/anxiety-before-immigration/",
+    "title": "Anxiety Before Moving Abroad: When You Haven't Left Yet but Can't Settle"
+  },
+  {
+    "slug": "iranian-psychiatrist-germany",
+    "lang": "fa",
+    "url": "/blog/iranian-psychiatrist-germany/",
+    "title": "روانپزشک ایرانی در آلمان: کی لازم است و چه راه‌هایی داری"
+  },
+  {
+    "slug": "iranian-psychiatrist-germany",
+    "lang": "en",
+    "url": "/en/blog/iranian-psychiatrist-germany/",
+    "title": "Iranian Psychiatrist in Germany: When You Need One and How to Find Care"
+  },
+  {
+    "slug": "long-distance-relationship-immigration",
+    "lang": "fa",
+    "url": "/blog/long-distance-relationship-immigration/",
+    "title": "رابطه از راه دور بعد از مهاجرت: چطور نگهش داری و کی نگران شوی"
+  },
+  {
+    "slug": "long-distance-relationship-immigration",
+    "lang": "en",
+    "url": "/en/blog/long-distance-relationship-immigration/",
+    "title": "Long Distance Relationship After Moving Abroad: What Helps and What to Watch For"
+  },
+  {
+    "slug": "online-therapy-session-how-it-works",
+    "lang": "fa",
+    "url": "/blog/online-therapy-session-how-it-works/",
+    "title": "مشاوره آنلاین برای ایرانیان خارج از کشور: جلسه دقیقاً چطور برگزار می‌شود؟"
+  },
+  {
+    "slug": "online-therapy-session-how-it-works",
+    "lang": "en",
+    "url": "/en/blog/online-therapy-session-how-it-works/",
+    "title": "Therapy in Farsi Online: How a Session Actually Works"
+  },
+  {
+    "slug": "regret-immigration-canada",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-canada/",
+    "title": "پشیمانی از مهاجرت به کانادا: قبل از تصمیم به برگشت به این‌ها فکر کن"
+  },
+  {
+    "slug": "regret-immigration-canada",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-canada/",
+    "title": "Regret Moving to Canada? What to Think About Before You Go Back"
+  },
+  {
+    "slug": "persian-psychologist-australia",
+    "lang": "fa",
+    "url": "/blog/persian-psychologist-australia/",
+    "title": "روانشناس ایرانی در استرالیا: از GP و مدیکر تا جلسه‌ی آنلاین فارسی"
+  },
+  {
+    "slug": "persian-psychologist-australia",
+    "lang": "en",
+    "url": "/en/blog/persian-psychologist-australia/",
+    "title": "Persian Psychologist Sydney and Melbourne: Local Care or Online in Farsi?"
+  },
+  {
+    "slug": "culture-shock-germany",
+    "lang": "fa",
+    "url": "/blog/culture-shock-germany/",
+    "title": "شوک فرهنگی در آلمان: چیزهایی که ایرانی‌ها را غافلگیر می‌کند و اثرش روی روان"
+  },
+  {
+    "slug": "culture-shock-germany",
+    "lang": "en",
+    "url": "/en/blog/culture-shock-germany/",
+    "title": "Culture Shock in Germany: What Surprises Iranians and How It Affects You"
+  },
+  {
+    "slug": "immigration-stress",
+    "lang": "fa",
+    "url": "/blog/immigration-stress/",
+    "title": "استرس مهاجرت: از کجا می‌آید و چطور مدیریتش کنی"
+  },
+  {
+    "slug": "immigration-stress",
+    "lang": "en",
+    "url": "/en/blog/immigration-stress/",
+    "title": "Immigration Stress: Where It Comes From and How to Manage It"
+  },
+  {
+    "slug": "iranian-therapist-dubai",
+    "lang": "fa",
+    "url": "/blog/iranian-therapist-dubai/",
+    "title": "روانشناس ایرانی در دبی: حضوری، آنلاین و دغدغه‌ی محرمانگی"
+  },
+  {
+    "slug": "iranian-therapist-dubai",
+    "lang": "en",
+    "url": "/en/blog/iranian-therapist-dubai/",
+    "title": "Iranian Therapist in Dubai: Local Options, Privacy and Therapy in Farsi"
+  },
+  {
+    "slug": "family-counseling-iranians-abroad",
+    "lang": "fa",
+    "url": "/blog/family-counseling-iranians-abroad/",
+    "title": "مشاوره خانواده برای ایرانیان خارج از کشور: وقتی نقش‌ها در خانه جابه‌جا می‌شوند",
+    "image_prompt": "A kitchen table in a small rented apartment abroad at dusk, a teenage girl seen from behind sitting beside her father and pointing at a stack of folded school forms, a small curved Persian tea glass (estekan) and a round metal teapot beside them, a laptop open on a paused video call with a grandmother, warm lamp light, rain on the window."
+  },
+  {
+    "slug": "family-counseling-iranians-abroad",
+    "lang": "en",
+    "url": "/en/blog/family-counseling-iranians-abroad/",
+    "title": "Family Therapy in Farsi: Help for Iranian Families Adjusting to Life Abroad"
+  },
+  {
+    "slug": "returning-to-iran-after-immigration",
+    "lang": "fa",
+    "url": "/blog/returning-to-iran-after-immigration/",
+    "title": "بازگشت به ایران بعد از مهاجرت: وقتی برگشتن هم سخت است",
+    "image_prompt": "Early morning in an old Tehran apartment kitchen, a half-unpacked hard-shell suitcase standing open on a patterned Persian rug in the doorway, a returning traveler seen from behind at the window holding a small curved Persian tea glass (estekan), a brass samovar on the counter, plane trees and hazy mountains outside, soft autumn light."
+  },
+  {
+    "slug": "returning-to-iran-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/returning-to-iran-after-immigration/",
+    "title": "Reverse Culture Shock Returning Home to Iran: When Going Back Is Hard Too"
+  },
+  {
+    "slug": "iranian-psychologist-istanbul",
+    "lang": "fa",
+    "url": "/blog/iranian-psychologist-istanbul/",
+    "title": "روانشناس ایرانی در استانبول: گزینه‌های محلی، زبان و جلسه‌ی آنلاین فارسی",
+    "image_prompt": "A small rented flat in Istanbul at dusk, a narrow balcony door open to tiled rooftops and the Bosphorus in the distance, a laptop open on a little wooden table beside a small curved Persian tea glass (estekan) on a saucer and a pair of wired earphones, a half-unpacked suitcase in the corner, a folded kilim on the chair, warm lamp light."
+  },
+  {
+    "slug": "iranian-psychologist-istanbul",
+    "lang": "en",
+    "url": "/en/blog/iranian-psychologist-istanbul/",
+    "title": "Iranian Therapist Istanbul: Local Options, Language and Online Therapy in Farsi"
+  },
+  {
+    "slug": "regret-immigration-germany",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-germany/",
+    "title": "پشیمانی از مهاجرت به آلمان: از کجا می‌آید و با آن چه کنی",
+    "image_prompt": "A narrow balcony of a rented apartment in a German city on a grey November afternoon, a woman seen from behind wrapped in a wool blanket holding a small curved Persian tea glass (estekan), looking out at rows of pale apartment blocks and bare linden trees, a flattened cardboard moving box leaning by the balcony door, a small potted geranium on the railing, soft fading daylight."
+  },
+  {
+    "slug": "regret-immigration-germany",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-germany/",
+    "title": "Regret Moving to Germany? Where It Comes From and What Helps"
+  },
+  {
+    "slug": "farsi-speaking-psychiatrist-online",
+    "lang": "fa",
+    "url": "/blog/farsi-speaking-psychiatrist-online/",
+    "title": "روانپزشک آنلاین فارسی‌زبان: کی لازم است و دارو از راه دور چطور پیش می‌رود",
+    "image_prompt": "Late afternoon in a small rented apartment abroad, a man seen from behind at a wooden desk facing an open laptop ready for a video consultation, a closed paper notebook and a pen beside it, a small curved Persian tea glass (estekan) on a saucer, a radiator under a tall window, soft autumn light."
+  },
+  {
+    "slug": "farsi-speaking-psychiatrist-online",
+    "lang": "en",
+    "url": "/en/blog/farsi-speaking-psychiatrist-online/",
+    "title": "Farsi Speaking Psychiatrist Online: When You Need One and How Medication Works"
+  },
+  {
+    "slug": "moving-abroad-alone",
+    "lang": "fa",
+    "url": "/blog/moving-abroad-alone/",
+    "title": "مهاجرت به تنهایی: بین آزادی و تنهایی، چطور آدم‌هایت را پیدا کنی",
+    "image_prompt": "A nearly empty studio apartment abroad on a bright late morning, a single hard-shell suitcase standing beside a mattress on the wooden floor, a rolled Persian kilim leaning against the wall, a young woman seen from behind hanging a small framed old family photo on a bare white wall, a potted basil plant on the windowsill."
+  },
+  {
+    "slug": "moving-abroad-alone",
+    "lang": "en",
+    "url": "/en/blog/moving-abroad-alone/",
+    "title": "Moving Abroad Alone: Freedom, Loneliness and Finding Your People"
+  },
+  {
+    "slug": "regret-immigration-australia",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-australia/",
+    "title": "پشیمانی از مهاجرت به استرالیا: وقتی دوری بیشتر از انتظارت سنگینی می‌کند",
+    "image_prompt": "A narrow balcony of a rented unit in an Australian suburb late at night, a small curved Persian tea glass (estekan) on a saucer on a white plastic outdoor table beside a phone lying face down, a folded kilim on the chair, eucalyptus trees silhouetted against a starry sky, warm lamplight from the living room behind a sliding glass door."
+  },
+  {
+    "slug": "regret-immigration-australia",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-australia/",
+    "title": "Regret Moving to Australia: When the Distance Weighs More Than You Expected"
+  },
+  {
+    "slug": "regret-immigration-usa",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-usa/",
+    "title": "پشیمانی از مهاجرت به آمریکا: وقتی رؤیا با واقعیت فرق دارد",
+    "image_prompt": "A man seen from behind sitting in a parked car in a nearly empty American supermarket parking lot at dusk, paper grocery bags on the passenger seat with a bunch of fresh herbs sticking out, pink and orange sky over low suburban buildings and tall palm trees, parking lot lamps just switching on."
+  },
+  {
+    "slug": "regret-immigration-usa",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-usa/",
+    "title": "Regret Moving to USA? When the Dream and the Reality Don't Match"
+  },
+  {
+    "slug": "culture-shock-canada",
+    "lang": "fa",
+    "url": "/blog/culture-shock-canada/",
+    "title": "شوک فرهنگی در کانادا: از ادب و تعارف تا زمستان طولانی و فرهنگ کار",
+    "image_prompt": "A pair of wet snow boots on a black rubber boot tray beside the front door of a small rented apartment in Canada, a heavy winter parka on a wall hook, a small curved Persian tea glass (estekan) steaming on a wooden shoe bench, snowy street and bare maple trees through the door's window, low late-afternoon winter light."
+  },
+  {
+    "slug": "culture-shock-canada",
+    "lang": "en",
+    "url": "/en/blog/culture-shock-canada/",
+    "title": "Culture Shock in Canada: Politeness, Long Winters and Work Culture"
+  }
 ]
