@@ -1,6 +1,6 @@
 # Daily task — write today's articles (fa + en) for iranian.nikmindclinic.com
 
-The site gets **6 articles a day**, written in **3 runs of 2** (around 06:47, 11:47 and 16:47 Tehran time). The same scheduled task fires three times; each run writes the next 2.
+The site gets **5 articles a day**, written in **3 runs** (around 06:47, 11:47 and 16:47 Tehran time): 2, 2, then 1. The same scheduled task fires three times; each run writes up to 2.
 
 Run every day. The person is not watching; do not ask questions. Decide, do it, and keep the final message short.
 
@@ -12,8 +12,8 @@ Run every day. The person is not watching; do not ask questions. Decide, do it, 
    - `site/articles.json`
 3. Today's date is the current date in Asia/Tehran.
    - Count today's files in `drafts/` (`drafts/<today>-*.json`) that do **not** have `"on_demand": true`. Call it `done`.
-   - If `done` is 6 or more, stop. Today is already done.
-   - Otherwise this run writes `min(2, 6 - done)` articles.
+   - If `done` is 5 or more, stop. Today is already done.
+   - Otherwise this run writes `min(2, 5 - done)` articles.
 4. Pick the next topics with `"status": "queued"`, in file order. The owner reorders, adds and removes topics from the Telegram panel: file order is the priority, and topics with `"status": "removed"` must never be written.
    - The queue is built around the site's location pages: most topics have a `hub` (a city or country page such as `/cities/perth/` or `/countries/usa/`) and a `region` (`australia`, `usa` or `other`). Australia and the USA come first; the file order already mixes them.
    - Do not write two articles with the same `hub` on the same day (check today's drafts too). If the next topic's `hub` is already used today, take the next queued one and leave the skipped topic where it is.
@@ -46,7 +46,7 @@ Run every day. The person is not watching; do not ask questions. Decide, do it, 
 
 Final message: one line per article (slug and Persian title), or the reason nothing was written.
 
-The website publishes approved articles at the times in `site/schedule.json` (6 a day). Do not edit that file.
+The website publishes approved articles at the times in `site/schedule.json` (5 a day). Do not edit that file.
 
 ## On-demand mode (the "✍️ new article" button in Telegram)
 
@@ -55,7 +55,7 @@ A second scheduled task runs every hour.
 1. Attach and clone the repo as in step 1 (`git clone --depth 1`), then read `requests.json` at the repo root. It looks like `{"pending": 1, "updated": "..."}`.
    - If the file is missing, or `pending` is 0 or missing, stop immediately and write nothing.
 2. If `pending` is greater than 0, write `min(pending, 2)` articles following steps 1–9 above, with these differences:
-   - Ignore the daily count in step 3 (on-demand drafts do not count toward the 6).
+   - Ignore the daily count in step 3 (on-demand drafts do not count toward the 5).
    - Take the next queued topics, skipping any that already have a draft file.
    - Add `"on_demand": true` to the top level of each draft JSON.
    - Commit message: `drafts (on demand): <date> <slugs>`.
