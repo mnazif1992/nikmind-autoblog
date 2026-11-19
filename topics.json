@@ -402,9 +402,10 @@
   "en_keyword": "marriage counseling germany farsi",
   "cluster": "online",
   "angle": "زوج‌های ایرانی آلمان و مشاوره‌ی ازدواج به فارسی",
-  "status": "queued",
+  "status": "drafted",
   "region": "other",
-  "hub": "/countries/germany/"
+  "hub": "/countries/germany/",
+  "drafted": "2026-11-19"
  },
  {
   "id": "T063",
