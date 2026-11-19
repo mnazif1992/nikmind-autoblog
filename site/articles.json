@@ -355,5 +355,31 @@
   "lang": "en",
   "url": "/en/blog/culture-shock-canada/",
   "title": "Culture Shock in Canada: Politeness, Long Winters and Work Culture"
+ },
+ {
+  "slug": "loneliness-after-moving-to-perth",
+  "lang": "fa",
+  "url": "/blog/loneliness-after-moving-to-perth/",
+  "title": "تنهایی بعد از مهاجرت به پرت استرالیا: چطور آدم‌های خودت را پیدا کنی",
+  "image_prompt": "Early Saturday morning on a nearly empty white-sand beach near Perth, a lone person seen from far behind sitting on a folded beach towel, a small thermos and a curved Persian tea glass (estekan) on the sand beside them, a parked hatchback at the edge of the dunes, calm turquoise Indian Ocean and soft golden low sunlight."
+ },
+ {
+  "slug": "loneliness-after-moving-to-perth",
+  "lang": "en",
+  "url": "/en/blog/loneliness-after-moving-to-perth/",
+  "title": "Loneliness After Moving to Perth: How to Build Your People in a Quiet City"
+ },
+ {
+  "slug": "culture-shock-usa",
+  "lang": "fa",
+  "url": "/blog/culture-shock-usa/",
+  "title": "شوک فرهنگی در آمریکا: چیزهایی که ایرانی‌ها را غافلگیر می‌کند و راه کنار آمدن",
+  "image_prompt": "A narrow kitchen counter in a rented apartment in an American suburb in late afternoon, an oversized plain paper coffee cup with a plastic lid beside a small curved Persian tea glass (estekan) on a saucer, a car key on the counter, warm sunlight slanting through horizontal blinds, a wide multi-lane road and parked pickup trucks blurred outside the window."
+ },
+ {
+  "slug": "culture-shock-usa",
+  "lang": "en",
+  "url": "/en/blog/culture-shock-usa/",
+  "title": "Culture Shock in America: What Surprises Iranians and How to Adjust"
  }
 ]

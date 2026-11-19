@@ -345,7 +345,8 @@
   "angle": "پرت استرالیا شهری آرام و دور از بقیه‌ی کشور است: جمع کوچک‌تر ایرانی، فاصله‌های طولانی و زندگی با ماشین. چطور در چنین شهری حلقه‌ی آدم‌های خودت را بسازی.",
   "hub": "/cities/perth/",
   "region": "australia",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-19"
  },
  {
   "id": "T037",
@@ -354,9 +355,10 @@
   "en_keyword": "culture shock in america",
   "cluster": "migration",
   "angle": "تجربه‌ی ایرانی‌ها از فرهنگ آمریکا و اثرش روی روان",
-  "status": "queued",
+  "status": "drafted",
   "region": "usa",
-  "hub": "/countries/usa/"
+  "hub": "/countries/usa/",
+  "drafted": "2026-11-19"
  },
  {
   "id": "T035",
