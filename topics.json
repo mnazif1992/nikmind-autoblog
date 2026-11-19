@@ -367,9 +367,10 @@
   "en_keyword": "iranian psychiatrist toronto",
   "cluster": "country",
   "angle": "ایرانیان کانادا و دسترسی به روانپزشک فارسی‌زبان",
-  "status": "queued",
+  "status": "drafted",
   "region": "other",
-  "hub": "/cities/toronto/"
+  "hub": "/cities/toronto/",
+  "drafted": "2026-11-19"
  },
  {
   "id": "T062",
@@ -391,7 +392,8 @@
   "angle": "زوج ایرانی در جامعه‌ی بزرگ و نزدیک ایرانی لس‌آنجلس: نگاه و دخالت خانواده‌ها، فاصله‌ی نسل‌ها و ترس از حرف مردم. کی سراغ زوج‌درمانی برویم.",
   "hub": "/cities/los-angeles/",
   "region": "usa",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-19"
  },
  {
   "id": "T047",
