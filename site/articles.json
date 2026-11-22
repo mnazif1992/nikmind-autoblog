@@ -563,5 +563,31 @@
   "lang": "en",
   "url": "/en/blog/international-student-stress-melbourne/",
   "title": "International Student Stress Melbourne: Burnout Signs and Where to Get Help"
+ },
+ {
+  "slug": "nhs-therapy-waiting-list",
+  "lang": "fa",
+  "url": "/blog/nhs-therapy-waiting-list/",
+  "title": "صف انتظار NHS برای روان‌درمانی: تا رسیدن نوبت با خودت چه کنی؟",
+  "image_prompt": "A grey winter morning in a small rented flat in England, a mug of tea and a small curved Persian tea glass (estekan) on a wooden kitchen table beside a folded paper letter in a plain white envelope and a phone lying face down, a red-brick terraced street visible through a rain-dotted sash window, soft diffused daylight."
+ },
+ {
+  "slug": "nhs-therapy-waiting-list",
+  "lang": "en",
+  "url": "/en/blog/nhs-therapy-waiting-list/",
+  "title": "NHS Therapy Waiting List: What to Do While You Wait for Your Turn"
+ },
+ {
+  "slug": "tech-layoff-visa-stress",
+  "lang": "fa",
+  "url": "/blog/tech-layoff-visa-stress/",
+  "title": "استرس اخراج و ویزای کاری در آمریکا: هفته‌های اول را چطور بگذرانی",
+  "image_prompt": "Early morning in a small San Francisco apartment, a closed laptop and a cardboard box holding a desk plant, a coffee mug and a folded hoodie on a wooden table, a small curved Persian tea glass (estekan) on a saucer beside it, fog drifting past pastel Victorian houses outside the bay window, soft grey-gold light."
+ },
+ {
+  "slug": "tech-layoff-visa-stress",
+  "lang": "en",
+  "url": "/en/blog/tech-layoff-visa-stress/",
+  "title": "H1B Layoff Stress: Getting Through the First Weeks After Losing Your Job"
  }
 ]
