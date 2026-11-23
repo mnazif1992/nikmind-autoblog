@@ -641,5 +641,31 @@
   "lang": "en",
   "url": "/en/blog/winter-blues-melbourne/",
   "title": "Winter Blues Melbourne: Getting Through the Grey Months"
+ },
+ {
+  "slug": "imposter-syndrome-international-students",
+  "lang": "fa",
+  "url": "/blog/imposter-syndrome-international-students/",
+  "title": "سندرم ایمپاستر در دانشجویان ایرانی: وقتی سر کلاس‌های بوستون حس می‌کنی اشتباهی آمده‌ای",
+  "image_prompt": "A seminar room in an old red-brick university building in Boston on a snowy winter afternoon, seen from the back row: a young woman in a dark wool coat sits slightly apart from a group gathered around a long oak table, her hands resting on a closed notebook, snow drifting past tall arched windows."
+ },
+ {
+  "slug": "imposter-syndrome-international-students",
+  "lang": "en",
+  "url": "/en/blog/imposter-syndrome-international-students/",
+  "title": "Imposter Syndrome International Students Feel in Boston's Top Universities"
+ },
+ {
+  "slug": "stress-learning-german",
+  "lang": "fa",
+  "url": "/blog/stress-learning-german/",
+  "title": "فشار یادگیری زبان آلمانی: وقتی در زبان تازه حس می‌کنی دوباره بچه شده‌ای",
+  "image_prompt": "A small kitchen table in a rented German apartment on a dim autumn evening, a stack of vocabulary flashcards turned face down and held with a rubber band, a closed grammar workbook, reading glasses and a mug of tea, a man seen from behind resting his chin on one hand, rain on the window above an old white radiator."
+ },
+ {
+  "slug": "stress-learning-german",
+  "lang": "en",
+  "url": "/en/blog/stress-learning-german/",
+  "title": "Stress Learning German? Why It Wears You Out and How to Keep Going"
  }
 ]
