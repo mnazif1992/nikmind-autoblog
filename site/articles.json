@@ -680,5 +680,31 @@
   "lang": "en",
   "url": "/en/blog/adjusting-to-life-in-brisbane/",
   "title": "Adjusting to Life in Brisbane: What the First Year Really Feels Like"
+ },
+ {
+  "slug": "phd-student-mental-health-usa",
+  "lang": "fa",
+  "url": "/blog/phd-student-mental-health-usa/",
+  "title": "سلامت روان دانشجویان دکتری ایرانی در آمریکا: از استاد راهنما تا سال‌ها دوری از خانه",
+  "image_prompt": "Late night in an empty university research lab in the United States, a young man seen from behind at a lab bench, a half-finished paper cup of coffee beside a small curved Persian tea glass on a saucer, dark campus lawn and lamp posts outside the tall window, cool fluorescent light mixed with a warm desk lamp."
+ },
+ {
+  "slug": "phd-student-mental-health-usa",
+  "lang": "en",
+  "url": "/en/blog/phd-student-mental-health-usa/",
+  "title": "PhD Student Mental Health USA: Advisors, Funding and Years Away From Home"
+ },
+ {
+  "slug": "housing-stress-netherlands",
+  "lang": "fa",
+  "url": "/blog/housing-stress-netherlands/",
+  "title": "استرس پیدا کردن خانه در هلند: وقتی اتاق‌های موقت زندگی‌ات را معلق نگه می‌دارند",
+  "image_prompt": "A steep narrow wooden staircase landing inside an old Dutch canal house on a drizzly grey afternoon, a hard-shell suitcase and a rolled-up small Persian rug leaning against the wall, two taped cardboard boxes stacked beside them, soft daylight from a tall window looking out on wet bicycles parked along a canal."
+ },
+ {
+  "slug": "housing-stress-netherlands",
+  "lang": "en",
+  "url": "/en/blog/housing-stress-netherlands/",
+  "title": "Housing Stress Netherlands: When Temporary Rooms Keep Your Life on Hold"
  }
 ]

@@ -645,7 +645,8 @@
   "angle": "رابطه با استاد راهنما، فاند، ویزای تک‌ورودی و سال‌ها دوری از خانه. نشانه‌های فرسودگی و جاهایی که می‌شود کمک گرفت.",
   "hub": "/countries/usa/",
   "region": "usa",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-24"
  },
  {
   "id": "T099",
@@ -656,7 +657,8 @@
   "angle": "بازار تنگ اجاره، اتاق‌های موقت و اسباب‌کشی‌های پشت سر هم. اثر بی‌خانمانی موقت روی روان و کارهایی که از دستت برمی‌آید.",
   "hub": "/countries/netherlands/",
   "region": "other",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-24"
  },
  {
   "id": "T070",
@@ -898,6 +900,336 @@
   "angle": "اختلاف ساعت با تهران، پیدا کردن ساعت مناسب جلسه، حریم خصوصی در خانه و اینکه کی جلسه‌ی آنلاین کافی نیست و درمانگر محلی لازم است.",
   "hub": "/countries/usa/",
   "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T107",
+  "slug": "living-far-from-family-perth",
+  "fa_keyword": "دوری از خانواده در پرت استرالیا",
+  "en_keyword": "living in perth far from family",
+  "cluster": "family",
+  "angle": "پرواز طولانی تا ایران و حس دور بودن از همه‌جا. وقتی خبر بیماری یا مراسم می‌رسد و رسیدن روزها طول می‌کشد. کنار آمدن با این فاصله بدون بریدن از خانه.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T108",
+  "slug": "iranian-doctors-residency-stress-usa",
+  "fa_keyword": "فشار رزیدنتی پزشکان ایرانی در آمریکا",
+  "en_keyword": "iranian doctors residency stress usa",
+  "cluster": "migration",
+  "angle": "امتحان‌ها، مچ نشدن، شیفت‌های طولانی و شروع دوباره بعد از سال‌ها طبابت در ایران. نشانه‌های فرسودگی و مراقبت از خود در این مسیر.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T109",
+  "slug": "survival-job-canada-depression",
+  "fa_keyword": "کار غیرتخصصی در کانادا و افت روحی",
+  "en_keyword": "survival job canada depression",
+  "cluster": "migration",
+  "angle": "مهندس یا پزشکی که حالا در انبار یا رستوران کار می‌کند. حس سقوط جایگاه، شرم جلوی خانواده و نگه داشتن امید در دوره‌ی گذار.",
+  "hub": "/countries/canada/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T110",
+  "slug": "work-life-balance-sydney",
+  "fa_keyword": "فشار کار و رفت‌وآمد طولانی در سیدنی",
+  "en_keyword": "work life balance sydney stress",
+  "cluster": "migration",
+  "angle": "ساعت‌های طولانی در قطار و ترافیک، کار دوم برای هزینه‌ها و وقتی که برای خود آدم نمی‌ماند. نشانه‌های فرسودگی و مرزگذاری واقعی.",
+  "hub": "/cities/sydney/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T111",
+  "slug": "hurricane-anxiety-houston",
+  "fa_keyword": "اضطراب طوفان در هیوستون",
+  "en_keyword": "hurricane anxiety houston",
+  "cluster": "migration",
+  "angle": "فصل طوفان و سیل برای کسی که تجربه‌اش را نداشته. دلشوره‌ی هر هشدار، خاطره‌ی طوفان‌های قبلی و آماده شدن بدون غرق شدن در نگرانی.",
+  "hub": "/cities/houston/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T112",
+  "slug": "auslanderbehorde-stress-germany",
+  "fa_keyword": "استرس اداره اتباع آلمان",
+  "en_keyword": "auslanderbehorde stress",
+  "cluster": "country",
+  "angle": "نوبت‌هایی که پیدا نمی‌شود، نامه‌هایی که دیر می‌رسد و اقامتی که دارد تمام می‌شود. کنار آمدن با بی‌اختیاری اداری بدون فرو رفتن در اضطراب.",
+  "hub": "/countries/germany/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T113",
+  "slug": "new-mum-no-family-support-perth",
+  "fa_keyword": "مادر شدن در پرت استرالیا بدون خانواده",
+  "en_keyword": "new mum no family support perth",
+  "cluster": "family",
+  "angle": "زایمان و ماه‌های اول بچه بدون مادر و خواهر کنار دست. خستگی، تنهایی و دلشوره‌ی مادر تازه، و کی باید کمک تخصصی گرفت.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T114",
+  "slug": "h4-visa-spouse-depression",
+  "fa_keyword": "افسردگی همسران ویزای H4 در آمریکا",
+  "en_keyword": "h4 visa spouse depression",
+  "cluster": "family",
+  "angle": "همسری که همراه آمده و شاید اجازه‌ی کار ندارد یا کار پیدا نمی‌کند. از دست دادن هویت شغلی، وابستگی و تنهایی در خانه، و راه‌های برگرداندن حس ارزش.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T115",
+  "slug": "earthquake-anxiety-istanbul",
+  "fa_keyword": "اضطراب زلزله در استانبول",
+  "en_keyword": "earthquake anxiety istanbul",
+  "cluster": "migration",
+  "angle": "زندگی در شهری که همه از زلزله‌ی بعدی حرف می‌زنند. فرق آمادگی منطقی با نگرانی بی‌پایان و وقتی اضطراب خواب و زندگی را می‌گیرد.",
+  "hub": "/cities/istanbul/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T116",
+  "slug": "partner-visa-waiting-australia",
+  "fa_keyword": "انتظار ویزای همسر استرالیا",
+  "en_keyword": "partner visa waiting australia stress",
+  "cluster": "migration",
+  "angle": "یکی اینجا، یکی هنوز در ایران. ماه‌ها انتظار، تماس‌های تصویری و نگرانی درباره‌ی آینده‌ی رابطه. نگه داشتن رابطه و حال خودت تا جواب برسد.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T117",
+  "slug": "postdoc-stress-san-diego",
+  "fa_keyword": "استرس پست‌داک در سن‌دیگو",
+  "en_keyword": "postdoc stress san diego",
+  "cluster": "migration",
+  "angle": "قراردادهای کوتاه، رقابت برای موقعیت دائمی و ویزای وابسته به کار. زندگی در شهر آفتابی وقتی آینده‌ی کاری‌ات نامعلوم است.",
+  "hub": "/cities/san-diego/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T118",
+  "slug": "skilled-worker-visa-stress-uk",
+  "fa_keyword": "استرس ویزای کاری بریتانیا",
+  "en_keyword": "skilled worker visa stress uk",
+  "cluster": "migration",
+  "angle": "اقامتی که به یک کارفرما بسته است: ماندن در کار بد از ترس ویزا، و احساس گیر افتادن. حفظ حال روانی وقتی آزادی انتخاب کم است.",
+  "hub": "/countries/uk/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T119",
+  "slug": "first-home-buyer-stress-perth",
+  "fa_keyword": "استرس خرید اولین خانه در پرت استرالیا",
+  "en_keyword": "first home buyer stress perth",
+  "cluster": "migration",
+  "angle": "تصمیم بزرگ مالی در کشوری که هنوز کامل نمی‌شناسی، ترس از اشتباه و فشار مقایسه با دیگران. اثرش روی خواب و رابطه‌ی زوج.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T120",
+  "slug": "divorce-iranian-community-orange-county",
+  "fa_keyword": "طلاق در جامعه ایرانی اورنج کانتی",
+  "en_keyword": "divorce in the iranian community",
+  "cluster": "family",
+  "angle": "جدایی در جامعه‌ای که همه همدیگر را می‌شناسند: قضاوت، فشار خانواده و نگرانی برای بچه‌ها. مراقبت از خود و بچه‌ها در این دوره.",
+  "hub": "/cities/orange-county/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T121",
+  "slug": "making-friends-in-sweden",
+  "fa_keyword": "دوست پیدا کردن در سوئد",
+  "en_keyword": "making friends in sweden",
+  "cluster": "migration",
+  "angle": "سوئدی‌های مؤدب اما فاصله‌دار و دعوتی که هیچ‌وقت نمی‌رسد. فرق فرهنگ دوستی با ایران و راه‌های واقعی ساختن رابطه در استکهلم.",
+  "hub": "/cities/stockholm/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T122",
+  "slug": "remote-work-isolation-melbourne",
+  "fa_keyword": "تنهایی دورکاری در ملبورن",
+  "en_keyword": "remote work isolation melbourne",
+  "cluster": "migration",
+  "angle": "کار از خانه یعنی روزهایی که با هیچ آدمی حرف نمی‌زنی. وقتی دورکاری راه دوست پیدا کردن در شهر تازه را می‌بندد و چه کمکی می‌کند.",
+  "hub": "/cities/melbourne/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T123",
+  "slug": "first-year-after-green-card-lottery",
+  "fa_keyword": "سال اول بعد از لاتاری گرین کارت",
+  "en_keyword": "first year after green card lottery",
+  "cluster": "migration",
+  "angle": "از ذوق برنده شدن تا واقعیت شروع از صفر: کار، خانه، اعتبار بانکی و تنهایی. انتظارهای واقعی از سال اول و نشانه‌هایی که می‌گویند کمک لازم است.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T124",
+  "slug": "titre-de-sejour-renewal-stress",
+  "fa_keyword": "استرس تمدید اقامت فرانسه",
+  "en_keyword": "titre de sejour renewal stress",
+  "cluster": "country",
+  "angle": "پرونده‌ای که هر سال باید دوباره جمع شود و رسیدی که موقتاً جای کارت را می‌گیرد. زندگی با اقامت کوتاه‌مدت و کم کردن اضطراب انتظار.",
+  "hub": "/countries/france/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T125",
+  "slug": "starting-over-at-40-perth",
+  "fa_keyword": "شروع دوباره در چهل سالگی در پرت استرالیا",
+  "en_keyword": "starting over at 40 in perth",
+  "cluster": "migration",
+  "angle": "مهاجرت در میانسالی: جایگاه شغلی و اجتماعی‌ای که در ایران ساخته بودی و اینجا نیست. حس عقب افتادن از هم‌سن‌ها و ساختن معنای تازه.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T126",
+  "slug": "elderly-iranians-loneliness-los-angeles",
+  "fa_keyword": "تنهایی سالمندان ایرانی در لس‌آنجلس",
+  "en_keyword": "elderly iranian parents loneliness los angeles",
+  "cluster": "family",
+  "angle": "پدر و مادری که به خاطر بچه‌ها آمده‌اند، رانندگی نمی‌کنند و زبان بلد نیستند. تنهایی و وابستگی‌شان، و کاری که فرزندان می‌توانند بکنند.",
+  "hub": "/cities/los-angeles/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T127",
+  "slug": "job-insecurity-calgary",
+  "fa_keyword": "ناامنی شغلی در کلگری",
+  "en_keyword": "job insecurity calgary",
+  "cluster": "migration",
+  "angle": "شهری که اقتصادش با بالا و پایین انرژی تکان می‌خورد. ترس از تعدیل، قسط خانه و خانواده، و آرام ماندن وقتی آینده‌ی کار روشن نیست.",
+  "hub": "/cities/calgary/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T128",
+  "slug": "australian-workplace-culture-stress",
+  "fa_keyword": "فرهنگ کار در استرالیا و استرس محیط کار",
+  "en_keyword": "australian workplace culture stress",
+  "cluster": "migration",
+  "angle": "صمیمیت ظاهری، شوخی‌هایی که نمی‌فهمی و حرف‌هایی که مستقیم گفته نمی‌شود. وقتی حس می‌کنی بیرون از جمع همکاری و راه‌های کم کردن این فشار.",
+  "hub": "/countries/australia/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T129",
+  "slug": "small-business-stress-atlanta",
+  "fa_keyword": "استرس راه‌اندازی کسب‌وکار در آتلانتا",
+  "en_keyword": "small business owner stress atlanta",
+  "cluster": "migration",
+  "angle": "مهاجری که کار خودش را راه انداخته: پس‌انداز در خطر، ساعت‌های بی‌پایان و ترس از شکست جلوی خانواده. مرز کار و زندگی و نشانه‌های فرسودگی.",
+  "hub": "/cities/atlanta/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T130",
+  "slug": "living-apart-from-spouse-uae",
+  "fa_keyword": "زندگی جدا از همسر در امارات",
+  "en_keyword": "living apart from spouse uae",
+  "cluster": "family",
+  "angle": "یکی در امارات کار می‌کند، دیگری با بچه‌ها در ایران مانده. رفت‌وآمدهای کوتاه، تصمیم‌هایی که از راه دور گرفته می‌شود و فاصله‌ای که آرام‌آرام بین زوج می‌نشیند.",
+  "hub": "/countries/uae/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T131",
+  "slug": "nowruz-away-from-home-sydney",
+  "fa_keyword": "نوروز دور از خانه در سیدنی",
+  "en_keyword": "nowruz away from home sydney",
+  "cluster": "family",
+  "angle": "نوروزی که در پاییز استرالیا می‌افتد و سال تحویلی که شاید وسط شب یا روز کاری باشد. دلتنگی این روزها و ساختن آیین‌های خودت.",
+  "hub": "/cities/sydney/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T132",
+  "slug": "parenting-in-chicago-winter",
+  "fa_keyword": "بچه‌داری در زمستان شیکاگو",
+  "en_keyword": "parenting in chicago winter",
+  "cluster": "family",
+  "angle": "ماه‌های سرد که بچه‌ها خانه‌نشین می‌شوند و پدر و مادر بی‌کمک خانواده خسته‌اند. روتین خانه، حال والدین و کی باید نگران شد.",
+  "hub": "/cities/chicago/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T133",
+  "slug": "work-pressure-zurich",
+  "fa_keyword": "فشار کار در زوریخ",
+  "en_keyword": "work pressure zurich expats",
+  "cluster": "migration",
+  "angle": "محیط کار دقیق و پرتوقع، هزینه‌ی بالای زندگی و فاصله‌ی اجتماعی. وقتی کمال‌گرایی و ترس از اشتباه فرسوده‌ات می‌کند.",
+  "hub": "/cities/zurich/",
+  "region": "other",
+  "status": "queued"
+ },
+ {
+  "id": "T134",
+  "slug": "couples-struggling-after-moving-perth",
+  "fa_keyword": "اختلاف زوجین بعد از مهاجرت به پرت استرالیا",
+  "en_keyword": "couples struggling after moving to perth",
+  "cluster": "family",
+  "angle": "وقتی یکی از شما در پرت استرالیا جا افتاده و دیگری هنوز نه. فاصله‌ای که از تفاوت سرعت سازگاری می‌آید و کی زوج‌درمانی کمک می‌کند.",
+  "hub": "/cities/perth/",
+  "region": "australia",
+  "status": "queued"
+ },
+ {
+  "id": "T135",
+  "slug": "online-therapy-for-iranian-couples-usa",
+  "fa_keyword": "زوج درمانی آنلاین فارسی در آمریکا",
+  "en_keyword": "online couples therapy farsi usa",
+  "cluster": "online",
+  "angle": "زوجی که در دو شیفت کاری یا حتی دو ایالت‌اند. جلسه‌ی آنلاین زوج با اختلاف ساعت تهران چطور پیش می‌رود و کی جلسه‌ی حضوری محلی بهتر است.",
+  "hub": "/countries/usa/",
+  "region": "usa",
+  "status": "queued"
+ },
+ {
+  "id": "T136",
+  "slug": "summer-indoors-abu-dhabi",
+  "fa_keyword": "گرمای تابستان ابوظبی و خانه‌نشینی",
+  "en_keyword": "summer heat abu dhabi mood",
+  "cluster": "migration",
+  "angle": "ماه‌هایی که بیرون رفتن تقریباً ممکن نیست و زندگی بین خانه، ماشین و مرکز خرید می‌گذرد. اثر این خانه‌نشینی روی خلق و راه‌های زنده نگه داشتن روزها.",
+  "hub": "/cities/abu-dhabi/",
+  "region": "other",
   "status": "queued"
  },
  {
