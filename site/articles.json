@@ -706,5 +706,31 @@
   "lang": "en",
   "url": "/en/blog/housing-stress-netherlands/",
   "title": "Housing Stress Netherlands: When Temporary Rooms Keep Your Life on Hold"
+ },
+ {
+  "slug": "homesick-in-adelaide",
+  "lang": "fa",
+  "url": "/blog/homesick-in-adelaide/",
+  "title": "دلتنگی ایران در آدلاید: وقتی آرامش شهر هم خوب است، هم سنگین",
+  "image_prompt": "A quiet suburban street in Adelaide at early dusk in late spring, seen from a small front porch of a single-storey brick house, a small curved Persian tea glass (estekan) on a saucer resting on the porch step beside a phone lying face down, a jacaranda tree and a low hill line in soft golden light, the street empty and calm."
+ },
+ {
+  "slug": "homesick-in-adelaide",
+  "lang": "en",
+  "url": "/en/blog/homesick-in-adelaide/",
+  "title": "Homesick in Adelaide: When a Quiet City Makes You Miss Home More"
+ },
+ {
+  "slug": "persian-family-counseling-irvine",
+  "lang": "fa",
+  "url": "/blog/persian-family-counseling-irvine/",
+  "title": "مشاوره خانواده ایرانی در اورنج کانتی: وقتی سه نسل کنار هم زندگی می‌کنند",
+  "image_prompt": "A long dining table in a bright Southern California family home on a Friday evening, seen from the end of the table, an elderly man's hands passing a plate of saffron rice with tahdig toward a teenager's hands holding a smartphone face down, a mother's arm reaching between them with a teapot, a Persian rug and palm trees outside the sliding glass door in warm sunset light."
+ },
+ {
+  "slug": "persian-family-counseling-irvine",
+  "lang": "en",
+  "url": "/en/blog/persian-family-counseling-irvine/",
+  "title": "Persian Family Counseling Irvine: When Three Generations Live Close"
  }
 ]
