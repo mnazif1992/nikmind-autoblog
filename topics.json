@@ -729,7 +729,8 @@
   "angle": "تمدیدهای پشت سر هم و قانون‌هایی که عوض می‌شود. زندگی با بلاتکلیفی در استانبول و آنکارا؛ بدون جزئیات حقوقی.",
   "hub": "/countries/turkey/",
   "region": "other",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-25"
  },
  {
   "id": "T072",
@@ -740,7 +741,8 @@
   "angle": "آزادی بیشتر نوجوان در مدرسه و جامعه‌ی استرالیا، فارسی که کم‌رنگ می‌شود و دعواهای فرهنگی. گفت‌وگو به جای کنترل.",
   "hub": "/countries/australia/",
   "region": "australia",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-25"
  },
  {
   "id": "T086",
