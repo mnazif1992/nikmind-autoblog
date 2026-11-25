@@ -1,801 +1,814 @@
 [
- {
-  "slug": "iranian-psychologist-germany",
-  "lang": "fa",
-  "url": "/blog/iranian-psychologist-germany/",
-  "title": "روانشناس ایرانی در آلمان: از صف انتظار تا جلسه‌ی آنلاین فارسی"
- },
- {
-  "slug": "iranian-psychologist-germany",
-  "lang": "en",
-  "url": "/en/blog/iranian-psychologist-germany/",
-  "title": "Iranian Therapist in Germany: Waiting Lists, Insurance and Therapy in Farsi"
- },
- {
-  "slug": "anxiety-after-immigration",
-  "lang": "fa",
-  "url": "/blog/anxiety-after-immigration/",
-  "title": "اضطراب بعد از مهاجرت: چرا می‌آید و چه کاری از دستت برمی‌آید"
- },
- {
-  "slug": "anxiety-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/anxiety-after-immigration/",
-  "title": "Anxiety After Immigration: Why It Happens and What Helps"
- },
- {
-  "slug": "farsi-therapist-toronto-vancouver",
-  "lang": "fa",
-  "url": "/blog/farsi-therapist-toronto-vancouver/",
-  "title": "روانشناس ایرانی در تورنتو و ونکوور: حضوری یا آنلاین؟"
- },
- {
-  "slug": "farsi-therapist-toronto-vancouver",
-  "lang": "en",
-  "url": "/en/blog/farsi-therapist-toronto-vancouver/",
-  "title": "Farsi Speaking Therapist in Toronto and Vancouver: In Person or Online?"
- },
- {
-  "slug": "regret-after-immigration",
-  "lang": "fa",
-  "url": "/blog/regret-after-immigration/",
-  "title": "پشیمانی از مهاجرت: حس طبیعی یا زنگ خطر؟"
- },
- {
-  "slug": "regret-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/regret-after-immigration/",
-  "title": "Regret After Moving Abroad: What's Normal and When to Worry"
- },
- {
-  "slug": "farsi-therapist-london",
-  "lang": "fa",
-  "url": "/blog/farsi-therapist-london/",
-  "title": "روانشناس ایرانی در لندن: NHS، بخش خصوصی یا جلسه‌ی آنلاین فارسی؟"
- },
- {
-  "slug": "farsi-therapist-london",
-  "lang": "en",
-  "url": "/en/blog/farsi-therapist-london/",
-  "title": "Farsi Speaking Therapist London: NHS, Private Care or Online?"
- },
- {
-  "slug": "culture-shock-after-immigration",
-  "lang": "fa",
-  "url": "/blog/culture-shock-after-immigration/",
-  "title": "شوک فرهنگی بعد از مهاجرت: مراحلش، غافلگیری‌ها و راه سازگاری"
- },
- {
-  "slug": "culture-shock-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/culture-shock-after-immigration/",
-  "title": "Culture Shock After Moving Abroad: Stages, Surprises and How to Adjust"
- },
- {
-  "slug": "marriage-counseling-iranians-abroad",
-  "lang": "fa",
-  "url": "/blog/marriage-counseling-iranians-abroad/",
-  "title": "مشاوره ازدواج برای ایرانیان خارج از کشور: زوج‌درمانی آنلاین به فارسی"
- },
- {
-  "slug": "marriage-counseling-iranians-abroad",
-  "lang": "en",
-  "url": "/en/blog/marriage-counseling-iranians-abroad/",
-  "title": "Farsi Speaking Marriage Counselor: Online Couples Therapy for Iranians Abroad"
- },
- {
-  "slug": "loneliness-after-immigration",
-  "lang": "fa",
-  "url": "/blog/loneliness-after-immigration/",
-  "title": "تنهایی بعد از مهاجرت: چرا سراغت می‌آید و چه کمکی می‌کند"
- },
- {
-  "slug": "loneliness-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/loneliness-after-immigration/",
-  "title": "Loneliness After Moving Abroad: Why It Happens and What Helps"
- },
- {
-  "slug": "homesickness-family-after-immigration",
-  "lang": "fa",
-  "url": "/blog/homesickness-family-after-immigration/",
-  "title": "دلتنگی خانواده بعد از مهاجرت: چرا گاهی شدیدتر می‌شود و چه کمکی می‌کند"
- },
- {
-  "slug": "homesickness-family-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/homesickness-family-after-immigration/",
-  "title": "How to Deal With Homesickness Abroad When You Miss Your Family"
- },
- {
-  "slug": "farsi-therapist-los-angeles-usa",
-  "lang": "fa",
-  "url": "/blog/farsi-therapist-los-angeles-usa/",
-  "title": "روانشناس ایرانی در آمریکا: از لس‌آنجلس تا ایالت‌های دیگر، حضوری یا آنلاین؟"
- },
- {
-  "slug": "farsi-therapist-los-angeles-usa",
-  "lang": "en",
-  "url": "/en/blog/farsi-therapist-los-angeles-usa/",
-  "title": "Farsi Speaking Therapist Los Angeles and Across the US: Your Options"
- },
- {
-  "slug": "bilingual-children",
-  "lang": "fa",
-  "url": "/blog/bilingual-children/",
-  "title": "کودک دوزبانه در خانواده‌ی ایرانی مهاجر: زبان، هویت و نگرانی‌های پدر و مادر"
- },
- {
-  "slug": "bilingual-children",
-  "lang": "en",
-  "url": "/en/blog/bilingual-children/",
-  "title": "Raising Bilingual Children in an Iranian Family Abroad: Language, Identity and Common Worries"
- },
- {
-  "slug": "anxiety-before-immigration",
-  "lang": "fa",
-  "url": "/blog/anxiety-before-immigration/",
-  "title": "اضطراب قبل از مهاجرت: وقتی هنوز نرفته‌ای ولی دلت آرام نمی‌گیرد"
- },
- {
-  "slug": "anxiety-before-immigration",
-  "lang": "en",
-  "url": "/en/blog/anxiety-before-immigration/",
-  "title": "Anxiety Before Moving Abroad: When You Haven't Left Yet but Can't Settle"
- },
- {
-  "slug": "iranian-psychiatrist-germany",
-  "lang": "fa",
-  "url": "/blog/iranian-psychiatrist-germany/",
-  "title": "روانپزشک ایرانی در آلمان: کی لازم است و چه راه‌هایی داری"
- },
- {
-  "slug": "iranian-psychiatrist-germany",
-  "lang": "en",
-  "url": "/en/blog/iranian-psychiatrist-germany/",
-  "title": "Iranian Psychiatrist in Germany: When You Need One and How to Find Care"
- },
- {
-  "slug": "long-distance-relationship-immigration",
-  "lang": "fa",
-  "url": "/blog/long-distance-relationship-immigration/",
-  "title": "رابطه از راه دور بعد از مهاجرت: چطور نگهش داری و کی نگران شوی"
- },
- {
-  "slug": "long-distance-relationship-immigration",
-  "lang": "en",
-  "url": "/en/blog/long-distance-relationship-immigration/",
-  "title": "Long Distance Relationship After Moving Abroad: What Helps and What to Watch For"
- },
- {
-  "slug": "online-therapy-session-how-it-works",
-  "lang": "fa",
-  "url": "/blog/online-therapy-session-how-it-works/",
-  "title": "مشاوره آنلاین برای ایرانیان خارج از کشور: جلسه دقیقاً چطور برگزار می‌شود؟"
- },
- {
-  "slug": "online-therapy-session-how-it-works",
-  "lang": "en",
-  "url": "/en/blog/online-therapy-session-how-it-works/",
-  "title": "Therapy in Farsi Online: How a Session Actually Works"
- },
- {
-  "slug": "regret-immigration-canada",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-canada/",
-  "title": "پشیمانی از مهاجرت به کانادا: قبل از تصمیم به برگشت به این‌ها فکر کن"
- },
- {
-  "slug": "regret-immigration-canada",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-canada/",
-  "title": "Regret Moving to Canada? What to Think About Before You Go Back"
- },
- {
-  "slug": "persian-psychologist-australia",
-  "lang": "fa",
-  "url": "/blog/persian-psychologist-australia/",
-  "title": "روانشناس ایرانی در استرالیا: از GP و مدیکر تا جلسه‌ی آنلاین فارسی"
- },
- {
-  "slug": "persian-psychologist-australia",
-  "lang": "en",
-  "url": "/en/blog/persian-psychologist-australia/",
-  "title": "Persian Psychologist Sydney and Melbourne: Local Care or Online in Farsi?"
- },
- {
-  "slug": "culture-shock-germany",
-  "lang": "fa",
-  "url": "/blog/culture-shock-germany/",
-  "title": "شوک فرهنگی در آلمان: چیزهایی که ایرانی‌ها را غافلگیر می‌کند و اثرش روی روان"
- },
- {
-  "slug": "culture-shock-germany",
-  "lang": "en",
-  "url": "/en/blog/culture-shock-germany/",
-  "title": "Culture Shock in Germany: What Surprises Iranians and How It Affects You"
- },
- {
-  "slug": "immigration-stress",
-  "lang": "fa",
-  "url": "/blog/immigration-stress/",
-  "title": "استرس مهاجرت: از کجا می‌آید و چطور مدیریتش کنی"
- },
- {
-  "slug": "immigration-stress",
-  "lang": "en",
-  "url": "/en/blog/immigration-stress/",
-  "title": "Immigration Stress: Where It Comes From and How to Manage It"
- },
- {
-  "slug": "iranian-therapist-dubai",
-  "lang": "fa",
-  "url": "/blog/iranian-therapist-dubai/",
-  "title": "روانشناس ایرانی در دبی: حضوری، آنلاین و دغدغه‌ی محرمانگی"
- },
- {
-  "slug": "iranian-therapist-dubai",
-  "lang": "en",
-  "url": "/en/blog/iranian-therapist-dubai/",
-  "title": "Iranian Therapist in Dubai: Local Options, Privacy and Therapy in Farsi"
- },
- {
-  "slug": "family-counseling-iranians-abroad",
-  "lang": "fa",
-  "url": "/blog/family-counseling-iranians-abroad/",
-  "title": "مشاوره خانواده برای ایرانیان خارج از کشور: وقتی نقش‌ها در خانه جابه‌جا می‌شوند",
-  "image_prompt": "A kitchen table in a small rented apartment abroad at dusk, a teenage girl seen from behind sitting beside her father and pointing at a stack of folded school forms, a small curved Persian tea glass (estekan) and a round metal teapot beside them, a laptop open on a paused video call with a grandmother, warm lamp light, rain on the window."
- },
- {
-  "slug": "family-counseling-iranians-abroad",
-  "lang": "en",
-  "url": "/en/blog/family-counseling-iranians-abroad/",
-  "title": "Family Therapy in Farsi: Help for Iranian Families Adjusting to Life Abroad"
- },
- {
-  "slug": "returning-to-iran-after-immigration",
-  "lang": "fa",
-  "url": "/blog/returning-to-iran-after-immigration/",
-  "title": "بازگشت به ایران بعد از مهاجرت: وقتی برگشتن هم سخت است",
-  "image_prompt": "Early morning in an old Tehran apartment kitchen, a half-unpacked hard-shell suitcase standing open on a patterned Persian rug in the doorway, a returning traveler seen from behind at the window holding a small curved Persian tea glass (estekan), a brass samovar on the counter, plane trees and hazy mountains outside, soft autumn light."
- },
- {
-  "slug": "returning-to-iran-after-immigration",
-  "lang": "en",
-  "url": "/en/blog/returning-to-iran-after-immigration/",
-  "title": "Reverse Culture Shock Returning Home to Iran: When Going Back Is Hard Too"
- },
- {
-  "slug": "iranian-psychologist-istanbul",
-  "lang": "fa",
-  "url": "/blog/iranian-psychologist-istanbul/",
-  "title": "روانشناس ایرانی در استانبول: گزینه‌های محلی، زبان و جلسه‌ی آنلاین فارسی",
-  "image_prompt": "A small rented flat in Istanbul at dusk, a narrow balcony door open to tiled rooftops and the Bosphorus in the distance, a laptop open on a little wooden table beside a small curved Persian tea glass (estekan) on a saucer and a pair of wired earphones, a half-unpacked suitcase in the corner, a folded kilim on the chair, warm lamp light."
- },
- {
-  "slug": "iranian-psychologist-istanbul",
-  "lang": "en",
-  "url": "/en/blog/iranian-psychologist-istanbul/",
-  "title": "Iranian Therapist Istanbul: Local Options, Language and Online Therapy in Farsi"
- },
- {
-  "slug": "regret-immigration-germany",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-germany/",
-  "title": "پشیمانی از مهاجرت به آلمان: از کجا می‌آید و با آن چه کنی",
-  "image_prompt": "A narrow balcony of a rented apartment in a German city on a grey November afternoon, a woman seen from behind wrapped in a wool blanket holding a small curved Persian tea glass (estekan), looking out at rows of pale apartment blocks and bare linden trees, a flattened cardboard moving box leaning by the balcony door, a small potted geranium on the railing, soft fading daylight."
- },
- {
-  "slug": "regret-immigration-germany",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-germany/",
-  "title": "Regret Moving to Germany? Where It Comes From and What Helps"
- },
- {
-  "slug": "farsi-speaking-psychiatrist-online",
-  "lang": "fa",
-  "url": "/blog/farsi-speaking-psychiatrist-online/",
-  "title": "روانپزشک آنلاین فارسی‌زبان: کی لازم است و دارو از راه دور چطور پیش می‌رود",
-  "image_prompt": "Late afternoon in a small rented apartment abroad, a man seen from behind at a wooden desk facing an open laptop ready for a video consultation, a closed paper notebook and a pen beside it, a small curved Persian tea glass (estekan) on a saucer, a radiator under a tall window, soft autumn light."
- },
- {
-  "slug": "farsi-speaking-psychiatrist-online",
-  "lang": "en",
-  "url": "/en/blog/farsi-speaking-psychiatrist-online/",
-  "title": "Farsi Speaking Psychiatrist Online: When You Need One and How Medication Works"
- },
- {
-  "slug": "moving-abroad-alone",
-  "lang": "fa",
-  "url": "/blog/moving-abroad-alone/",
-  "title": "مهاجرت به تنهایی: بین آزادی و تنهایی، چطور آدم‌هایت را پیدا کنی",
-  "image_prompt": "A nearly empty studio apartment abroad on a bright late morning, a single hard-shell suitcase standing beside a mattress on the wooden floor, a rolled Persian kilim leaning against the wall, a young woman seen from behind hanging a small framed old family photo on a bare white wall, a potted basil plant on the windowsill."
- },
- {
-  "slug": "moving-abroad-alone",
-  "lang": "en",
-  "url": "/en/blog/moving-abroad-alone/",
-  "title": "Moving Abroad Alone: Freedom, Loneliness and Finding Your People"
- },
- {
-  "slug": "regret-immigration-australia",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-australia/",
-  "title": "پشیمانی از مهاجرت به استرالیا: وقتی دوری بیشتر از انتظارت سنگینی می‌کند",
-  "image_prompt": "A narrow balcony of a rented unit in an Australian suburb late at night, a small curved Persian tea glass (estekan) on a saucer on a white plastic outdoor table beside a phone lying face down, a folded kilim on the chair, eucalyptus trees silhouetted against a starry sky, warm lamplight from the living room behind a sliding glass door."
- },
- {
-  "slug": "regret-immigration-australia",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-australia/",
-  "title": "Regret Moving to Australia: When the Distance Weighs More Than You Expected"
- },
- {
-  "slug": "regret-immigration-usa",
-  "lang": "fa",
-  "url": "/blog/regret-immigration-usa/",
-  "title": "پشیمانی از مهاجرت به آمریکا: وقتی رؤیا با واقعیت فرق دارد",
-  "image_prompt": "A man seen from behind sitting in a parked car in a nearly empty American supermarket parking lot at dusk, paper grocery bags on the passenger seat with a bunch of fresh herbs sticking out, pink and orange sky over low suburban buildings and tall palm trees, parking lot lamps just switching on."
- },
- {
-  "slug": "regret-immigration-usa",
-  "lang": "en",
-  "url": "/en/blog/regret-immigration-usa/",
-  "title": "Regret Moving to USA? When the Dream and the Reality Don't Match"
- },
- {
-  "slug": "culture-shock-canada",
-  "lang": "fa",
-  "url": "/blog/culture-shock-canada/",
-  "title": "شوک فرهنگی در کانادا: از ادب و تعارف تا زمستان طولانی و فرهنگ کار",
-  "image_prompt": "A pair of wet snow boots on a black rubber boot tray beside the front door of a small rented apartment in Canada, a heavy winter parka on a wall hook, a small curved Persian tea glass (estekan) steaming on a wooden shoe bench, snowy street and bare maple trees through the door's window, low late-afternoon winter light."
- },
- {
-  "slug": "culture-shock-canada",
-  "lang": "en",
-  "url": "/en/blog/culture-shock-canada/",
-  "title": "Culture Shock in Canada: Politeness, Long Winters and Work Culture"
- },
- {
-  "slug": "loneliness-after-moving-to-perth",
-  "lang": "fa",
-  "url": "/blog/loneliness-after-moving-to-perth/",
-  "title": "تنهایی بعد از مهاجرت به پرت استرالیا: چطور آدم‌های خودت را پیدا کنی",
-  "image_prompt": "Early Saturday morning on a nearly empty white-sand beach near Perth, a lone person seen from far behind sitting on a folded beach towel, a small thermos and a curved Persian tea glass (estekan) on the sand beside them, a parked hatchback at the edge of the dunes, calm turquoise Indian Ocean and soft golden low sunlight."
- },
- {
-  "slug": "loneliness-after-moving-to-perth",
-  "lang": "en",
-  "url": "/en/blog/loneliness-after-moving-to-perth/",
-  "title": "Loneliness After Moving to Perth: How to Build Your People in a Quiet City"
- },
- {
-  "slug": "culture-shock-usa",
-  "lang": "fa",
-  "url": "/blog/culture-shock-usa/",
-  "title": "شوک فرهنگی در آمریکا: چیزهایی که ایرانی‌ها را غافلگیر می‌کند و راه کنار آمدن",
-  "image_prompt": "A narrow kitchen counter in a rented apartment in an American suburb in late afternoon, an oversized plain paper coffee cup with a plastic lid beside a small curved Persian tea glass (estekan) on a saucer, a car key on the counter, warm sunlight slanting through horizontal blinds, a wide multi-lane road and parked pickup trucks blurred outside the window."
- },
- {
-  "slug": "culture-shock-usa",
-  "lang": "en",
-  "url": "/en/blog/culture-shock-usa/",
-  "title": "Culture Shock in America: What Surprises Iranians and How to Adjust"
- },
- {
-  "slug": "iranian-psychiatrist-toronto",
-  "lang": "fa",
-  "url": "/blog/iranian-psychiatrist-toronto/",
-  "title": "روانپزشک ایرانی در تورنتو: کی لازم است و از کجا شروع کنی",
-  "image_prompt": "A small kitchen table in a Toronto apartment on an early November evening, already dark outside, a red streetcar's lights blurred through a rain-streaked window, a closed spiral notebook and a pen beside a small curved Persian tea glass (estekan) on a saucer, a phone lying face down, a winter coat draped over the chair, warm lamp light."
- },
- {
-  "slug": "iranian-psychiatrist-toronto",
-  "lang": "en",
-  "url": "/en/blog/iranian-psychiatrist-toronto/",
-  "title": "Iranian Psychiatrist Toronto: When You Need One and Where to Start"
- },
- {
-  "slug": "persian-couples-therapy-los-angeles",
-  "lang": "fa",
-  "url": "/blog/persian-couples-therapy-los-angeles/",
-  "title": "زوج درمانی ایرانی در لس‌آنجلس: وقتی خانواده‌ها و حرف مردم وارد رابطه می‌شوند",
-  "image_prompt": "Night interior of a car on a Los Angeles freeway, seen from the back seat: a couple in the front seats both facing forward in quiet silence, a foil-covered dish of leftover saffron rice from a family dinner on the passenger's lap, blurred red and white freeway lights and tall palm tree silhouettes through the windshield."
- },
- {
-  "slug": "persian-couples-therapy-los-angeles",
-  "lang": "en",
-  "url": "/en/blog/persian-couples-therapy-los-angeles/",
-  "title": "Persian Couples Therapy Los Angeles: When Family and Gossip Get Into Your Relationship"
- },
- {
-  "slug": "marriage-counseling-germany",
-  "lang": "fa",
-  "url": "/blog/marriage-counseling-germany/",
-  "title": "مشاوره ازدواج در آلمان: وقتی مهاجرت تعادل رابطه را به هم می‌زند",
-  "image_prompt": "A small kitchen in an old German apartment building on a dark December afternoon, a couple seen from behind sitting side by side at a narrow wooden table, a white porcelain teapot and two small curved Persian tea glasses (estekan) on saucers between them, a folded clothes drying rack against the wall, a white panel radiator under a tall window with blurred tram lights outside."
- },
- {
-  "slug": "marriage-counseling-germany",
-  "lang": "en",
-  "url": "/en/blog/marriage-counseling-germany/",
-  "title": "Marriage Counseling in Germany in Farsi: When the Move Upsets the Balance"
- },
- {
-  "slug": "fifo-work-mental-health-perth",
-  "lang": "fa",
-  "url": "/blog/fifo-work-mental-health-perth/",
-  "title": "کار فایفو و سلامت روان: وقتی نیمی از زندگی‌ات در معدن می‌گذرد",
-  "image_prompt": "Pre-dawn at a small regional airport in Western Australia, a man seen from behind in an orange high-visibility work shirt and steel-capped boots, a duffel bag at his feet, looking through tall glass windows at a small charter plane on red-dust tarmac, a child's folded crayon drawing tucked in his shirt pocket, soft blue early light."
- },
- {
-  "slug": "fifo-work-mental-health-perth",
-  "lang": "en",
-  "url": "/en/blog/fifo-work-mental-health-perth/",
-  "title": "FIFO Work Mental Health: Looking After Yourself and Your Family in Perth"
- },
- {
-  "slug": "community-pressure-los-angeles-iranians",
-  "lang": "fa",
-  "url": "/blog/community-pressure-los-angeles-iranians/",
-  "title": "چشم و هم‌چشمی در جامعه ایرانی لس‌آنجلس: وقتی مقایسه خسته‌ات می‌کند",
-  "image_prompt": "A sunny Los Angeles backyard in late afternoon after a party, a long table with leftover platters of saffron rice and a plate of fresh herbs, scattered small curved Persian tea glasses (estekan) on saucers, a woman seen from behind sitting alone on the back steps with her shoes beside her, tall palm trees and a pale pink sky beyond the fence."
- },
- {
-  "slug": "community-pressure-los-angeles-iranians",
-  "lang": "en",
-  "url": "/en/blog/community-pressure-los-angeles-iranians/",
-  "title": "Pressure in the Persian Community Los Angeles: Comparison, Gossip and Your Peace"
- },
- {
-  "slug": "job-search-stress-toronto",
-  "lang": "fa",
-  "url": "/blog/job-search-stress-toronto/",
-  "title": "استرس کاریابی در تورنتو: وقتی رزومه‌ها بی‌جواب می‌ماند",
-  "image_prompt": "Early winter morning in a small rented Toronto basement apartment, a person seen from behind at a narrow desk under a half-window with snow piled against it, a laptop beside a neat stack of printed resumes, a small curved Persian tea glass (estekan) on a saucer, a winter coat and a transit card on the chair, soft grey daylight."
- },
- {
-  "slug": "job-search-stress-toronto",
-  "lang": "en",
-  "url": "/en/blog/job-search-stress-toronto/",
-  "title": "Job Search Stress Toronto Newcomers Know: Keeping Your Confidence"
- },
- {
-  "slug": "couples-conflict-sydney",
-  "lang": "fa",
-  "url": "/blog/couples-conflict-sydney/",
-  "title": "اختلاف زوجین ایرانی در سیدنی: وقتی هزینه‌ی زندگی بین شما فاصله می‌اندازد",
-  "image_prompt": "Summer dusk in a compact rented Sydney apartment, a couple seen from behind at a small kitchen bench, he rinsing dishes at the sink while she sits with a calculator and a folder of household bills, a pot of leftover ghormeh sabzi on the stove, through the window apartment blocks and the distant silhouette of the Harbour Bridge under a pink sky."
- },
- {
-  "slug": "couples-conflict-sydney",
-  "lang": "en",
-  "url": "/en/blog/couples-conflict-sydney/",
-  "title": "Iranian Couples Counselling Sydney: When the Cost of Living Gets Between You"
- },
- {
-  "slug": "job-search-stress-perth",
-  "lang": "fa",
-  "url": "/blog/job-search-stress-perth/",
-  "title": "استرس کاریابی در پرت استرالیا: وقتی تخصصت دیده نمی‌شود",
-  "image_prompt": "Early morning in a small rented unit in a Perth suburb, a person seen from behind sitting on a back step in a plain navy work polo, laptop on their knees, a small curved Persian tea glass (estekan) on a saucer beside a pair of dusty work boots, bright low sunlight over a dry lawn and a gum tree."
- },
- {
-  "slug": "job-search-stress-perth",
-  "lang": "en",
-  "url": "/en/blog/job-search-stress-perth/",
-  "title": "Job Hunting Stress Perth: When Your Experience Isn't Seen"
- },
- {
-  "slug": "therapy-insurance-usa-farsi",
-  "lang": "fa",
-  "url": "/blog/therapy-insurance-usa-farsi/",
-  "title": "بیمه و روانشناس فارسی‌زبان در آمریکا: از in-network تا جلسه‌ی آنلاین",
-  "image_prompt": "A small dining table in an American apartment on a quiet autumn afternoon, a man seen from the side holding a smartphone to his ear as if on hold, a plain plastic member card lying face down beside an opened paper envelope and a ballpoint pen, a small curved Persian tea glass (estekan) on a saucer, soft light through white blinds."
- },
- {
-  "slug": "therapy-insurance-usa-farsi",
-  "lang": "en",
-  "url": "/en/blog/therapy-insurance-usa-farsi/",
-  "title": "Does Insurance Cover Therapy in the US? A Guide for Farsi Speakers"
- },
- {
-  "slug": "french-language-stress-montreal",
-  "lang": "fa",
-  "url": "/blog/french-language-stress-montreal/",
-  "title": "استرس زبان فرانسه در مونترال: وقتی انگلیسی‌ات کافی نیست",
-  "image_prompt": "A small kitchen table in a Montreal apartment on a snowy winter morning, an open French workbook with a pencil and an eraser beside a small curved Persian tea glass (estekan) on a saucer, a wool scarf over the chair, frosted window looking onto an iron outdoor staircase covered in snow, soft grey daylight."
- },
- {
-  "slug": "french-language-stress-montreal",
-  "lang": "en",
-  "url": "/en/blog/french-language-stress-montreal/",
-  "title": "French Language Stress in Montreal: When Your English Isn't Enough"
- },
- {
-  "slug": "rental-stress-sydney",
-  "lang": "fa",
-  "url": "/blog/rental-stress-sydney/",
-  "title": "استرس اجاره خانه در سیدنی: وقتی خانه هم جای امن نیست",
-  "image_prompt": "A half-unpacked living room in a small Sydney rental flat on a warm late afternoon, stacked cardboard moving boxes, a rolled-up small Persian kilim rug leaning on the wall, a brass Persian teapot and two small curved tea glasses (estekan) on a box used as a table, a set of keys on top, sunlight through open blinds, a jacaranda tree outside."
- },
- {
-  "slug": "rental-stress-sydney",
-  "lang": "en",
-  "url": "/en/blog/rental-stress-sydney/",
-  "title": "Rental Stress Sydney: When Home Doesn't Feel Safe"
- },
- {
-  "slug": "waiting-for-canadian-pr-anxiety",
-  "lang": "fa",
-  "url": "/blog/waiting-for-canadian-pr-anxiety/",
-  "title": "استرس انتظار اقامت دائم کانادا: وقتی زندگی منتظر یک ایمیل است",
-  "image_prompt": "Early winter morning in a sparsely furnished rented apartment in Canada, a smartphone lying face down on a small wooden kitchen table next to a small curved Persian tea glass (estekan) on a saucer and a closed manila document folder tied with string, an empty picture frame leaning unhung against the wall, light snow falling outside the window, soft pale daylight."
- },
- {
-  "slug": "waiting-for-canadian-pr-anxiety",
-  "lang": "en",
-  "url": "/en/blog/waiting-for-canadian-pr-anxiety/",
-  "title": "Waiting for Canadian PR Anxiety: How to Live While Your File Is Pending"
- },
- {
-  "slug": "green-card-waiting-anxiety",
-  "lang": "fa",
-  "url": "/blog/green-card-waiting-anxiety/",
-  "title": "استرس انتظار گرین کارت: وقتی سال‌ها زندگی‌ات «در جریان بررسی» است",
-  "image_prompt": "A plain unopened white envelope resting on a small wooden hallway console in an American apartment, beside a ceramic bowl of keys and a small curved Persian tea glass (estekan) on a saucer, the front door ajar showing a row of metal mailboxes in the building lobby, warm late-afternoon autumn light across a small Persian rug."
- },
- {
-  "slug": "green-card-waiting-anxiety",
-  "lang": "en",
-  "url": "/en/blog/green-card-waiting-anxiety/",
-  "title": "Green Card Waiting Anxiety: How to Live While Your Case Is Pending"
- },
- {
-  "slug": "international-student-stress-melbourne",
-  "lang": "fa",
-  "url": "/blog/international-student-stress-melbourne/",
-  "title": "استرس دانشجویان ایرانی در ملبورن: وقتی درس، کار و تنهایی با هم فشار می‌آورند",
-  "image_prompt": "Late evening in a small shared student bedroom in Melbourne, a desk with a closed laptop, a stack of closed university textbooks and a folded black cafe apron, a small curved Persian tea glass (estekan) half full beside a desk lamp, through the rain-streaked window a lit tram passing on the wet street below, warm lamplight against the blue dusk."
- },
- {
-  "slug": "international-student-stress-melbourne",
-  "lang": "en",
-  "url": "/en/blog/international-student-stress-melbourne/",
-  "title": "International Student Stress Melbourne: Burnout Signs and Where to Get Help"
- },
- {
-  "slug": "nhs-therapy-waiting-list",
-  "lang": "fa",
-  "url": "/blog/nhs-therapy-waiting-list/",
-  "title": "صف انتظار NHS برای روان‌درمانی: تا رسیدن نوبت با خودت چه کنی؟",
-  "image_prompt": "A grey winter morning in a small rented flat in England, a mug of tea and a small curved Persian tea glass (estekan) on a wooden kitchen table beside a folded paper letter in a plain white envelope and a phone lying face down, a red-brick terraced street visible through a rain-dotted sash window, soft diffused daylight."
- },
- {
-  "slug": "nhs-therapy-waiting-list",
-  "lang": "en",
-  "url": "/en/blog/nhs-therapy-waiting-list/",
-  "title": "NHS Therapy Waiting List: What to Do While You Wait for Your Turn"
- },
- {
-  "slug": "tech-layoff-visa-stress",
-  "lang": "fa",
-  "url": "/blog/tech-layoff-visa-stress/",
-  "title": "استرس اخراج و ویزای کاری در آمریکا: هفته‌های اول را چطور بگذرانی",
-  "image_prompt": "Early morning in a small San Francisco apartment, a closed laptop and a cardboard box holding a desk plant, a coffee mug and a folded hoodie on a wooden table, a small curved Persian tea glass (estekan) on a saucer beside it, fog drifting past pastel Victorian houses outside the bay window, soft grey-gold light."
- },
- {
-  "slug": "tech-layoff-visa-stress",
-  "lang": "en",
-  "url": "/en/blog/tech-layoff-visa-stress/",
-  "title": "H1B Layoff Stress: Getting Through the First Weeks After Losing Your Job"
- },
- {
-  "slug": "loneliness-in-berlin",
-  "lang": "fa",
-  "url": "/blog/loneliness-in-berlin/",
-  "title": "تنهایی در برلین: وقتی شهر پر از آدم است ولی کسی را نداری",
-  "image_prompt": "Late autumn dusk in a high-ceilinged old Berlin apartment, a single wooden chair beside a tall double window, a small curved Persian tea glass (estekan) on a saucer on the wide windowsill, one coat on a row of empty wall hooks, bare chestnut trees and a yellow tram passing on the street below, soft fading blue light."
- },
- {
-  "slug": "loneliness-in-berlin",
-  "lang": "en",
-  "url": "/en/blog/loneliness-in-berlin/",
-  "title": "Loneliness in Berlin: When the City Is Full but You Have No One"
- },
- {
-  "slug": "waiting-for-pr-australia-anxiety",
-  "lang": "fa",
-  "url": "/blog/waiting-for-pr-australia-anxiety/",
-  "title": "استرس انتظار اقامت دائم استرالیا: وقتی زندگی روی ویزای بریجینگ معلق می‌ماند",
-  "image_prompt": "Early autumn morning in a small rented unit in Australia, an unmade bed beside a sliding glass door to a narrow balcony, a phone lying face down on the bedside table next to a small curved Persian tea glass (estekan) on a saucer and a blue cardboard document folder, a eucalyptus branch moving outside, soft warm sunlight."
- },
- {
-  "slug": "waiting-for-pr-australia-anxiety",
-  "lang": "en",
-  "url": "/en/blog/waiting-for-pr-australia-anxiety/",
-  "title": "Waiting for PR Australia Anxiety: Living Well on a Bridging Visa"
- },
- {
-  "slug": "cant-see-family-visa-usa",
-  "lang": "fa",
-  "url": "/blog/cant-see-family-visa-usa/",
-  "title": "سال‌ها ندیدن خانواده به خاطر ویزا: وقتی نه تو می‌توانی بروی، نه آن‌ها بیایند",
-  "image_prompt": "A small rented apartment in an American city late at night, a laptop open on a low wooden coffee table playing a blurry paused video call of a crowded family wedding party, a small curved Persian tea glass (estekan) gone cold on a saucer beside it, a person seen from behind on the sofa wrapped in a blanket, one dim floor lamp."
- },
- {
-  "slug": "cant-see-family-visa-usa",
-  "lang": "en",
-  "url": "/en/blog/cant-see-family-visa-usa/",
-  "title": "Not Seeing Family for Years Because of Visa Rules: Living With the Distance"
- },
- {
-  "slug": "winter-blues-melbourne",
-  "lang": "fa",
-  "url": "/blog/winter-blues-melbourne/",
-  "title": "دلگرفتگی زمستان در ملبورن: وقتی آسمان خاکستری روی حالت هم می‌نشیند",
-  "image_prompt": "A small window nook in an older rented Melbourne terrace house on a grey winter morning, a person seen from behind in a thick knitted wool jumper sitting close to the rain-streaked glass to catch the light, a steaming small curved Persian tea glass (estekan) on the wooden sill, bare plane trees lining the wet street outside."
- },
- {
-  "slug": "winter-blues-melbourne",
-  "lang": "en",
-  "url": "/en/blog/winter-blues-melbourne/",
-  "title": "Winter Blues Melbourne: Getting Through the Grey Months"
- },
- {
-  "slug": "imposter-syndrome-international-students",
-  "lang": "fa",
-  "url": "/blog/imposter-syndrome-international-students/",
-  "title": "سندرم ایمپاستر در دانشجویان ایرانی: وقتی سر کلاس‌های بوستون حس می‌کنی اشتباهی آمده‌ای",
-  "image_prompt": "A seminar room in an old red-brick university building in Boston on a snowy winter afternoon, seen from the back row: a young woman in a dark wool coat sits slightly apart from a group gathered around a long oak table, her hands resting on a closed notebook, snow drifting past tall arched windows."
- },
- {
-  "slug": "imposter-syndrome-international-students",
-  "lang": "en",
-  "url": "/en/blog/imposter-syndrome-international-students/",
-  "title": "Imposter Syndrome International Students Feel in Boston's Top Universities"
- },
- {
-  "slug": "stress-learning-german",
-  "lang": "fa",
-  "url": "/blog/stress-learning-german/",
-  "title": "فشار یادگیری زبان آلمانی: وقتی در زبان تازه حس می‌کنی دوباره بچه شده‌ای",
-  "image_prompt": "A small kitchen table in a rented German apartment on a dim autumn evening, a stack of vocabulary flashcards turned face down and held with a rubber band, a closed grammar workbook, reading glasses and a mug of tea, a man seen from behind resting his chin on one hand, rain on the window above an old white radiator."
- },
- {
-  "slug": "stress-learning-german",
-  "lang": "en",
-  "url": "/en/blog/stress-learning-german/",
-  "title": "Stress Learning German? Why It Wears You Out and How to Keep Going"
- },
- {
-  "slug": "adjusting-to-life-in-brisbane",
-  "lang": "fa",
-  "url": "/blog/adjusting-to-life-in-brisbane/",
-  "title": "سازگاری با زندگی در بریزبن: سال اول را چطور بگذرانی",
-  "image_prompt": "A young man seen from behind standing on the small balcony of a newly rented Brisbane apartment at dusk, a half-unpacked cardboard moving box and a rolled-up Persian kilim rug beside the open sliding door, a ceiling fan turning inside, purple jacaranda trees and a wide brown river below in warm humid evening haze."
- },
- {
-  "slug": "adjusting-to-life-in-brisbane",
-  "lang": "en",
-  "url": "/en/blog/adjusting-to-life-in-brisbane/",
-  "title": "Adjusting to Life in Brisbane: What the First Year Really Feels Like"
- },
- {
-  "slug": "phd-student-mental-health-usa",
-  "lang": "fa",
-  "url": "/blog/phd-student-mental-health-usa/",
-  "title": "سلامت روان دانشجویان دکتری ایرانی در آمریکا: از استاد راهنما تا سال‌ها دوری از خانه",
-  "image_prompt": "Late night in an empty university research lab in the United States, a young man seen from behind at a lab bench, a half-finished paper cup of coffee beside a small curved Persian tea glass on a saucer, dark campus lawn and lamp posts outside the tall window, cool fluorescent light mixed with a warm desk lamp."
- },
- {
-  "slug": "phd-student-mental-health-usa",
-  "lang": "en",
-  "url": "/en/blog/phd-student-mental-health-usa/",
-  "title": "PhD Student Mental Health USA: Advisors, Funding and Years Away From Home"
- },
- {
-  "slug": "housing-stress-netherlands",
-  "lang": "fa",
-  "url": "/blog/housing-stress-netherlands/",
-  "title": "استرس پیدا کردن خانه در هلند: وقتی اتاق‌های موقت زندگی‌ات را معلق نگه می‌دارند",
-  "image_prompt": "A steep narrow wooden staircase landing inside an old Dutch canal house on a drizzly grey afternoon, a hard-shell suitcase and a rolled-up small Persian rug leaning against the wall, two taped cardboard boxes stacked beside them, soft daylight from a tall window looking out on wet bicycles parked along a canal."
- },
- {
-  "slug": "housing-stress-netherlands",
-  "lang": "en",
-  "url": "/en/blog/housing-stress-netherlands/",
-  "title": "Housing Stress Netherlands: When Temporary Rooms Keep Your Life on Hold"
- },
- {
-  "slug": "homesick-in-adelaide",
-  "lang": "fa",
-  "url": "/blog/homesick-in-adelaide/",
-  "title": "دلتنگی ایران در آدلاید: وقتی آرامش شهر هم خوب است، هم سنگین",
-  "image_prompt": "A quiet suburban street in Adelaide at early dusk in late spring, seen from a small front porch of a single-storey brick house, a small curved Persian tea glass (estekan) on a saucer resting on the porch step beside a phone lying face down, a jacaranda tree and a low hill line in soft golden light, the street empty and calm."
- },
- {
-  "slug": "homesick-in-adelaide",
-  "lang": "en",
-  "url": "/en/blog/homesick-in-adelaide/",
-  "title": "Homesick in Adelaide: When a Quiet City Makes You Miss Home More"
- },
- {
-  "slug": "persian-family-counseling-irvine",
-  "lang": "fa",
-  "url": "/blog/persian-family-counseling-irvine/",
-  "title": "مشاوره خانواده ایرانی در اورنج کانتی: وقتی سه نسل کنار هم زندگی می‌کنند",
-  "image_prompt": "A long dining table in a bright Southern California family home on a Friday evening, seen from the end of the table, an elderly man's hands passing a plate of saffron rice with tahdig toward a teenager's hands holding a smartphone face down, a mother's arm reaching between them with a teapot, a Persian rug and palm trees outside the sliding glass door in warm sunset light."
- },
- {
-  "slug": "persian-family-counseling-irvine",
-  "lang": "en",
-  "url": "/en/blog/persian-family-counseling-irvine/",
-  "title": "Persian Family Counseling Irvine: When Three Generations Live Close"
- },
- {
-  "slug": "dark-winter-sweden",
-  "lang": "fa",
-  "url": "/blog/dark-winter-sweden/",
-  "title": "زمستان تاریک سوئد و حال روحی: وقتی ساعت سه بعدازظهر شب می‌شود",
-  "image_prompt": "A small kitchen table by the window of a Swedish apartment in mid-afternoon winter, deep blue twilight sky and snow-covered rooftops outside, a glowing white daylight lamp on the table beside a small curved Persian tea glass (estekan) on a saucer and a bowl of clementines, a wool blanket over the chair."
- },
- {
-  "slug": "dark-winter-sweden",
-  "lang": "en",
-  "url": "/en/blog/dark-winter-sweden/",
-  "title": "The Dark Winter Sweden Mood Slump: When Night Falls at 3 PM"
- },
- {
-  "slug": "time-difference-family-australia-iran",
-  "lang": "fa",
-  "url": "/blog/time-difference-family-australia-iran/",
-  "title": "اختلاف ساعت استرالیا با ایران و تماس با خانواده: وقتی صبح تو نیمه‌شب آن‌هاست",
-  "image_prompt": "Early morning in a small rented apartment kitchen in Australia, a phone lying face down on a wooden bench beside a small curved Persian tea glass (estekan) on a saucer, two small round analogue clocks on the windowsill showing different hours, pale dawn light and a eucalyptus tree outside the window, calm and quiet."
- },
- {
-  "slug": "time-difference-family-australia-iran",
-  "lang": "en",
-  "url": "/en/blog/time-difference-family-australia-iran/",
-  "title": "Time Difference Australia Iran Family Calls: When Your Morning Is Their Midnight"
- },
- {
-  "slug": "iranian-american-parents-and-kids",
-  "lang": "fa",
-  "url": "/blog/iranian-american-parents-and-kids/",
-  "title": "شکاف نسلی والدین ایرانی و فرزندان آمریکایی: پلی بین دو دنیا",
-  "image_prompt": "A suburban American kitchen in late afternoon, a middle-aged father and his teenage daughter seen from behind sitting side by side at a kitchen island, a shared plate of Persian rice with a golden crispy tahdig crust between them, a skateboard leaning by the sliding glass door, warm golden light falling on the backyard lawn."
- },
- {
-  "slug": "iranian-american-parents-and-kids",
-  "lang": "en",
-  "url": "/en/blog/iranian-american-parents-and-kids/",
-  "title": "Iranian American Parents and Kids: Building a Bridge Between Two Worlds"
- },
- {
-  "slug": "turkey-residence-permit-stress",
-  "lang": "fa",
-  "url": "/blog/turkey-residence-permit-stress/",
-  "title": "استرس اقامت در ترکیه: وقتی زندگی‌ات به تاریخ انقضای یک کارت بسته است",
-  "image_prompt": "A neat stack of paper documents in a clear plastic folder and a small Turkish tea glass on a saucer on a narrow balcony table of a rented apartment in Istanbul, a half-unpacked suitcase visible through the open door behind, soft late-afternoon light over rooftops and seagulls in the distance."
- },
- {
-  "slug": "turkey-residence-permit-stress",
-  "lang": "en",
-  "url": "/en/blog/turkey-residence-permit-stress/",
-  "title": "Turkey Residence Permit Stress: Living Between One Renewal and the Next"
- },
- {
-  "slug": "raising-iranian-teenagers-australia",
-  "lang": "fa",
-  "url": "/blog/raising-iranian-teenagers-australia/",
-  "title": "تربیت نوجوان ایرانی در استرالیا: گفت‌وگو به جای کنترل",
-  "image_prompt": "A father and teenage son seen from behind sitting side by side on a low sandy dune at an Australian beach in late afternoon, a pair of school sneakers and a small thermos with two cups beside them, calm ocean and soft golden light, relaxed and close."
- },
- {
-  "slug": "raising-iranian-teenagers-australia",
-  "lang": "en",
-  "url": "/en/blog/raising-iranian-teenagers-australia/",
-  "title": "Raising Iranian Teenagers in Australia: Conversation Over Control"
- }
+  {
+    "slug": "iranian-psychologist-germany",
+    "lang": "fa",
+    "url": "/blog/iranian-psychologist-germany/",
+    "title": "روانشناس ایرانی در آلمان: از صف انتظار تا جلسه‌ی آنلاین فارسی"
+  },
+  {
+    "slug": "iranian-psychologist-germany",
+    "lang": "en",
+    "url": "/en/blog/iranian-psychologist-germany/",
+    "title": "Iranian Therapist in Germany: Waiting Lists, Insurance and Therapy in Farsi"
+  },
+  {
+    "slug": "anxiety-after-immigration",
+    "lang": "fa",
+    "url": "/blog/anxiety-after-immigration/",
+    "title": "اضطراب بعد از مهاجرت: چرا می‌آید و چه کاری از دستت برمی‌آید"
+  },
+  {
+    "slug": "anxiety-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/anxiety-after-immigration/",
+    "title": "Anxiety After Immigration: Why It Happens and What Helps"
+  },
+  {
+    "slug": "farsi-therapist-toronto-vancouver",
+    "lang": "fa",
+    "url": "/blog/farsi-therapist-toronto-vancouver/",
+    "title": "روانشناس ایرانی در تورنتو و ونکوور: حضوری یا آنلاین؟"
+  },
+  {
+    "slug": "farsi-therapist-toronto-vancouver",
+    "lang": "en",
+    "url": "/en/blog/farsi-therapist-toronto-vancouver/",
+    "title": "Farsi Speaking Therapist in Toronto and Vancouver: In Person or Online?"
+  },
+  {
+    "slug": "regret-after-immigration",
+    "lang": "fa",
+    "url": "/blog/regret-after-immigration/",
+    "title": "پشیمانی از مهاجرت: حس طبیعی یا زنگ خطر؟"
+  },
+  {
+    "slug": "regret-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/regret-after-immigration/",
+    "title": "Regret After Moving Abroad: What's Normal and When to Worry"
+  },
+  {
+    "slug": "farsi-therapist-london",
+    "lang": "fa",
+    "url": "/blog/farsi-therapist-london/",
+    "title": "روانشناس ایرانی در لندن: NHS، بخش خصوصی یا جلسه‌ی آنلاین فارسی؟"
+  },
+  {
+    "slug": "farsi-therapist-london",
+    "lang": "en",
+    "url": "/en/blog/farsi-therapist-london/",
+    "title": "Farsi Speaking Therapist London: NHS, Private Care or Online?"
+  },
+  {
+    "slug": "culture-shock-after-immigration",
+    "lang": "fa",
+    "url": "/blog/culture-shock-after-immigration/",
+    "title": "شوک فرهنگی بعد از مهاجرت: مراحلش، غافلگیری‌ها و راه سازگاری"
+  },
+  {
+    "slug": "culture-shock-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/culture-shock-after-immigration/",
+    "title": "Culture Shock After Moving Abroad: Stages, Surprises and How to Adjust"
+  },
+  {
+    "slug": "marriage-counseling-iranians-abroad",
+    "lang": "fa",
+    "url": "/blog/marriage-counseling-iranians-abroad/",
+    "title": "مشاوره ازدواج برای ایرانیان خارج از کشور: زوج‌درمانی آنلاین به فارسی"
+  },
+  {
+    "slug": "marriage-counseling-iranians-abroad",
+    "lang": "en",
+    "url": "/en/blog/marriage-counseling-iranians-abroad/",
+    "title": "Farsi Speaking Marriage Counselor: Online Couples Therapy for Iranians Abroad"
+  },
+  {
+    "slug": "loneliness-after-immigration",
+    "lang": "fa",
+    "url": "/blog/loneliness-after-immigration/",
+    "title": "تنهایی بعد از مهاجرت: چرا سراغت می‌آید و چه کمکی می‌کند"
+  },
+  {
+    "slug": "loneliness-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/loneliness-after-immigration/",
+    "title": "Loneliness After Moving Abroad: Why It Happens and What Helps"
+  },
+  {
+    "slug": "homesickness-family-after-immigration",
+    "lang": "fa",
+    "url": "/blog/homesickness-family-after-immigration/",
+    "title": "دلتنگی خانواده بعد از مهاجرت: چرا گاهی شدیدتر می‌شود و چه کمکی می‌کند"
+  },
+  {
+    "slug": "homesickness-family-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/homesickness-family-after-immigration/",
+    "title": "How to Deal With Homesickness Abroad When You Miss Your Family"
+  },
+  {
+    "slug": "farsi-therapist-los-angeles-usa",
+    "lang": "fa",
+    "url": "/blog/farsi-therapist-los-angeles-usa/",
+    "title": "روانشناس ایرانی در آمریکا: از لس‌آنجلس تا ایالت‌های دیگر، حضوری یا آنلاین؟"
+  },
+  {
+    "slug": "farsi-therapist-los-angeles-usa",
+    "lang": "en",
+    "url": "/en/blog/farsi-therapist-los-angeles-usa/",
+    "title": "Farsi Speaking Therapist Los Angeles and Across the US: Your Options"
+  },
+  {
+    "slug": "bilingual-children",
+    "lang": "fa",
+    "url": "/blog/bilingual-children/",
+    "title": "کودک دوزبانه در خانواده‌ی ایرانی مهاجر: زبان، هویت و نگرانی‌های پدر و مادر"
+  },
+  {
+    "slug": "bilingual-children",
+    "lang": "en",
+    "url": "/en/blog/bilingual-children/",
+    "title": "Raising Bilingual Children in an Iranian Family Abroad: Language, Identity and Common Worries"
+  },
+  {
+    "slug": "anxiety-before-immigration",
+    "lang": "fa",
+    "url": "/blog/anxiety-before-immigration/",
+    "title": "اضطراب قبل از مهاجرت: وقتی هنوز نرفته‌ای ولی دلت آرام نمی‌گیرد"
+  },
+  {
+    "slug": "anxiety-before-immigration",
+    "lang": "en",
+    "url": "/en/blog/anxiety-before-immigration/",
+    "title": "Anxiety Before Moving Abroad: When You Haven't Left Yet but Can't Settle"
+  },
+  {
+    "slug": "iranian-psychiatrist-germany",
+    "lang": "fa",
+    "url": "/blog/iranian-psychiatrist-germany/",
+    "title": "روانپزشک ایرانی در آلمان: کی لازم است و چه راه‌هایی داری"
+  },
+  {
+    "slug": "iranian-psychiatrist-germany",
+    "lang": "en",
+    "url": "/en/blog/iranian-psychiatrist-germany/",
+    "title": "Iranian Psychiatrist in Germany: When You Need One and How to Find Care"
+  },
+  {
+    "slug": "long-distance-relationship-immigration",
+    "lang": "fa",
+    "url": "/blog/long-distance-relationship-immigration/",
+    "title": "رابطه از راه دور بعد از مهاجرت: چطور نگهش داری و کی نگران شوی"
+  },
+  {
+    "slug": "long-distance-relationship-immigration",
+    "lang": "en",
+    "url": "/en/blog/long-distance-relationship-immigration/",
+    "title": "Long Distance Relationship After Moving Abroad: What Helps and What to Watch For"
+  },
+  {
+    "slug": "online-therapy-session-how-it-works",
+    "lang": "fa",
+    "url": "/blog/online-therapy-session-how-it-works/",
+    "title": "مشاوره آنلاین برای ایرانیان خارج از کشور: جلسه دقیقاً چطور برگزار می‌شود؟"
+  },
+  {
+    "slug": "online-therapy-session-how-it-works",
+    "lang": "en",
+    "url": "/en/blog/online-therapy-session-how-it-works/",
+    "title": "Therapy in Farsi Online: How a Session Actually Works"
+  },
+  {
+    "slug": "regret-immigration-canada",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-canada/",
+    "title": "پشیمانی از مهاجرت به کانادا: قبل از تصمیم به برگشت به این‌ها فکر کن"
+  },
+  {
+    "slug": "regret-immigration-canada",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-canada/",
+    "title": "Regret Moving to Canada? What to Think About Before You Go Back"
+  },
+  {
+    "slug": "persian-psychologist-australia",
+    "lang": "fa",
+    "url": "/blog/persian-psychologist-australia/",
+    "title": "روانشناس ایرانی در استرالیا: از GP و مدیکر تا جلسه‌ی آنلاین فارسی"
+  },
+  {
+    "slug": "persian-psychologist-australia",
+    "lang": "en",
+    "url": "/en/blog/persian-psychologist-australia/",
+    "title": "Persian Psychologist Sydney and Melbourne: Local Care or Online in Farsi?"
+  },
+  {
+    "slug": "culture-shock-germany",
+    "lang": "fa",
+    "url": "/blog/culture-shock-germany/",
+    "title": "شوک فرهنگی در آلمان: چیزهایی که ایرانی‌ها را غافلگیر می‌کند و اثرش روی روان"
+  },
+  {
+    "slug": "culture-shock-germany",
+    "lang": "en",
+    "url": "/en/blog/culture-shock-germany/",
+    "title": "Culture Shock in Germany: What Surprises Iranians and How It Affects You"
+  },
+  {
+    "slug": "immigration-stress",
+    "lang": "fa",
+    "url": "/blog/immigration-stress/",
+    "title": "استرس مهاجرت: از کجا می‌آید و چطور مدیریتش کنی"
+  },
+  {
+    "slug": "immigration-stress",
+    "lang": "en",
+    "url": "/en/blog/immigration-stress/",
+    "title": "Immigration Stress: Where It Comes From and How to Manage It"
+  },
+  {
+    "slug": "iranian-therapist-dubai",
+    "lang": "fa",
+    "url": "/blog/iranian-therapist-dubai/",
+    "title": "روانشناس ایرانی در دبی: حضوری، آنلاین و دغدغه‌ی محرمانگی"
+  },
+  {
+    "slug": "iranian-therapist-dubai",
+    "lang": "en",
+    "url": "/en/blog/iranian-therapist-dubai/",
+    "title": "Iranian Therapist in Dubai: Local Options, Privacy and Therapy in Farsi"
+  },
+  {
+    "slug": "family-counseling-iranians-abroad",
+    "lang": "fa",
+    "url": "/blog/family-counseling-iranians-abroad/",
+    "title": "مشاوره خانواده برای ایرانیان خارج از کشور: وقتی نقش‌ها در خانه جابه‌جا می‌شوند",
+    "image_prompt": "A kitchen table in a small rented apartment abroad at dusk, a teenage girl seen from behind sitting beside her father and pointing at a stack of folded school forms, a small curved Persian tea glass (estekan) and a round metal teapot beside them, a laptop open on a paused video call with a grandmother, warm lamp light, rain on the window."
+  },
+  {
+    "slug": "family-counseling-iranians-abroad",
+    "lang": "en",
+    "url": "/en/blog/family-counseling-iranians-abroad/",
+    "title": "Family Therapy in Farsi: Help for Iranian Families Adjusting to Life Abroad"
+  },
+  {
+    "slug": "returning-to-iran-after-immigration",
+    "lang": "fa",
+    "url": "/blog/returning-to-iran-after-immigration/",
+    "title": "بازگشت به ایران بعد از مهاجرت: وقتی برگشتن هم سخت است",
+    "image_prompt": "Early morning in an old Tehran apartment kitchen, a half-unpacked hard-shell suitcase standing open on a patterned Persian rug in the doorway, a returning traveler seen from behind at the window holding a small curved Persian tea glass (estekan), a brass samovar on the counter, plane trees and hazy mountains outside, soft autumn light."
+  },
+  {
+    "slug": "returning-to-iran-after-immigration",
+    "lang": "en",
+    "url": "/en/blog/returning-to-iran-after-immigration/",
+    "title": "Reverse Culture Shock Returning Home to Iran: When Going Back Is Hard Too"
+  },
+  {
+    "slug": "iranian-psychologist-istanbul",
+    "lang": "fa",
+    "url": "/blog/iranian-psychologist-istanbul/",
+    "title": "روانشناس ایرانی در استانبول: گزینه‌های محلی، زبان و جلسه‌ی آنلاین فارسی",
+    "image_prompt": "A small rented flat in Istanbul at dusk, a narrow balcony door open to tiled rooftops and the Bosphorus in the distance, a laptop open on a little wooden table beside a small curved Persian tea glass (estekan) on a saucer and a pair of wired earphones, a half-unpacked suitcase in the corner, a folded kilim on the chair, warm lamp light."
+  },
+  {
+    "slug": "iranian-psychologist-istanbul",
+    "lang": "en",
+    "url": "/en/blog/iranian-psychologist-istanbul/",
+    "title": "Iranian Therapist Istanbul: Local Options, Language and Online Therapy in Farsi"
+  },
+  {
+    "slug": "regret-immigration-germany",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-germany/",
+    "title": "پشیمانی از مهاجرت به آلمان: از کجا می‌آید و با آن چه کنی",
+    "image_prompt": "A narrow balcony of a rented apartment in a German city on a grey November afternoon, a woman seen from behind wrapped in a wool blanket holding a small curved Persian tea glass (estekan), looking out at rows of pale apartment blocks and bare linden trees, a flattened cardboard moving box leaning by the balcony door, a small potted geranium on the railing, soft fading daylight."
+  },
+  {
+    "slug": "regret-immigration-germany",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-germany/",
+    "title": "Regret Moving to Germany? Where It Comes From and What Helps"
+  },
+  {
+    "slug": "farsi-speaking-psychiatrist-online",
+    "lang": "fa",
+    "url": "/blog/farsi-speaking-psychiatrist-online/",
+    "title": "روانپزشک آنلاین فارسی‌زبان: کی لازم است و دارو از راه دور چطور پیش می‌رود",
+    "image_prompt": "Late afternoon in a small rented apartment abroad, a man seen from behind at a wooden desk facing an open laptop ready for a video consultation, a closed paper notebook and a pen beside it, a small curved Persian tea glass (estekan) on a saucer, a radiator under a tall window, soft autumn light."
+  },
+  {
+    "slug": "farsi-speaking-psychiatrist-online",
+    "lang": "en",
+    "url": "/en/blog/farsi-speaking-psychiatrist-online/",
+    "title": "Farsi Speaking Psychiatrist Online: When You Need One and How Medication Works"
+  },
+  {
+    "slug": "moving-abroad-alone",
+    "lang": "fa",
+    "url": "/blog/moving-abroad-alone/",
+    "title": "مهاجرت به تنهایی: بین آزادی و تنهایی، چطور آدم‌هایت را پیدا کنی",
+    "image_prompt": "A nearly empty studio apartment abroad on a bright late morning, a single hard-shell suitcase standing beside a mattress on the wooden floor, a rolled Persian kilim leaning against the wall, a young woman seen from behind hanging a small framed old family photo on a bare white wall, a potted basil plant on the windowsill."
+  },
+  {
+    "slug": "moving-abroad-alone",
+    "lang": "en",
+    "url": "/en/blog/moving-abroad-alone/",
+    "title": "Moving Abroad Alone: Freedom, Loneliness and Finding Your People"
+  },
+  {
+    "slug": "regret-immigration-australia",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-australia/",
+    "title": "پشیمانی از مهاجرت به استرالیا: وقتی دوری بیشتر از انتظارت سنگینی می‌کند",
+    "image_prompt": "A narrow balcony of a rented unit in an Australian suburb late at night, a small curved Persian tea glass (estekan) on a saucer on a white plastic outdoor table beside a phone lying face down, a folded kilim on the chair, eucalyptus trees silhouetted against a starry sky, warm lamplight from the living room behind a sliding glass door."
+  },
+  {
+    "slug": "regret-immigration-australia",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-australia/",
+    "title": "Regret Moving to Australia: When the Distance Weighs More Than You Expected"
+  },
+  {
+    "slug": "regret-immigration-usa",
+    "lang": "fa",
+    "url": "/blog/regret-immigration-usa/",
+    "title": "پشیمانی از مهاجرت به آمریکا: وقتی رؤیا با واقعیت فرق دارد",
+    "image_prompt": "A man seen from behind sitting in a parked car in a nearly empty American supermarket parking lot at dusk, paper grocery bags on the passenger seat with a bunch of fresh herbs sticking out, pink and orange sky over low suburban buildings and tall palm trees, parking lot lamps just switching on."
+  },
+  {
+    "slug": "regret-immigration-usa",
+    "lang": "en",
+    "url": "/en/blog/regret-immigration-usa/",
+    "title": "Regret Moving to USA? When the Dream and the Reality Don't Match"
+  },
+  {
+    "slug": "culture-shock-canada",
+    "lang": "fa",
+    "url": "/blog/culture-shock-canada/",
+    "title": "شوک فرهنگی در کانادا: از ادب و تعارف تا زمستان طولانی و فرهنگ کار",
+    "image_prompt": "A pair of wet snow boots on a black rubber boot tray beside the front door of a small rented apartment in Canada, a heavy winter parka on a wall hook, a small curved Persian tea glass (estekan) steaming on a wooden shoe bench, snowy street and bare maple trees through the door's window, low late-afternoon winter light."
+  },
+  {
+    "slug": "culture-shock-canada",
+    "lang": "en",
+    "url": "/en/blog/culture-shock-canada/",
+    "title": "Culture Shock in Canada: Politeness, Long Winters and Work Culture"
+  },
+  {
+    "slug": "loneliness-after-moving-to-perth",
+    "lang": "fa",
+    "url": "/blog/loneliness-after-moving-to-perth/",
+    "title": "تنهایی بعد از مهاجرت به پرت استرالیا: چطور آدم‌های خودت را پیدا کنی",
+    "image_prompt": "Early Saturday morning on a nearly empty white-sand beach near Perth, a lone person seen from far behind sitting on a folded beach towel, a small thermos and a curved Persian tea glass (estekan) on the sand beside them, a parked hatchback at the edge of the dunes, calm turquoise Indian Ocean and soft golden low sunlight."
+  },
+  {
+    "slug": "loneliness-after-moving-to-perth",
+    "lang": "en",
+    "url": "/en/blog/loneliness-after-moving-to-perth/",
+    "title": "Loneliness After Moving to Perth: How to Build Your People in a Quiet City"
+  },
+  {
+    "slug": "culture-shock-usa",
+    "lang": "fa",
+    "url": "/blog/culture-shock-usa/",
+    "title": "شوک فرهنگی در آمریکا: چیزهایی که ایرانی‌ها را غافلگیر می‌کند و راه کنار آمدن",
+    "image_prompt": "A narrow kitchen counter in a rented apartment in an American suburb in late afternoon, an oversized plain paper coffee cup with a plastic lid beside a small curved Persian tea glass (estekan) on a saucer, a car key on the counter, warm sunlight slanting through horizontal blinds, a wide multi-lane road and parked pickup trucks blurred outside the window."
+  },
+  {
+    "slug": "culture-shock-usa",
+    "lang": "en",
+    "url": "/en/blog/culture-shock-usa/",
+    "title": "Culture Shock in America: What Surprises Iranians and How to Adjust"
+  },
+  {
+    "slug": "iranian-psychiatrist-toronto",
+    "lang": "fa",
+    "url": "/blog/iranian-psychiatrist-toronto/",
+    "title": "روانپزشک ایرانی در تورنتو: کی لازم است و از کجا شروع کنی",
+    "image_prompt": "A small kitchen table in a Toronto apartment on an early November evening, already dark outside, a red streetcar's lights blurred through a rain-streaked window, a closed spiral notebook and a pen beside a small curved Persian tea glass (estekan) on a saucer, a phone lying face down, a winter coat draped over the chair, warm lamp light."
+  },
+  {
+    "slug": "iranian-psychiatrist-toronto",
+    "lang": "en",
+    "url": "/en/blog/iranian-psychiatrist-toronto/",
+    "title": "Iranian Psychiatrist Toronto: When You Need One and Where to Start"
+  },
+  {
+    "slug": "persian-couples-therapy-los-angeles",
+    "lang": "fa",
+    "url": "/blog/persian-couples-therapy-los-angeles/",
+    "title": "زوج درمانی ایرانی در لس‌آنجلس: وقتی خانواده‌ها و حرف مردم وارد رابطه می‌شوند",
+    "image_prompt": "Night interior of a car on a Los Angeles freeway, seen from the back seat: a couple in the front seats both facing forward in quiet silence, a foil-covered dish of leftover saffron rice from a family dinner on the passenger's lap, blurred red and white freeway lights and tall palm tree silhouettes through the windshield."
+  },
+  {
+    "slug": "persian-couples-therapy-los-angeles",
+    "lang": "en",
+    "url": "/en/blog/persian-couples-therapy-los-angeles/",
+    "title": "Persian Couples Therapy Los Angeles: When Family and Gossip Get Into Your Relationship"
+  },
+  {
+    "slug": "marriage-counseling-germany",
+    "lang": "fa",
+    "url": "/blog/marriage-counseling-germany/",
+    "title": "مشاوره ازدواج در آلمان: وقتی مهاجرت تعادل رابطه را به هم می‌زند",
+    "image_prompt": "A small kitchen in an old German apartment building on a dark December afternoon, a couple seen from behind sitting side by side at a narrow wooden table, a white porcelain teapot and two small curved Persian tea glasses (estekan) on saucers between them, a folded clothes drying rack against the wall, a white panel radiator under a tall window with blurred tram lights outside."
+  },
+  {
+    "slug": "marriage-counseling-germany",
+    "lang": "en",
+    "url": "/en/blog/marriage-counseling-germany/",
+    "title": "Marriage Counseling in Germany in Farsi: When the Move Upsets the Balance"
+  },
+  {
+    "slug": "fifo-work-mental-health-perth",
+    "lang": "fa",
+    "url": "/blog/fifo-work-mental-health-perth/",
+    "title": "کار فایفو و سلامت روان: وقتی نیمی از زندگی‌ات در معدن می‌گذرد",
+    "image_prompt": "Pre-dawn at a small regional airport in Western Australia, a man seen from behind in an orange high-visibility work shirt and steel-capped boots, a duffel bag at his feet, looking through tall glass windows at a small charter plane on red-dust tarmac, a child's folded crayon drawing tucked in his shirt pocket, soft blue early light."
+  },
+  {
+    "slug": "fifo-work-mental-health-perth",
+    "lang": "en",
+    "url": "/en/blog/fifo-work-mental-health-perth/",
+    "title": "FIFO Work Mental Health: Looking After Yourself and Your Family in Perth"
+  },
+  {
+    "slug": "community-pressure-los-angeles-iranians",
+    "lang": "fa",
+    "url": "/blog/community-pressure-los-angeles-iranians/",
+    "title": "چشم و هم‌چشمی در جامعه ایرانی لس‌آنجلس: وقتی مقایسه خسته‌ات می‌کند",
+    "image_prompt": "A sunny Los Angeles backyard in late afternoon after a party, a long table with leftover platters of saffron rice and a plate of fresh herbs, scattered small curved Persian tea glasses (estekan) on saucers, a woman seen from behind sitting alone on the back steps with her shoes beside her, tall palm trees and a pale pink sky beyond the fence."
+  },
+  {
+    "slug": "community-pressure-los-angeles-iranians",
+    "lang": "en",
+    "url": "/en/blog/community-pressure-los-angeles-iranians/",
+    "title": "Pressure in the Persian Community Los Angeles: Comparison, Gossip and Your Peace"
+  },
+  {
+    "slug": "job-search-stress-toronto",
+    "lang": "fa",
+    "url": "/blog/job-search-stress-toronto/",
+    "title": "استرس کاریابی در تورنتو: وقتی رزومه‌ها بی‌جواب می‌ماند",
+    "image_prompt": "Early winter morning in a small rented Toronto basement apartment, a person seen from behind at a narrow desk under a half-window with snow piled against it, a laptop beside a neat stack of printed resumes, a small curved Persian tea glass (estekan) on a saucer, a winter coat and a transit card on the chair, soft grey daylight."
+  },
+  {
+    "slug": "job-search-stress-toronto",
+    "lang": "en",
+    "url": "/en/blog/job-search-stress-toronto/",
+    "title": "Job Search Stress Toronto Newcomers Know: Keeping Your Confidence"
+  },
+  {
+    "slug": "couples-conflict-sydney",
+    "lang": "fa",
+    "url": "/blog/couples-conflict-sydney/",
+    "title": "اختلاف زوجین ایرانی در سیدنی: وقتی هزینه‌ی زندگی بین شما فاصله می‌اندازد",
+    "image_prompt": "Summer dusk in a compact rented Sydney apartment, a couple seen from behind at a small kitchen bench, he rinsing dishes at the sink while she sits with a calculator and a folder of household bills, a pot of leftover ghormeh sabzi on the stove, through the window apartment blocks and the distant silhouette of the Harbour Bridge under a pink sky."
+  },
+  {
+    "slug": "couples-conflict-sydney",
+    "lang": "en",
+    "url": "/en/blog/couples-conflict-sydney/",
+    "title": "Iranian Couples Counselling Sydney: When the Cost of Living Gets Between You"
+  },
+  {
+    "slug": "job-search-stress-perth",
+    "lang": "fa",
+    "url": "/blog/job-search-stress-perth/",
+    "title": "استرس کاریابی در پرت استرالیا: وقتی تخصصت دیده نمی‌شود",
+    "image_prompt": "Early morning in a small rented unit in a Perth suburb, a person seen from behind sitting on a back step in a plain navy work polo, laptop on their knees, a small curved Persian tea glass (estekan) on a saucer beside a pair of dusty work boots, bright low sunlight over a dry lawn and a gum tree."
+  },
+  {
+    "slug": "job-search-stress-perth",
+    "lang": "en",
+    "url": "/en/blog/job-search-stress-perth/",
+    "title": "Job Hunting Stress Perth: When Your Experience Isn't Seen"
+  },
+  {
+    "slug": "therapy-insurance-usa-farsi",
+    "lang": "fa",
+    "url": "/blog/therapy-insurance-usa-farsi/",
+    "title": "بیمه و روانشناس فارسی‌زبان در آمریکا: از in-network تا جلسه‌ی آنلاین",
+    "image_prompt": "A small dining table in an American apartment on a quiet autumn afternoon, a man seen from the side holding a smartphone to his ear as if on hold, a plain plastic member card lying face down beside an opened paper envelope and a ballpoint pen, a small curved Persian tea glass (estekan) on a saucer, soft light through white blinds."
+  },
+  {
+    "slug": "therapy-insurance-usa-farsi",
+    "lang": "en",
+    "url": "/en/blog/therapy-insurance-usa-farsi/",
+    "title": "Does Insurance Cover Therapy in the US? A Guide for Farsi Speakers"
+  },
+  {
+    "slug": "french-language-stress-montreal",
+    "lang": "fa",
+    "url": "/blog/french-language-stress-montreal/",
+    "title": "استرس زبان فرانسه در مونترال: وقتی انگلیسی‌ات کافی نیست",
+    "image_prompt": "A small kitchen table in a Montreal apartment on a snowy winter morning, an open French workbook with a pencil and an eraser beside a small curved Persian tea glass (estekan) on a saucer, a wool scarf over the chair, frosted window looking onto an iron outdoor staircase covered in snow, soft grey daylight."
+  },
+  {
+    "slug": "french-language-stress-montreal",
+    "lang": "en",
+    "url": "/en/blog/french-language-stress-montreal/",
+    "title": "French Language Stress in Montreal: When Your English Isn't Enough"
+  },
+  {
+    "slug": "rental-stress-sydney",
+    "lang": "fa",
+    "url": "/blog/rental-stress-sydney/",
+    "title": "استرس اجاره خانه در سیدنی: وقتی خانه هم جای امن نیست",
+    "image_prompt": "A half-unpacked living room in a small Sydney rental flat on a warm late afternoon, stacked cardboard moving boxes, a rolled-up small Persian kilim rug leaning on the wall, a brass Persian teapot and two small curved tea glasses (estekan) on a box used as a table, a set of keys on top, sunlight through open blinds, a jacaranda tree outside."
+  },
+  {
+    "slug": "rental-stress-sydney",
+    "lang": "en",
+    "url": "/en/blog/rental-stress-sydney/",
+    "title": "Rental Stress Sydney: When Home Doesn't Feel Safe"
+  },
+  {
+    "slug": "waiting-for-canadian-pr-anxiety",
+    "lang": "fa",
+    "url": "/blog/waiting-for-canadian-pr-anxiety/",
+    "title": "استرس انتظار اقامت دائم کانادا: وقتی زندگی منتظر یک ایمیل است",
+    "image_prompt": "Early winter morning in a sparsely furnished rented apartment in Canada, a smartphone lying face down on a small wooden kitchen table next to a small curved Persian tea glass (estekan) on a saucer and a closed manila document folder tied with string, an empty picture frame leaning unhung against the wall, light snow falling outside the window, soft pale daylight."
+  },
+  {
+    "slug": "waiting-for-canadian-pr-anxiety",
+    "lang": "en",
+    "url": "/en/blog/waiting-for-canadian-pr-anxiety/",
+    "title": "Waiting for Canadian PR Anxiety: How to Live While Your File Is Pending"
+  },
+  {
+    "slug": "green-card-waiting-anxiety",
+    "lang": "fa",
+    "url": "/blog/green-card-waiting-anxiety/",
+    "title": "استرس انتظار گرین کارت: وقتی سال‌ها زندگی‌ات «در جریان بررسی» است",
+    "image_prompt": "A plain unopened white envelope resting on a small wooden hallway console in an American apartment, beside a ceramic bowl of keys and a small curved Persian tea glass (estekan) on a saucer, the front door ajar showing a row of metal mailboxes in the building lobby, warm late-afternoon autumn light across a small Persian rug."
+  },
+  {
+    "slug": "green-card-waiting-anxiety",
+    "lang": "en",
+    "url": "/en/blog/green-card-waiting-anxiety/",
+    "title": "Green Card Waiting Anxiety: How to Live While Your Case Is Pending"
+  },
+  {
+    "slug": "international-student-stress-melbourne",
+    "lang": "fa",
+    "url": "/blog/international-student-stress-melbourne/",
+    "title": "استرس دانشجویان ایرانی در ملبورن: وقتی درس، کار و تنهایی با هم فشار می‌آورند",
+    "image_prompt": "Late evening in a small shared student bedroom in Melbourne, a desk with a closed laptop, a stack of closed university textbooks and a folded black cafe apron, a small curved Persian tea glass (estekan) half full beside a desk lamp, through the rain-streaked window a lit tram passing on the wet street below, warm lamplight against the blue dusk."
+  },
+  {
+    "slug": "international-student-stress-melbourne",
+    "lang": "en",
+    "url": "/en/blog/international-student-stress-melbourne/",
+    "title": "International Student Stress Melbourne: Burnout Signs and Where to Get Help"
+  },
+  {
+    "slug": "nhs-therapy-waiting-list",
+    "lang": "fa",
+    "url": "/blog/nhs-therapy-waiting-list/",
+    "title": "صف انتظار NHS برای روان‌درمانی: تا رسیدن نوبت با خودت چه کنی؟",
+    "image_prompt": "A grey winter morning in a small rented flat in England, a mug of tea and a small curved Persian tea glass (estekan) on a wooden kitchen table beside a folded paper letter in a plain white envelope and a phone lying face down, a red-brick terraced street visible through a rain-dotted sash window, soft diffused daylight."
+  },
+  {
+    "slug": "nhs-therapy-waiting-list",
+    "lang": "en",
+    "url": "/en/blog/nhs-therapy-waiting-list/",
+    "title": "NHS Therapy Waiting List: What to Do While You Wait for Your Turn"
+  },
+  {
+    "slug": "tech-layoff-visa-stress",
+    "lang": "fa",
+    "url": "/blog/tech-layoff-visa-stress/",
+    "title": "استرس اخراج و ویزای کاری در آمریکا: هفته‌های اول را چطور بگذرانی",
+    "image_prompt": "Early morning in a small San Francisco apartment, a closed laptop and a cardboard box holding a desk plant, a coffee mug and a folded hoodie on a wooden table, a small curved Persian tea glass (estekan) on a saucer beside it, fog drifting past pastel Victorian houses outside the bay window, soft grey-gold light."
+  },
+  {
+    "slug": "tech-layoff-visa-stress",
+    "lang": "en",
+    "url": "/en/blog/tech-layoff-visa-stress/",
+    "title": "H1B Layoff Stress: Getting Through the First Weeks After Losing Your Job"
+  },
+  {
+    "slug": "loneliness-in-berlin",
+    "lang": "fa",
+    "url": "/blog/loneliness-in-berlin/",
+    "title": "تنهایی در برلین: وقتی شهر پر از آدم است ولی کسی را نداری",
+    "image_prompt": "Late autumn dusk in a high-ceilinged old Berlin apartment, a single wooden chair beside a tall double window, a small curved Persian tea glass (estekan) on a saucer on the wide windowsill, one coat on a row of empty wall hooks, bare chestnut trees and a yellow tram passing on the street below, soft fading blue light."
+  },
+  {
+    "slug": "loneliness-in-berlin",
+    "lang": "en",
+    "url": "/en/blog/loneliness-in-berlin/",
+    "title": "Loneliness in Berlin: When the City Is Full but You Have No One"
+  },
+  {
+    "slug": "waiting-for-pr-australia-anxiety",
+    "lang": "fa",
+    "url": "/blog/waiting-for-pr-australia-anxiety/",
+    "title": "استرس انتظار اقامت دائم استرالیا: وقتی زندگی روی ویزای بریجینگ معلق می‌ماند",
+    "image_prompt": "Early autumn morning in a small rented unit in Australia, an unmade bed beside a sliding glass door to a narrow balcony, a phone lying face down on the bedside table next to a small curved Persian tea glass (estekan) on a saucer and a blue cardboard document folder, a eucalyptus branch moving outside, soft warm sunlight."
+  },
+  {
+    "slug": "waiting-for-pr-australia-anxiety",
+    "lang": "en",
+    "url": "/en/blog/waiting-for-pr-australia-anxiety/",
+    "title": "Waiting for PR Australia Anxiety: Living Well on a Bridging Visa"
+  },
+  {
+    "slug": "cant-see-family-visa-usa",
+    "lang": "fa",
+    "url": "/blog/cant-see-family-visa-usa/",
+    "title": "سال‌ها ندیدن خانواده به خاطر ویزا: وقتی نه تو می‌توانی بروی، نه آن‌ها بیایند",
+    "image_prompt": "A small rented apartment in an American city late at night, a laptop open on a low wooden coffee table playing a blurry paused video call of a crowded family wedding party, a small curved Persian tea glass (estekan) gone cold on a saucer beside it, a person seen from behind on the sofa wrapped in a blanket, one dim floor lamp."
+  },
+  {
+    "slug": "cant-see-family-visa-usa",
+    "lang": "en",
+    "url": "/en/blog/cant-see-family-visa-usa/",
+    "title": "Not Seeing Family for Years Because of Visa Rules: Living With the Distance"
+  },
+  {
+    "slug": "winter-blues-melbourne",
+    "lang": "fa",
+    "url": "/blog/winter-blues-melbourne/",
+    "title": "دلگرفتگی زمستان در ملبورن: وقتی آسمان خاکستری روی حالت هم می‌نشیند",
+    "image_prompt": "A small window nook in an older rented Melbourne terrace house on a grey winter morning, a person seen from behind in a thick knitted wool jumper sitting close to the rain-streaked glass to catch the light, a steaming small curved Persian tea glass (estekan) on the wooden sill, bare plane trees lining the wet street outside."
+  },
+  {
+    "slug": "winter-blues-melbourne",
+    "lang": "en",
+    "url": "/en/blog/winter-blues-melbourne/",
+    "title": "Winter Blues Melbourne: Getting Through the Grey Months"
+  },
+  {
+    "slug": "imposter-syndrome-international-students",
+    "lang": "fa",
+    "url": "/blog/imposter-syndrome-international-students/",
+    "title": "سندرم ایمپاستر در دانشجویان ایرانی: وقتی سر کلاس‌های بوستون حس می‌کنی اشتباهی آمده‌ای",
+    "image_prompt": "A seminar room in an old red-brick university building in Boston on a snowy winter afternoon, seen from the back row: a young woman in a dark wool coat sits slightly apart from a group gathered around a long oak table, her hands resting on a closed notebook, snow drifting past tall arched windows."
+  },
+  {
+    "slug": "imposter-syndrome-international-students",
+    "lang": "en",
+    "url": "/en/blog/imposter-syndrome-international-students/",
+    "title": "Imposter Syndrome International Students Feel in Boston's Top Universities"
+  },
+  {
+    "slug": "stress-learning-german",
+    "lang": "fa",
+    "url": "/blog/stress-learning-german/",
+    "title": "فشار یادگیری زبان آلمانی: وقتی در زبان تازه حس می‌کنی دوباره بچه شده‌ای",
+    "image_prompt": "A small kitchen table in a rented German apartment on a dim autumn evening, a stack of vocabulary flashcards turned face down and held with a rubber band, a closed grammar workbook, reading glasses and a mug of tea, a man seen from behind resting his chin on one hand, rain on the window above an old white radiator."
+  },
+  {
+    "slug": "stress-learning-german",
+    "lang": "en",
+    "url": "/en/blog/stress-learning-german/",
+    "title": "Stress Learning German? Why It Wears You Out and How to Keep Going"
+  },
+  {
+    "slug": "adjusting-to-life-in-brisbane",
+    "lang": "fa",
+    "url": "/blog/adjusting-to-life-in-brisbane/",
+    "title": "سازگاری با زندگی در بریزبن: سال اول را چطور بگذرانی",
+    "image_prompt": "A young man seen from behind standing on the small balcony of a newly rented Brisbane apartment at dusk, a half-unpacked cardboard moving box and a rolled-up Persian kilim rug beside the open sliding door, a ceiling fan turning inside, purple jacaranda trees and a wide brown river below in warm humid evening haze."
+  },
+  {
+    "slug": "adjusting-to-life-in-brisbane",
+    "lang": "en",
+    "url": "/en/blog/adjusting-to-life-in-brisbane/",
+    "title": "Adjusting to Life in Brisbane: What the First Year Really Feels Like"
+  },
+  {
+    "slug": "phd-student-mental-health-usa",
+    "lang": "fa",
+    "url": "/blog/phd-student-mental-health-usa/",
+    "title": "سلامت روان دانشجویان دکتری ایرانی در آمریکا: از استاد راهنما تا سال‌ها دوری از خانه",
+    "image_prompt": "Late night in an empty university research lab in the United States, a young man seen from behind at a lab bench, a half-finished paper cup of coffee beside a small curved Persian tea glass on a saucer, dark campus lawn and lamp posts outside the tall window, cool fluorescent light mixed with a warm desk lamp."
+  },
+  {
+    "slug": "phd-student-mental-health-usa",
+    "lang": "en",
+    "url": "/en/blog/phd-student-mental-health-usa/",
+    "title": "PhD Student Mental Health USA: Advisors, Funding and Years Away From Home"
+  },
+  {
+    "slug": "housing-stress-netherlands",
+    "lang": "fa",
+    "url": "/blog/housing-stress-netherlands/",
+    "title": "استرس پیدا کردن خانه در هلند: وقتی اتاق‌های موقت زندگی‌ات را معلق نگه می‌دارند",
+    "image_prompt": "A steep narrow wooden staircase landing inside an old Dutch canal house on a drizzly grey afternoon, a hard-shell suitcase and a rolled-up small Persian rug leaning against the wall, two taped cardboard boxes stacked beside them, soft daylight from a tall window looking out on wet bicycles parked along a canal."
+  },
+  {
+    "slug": "housing-stress-netherlands",
+    "lang": "en",
+    "url": "/en/blog/housing-stress-netherlands/",
+    "title": "Housing Stress Netherlands: When Temporary Rooms Keep Your Life on Hold"
+  },
+  {
+    "slug": "homesick-in-adelaide",
+    "lang": "fa",
+    "url": "/blog/homesick-in-adelaide/",
+    "title": "دلتنگی ایران در آدلاید: وقتی آرامش شهر هم خوب است، هم سنگین",
+    "image_prompt": "A quiet suburban street in Adelaide at early dusk in late spring, seen from a small front porch of a single-storey brick house, a small curved Persian tea glass (estekan) on a saucer resting on the porch step beside a phone lying face down, a jacaranda tree and a low hill line in soft golden light, the street empty and calm."
+  },
+  {
+    "slug": "homesick-in-adelaide",
+    "lang": "en",
+    "url": "/en/blog/homesick-in-adelaide/",
+    "title": "Homesick in Adelaide: When a Quiet City Makes You Miss Home More"
+  },
+  {
+    "slug": "persian-family-counseling-irvine",
+    "lang": "fa",
+    "url": "/blog/persian-family-counseling-irvine/",
+    "title": "مشاوره خانواده ایرانی در اورنج کانتی: وقتی سه نسل کنار هم زندگی می‌کنند",
+    "image_prompt": "A long dining table in a bright Southern California family home on a Friday evening, seen from the end of the table, an elderly man's hands passing a plate of saffron rice with tahdig toward a teenager's hands holding a smartphone face down, a mother's arm reaching between them with a teapot, a Persian rug and palm trees outside the sliding glass door in warm sunset light."
+  },
+  {
+    "slug": "persian-family-counseling-irvine",
+    "lang": "en",
+    "url": "/en/blog/persian-family-counseling-irvine/",
+    "title": "Persian Family Counseling Irvine: When Three Generations Live Close"
+  },
+  {
+    "slug": "dark-winter-sweden",
+    "lang": "fa",
+    "url": "/blog/dark-winter-sweden/",
+    "title": "زمستان تاریک سوئد و حال روحی: وقتی ساعت سه بعدازظهر شب می‌شود",
+    "image_prompt": "A small kitchen table by the window of a Swedish apartment in mid-afternoon winter, deep blue twilight sky and snow-covered rooftops outside, a glowing white daylight lamp on the table beside a small curved Persian tea glass (estekan) on a saucer and a bowl of clementines, a wool blanket over the chair."
+  },
+  {
+    "slug": "dark-winter-sweden",
+    "lang": "en",
+    "url": "/en/blog/dark-winter-sweden/",
+    "title": "The Dark Winter Sweden Mood Slump: When Night Falls at 3 PM"
+  },
+  {
+    "slug": "time-difference-family-australia-iran",
+    "lang": "fa",
+    "url": "/blog/time-difference-family-australia-iran/",
+    "title": "اختلاف ساعت استرالیا با ایران و تماس با خانواده: وقتی صبح تو نیمه‌شب آن‌هاست",
+    "image_prompt": "Early morning in a small rented apartment kitchen in Australia, a phone lying face down on a wooden bench beside a small curved Persian tea glass (estekan) on a saucer, two small round analogue clocks on the windowsill showing different hours, pale dawn light and a eucalyptus tree outside the window, calm and quiet."
+  },
+  {
+    "slug": "time-difference-family-australia-iran",
+    "lang": "en",
+    "url": "/en/blog/time-difference-family-australia-iran/",
+    "title": "Time Difference Australia Iran Family Calls: When Your Morning Is Their Midnight"
+  },
+  {
+    "slug": "iranian-american-parents-and-kids",
+    "lang": "fa",
+    "url": "/blog/iranian-american-parents-and-kids/",
+    "title": "شکاف نسلی والدین ایرانی و فرزندان آمریکایی: پلی بین دو دنیا",
+    "image_prompt": "A suburban American kitchen in late afternoon, a middle-aged father and his teenage daughter seen from behind sitting side by side at a kitchen island, a shared plate of Persian rice with a golden crispy tahdig crust between them, a skateboard leaning by the sliding glass door, warm golden light falling on the backyard lawn."
+  },
+  {
+    "slug": "iranian-american-parents-and-kids",
+    "lang": "en",
+    "url": "/en/blog/iranian-american-parents-and-kids/",
+    "title": "Iranian American Parents and Kids: Building a Bridge Between Two Worlds"
+  },
+  {
+    "slug": "turkey-residence-permit-stress",
+    "lang": "fa",
+    "url": "/blog/turkey-residence-permit-stress/",
+    "title": "استرس اقامت در ترکیه: وقتی زندگی‌ات به تاریخ انقضای یک کارت بسته است",
+    "image_prompt": "A neat stack of paper documents in a clear plastic folder and a small Turkish tea glass on a saucer on a narrow balcony table of a rented apartment in Istanbul, a half-unpacked suitcase visible through the open door behind, soft late-afternoon light over rooftops and seagulls in the distance."
+  },
+  {
+    "slug": "turkey-residence-permit-stress",
+    "lang": "en",
+    "url": "/en/blog/turkey-residence-permit-stress/",
+    "title": "Turkey Residence Permit Stress: Living Between One Renewal and the Next"
+  },
+  {
+    "slug": "raising-iranian-teenagers-australia",
+    "lang": "fa",
+    "url": "/blog/raising-iranian-teenagers-australia/",
+    "title": "تربیت نوجوان ایرانی در استرالیا: گفت‌وگو به جای کنترل",
+    "image_prompt": "A father and teenage son seen from behind sitting side by side on a low sandy dune at an Australian beach in late afternoon, a pair of school sneakers and a small thermos with two cups beside them, calm ocean and soft golden light, relaxed and close."
+  },
+  {
+    "slug": "raising-iranian-teenagers-australia",
+    "lang": "en",
+    "url": "/en/blog/raising-iranian-teenagers-australia/",
+    "title": "Raising Iranian Teenagers in Australia: Conversation Over Control"
+  },
+  {
+    "slug": "seasonal-depression-seattle",
+    "lang": "fa",
+    "url": "/blog/seasonal-depression-seattle/",
+    "title": "افسردگی فصلی در سیاتل: وقتی آسمان ماه‌ها خاکستری می‌ماند",
+    "image_prompt": "A rain-beaded window of a rented apartment in Seattle on a gray late-autumn morning, tall evergreen trees and wet rooftops fading into low cloud outside, on the desk a closed laptop, a small curved Persian tea glass (estekan) on a saucer and a halved pomegranate on a plate, a dark green waterproof rain jacket hanging on the chair, soft diffuse light."
+  },
+  {
+    "slug": "seasonal-depression-seattle",
+    "lang": "en",
+    "url": "/en/blog/seasonal-depression-seattle/",
+    "title": "Seasonal Depression in Seattle: When the Gray Lasts for Months"
+  }
 ]
