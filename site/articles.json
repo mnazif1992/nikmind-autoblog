@@ -836,5 +836,31 @@
   "lang": "en",
   "url": "/en/blog/social-anxiety-after-moving-to-australia/",
   "title": "Social Anxiety After Moving to Australia: Accents, Small Talk and Feeling Judged"
+ },
+ {
+  "slug": "burnout-in-new-york",
+  "lang": "fa",
+  "url": "/blog/burnout-in-new-york/",
+  "title": "فرسودگی کاری مهاجران در نیویورک: وقتی سرعت شهر از توانت جلو می‌زند",
+  "image_prompt": "Late evening in the narrow galley kitchen of a small rented New York apartment, a man seen from behind in a rolled-up work shirt eating takeout standing at the counter beside a closed laptop, an old white radiator under the window, a fire escape outside and warm city lights across the street, an unused Persian tea glass on the dish rack."
+ },
+ {
+  "slug": "burnout-in-new-york",
+  "lang": "en",
+  "url": "/en/blog/burnout-in-new-york/",
+  "title": "Burnout in New York: When the City Moves Faster Than You Can"
+ },
+ {
+  "slug": "living-in-limbo-armenia",
+  "lang": "fa",
+  "url": "/blog/living-in-limbo-armenia/",
+  "title": "زندگی موقت در ارمنستان: وقتی با چمدان نیمه‌باز منتظر قدم بعدی هستی",
+  "image_prompt": "A sparse rented apartment in Yerevan on a clear cold November morning, a half-open hard-shell suitcase on the wooden floor used as a wardrobe with folded sweaters inside, a small curved Persian tea glass (estekan) on a saucer on the windowsill, and through the window snow-capped Mount Ararat in the distance above rows of pale stone apartment blocks."
+ },
+ {
+  "slug": "living-in-limbo-armenia",
+  "lang": "en",
+  "url": "/en/blog/living-in-limbo-armenia/",
+  "title": "Living in Armenia in Limbo: How to Live While You Wait for What's Next"
  }
 ]
