@@ -765,7 +765,8 @@
   "angle": "ساعت کار طولانی، اقامتی که به کار بسته است و فاصله‌ی کم ولی سخت با ایران. نشانه‌های فرسودگی و مراقبت از خود.",
   "hub": "/cities/dubai/",
   "region": "other",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-26"
  },
  {
   "id": "T073",
@@ -776,7 +777,8 @@
   "angle": "لهجه، small talk استرالیایی و ترس از اشتباه زبانی سر کار. فرق خجالت عادی دوره‌ی سازگاری با اضطرابی که زندگی را محدود می‌کند.",
   "hub": "/countries/australia/",
   "region": "australia",
-  "status": "queued"
+  "status": "drafted",
+  "drafted": "2026-11-26"
  },
  {
   "id": "T087",

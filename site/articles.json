@@ -810,5 +810,31 @@
   "lang": "en",
   "url": "/en/blog/seasonal-depression-seattle/",
   "title": "Seasonal Depression in Seattle: When the Gray Lasts for Months"
+ },
+ {
+  "slug": "work-stress-in-dubai",
+  "lang": "fa",
+  "url": "/blog/work-stress-in-dubai/",
+  "title": "فشار کاری ایرانیان در دبی: وقتی کار، اقامت و زندگی به هم گره خورده‌اند",
+  "image_prompt": "A quiet office desk beside a tall window in Dubai at dusk, glass towers glowing in hazy orange light outside, a half-closed laptop next to a small curved Persian tea glass (estekan) on a saucer gone cold, a lanyard and car keys left on the desk, an empty office chair pushed back."
+ },
+ {
+  "slug": "work-stress-in-dubai",
+  "lang": "en",
+  "url": "/en/blog/work-stress-in-dubai/",
+  "title": "Work Stress in Dubai: When Your Job, Visa and Life Are All Tied Together"
+ },
+ {
+  "slug": "social-anxiety-after-moving-to-australia",
+  "lang": "fa",
+  "url": "/blog/social-anxiety-after-moving-to-australia/",
+  "title": "اضطراب اجتماعی بعد از مهاجرت به استرالیا: از لهجه تا small talk",
+  "image_prompt": "A sunny suburban backyard barbecue in Australia seen from a distance, a group of coworkers chatting around a grill on a timber deck under eucalyptus trees, while in the foreground a man stands slightly apart by the back screen door holding a covered dish of saffron rice, late afternoon golden light."
+ },
+ {
+  "slug": "social-anxiety-after-moving-to-australia",
+  "lang": "en",
+  "url": "/en/blog/social-anxiety-after-moving-to-australia/",
+  "title": "Social Anxiety After Moving to Australia: Accents, Small Talk and Feeling Judged"
  }
 ]
